@@ -29,41 +29,39 @@ public class ArcadeGame : Game {
 
 		base.Initialize();
 		
-		InputHandler.addButtonBind("test1", Keys.Z);
-		InputHandler.addButtonBind("test1", Keys.X);
-		InputHandler.addButtonBind("test2", Keys.Space);
-		InputHandler.addButtonBind("test1", GPadInput.A);
-		InputHandler.addAnalogBind("test3", Keys.Left);
-		InputHandler.addAnalogBind("test3", Keys.Right);
-		InputHandler.addAnalogBind("test3", GPadInput.LStickUp);
-		InputHandler.addAnalogBind("test3", GPadInput.LStickLeft);
-		InputHandler.addAnalogBind("test4", Keys.Down);
+		//setting all the input bindings
+		InputHandler.addButtonBind("A", Keys.X);
+		InputHandler.addButtonBind("B", Keys.Z);
+		InputHandler.addButtonBind("A", GPadInput.A);
+		InputHandler.addButtonBind("B", GPadInput.B);
+		InputHandler.addAnalogBind("L", Keys.Left);
+		InputHandler.addAnalogBind("R", Keys.Right);
+		InputHandler.addAnalogBind("U", Keys.Up);
+		InputHandler.addAnalogBind("D", Keys.Down);
+		InputHandler.addAnalogBind("L", GPadInput.LStickLeft);
+		InputHandler.addAnalogBind("R", GPadInput.LStickRight);
+		InputHandler.addAnalogBind("U", GPadInput.LStickUp);
+		InputHandler.addAnalogBind("D", GPadInput.LStickDown);
 
-		SystemManager.Start();	
+		SystemManager.Start();
 
-		new Player();	
+		_ = new Player();	
 
 	}
 
 	protected override void LoadContent() {
 		spriteBatch = new SpriteBatch(GraphicsDevice);
-
-		pengImg = this.Content.Load<Texture2D>("peng");
+		Assets.Load(Content);
 	}
 
 	protected override void Update(GameTime gameTime) {
-
-		if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-			Exit();
-
 		base.Update(gameTime);
 		SystemManager.Update(gameTime);
 	}
 
 	protected override void Draw(GameTime gameTime) {
 		GraphicsDevice.Clear(Color.CornflowerBlue);
-		// TODO: Add your drawing code here
-
+		
 		spriteBatch.Begin();
 		SystemManager.Draw(gameTime, spriteBatch);
 		spriteBatch.End();
