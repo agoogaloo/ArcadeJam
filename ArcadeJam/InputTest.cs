@@ -5,7 +5,7 @@ using Engine.Core.Input;
 using Microsoft.Xna.Framework;
 
 namespace ArcadeJam;
-public class InputTest : PhysicsComponent {
+public class InputTest {
     private Button test1, test2;
     private Analog test3, test4;
 
@@ -22,7 +22,7 @@ public class InputTest : PhysicsComponent {
         this.test4 = test4;
     }
 
-    public override void Update(GameTime gameTime) {
+    public  void Update(GameTime gameTime) {
         Console.WriteLine("1:" + test1.Held + " 2:" + test2.Held + " 3:" + test3.Value + " 4:" + test4.Value);
 
     }

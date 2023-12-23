@@ -7,14 +7,15 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ArcadeJam;
 
 public class NodeManager {
-    private static List<Node> nodes;
+    private static readonly List<Node> nodes = new();
 
-   public static void Update(GameTime gameTime) {
+    public static void Update(GameTime gameTime) {
         for (int i = nodes.Count - 1; i >= 0; i--) {
-            if (!nodes[i].Alive){
+            if (!nodes[i].Alive) {
                 nodes.RemoveAt(i);
-            }else if (!nodes[i].Paused){}
-                nodes[i].Update(gameTime);
+            }
+            else if (!nodes[i].Paused) { }
+            nodes[i].Update(gameTime);
 
         }
 
@@ -25,6 +26,10 @@ public class NodeManager {
             nodes[i].Draw(gameTime, batch);
         }
 
+    }
+
+    public static void AddNode(Node node) {
+        nodes.Add(node);
     }
 
 }

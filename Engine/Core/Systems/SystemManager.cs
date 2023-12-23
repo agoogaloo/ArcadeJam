@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Engine.Core.Systems;
-public class SystemManager {
+/*public class SystemManager {
 
     private static readonly List<DrawSystem> drawSystems = new();
     private static readonly List<UpdateSystem> updateSystems = new();
@@ -91,4 +91,4 @@ public class SystemManager {
 
     }
 
-}
+}*/

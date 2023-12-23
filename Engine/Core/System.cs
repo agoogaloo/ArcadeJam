@@ -3,7 +3,7 @@ using System.Security.AccessControl;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Engine.Core;
+/*namespace Engine.Core;
 public abstract class System {
 	protected List<Function> components = new();
 	/// <summary>
@@ -30,4 +30,4 @@ public abstract class DrawSystem:System{
 public abstract class UpdateSystem:System{
 	public abstract void Update(GameTime gameTime);
 }
-
+*/

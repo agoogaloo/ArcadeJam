@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 
 namespace Engine.Core.Systems;
-public class RenderSystem : DrawSystem {
+/*public class RenderSystem : DrawSystem {
 
 	public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
                 foreach (RenderComponent component in components.Cast<RenderComponent>()) {
@@ -34,7 +34,7 @@ public class PhysicsSystem : UpdateSystem {
                 }
         }
 
-}
+}*/
 
 
 

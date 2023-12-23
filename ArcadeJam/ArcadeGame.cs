@@ -43,9 +43,8 @@ public class ArcadeGame : Game {
 		InputHandler.addAnalogBind("U", GPadInput.LStickUp);
 		InputHandler.addAnalogBind("D", GPadInput.LStickDown);
 
-		SystemManager.Start();
 
-		_ = new Player();	
+		NodeManager.AddNode(new Player());	
 
 	}
 
@@ -56,14 +55,15 @@ public class ArcadeGame : Game {
 
 	protected override void Update(GameTime gameTime) {
 		base.Update(gameTime);
-		SystemManager.Update(gameTime);
+		InputHandler.Update();
+		NodeManager.Update(gameTime);
 	}
 
 	protected override void Draw(GameTime gameTime) {
 		GraphicsDevice.Clear(Color.CornflowerBlue);
 		
 		spriteBatch.Begin();
-		SystemManager.Draw(gameTime, spriteBatch);
+		NodeManager.Draw(gameTime, spriteBatch);
 		spriteBatch.End();
 
 		base.Draw(gameTime);

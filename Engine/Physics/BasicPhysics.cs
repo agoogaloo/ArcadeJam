@@ -1,31 +1,33 @@
 ﻿
 using System;
 using Engine.Core.Components;
+using Engine.Core.Data;
 using Microsoft.Xna.Framework;
 
 namespace Engine.Core.Physics;
 
-public class VelMovement : PhysicsComponent {
-    private Vector2Comp vel;
-    private Vector2Comp pos;
+public class VelMovement  {
+    private Vector2Data vel;
+    private Vector2Data pos;
 
-    public VelMovement (Vector2Comp vel, Vector2Comp pos){
+    public VelMovement (Vector2Data vel, Vector2Data pos){
         this.vel = vel;
         this.pos = pos;
     }
-	public override void Update(GameTime gameTime) {
+	public  void Update(GameTime gameTime) {
 		pos.val+=vel.val;
 	}
 }
 
-public class Gravity : PhysicsComponent {
-    private Vector2Comp vel;
 
-    public Gravity(Vector2Comp vel){
+public class Gravity {
+    private Vector2Data vel;
+
+    public Gravity(Vector2Data vel){
         this.vel = vel;
     }
 
-    public override void Update(GameTime gameTime) {
+    public  void Update(GameTime gameTime) {
         double time = gameTime.ElapsedGameTime.TotalSeconds;
         vel.val.Y += (float)time*5;
 

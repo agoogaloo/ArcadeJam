@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace ArcadeJam;
 
-public class InputMovement : PhysicsComponent {
+public class InputMovement {
     private Vector2Data vel;
     private DoubleData moveSpeed;
 
@@ -19,9 +19,10 @@ public class InputMovement : PhysicsComponent {
         this.moveSpeed = moveSpeed;
     }
 
-    public override void Update(GameTime gameTime) {
+    public void Update(GameTime gameTime) {
         vel.val.X+=(float)((right.Value-left.Value)*moveSpeed.val);
         vel.val.Y+=(float)((down.Value-up.Value)*moveSpeed.val);
+        
 
     }
 }

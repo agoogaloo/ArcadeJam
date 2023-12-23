@@ -15,35 +15,35 @@ public class Sprite {
     }
 }
 
-public class Vector2Comp {
+public class Vector2Data {
     public Vector2 val;
-    public Vector2Comp(Vector2 value) {
+    public Vector2Data(Vector2 value) {
         this.val = value;
     }
 }
-public class RectComp {
+public class RectData {
     public Rectangle val;
-    public RectComp(Rectangle val) {
+    public RectData(Rectangle val) {
         this.val = val;
     }
 }
-public class IntComp {
+public class IntData {
     public int val;
-    public IntComp(int val) {
+    public IntData(int val) {
         this.val = val;
     }
 }
 
-public class StringComp {
+public class StringData {
     public String val;
-    public StringComp(String val) {
+    public StringData(String val) {
         this.val = val;
     }
 }
 
-public class DoubleComp {
+public class DoubleData {
     public double val;
-    public DoubleComp(double val) {
+    public DoubleData(double val) {
         this.val = val;
     }
 }
