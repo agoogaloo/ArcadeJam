@@ -5,7 +5,7 @@ using Engine.Core;
 
 namespace Engine.Core.Input;
 
-public class Button : IComponent {
+public class Button {
     public bool Held { get; private set; }
     public bool JustPressed { get; private set; }
     public bool JustReleased { get; private set; }
@@ -47,7 +47,7 @@ public class Button : IComponent {
     }
 }
 
-public class Analog : IComponent {
+public class Analog {
     public float Value { get; private set; }
     public float maxFrameVal = 0;
 

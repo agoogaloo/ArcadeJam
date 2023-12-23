@@ -1,19 +1,20 @@
 ﻿using System;
 using Engine.Core;
 using Engine.Core.Components;
+using Engine.Core.Data;
 using Engine.Core.Input;
 using Microsoft.Xna.Framework;
 
 namespace ArcadeJam;
 
 public class InputMovement : PhysicsComponent {
-    private Vector2Comp vel;
-    private DoubleComp moveSpeed;
+    private Vector2Data vel;
+    private DoubleData moveSpeed;
 
     private Analog left = InputHandler.getAnalog("L"), right = InputHandler.getAnalog("R"),
         up = InputHandler.getAnalog("U"), down = InputHandler.getAnalog("D");
 
-    public InputMovement(Vector2Comp vel, DoubleComp moveSpeed) {
+    public InputMovement(Vector2Data vel, DoubleData moveSpeed) {
         this.vel = vel;
         this.moveSpeed = moveSpeed;
     }

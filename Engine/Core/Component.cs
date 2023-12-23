@@ -3,43 +3,42 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Engine.Core;
+using System;
 
 
 namespace Engine.Core;
 
-public interface IComponent {
 
 
-}
 
-
-public abstract class Function : IComponent {
+public abstract class Function {
     protected System system = null;
-    public void add(System system) {
+    public void Add(System system) {
         system.AddComponent(this);
         this.system = system;
     }
-    public void remove(){
+    public void Remove(){
         system.RemoveComponent(this);
         this.system = null;
     }
 
+	public abstract void Add();
 }
 
 public abstract class RenderComponent : Function {
 
     public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
 
-    public void add(){
-        add(SystemManager.RenderSystem);
+    public override void Add(){
+        Add(SystemManager.RenderSystem);
     }
 
 }
 
 public abstract class PhysicsComponent : Function {
     public abstract void Update(GameTime gameTime);
-    public void add(){
-        add(SystemManager.PhysicsSystem);
+    public override void Add(){
+        Add(SystemManager.PhysicsSystem);
     }
 
 }

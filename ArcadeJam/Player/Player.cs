@@ -1,37 +1,34 @@
 ﻿using System;
+using System.Runtime.Intrinsics;
 using Engine.Core;
 using Engine.Core.Components;
+using Engine.Core.Data;
 using Engine.Core.Input;
+using Engine.Core.Nodes;
 using Engine.Core.Physics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ArcadeJam;
 
-public class Player : IComponent {
-	Vector2Comp Position { get; set; } = new(new Vector2(150, 50));
-	Vector2Comp Vel { get; set; } = new(new Vector2(0, 0));
-	DoubleComp moveSpeed { get; set; } = new(0.5);
+public class Player : Node{
+	Vector2Data Position { get; set; } = new(new Vector2(150, 50));
+	Vector2Data Vel { get; set; } = new(new Vector2(0, 0));
+	DoubleData moveSpeed  = new(0.5);
+	Sprite sprite { get; set; } = new Sprite(Assets.player);
 
-	public Player() {
-
-		Sprite spr = new Sprite(Assets.player);
-		ScreenRender renderer = new(spr, Position);
-
-		VelMovement mover = new(Vel, Position);
-		//Gravity gravity = new(Vel);
-		//Jump jump = new(Vel,InputHandler.getButton("test1"));
-
-		renderer.add();
-		new InputMovement(Vel, moveSpeed).add();
-		mover.add();
-
+	public Player() {		
+		// Add(new ScreenRender(sprite, Position));
+		// Add(new VelMovement(Vel, Position));
+		// Add(new InputMovement(Vel, moveSpeed));
 	}
 
-	public void dispose() {
-
+	public override void Update(GameTime gameTime) {
+		
 	}
 
-
-
+	public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
+		
+	}
 }
 

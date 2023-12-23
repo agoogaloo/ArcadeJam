@@ -19,7 +19,7 @@ public enum GPadInput {
     RTrigger, LTrigger
 }
 
-public class InputHandler : Function {
+public class InputHandler {
     public static double DeadZone { get; set; } = 0.25;
 
 
@@ -171,5 +171,4 @@ public class InputHandler : Function {
         return analogInputs[name];
         
     }
-
 }
