@@ -9,20 +9,25 @@ using Microsoft.Xna.Framework.Graphics;
 
 
 namespace Engine.Core.Systems;
-public class RenderSystem : System {
+public class RenderSystem : DrawSystem {
 
-	public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
+	public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
                 foreach (RenderComponent component in components.Cast<RenderComponent>()) {
                         component.Draw(gameTime, spriteBatch);
                 }
         }
 
 }
+public class UISystem : RenderSystem {
+        public UISystem():base(){
+                priority = 9;
+        }
+}
 
-public class PhysicsSystem : System {
+public class PhysicsSystem : UpdateSystem {
 
 
-	public void Update(GameTime gameTime) {
+	public override void Update(GameTime gameTime) {
                 InputHandler.Update();                
                 foreach (PhysicsComponent component in components.Cast<PhysicsComponent>()) {
                         component.Update(gameTime);
@@ -30,3 +35,6 @@ public class PhysicsSystem : System {
         }
 
 }
+
+
+

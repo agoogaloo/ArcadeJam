@@ -16,11 +16,9 @@ public class Jump : PhysicsComponent {
     }
 
     public override void Update(GameTime gameTime) {
-        Console.WriteLine("E");
         if (button.JustPressed){
             button.consume();
             vel.val.Y-=5;
-            Console.WriteLine("boing!");
         }
 			
     }

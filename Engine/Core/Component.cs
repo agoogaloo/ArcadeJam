@@ -9,17 +9,19 @@ namespace Engine.Core;
 
 public interface IComponent {
 
+
 }
 
 
 public abstract class Function : IComponent {
-    protected Entity owner;
-
-    public virtual void Register(Entity owner) {
-
-        this.owner = owner;
-
-
+    protected System system = null;
+    public void add(System system) {
+        system.AddComponent(this);
+        this.system = system;
+    }
+    public void remove(){
+        system.RemoveComponent(this);
+        this.system = null;
     }
 
 }
@@ -28,20 +30,16 @@ public abstract class RenderComponent : Function {
 
     public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
 
-    public override void Register(Entity owner) {
-        base.Register(owner);
-        SystemManager.Instance.RenderSystem.AddComponent(this);
-
+    public void add(){
+        add(SystemManager.RenderSystem);
     }
 
 }
 
 public abstract class PhysicsComponent : Function {
     public abstract void Update(GameTime gameTime);
-    public override void Register(Entity owner) {
-        base.Register(owner);
-        SystemManager.Instance.PhysicsSystem.AddComponent(this);
-
+    public void add(){
+        add(SystemManager.PhysicsSystem);
     }
 
 }

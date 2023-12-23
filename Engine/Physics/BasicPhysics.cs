@@ -27,7 +27,6 @@ public class Gravity : PhysicsComponent {
 
     public override void Update(GameTime gameTime) {
         double time = gameTime.ElapsedGameTime.TotalSeconds;
-        Console.WriteLine(time);
         vel.val.Y += (float)time*5;
 
     }

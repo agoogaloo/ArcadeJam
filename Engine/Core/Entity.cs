@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace Engine.Core;
 
-public class Entity {
+/*public class Entity {
 	private Dictionary<Type, IComponent> data = new();
 	private Dictionary<Type, Function> funcs = new();
 	
@@ -28,4 +28,4 @@ public class Entity {
 
 	
 
-}
+}*/

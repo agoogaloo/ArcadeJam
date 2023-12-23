@@ -26,7 +26,6 @@ public class ArcadeGame : Game {
 	}
 
 	protected override void Initialize() {
-		// TODO: Add your initialization logic here
 
 		base.Initialize();
 		
@@ -40,26 +39,9 @@ public class ArcadeGame : Game {
 		InputHandler.addAnalogBind("test3", GPadInput.LStickLeft);
 		InputHandler.addAnalogBind("test4", Keys.Down);
 
-		SystemManager.Start();
+		SystemManager.Start();	
 
-
-		Entity player = new();
-		Vector2Comp position = new(new Vector2(150, 50));
-		Vector2Comp vel = new(new Vector2(0,0));
-		Sprite spr = new(pengImg);
-		ScreenRender renderer = new(spr, position);
-		VelMovement mover = new(vel, position);
-		Gravity gravity = new(vel);
-		Jump jump = new(vel,InputHandler.getButton("test1"));
-
-		player.addData(position);
-		player.addData(spr);
-		player.addFunc(renderer);
-		player.addFunc(mover);
-		player.addFunc(gravity);
-		player.addFunc(jump);
-		player.addFunc(new InputTest());
-		
+		new Player();	
 
 	}
 
@@ -75,7 +57,7 @@ public class ArcadeGame : Game {
 			Exit();
 
 		base.Update(gameTime);
-		SystemManager.Instance.PhysicsSystem.Update(gameTime);
+		SystemManager.Update(gameTime);
 	}
 
 	protected override void Draw(GameTime gameTime) {
@@ -83,7 +65,7 @@ public class ArcadeGame : Game {
 		// TODO: Add your drawing code here
 
 		spriteBatch.Begin();
-		SystemManager.Instance.RenderSystem.Draw(gameTime, spriteBatch);
+		SystemManager.Draw(gameTime, spriteBatch);
 		spriteBatch.End();
 
 		base.Draw(gameTime);
