@@ -16,7 +16,8 @@ public class ScreenRender  {
     }     
 
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-        spriteBatch.Draw(sprite.texture, position.val, Color.White);      
+        int x =(int)Math.Round(position.val.X), y = (int)Math.Round(position.val.Y);
+        spriteBatch.Draw(sprite.texture, new Vector2(x,y), Color.White);      
     }
 
 

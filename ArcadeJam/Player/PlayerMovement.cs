@@ -28,9 +28,6 @@ public class PlayerMovement {
         inputMove.Update(gameTime);
         VelMove.Update(gameTime);
         vel.val=Vector2.Zero;
-
-
-
     }
 
 

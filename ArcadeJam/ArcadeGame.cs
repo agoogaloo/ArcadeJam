@@ -13,22 +13,27 @@ using Microsoft.Xna.Framework.Input;
 namespace ArcadeJam;
 
 public class ArcadeGame : Game {
+
+
 	private GraphicsDeviceManager graphics;
 	private SpriteBatch spriteBatch;
+	private RenderTarget2D renderTarget;
 
-	private Texture2D pengImg;
 
+	const int width = 320, height = 180;
 
 	public ArcadeGame() {
 		graphics = new GraphicsDeviceManager(this);
 		Content.RootDirectory = "Content";
 		IsMouseVisible = true;
+		Window.AllowUserResizing = true;
+
 	}
 
 	protected override void Initialize() {
 
 		base.Initialize();
-		
+
 		//setting all the input bindings
 		InputHandler.addButtonBind("A", Keys.X);
 		InputHandler.addButtonBind("B", Keys.Z);
@@ -43,8 +48,13 @@ public class ArcadeGame : Game {
 		InputHandler.addAnalogBind("U", GPadInput.LStickUp);
 		InputHandler.addAnalogBind("D", GPadInput.LStickDown);
 
+		PresentationParameters pp = graphics.GraphicsDevice.PresentationParameters;
+		renderTarget = new(graphics.GraphicsDevice, width, height, false,
+				GraphicsDevice.PresentationParameters.BackBufferFormat,
+				DepthFormat.Depth24);
 
-		NodeManager.AddNode(new Player());	
+
+		NodeManager.AddNode(new Player());
 
 	}
 
@@ -60,11 +70,27 @@ public class ArcadeGame : Game {
 	}
 
 	protected override void Draw(GameTime gameTime) {
+
+		//drawing the game to render target at game resolution
+		graphics.GraphicsDevice.SetRenderTarget(renderTarget);
 		GraphicsDevice.Clear(Color.CornflowerBlue);
-		
 		spriteBatch.Begin();
 		NodeManager.Draw(gameTime, spriteBatch);
 		spriteBatch.End();
+
+	
+		//drawing render target to the screen
+		graphics.GraphicsDevice.SetRenderTarget(null);
+		int screenWidth = GraphicsDevice.Viewport.Width;
+		int screenHeight = GraphicsDevice.Viewport.Height;
+		
+		spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+		GraphicsDevice.Clear(Color.Black);
+
+		spriteBatch.Draw(renderTarget, new Rectangle(0, 0,
+		screenWidth, screenHeight), Color.White);
+		spriteBatch.End();
+
 
 		base.Draw(gameTime);
 	}
