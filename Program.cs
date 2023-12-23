@@ -1,3 +1,3 @@
 ﻿
-using var game = new ArcadeJam.Game1();
+using var game = new ArcadeJam.ArcadeGame();
 game.Run();
