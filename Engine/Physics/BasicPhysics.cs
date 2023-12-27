@@ -8,14 +8,14 @@ namespace Engine.Core.Physics;
 
 public class VelMovement  {
     private Vector2Data vel;
-    private Vector2Data pos;
+    private RectData bounds;
 
-    public VelMovement (Vector2Data vel, Vector2Data pos){
+    public VelMovement (Vector2Data vel, RectData bounds){
         this.vel = vel;
-        this.pos = pos;
+        this.bounds = bounds;
     }
 	public  void Update(GameTime gameTime) {
-		pos.val+=vel.val;
+		bounds.val.Location+=vel.val.ToPoint();
 	}
 }
 

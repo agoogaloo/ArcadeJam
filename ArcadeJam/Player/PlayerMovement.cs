@@ -6,19 +6,22 @@ using Microsoft.Xna.Framework;
 namespace ArcadeJam;
 
 public class PlayerMovement {
-    private Vector2Data vel, position;
+    private Vector2Data vel;
+    private RectData bounds;
     private DoubleData moveSpeed;
 
     private InputMovement inputMove;
     private VelMovement VelMove;
+    private LockToScreen screenLock;
 
-    public PlayerMovement(Vector2Data vel, Vector2Data position, DoubleData moveSpeed){
+    public PlayerMovement(Vector2Data vel, RectData bounds, DoubleData moveSpeed){
         this.vel = vel;
-        this.position = position;
+        this.bounds = bounds;
         this.moveSpeed = moveSpeed;
 
         inputMove = new(vel, moveSpeed);
-        VelMove = new(vel, position);
+        VelMove = new(vel, bounds);
+        screenLock = new(vel, bounds);
 
     }
 
@@ -26,8 +29,10 @@ public class PlayerMovement {
 
     public void Update(GameTime gameTime){
         inputMove.Update(gameTime);
+        screenLock.Update(gameTime);
         VelMove.Update(gameTime);
         vel.val=Vector2.Zero;
+
     }
 
 

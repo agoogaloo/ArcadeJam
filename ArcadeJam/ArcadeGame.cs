@@ -29,7 +29,7 @@ public class ArcadeGame : Game {
 	private RenderTarget2D renderTarget;
 
 
-	const int width = 320, height = 180;
+	public const int width = 320, height = 180;
 	private int screenWidth = width * 3, screenHeight = height * 3;
 	private WindowMode windowMode = WindowMode.WindowedPPerfect;
 	private bool windowToggled = false;
@@ -44,9 +44,23 @@ public class ArcadeGame : Game {
 
 	protected override void Initialize() {
 
+
+
 		base.Initialize();
 
-		//setting all the input bindings
+		//window settings
+		graphics.PreferredBackBufferWidth = width * 3;
+		graphics.PreferredBackBufferHeight = height * 3;
+		PresentationParameters pp = graphics.GraphicsDevice.PresentationParameters;
+		renderTarget = new(graphics.GraphicsDevice, width, height, false,
+				GraphicsDevice.PresentationParameters.BackBufferFormat,
+				DepthFormat.Depth24);
+
+		graphics.ApplyChanges();
+
+
+
+		//adding all the input bindings
 		InputHandler.addButtonBind("A", Keys.X);
 		InputHandler.addButtonBind("B", Keys.Z);
 		InputHandler.addButtonBind("A", GPadInput.A);
@@ -60,19 +74,17 @@ public class ArcadeGame : Game {
 		InputHandler.addAnalogBind("U", GPadInput.LStickUp);
 		InputHandler.addAnalogBind("D", GPadInput.LStickDown);
 
-		PresentationParameters pp = graphics.GraphicsDevice.PresentationParameters;
-		renderTarget = new(graphics.GraphicsDevice, width, height, false,
-				GraphicsDevice.PresentationParameters.BackBufferFormat,
-				DepthFormat.Depth24);
-
-
 		NodeManager.AddNode(new Player());
 
 	}
 
 	protected override void LoadContent() {
 		spriteBatch = new SpriteBatch(GraphicsDevice);
-		Assets.Load(Content);
+		
+		Texture2D pixel = new Texture2D(GraphicsDevice, 1, 1);
+		pixel.SetData(new Color[] { Color.White });
+
+		Assets.Load(Content, pixel);
 	}
 
 	protected override void Update(GameTime gameTime) {
@@ -82,7 +94,7 @@ public class ArcadeGame : Game {
 		//changing window modes if they press f11
 		if (Keyboard.GetState().IsKeyDown(Keys.F12)) {
 			if (!windowToggled) {
-				updateWindowSettings();
+				CycleWindowSettings();
 			}
 			windowToggled = true;
 		}
@@ -92,7 +104,7 @@ public class ArcadeGame : Game {
 
 
 	}
-	private void updateWindowSettings() {
+	private void CycleWindowSettings() {
 		windowMode += 1;
 		if (windowMode > WindowMode.WindowedBars) {
 			windowMode = 0;
@@ -113,6 +125,7 @@ public class ArcadeGame : Game {
 			graphics.PreferredBackBufferHeight = height * 3;
 			Window.IsBorderless = false;
 			graphics.IsFullScreen = false;
+
 			graphics.ApplyChanges();
 		}
 
