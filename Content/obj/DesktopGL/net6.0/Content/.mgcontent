@@ -4,9 +4,11 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/icicle.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

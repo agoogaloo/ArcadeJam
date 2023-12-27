@@ -15,7 +15,9 @@ public class VelMovement  {
         this.bounds = bounds;
     }
 	public  void Update(GameTime gameTime) {
+        Console.WriteLine(vel.val.X+", "+bounds.val.Location.X);
 		bounds.val.Location+=vel.val.ToPoint();
+        Console.WriteLine(vel.val.X+", "+bounds.val.Location.X);
 	}
 }
 

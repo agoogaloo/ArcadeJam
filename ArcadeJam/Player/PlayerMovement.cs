@@ -29,7 +29,7 @@ public class PlayerMovement {
 
     public void Update(GameTime gameTime){
         inputMove.Update(gameTime);
-        screenLock.Update(gameTime);
+        //screenLock.Update(gameTime);
         VelMove.Update(gameTime);
         vel.val=Vector2.Zero;
 
