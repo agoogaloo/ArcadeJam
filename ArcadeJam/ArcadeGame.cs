@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Engine.Core;
 using Engine.Core.Components;
 using Engine.Core.Input;
@@ -12,6 +13,14 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ArcadeJam;
 
+public enum WindowMode {
+	FScreenPPerfect,
+	FScreenBars,
+	WindowedPPerfect,
+	WindowedBars,
+
+}
+
 public class ArcadeGame : Game {
 
 
@@ -21,6 +30,9 @@ public class ArcadeGame : Game {
 
 
 	const int width = 320, height = 180;
+	private int screenWidth = width * 3, screenHeight = height * 3;
+	private WindowMode windowMode = WindowMode.WindowedPPerfect;
+	private bool windowToggled = false;
 
 	public ArcadeGame() {
 		graphics = new GraphicsDeviceManager(this);
@@ -67,6 +79,43 @@ public class ArcadeGame : Game {
 		base.Update(gameTime);
 		InputHandler.Update();
 		NodeManager.Update(gameTime);
+		//changing window modes if they press f11
+		if (Keyboard.GetState().IsKeyDown(Keys.F12)) {
+			if (!windowToggled) {
+				updateWindowSettings();
+			}
+			windowToggled = true;
+		}
+		else {
+			windowToggled = false;
+		}
+
+
+	}
+	private void updateWindowSettings() {
+		windowMode += 1;
+		if (windowMode > WindowMode.WindowedBars) {
+			windowMode = 0;
+		}
+		Console.WriteLine("window mode set to: " + windowMode);
+
+		//setting fullscreen options
+		if ((int)windowMode == 0) {
+			Window.IsBorderless = true;
+			graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+			graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+			graphics.ApplyChanges();
+		}
+		//setting windowed options
+		else if ((int)windowMode == 2) {
+
+			graphics.PreferredBackBufferWidth = width * 3;
+			graphics.PreferredBackBufferHeight = height * 3;
+			Window.IsBorderless = false;
+			graphics.IsFullScreen = false;
+			graphics.ApplyChanges();
+		}
+
 	}
 
 	protected override void Draw(GameTime gameTime) {
@@ -78,17 +127,31 @@ public class ArcadeGame : Game {
 		NodeManager.Draw(gameTime, spriteBatch);
 		spriteBatch.End();
 
-	
+
 		//drawing render target to the screen
 		graphics.GraphicsDevice.SetRenderTarget(null);
-		int screenWidth = GraphicsDevice.Viewport.Width;
-		int screenHeight = GraphicsDevice.Viewport.Height;
-		
+		screenWidth = GraphicsDevice.Viewport.Width;
+		screenHeight = GraphicsDevice.Viewport.Height;
+
+		Rectangle destinationRect;
+		float scale;
+
+		scale = Math.Min((float)screenWidth / width, (float)screenHeight / height);
+		//making scale pixel perfect
+		if (windowMode == WindowMode.FScreenPPerfect || windowMode == WindowMode.WindowedPPerfect) {
+			scale = (int)scale;
+		}
+
+		int x = (int)((screenWidth - width * scale) / 2);
+		int y = (int)((screenHeight - height * scale) / 2);
+		destinationRect = new(x, y, (int)(width * scale), (int)(height * scale));
+
+
+
 		spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 		GraphicsDevice.Clear(Color.Black);
 
-		spriteBatch.Draw(renderTarget, new Rectangle(0, 0,
-		screenWidth, screenHeight), Color.White);
+		spriteBatch.Draw(renderTarget, destinationRect, Color.White);
 		spriteBatch.End();
 
 
