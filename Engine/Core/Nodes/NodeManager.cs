@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Engine.Core.Data;
 using Engine.Core.Nodes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -32,4 +33,5 @@ public class NodeManager {
         nodes.Add(node);
     }
 
+	
 }

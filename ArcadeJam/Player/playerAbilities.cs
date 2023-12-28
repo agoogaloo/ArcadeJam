@@ -7,13 +7,13 @@ namespace ArcadeJam;
 
 public class PlayerAbilities {
 
-    private RectData bounds;
+    private FloatRect bounds;
     private DoubleData speed;
 
     private Button shoot = InputHandler.getButton("A"), grapple = InputHandler.getButton("B");
     private BasicGun gun;
 
-    public PlayerAbilities(RectData bounds, DoubleData speed) {
+    public PlayerAbilities(FloatRect bounds, DoubleData speed) {
         this.bounds = bounds;
         this.speed = speed;
         gun = new(bounds);
@@ -25,12 +25,11 @@ public class PlayerAbilities {
             speed.val = 0.5;
             Console.WriteLine("hmm");
         }else{
-            speed.val = 1.5;
+            speed.val = 1.75;
         }
         if (shoot.Held){
             gun.shoot();
         }
-
 
     }
 

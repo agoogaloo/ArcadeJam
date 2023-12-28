@@ -7,26 +7,26 @@ namespace ArcadeJam;
 public class LockToScreen
 {
      private Vector2Data vel;
-    private RectData bounds;
+    private FloatRect bounds;
 
-    public LockToScreen(Vector2Data vel, RectData bounds){
+    public LockToScreen(Vector2Data vel, FloatRect bounds){
         this.vel = vel;
         this.bounds = bounds;
     }
 
 
     public void Update(GameTime gameTime){
-        if (bounds.val.Left+vel.val.X<=0){
-            vel.val.X = -bounds.val.Left;
+        if (bounds.Left+vel.val.X<=0){
+            vel.val.X = -bounds.Left;
         }
-        if (bounds.val.Top+vel.val.Y<=0){
-            vel.val.Y = -bounds.val.Top;
+        if (bounds.Top+vel.val.Y<=0){
+            vel.val.Y = -bounds.Top;
         }
-        if (bounds.val.Right+vel.val.X>=ArcadeGame.width-1){
-            vel.val.X = ArcadeGame.width-bounds.val.Right-1;
+        if (bounds.Right+vel.val.X>=ArcadeGame.width){
+            vel.val.X = ArcadeGame.width-bounds.Right;
         }
-        if (bounds.val.Bottom+vel.val.Y>=ArcadeGame.height-1){
-            vel.val.Y = ArcadeGame.height-bounds.val.Bottom-1;
+        if (bounds.Bottom+vel.val.Y>=ArcadeGame.height){
+            vel.val.Y = ArcadeGame.height-bounds.Bottom;
         }
         
         

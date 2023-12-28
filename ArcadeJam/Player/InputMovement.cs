@@ -20,9 +20,10 @@ public class InputMovement {
     }
 
     public void Update(GameTime gameTime) {
-        vel.val.X+=(float)((right.Value-left.Value)*moveSpeed.val);
-        vel.val.Y+=(float)((down.Value-up.Value)*moveSpeed.val);
-        
+        //if (InputHandler.getButton("A").JustPressed){
+            vel.val.X+=(float)((right.Value-left.Value)*moveSpeed.val);
+            vel.val.Y+=(float)((down.Value-up.Value)*moveSpeed.val);
+       // }
 
     }
 }

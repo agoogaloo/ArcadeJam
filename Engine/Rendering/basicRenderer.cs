@@ -25,19 +25,26 @@ public class PointRender {
 }
 public class RectRender {
     private Sprite sprite;
-    private RectData bounds;
+    private FloatRect bounds;
 
 
-    public RectRender(Sprite sprite, RectData bounds) {
+    public RectRender(Sprite sprite, FloatRect bounds) {
         this.sprite = sprite;
         this.bounds = bounds;
     }
 
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-        Point centre = bounds.val.Center;
-        centre -= sprite.texture.Bounds.Center;
 
-        spriteBatch.Draw(sprite.texture, centre.ToVector2(), Color.White);
+        int x = (int)(bounds.x + (bounds.width  - sprite.texture.Width)/2+0.5);
+        int y = (int)(bounds.y + bounds.height / 2 - sprite.texture.Height / 2+0.5);
+        Vector2 centre = -sprite.texture.Bounds.Center.ToVector2();
+        centre += bounds.Centre;
+        //rounding centre
+        centre.X = (int)Math.Round(centre.X);
+        centre.Y = (int)Math.Round(centre.Y);
+
+       
+        spriteBatch.Draw(sprite.texture, new Vector2(x,y), Color.White);
     }
 
 
@@ -45,17 +52,19 @@ public class RectRender {
 
 public class RectVisualizer {
 
-    private RectData bounds;
+    private FloatRect bounds;
 
 
-    public RectVisualizer(RectData bounds) {
+    public RectVisualizer(FloatRect bounds) {
 
         this.bounds = bounds;
     }
 
-    public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-        
-        RenderUtils.DrawRectangle(spriteBatch, bounds.val, Color.Red);
+    public void Draw(SpriteBatch spriteBatch) {
+        //Rectangle drawRect = new((int)(bounds.x+0.5), (int)(bounds.y+0.5),
+        //    (int)Math.Round(bounds.width-1), (int)Math.Round(bounds.height-1));
+            
+        //RenderUtils.DrawRectangle(spriteBatch, drawRect, Color.Red);
 
     }
 }

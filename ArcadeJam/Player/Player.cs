@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ArcadeJam;
 
 public class Player : Node {
-	RectData Bounds { get; set; } = new(new Rectangle(150, 50, 3, 8));
+	FloatRect Bounds { get; set; } = new(new Rectangle(150, 150, 8, 12));
 	Vector2Data Vel { get; set; } = new(new Vector2(0, 0));
 	DoubleData moveSpeed = new(1.5);
 	Sprite sprite { get; set; } = new Sprite(Assets.player);
@@ -34,14 +34,15 @@ public class Player : Node {
 	public override void Update(GameTime gameTime) {
 		
 		movement.Update(gameTime);
-		//abilities.Update(gameTime);
+		abilities.Update(gameTime);
 		
 
 	}
 
 	public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-		//render.Draw(gameTime, spriteBatch);
-		//showBounds.Draw(gameTime, spriteBatch);
+		render.Draw(gameTime, spriteBatch);
+		showBounds.Draw( spriteBatch);
+		
 
 	}
 }
