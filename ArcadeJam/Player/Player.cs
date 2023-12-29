@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Intrinsics;
 using Engine.Core;
 using Engine.Core.Components;
@@ -15,19 +16,25 @@ public class Player : Node {
 	FloatRect Bounds { get; set; } = new(new Rectangle(150, 150, 8, 12));
 	Vector2Data Vel { get; set; } = new(new Vector2(0, 0));
 	DoubleData moveSpeed = new(1.5);
-	Sprite sprite { get; set; } = new Sprite(Assets.player);
+	Sprite Sprite { get; set; } = new Sprite(Assets.player);
+	List<Node> collisions = new();
 
 	private PlayerMovement movement;
 	private RectRender render;
 	private RectVisualizer showBounds;
 	private PlayerAbilities abilities;
+	private Collision collision;
+
+	string[] collisionGroups = new string[]{"enemy", "enemyBullet"};
+
 
 
 	public Player() {
 		movement = new(Vel, Bounds, moveSpeed);
 		abilities = new(Bounds, moveSpeed);
-		render = new(sprite, Bounds);
+		render = new(Sprite, Bounds);
 		showBounds = new(Bounds);
+		collision = new(Bounds, this, "player", collisions);
 
 	}
 
@@ -35,6 +42,10 @@ public class Player : Node {
 		
 		movement.Update(gameTime);
 		abilities.Update(gameTime);
+		collision.Update(gameTime, collisionGroups);
+		if (collisions.Count>0){
+			Console.WriteLine("ouch!");
+		}
 		
 
 	}

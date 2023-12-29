@@ -12,4 +12,9 @@ public abstract class Node {
     
     public abstract void Update(GameTime gameTime);
     public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
+
+    /// <summary>
+    /// called when the node is removed from the nodemanager
+    /// </summary>
+    public virtual void End(){}
 }

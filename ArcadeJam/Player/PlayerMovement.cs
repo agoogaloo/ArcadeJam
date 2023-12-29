@@ -21,19 +21,15 @@ public class PlayerMovement {
 
         inputMove = new(vel, moveSpeed);
         VelMove = new(vel, bounds);
-        screenLock = new(vel, bounds);
+        screenLock = new(bounds);
 
     }
-
-
 
     public void Update(GameTime gameTime){
         inputMove.Update(gameTime);
-        screenLock.Update(gameTime);
         VelMove.Update(gameTime);
+        screenLock.Update(gameTime);
         vel.val=Vector2.Zero;
 
     }
-
-
 }

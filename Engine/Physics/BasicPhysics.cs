@@ -15,7 +15,8 @@ public class VelMovement  {
         this.bounds = bounds;
     }
 	public  void Update(GameTime gameTime) {
-		bounds.Location+=vel.val;
+        float time = (float)gameTime.ElapsedGameTime.TotalSeconds;
+		bounds.Location+=vel.val*time;
 	}
 }
 

@@ -13,6 +13,9 @@ public class PlayerAbilities {
     private Button shoot = InputHandler.getButton("A"), grapple = InputHandler.getButton("B");
     private BasicGun gun;
 
+    private const double reloadTime = 0.25;
+    private double gunTimer = 0;
+
     public PlayerAbilities(FloatRect bounds, DoubleData speed) {
         this.bounds = bounds;
         this.speed = speed;
@@ -21,14 +24,18 @@ public class PlayerAbilities {
 
 
     public void Update(GameTime gameTime) {
+        if (gunTimer>0){
+            gunTimer-=gameTime.ElapsedGameTime.TotalSeconds;
+        }
         if(grapple.Held){
-            speed.val = 0.5;
+            speed.val = 30;
             Console.WriteLine("hmm");
         }else{
-            speed.val = 1.75;
+            speed.val = 90;
         }
-        if (shoot.Held){
+        if (shoot.Held && gunTimer<=0){
             gun.shoot();
+            gunTimer = reloadTime;
         }
 
     }

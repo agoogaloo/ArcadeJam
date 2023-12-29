@@ -61,10 +61,10 @@ public class RectVisualizer {
     }
 
     public void Draw(SpriteBatch spriteBatch) {
-        //Rectangle drawRect = new((int)(bounds.x+0.5), (int)(bounds.y+0.5),
-        //    (int)Math.Round(bounds.width-1), (int)Math.Round(bounds.height-1));
+        Rectangle drawRect = new((int)(bounds.x+0.5), (int)(bounds.y+0.5),
+            (int)Math.Round(bounds.width-1), (int)Math.Round(bounds.height-1));
             
-        //RenderUtils.DrawRectangle(spriteBatch, drawRect, Color.Red);
+        RenderUtils.DrawRectangle(spriteBatch, drawRect, Color.Red);
 
     }
 }

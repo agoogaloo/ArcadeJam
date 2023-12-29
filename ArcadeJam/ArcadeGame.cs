@@ -2,7 +2,9 @@
 using System.ComponentModel;
 using Engine.Core;
 using Engine.Core.Components;
+using Engine.Core.Data;
 using Engine.Core.Input;
+using Engine.Core.Nodes;
 using Engine.Core.Physics;
 using Engine.Core.Systems;
 using Microsoft.Xna.Framework;
@@ -75,6 +77,8 @@ public class ArcadeGame : Game {
 		InputHandler.addAnalogBind("D", GPadInput.LStickDown);
 
 		NodeManager.AddNode(new Player());
+		NodeManager.AddNode(new Enemy());
+		
 
 	}
 

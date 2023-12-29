@@ -5,7 +5,7 @@ using Engine.Core.Nodes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ArcadeJam;
+namespace Engine.Core.Nodes;
 
 public class NodeManager {
     private static readonly List<Node> nodes = new();
@@ -13,10 +13,13 @@ public class NodeManager {
     public static void Update(GameTime gameTime) {
         for (int i = nodes.Count - 1; i >= 0; i--) {
             if (!nodes[i].Alive) {
+                nodes[i].End();
                 nodes.RemoveAt(i);
+
             }
-            else if (!nodes[i].Paused) { }
-            nodes[i].Update(gameTime);
+            else if (!nodes[i].Paused) {
+                nodes[i].Update(gameTime);
+            }
 
         }
 
@@ -33,5 +36,5 @@ public class NodeManager {
         nodes.Add(node);
     }
 
-	
+
 }
