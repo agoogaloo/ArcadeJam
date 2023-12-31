@@ -1,5 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemy.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemy.xnb","TextureProcessor","Texture2DContent",180,485,0.0878195
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemyBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemyBullet.xnb","TextureProcessor","Texture2DContent",210,341,0.0012546
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/icicle.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/icicle.xnb","TextureProcessor","Texture2DContent",199,597,0.1034523
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/peng.xnb","TextureProcessor","Texture2DContent",217,373,0.091175
+"C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemy.png","C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemy.xnb","TextureProcessor","Texture2DContent",180,485,0.1517363
+"C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemyBullet.png","C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemyBullet.xnb","TextureProcessor","Texture2DContent",210,341,0.0015681
+"C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/icicle.png","C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/icicle.xnb","TextureProcessor","Texture2DContent",199,597,0.0016173
+"C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/peng.png","C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/peng.xnb","TextureProcessor","Texture2DContent",217,373,0.0014165

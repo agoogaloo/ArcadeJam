@@ -15,6 +15,6 @@ public class BasicGun{
         this.bounds = bounds;
     }
     public void shoot(){
-        NodeManager.AddNode(new PlayerBullet(new Vector2Data(0,-120),bounds.Centre));
+        NodeManager.AddNode(new PlayerBullet(new Vector2Data(0,-300),bounds.Centre));
     }
 }

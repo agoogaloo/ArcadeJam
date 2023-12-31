@@ -4,10 +4,10 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemy.png</File>
-    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemyBullet.png</File>
-    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/icicle.png</File>
-    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png</File>
+    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemy.png</File>
+    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemyBullet.png</File>
+    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/icicle.png</File>
+    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/peng.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

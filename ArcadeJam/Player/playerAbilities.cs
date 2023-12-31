@@ -13,7 +13,7 @@ public class PlayerAbilities {
     private Button shoot = InputHandler.getButton("A"), grapple = InputHandler.getButton("B");
     private BasicGun gun;
 
-    private const double reloadTime = 0.25;
+    private const double reloadTime = 0.2;
     private double gunTimer = 0;
 
     public PlayerAbilities(FloatRect bounds, DoubleData speed) {

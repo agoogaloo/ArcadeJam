@@ -11,7 +11,7 @@ namespace ArcadeJam;
 
 public class Enemy : Node {
 	private Sprite sprite = new(Assets.enemy);
-    private Vector2Data vel = new(10f,0);
+    private Vector2Data vel = new(20f,0);
     private FloatRect bounds = new(0,0,10,10);
 
     private RectRender renderer;

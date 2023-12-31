@@ -82,7 +82,7 @@ public class EnemyBullet : Node {
     
 
     public EnemyBullet(Vector2Data vel, Vector2 startPos) {
-        bounds = new(startPos.X, startPos.Y, 6,12);
+        bounds = new(startPos.X, startPos.Y, 8,8);
         Sprite sprite = new(Assets.enemyBullet);
         movement = new(vel,bounds, sprite);
         collision = new(bounds, this, "enemyBullet", collisions);
