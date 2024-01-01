@@ -11,7 +11,8 @@ public class Level {
     protected Enemy[] enemies;
     public bool Cleared { get; protected set; } = false;
 
-    public Level() : this(new Enemy[] { new Enemy(new Vector2(180, -10), new Vector2(180, 50)) }) { }
+    public Level() : this(new Enemy[] { 
+        new SpinEnemy(new MoveToPoint(new Vector2(180,0), new Vector2(180,50))) }) { }
     public Level(Enemy[] enemies) {
         this.enemies = enemies;
         foreach (Enemy i in enemies) {

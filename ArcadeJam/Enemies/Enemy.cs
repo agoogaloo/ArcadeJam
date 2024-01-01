@@ -10,25 +10,26 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ArcadeJam.Enemies;
 
 public class Enemy : Node {
-    private IntData health = new IntData(20);
-    private Sprite sprite = new(Assets.enemy);
-    private Vector2Data vel = new(20f, 0);
-    private FloatRect bounds = new(20, 0, 10, 10);
+    protected IntData health = new IntData(20);
+    protected Sprite sprite = new(Assets.enemy);
+    protected Vector2Data vel;
+    protected FloatRect bounds;
 
-    private RectRender renderer;
+    protected RectRender renderer;
 
-    private EnemyMovement movement;
-    EnemyDamage damager;
-    Straight pattern;
+    protected EnemyMovement movement;
+    protected EnemyDamage damager;
+    protected EnemyWeapon weapon;
 
 
 
-    public Enemy(Vector2 start, Vector2 destination) {
-        bounds.Centre = start;
+    public Enemy(EnemyMovement movement) {
+        this.movement = movement;
+        bounds = new(0, 0, 10, 10);
+        vel = new(0, 0);
+        movement.Init(bounds, vel);
+        weapon = new Straight(bounds);
         renderer = new(sprite, bounds);
-        movement = new MoveToPoint(bounds, vel, destination);
-        pattern = new(bounds);
-        
         damager = new(bounds, this, health);
 
     }
@@ -36,7 +37,7 @@ public class Enemy : Node {
 
     public override void Update(GameTime gameTime) {
         movement.Update(gameTime);
-        pattern.Update(gameTime);
+        weapon.Update(gameTime);
         damager.Update();
         if (health.val <= 0) {
             Alive = false;
@@ -45,10 +46,39 @@ public class Enemy : Node {
     }
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
         renderer.Draw(gameTime, spriteBatch);
-
     }
 
     public override void End() {
         damager.Update();
     }
 }
+
+
+public class BasicEnemy : Enemy {
+
+    public BasicEnemy(EnemyMovement movement) : base(movement) {
+        health.val = 10;
+
+    }
+}
+
+public class TrippleEnemy : Enemy {
+
+    public TrippleEnemy(EnemyMovement movement) : base(movement) {
+        health.val = 20;
+        weapon = new Tripple(bounds);
+
+    }
+}
+
+public class SpinEnemy : Enemy {
+
+    public SpinEnemy(EnemyMovement movement) : base(movement) {
+        health.val = 15;
+        weapon = new Spiral(bounds);
+
+    }
+	
+}
+
+

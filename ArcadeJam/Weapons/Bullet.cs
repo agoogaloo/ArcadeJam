@@ -61,7 +61,7 @@ public abstract class Bullet : Node {
         movement.Update(gameTime);
 
         //removing itself if it goes offscreen
-        if (bounds.Top > ArcadeGame.height || bounds.Bottom < 0) {
+        if (bounds.Top > ArcadeGame.height || bounds.Bottom < 0||bounds.Left > ArcadeGame.width || bounds.Right < 0) {
             Alive = false;
         }
     }
