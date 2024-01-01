@@ -28,7 +28,7 @@ public class MoveToPoint : EnemyMovement {
     private Vector2 destination;
     private float speed, easing;
 
-	public MoveToPoint(FloatRect bounds, Vector2Data vel, Vector2 destination, float speed = 3, float easing = 3) : base(bounds, vel) {
+	public MoveToPoint(FloatRect bounds, Vector2Data vel, Vector2 destination, float speed = 3, float easing = 4) : base(bounds, vel) {
         this.destination = destination;
         this.speed = speed;
         this.easing = easing;

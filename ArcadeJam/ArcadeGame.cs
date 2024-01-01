@@ -78,7 +78,7 @@ public class ArcadeGame : Game {
 		InputHandler.addAnalogBind("D", GPadInput.LStickDown);
 
 		NodeManager.AddNode(new Player());
-		NodeManager.AddNode(new Enemy());
+		LevelManager.startLevels();
 		
 
 	}
@@ -95,7 +95,9 @@ public class ArcadeGame : Game {
 	protected override void Update(GameTime gameTime) {
 		base.Update(gameTime);
 		InputHandler.Update();
+
 		NodeManager.Update(gameTime);
+		LevelManager.Update(gameTime);
 		//changing window modes if they press f11
 		if (Keyboard.GetState().IsKeyDown(Keys.F12)) {
 			if (!windowToggled) {
@@ -140,7 +142,7 @@ public class ArcadeGame : Game {
 
 		//drawing the game to render target at game resolution
 		graphics.GraphicsDevice.SetRenderTarget(renderTarget);
-		GraphicsDevice.Clear(Color.CornflowerBlue);
+		GraphicsDevice.Clear(Color.DarkCyan);
 		spriteBatch.Begin();
 		NodeManager.Draw(gameTime, spriteBatch);
 		spriteBatch.End();

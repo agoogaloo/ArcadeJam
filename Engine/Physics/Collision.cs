@@ -38,7 +38,6 @@ public class Collision {
     public void Update(String[] groups) {
         if (!node.Alive) {
             groupDict[group].Remove(bounds);
-            Console.WriteLine("removing dead "+node.ToString());
             return;
         }
         if (collisions == null) {

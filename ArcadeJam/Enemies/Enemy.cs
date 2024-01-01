@@ -23,9 +23,10 @@ public class Enemy : Node {
 
 
 
-    public Enemy() {
+    public Enemy(Vector2 start, Vector2 destination) {
+        bounds.Centre = start;
         renderer = new(sprite, bounds);
-        movement = new MoveToPoint(bounds, vel, new Vector2(20, 80));
+        movement = new MoveToPoint(bounds, vel, destination);
         pattern = new(bounds);
         
         damager = new(bounds, this, health);

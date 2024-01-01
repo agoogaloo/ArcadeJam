@@ -1,6 +1,6 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemy.png","C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemy.xnb","TextureProcessor","Texture2DContent",180,485,0.2405249
-"C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemyBullet.png","C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemyBullet.xnb","TextureProcessor","Texture2DContent",210,341,0.0015835
-"C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/iceWall.png","C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/iceWall.xnb","TextureProcessor","Texture2DContent",402,1621,0.0018676
-"C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/icicle.png","C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/icicle.xnb","TextureProcessor","Texture2DContent",199,597,0.002998
-"C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/peng.png","C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/peng.xnb","TextureProcessor","Texture2DContent",217,373,0.0014396
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemy.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemy.xnb","TextureProcessor","Texture2DContent",180,485,0.1177011
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemyBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemyBullet.xnb","TextureProcessor","Texture2DContent",210,341,0.0015284
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/iceWall.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/iceWall.xnb","TextureProcessor","Texture2DContent",402,1621,0.0008546
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/icicle.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/icicle.xnb","TextureProcessor","Texture2DContent",199,597,0.0004435
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/peng.xnb","TextureProcessor","Texture2DContent",217,373,0.0004538
