@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ArcadeJam.Enemies;
 using Engine.Core.Components;
 using Engine.Core.Data;
 using Engine.Core.Nodes;
@@ -38,69 +39,56 @@ public class BulletBasicMovement {
 
 }
 
-public class PlayerBullet : Node {
-    private FloatRect bounds;
-    public int Damage{get;private set;} = 1;
+public abstract class Bullet : Node {
+    protected FloatRect bounds;
 
-    BulletBasicMovement movement;
-    Collision collision;
-    List<Node> collisions = new();
+    protected BulletBasicMovement movement;
+    protected Collision collision;
+    protected List<Node> collisions = new();
 
-    string[] collisionGroups = new string[]{"enemy"};
-    
+    protected string[] collisionGroups = new string[] { "player" };
 
-    public PlayerBullet(Vector2Data vel, Vector2 startPos) {
-        bounds = new(startPos.X-3, startPos.Y-12, 6,12);
-        Sprite sprite = new(Assets.icicle);
-        movement = new(vel,bounds, sprite);
-        collision = new(bounds, this, "playerBullet", collisions);
-        
+
+    public Bullet(Vector2Data vel, Vector2 startPos, Sprite sprite, FloatRect bounds, String group) {
+        this.bounds = bounds;
+
+        movement = new(vel, bounds, sprite);
+        collision = new(bounds, this, group, collisions);
+
 
     }
     public override void Update(GameTime gameTime) {
         movement.Update(gameTime);
-        collision.Update(collisionGroups);
-        if (collisions.Count>0 || bounds.Bottom<0){
+
+        //removing itself if it goes offscreen
+        if (bounds.Top > ArcadeGame.height || bounds.Bottom < 0) {
             Alive = false;
         }
     }
-    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-        movement.Draw(gameTime,spriteBatch);
+    public void OnHit() {
+        Alive = false;
     }
-    public override void End(){
+    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
+        movement.Draw(gameTime, spriteBatch);
+    }
+    public override void End() {
         collision.Update(null);
-    }    
+    }
+
 }
 
-public class EnemyBullet : Node {
-    private FloatRect bounds;
+public class PlayerBullet : Bullet {
 
-    BulletBasicMovement movement;
-    Collision collision;
-    List<Node> collisions = new();
+    public int Damage{get;protected set;} = 1;
 
-    string[] collisionGroups = new string[]{"player"};
-    
+    public PlayerBullet(Vector2Data vel, Vector2 startPos) : base(vel, startPos, new Sprite(Assets.icicle),
+        new(startPos.X - 3, startPos.Y - 12, 6, 12), "playerBullet") { }
 
-    public EnemyBullet(Vector2Data vel, Vector2 startPos) {
-        bounds = new(startPos.X, startPos.Y, 8,8);
-        Sprite sprite = new(Assets.enemyBullet);
-        movement = new(vel,bounds, sprite);
-        collision = new(bounds, this, "enemyBullet", collisions);
-        
+}
 
-    }
-    public override void Update(GameTime gameTime) {
-        movement.Update(gameTime);
-        collision.Update(collisionGroups);
-        if (collisions.Count>0 || bounds.Top>ArcadeGame.height){
-            Alive = false;
-        }
-    }
-    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-        movement.Draw(gameTime,spriteBatch);
-    }
-    public override void End(){
-        collision.Update(null);
-    }
+public class EnemyBullet : Bullet {
+
+    public EnemyBullet(Vector2Data vel, Vector2 startPos):base(vel, startPos, new(Assets.enemyBullet), 
+    new(startPos.X, startPos.Y, 8, 8), "enemyBullet") {}
+   
 }

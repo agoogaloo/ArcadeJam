@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Intrinsics;
+using ArcadeJam.Weapons;
 using Engine.Core;
 using Engine.Core.Components;
 using Engine.Core.Data;
@@ -43,8 +44,13 @@ public class Player : Node {
 		movement.Update(gameTime);
 		abilities.Update(gameTime);
 		collision.Update(collisionGroups);
-		if (collisions.Count>0){
-			Console.WriteLine("ouch!");
+		foreach( Node i in collisions){
+			if (i is Bullet b){
+				Console.WriteLine("hit by a bullet");
+				b.OnHit();
+			}else{
+				Console.WriteLine("hit by somthing else");
+			}
 		}
 		
 

@@ -26,6 +26,7 @@ public class EnemyDamage {
         collision.Update(collisionGroups);
         foreach (Node i in collisionList) {
             if (i is PlayerBullet b) {
+                b.OnHit();
                 health.val -= b.Damage;
             }
         }
