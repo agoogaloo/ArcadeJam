@@ -42,7 +42,7 @@ public class Player : Node {
 		
 		movement.Update(gameTime);
 		abilities.Update(gameTime);
-		collision.Update(gameTime, collisionGroups);
+		collision.Update(collisionGroups);
 		if (collisions.Count>0){
 			Console.WriteLine("ouch!");
 		}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using ArcadeJam.Enemies;
 using Engine.Core;
 using Engine.Core.Components;
 using Engine.Core.Data;

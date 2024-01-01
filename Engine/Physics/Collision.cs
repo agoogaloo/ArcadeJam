@@ -31,11 +31,11 @@ public class Collision {
         groupDict[group].Add(bounds, node);
 
     }
-    public void Update(GameTime gameTime) {
-        Update(gameTime, new string[] { group });
+    public void Update() {
+        Update( new string[] { group });
     }
 
-    public void Update(GameTime gameTime, String[] groups) {
+    public void Update(String[] groups) {
         if (!node.Alive) {
             groupDict[group].Remove(bounds);
             Console.WriteLine("removing dead "+node.ToString());

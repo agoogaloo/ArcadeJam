@@ -27,6 +27,6 @@ public class CollisionTest : Node {
 	}
 
 	public override void Update(GameTime gameTime) {
-		collision.Update(gameTime);
+		collision.Update();
 	}
 }

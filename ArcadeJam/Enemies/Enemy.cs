@@ -7,38 +7,47 @@ using Engine.Core.Physics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ArcadeJam;
+namespace ArcadeJam.Enemies;
 
 public class Enemy : Node {
-	private Sprite sprite = new(Assets.enemy);
-    private Vector2Data vel = new(20f,0);
-    private FloatRect bounds = new(20,0,10,10);
+    private IntData health = new IntData(20);
+    private Sprite sprite = new(Assets.enemy);
+    private Vector2Data vel = new(20f, 0);
+    private FloatRect bounds = new(20, 0, 10, 10);
 
     private RectRender renderer;
 
     private EnemyMovement movement;
+    EnemyDamage damager;
     Straight pattern;
-    Collision collision;
 
-    public Enemy(){
-        renderer= new(sprite, bounds);
+
+
+    public Enemy() {
+        renderer = new(sprite, bounds);
         movement = new MoveToPoint(bounds, vel, new Vector2(20, 80));
         pattern = new(bounds);
-        collision = new(bounds, this, "enemy");
+        
+        damager = new(bounds, this, health);
+
     }
 
 
-	public override void Update(GameTime gameTime) {
+    public override void Update(GameTime gameTime) {
         movement.Update(gameTime);
         pattern.Update(gameTime);
-		
-	}
-    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-        renderer.Draw(gameTime,spriteBatch);
-		
-	}
+        damager.Update();
+        if (health.val <= 0) {
+            Alive = false;
+        }
 
-	public override void End(){
-        collision.Update(null);
+    }
+    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
+        renderer.Draw(gameTime, spriteBatch);
+
+    }
+
+    public override void End() {
+        damager.Update();
     }
 }

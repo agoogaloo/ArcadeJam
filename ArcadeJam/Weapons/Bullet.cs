@@ -40,6 +40,7 @@ public class BulletBasicMovement {
 
 public class PlayerBullet : Node {
     private FloatRect bounds;
+    public int Damage{get;private set;} = 1;
 
     BulletBasicMovement movement;
     Collision collision;
@@ -58,7 +59,7 @@ public class PlayerBullet : Node {
     }
     public override void Update(GameTime gameTime) {
         movement.Update(gameTime);
-        collision.Update(gameTime, collisionGroups);
+        collision.Update(collisionGroups);
         if (collisions.Count>0 || bounds.Bottom<0){
             Alive = false;
         }
@@ -91,7 +92,7 @@ public class EnemyBullet : Node {
     }
     public override void Update(GameTime gameTime) {
         movement.Update(gameTime);
-        collision.Update(gameTime, collisionGroups);
+        collision.Update(collisionGroups);
         if (collisions.Count>0 || bounds.Top>ArcadeGame.height){
             Alive = false;
         }

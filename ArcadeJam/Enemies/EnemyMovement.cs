@@ -3,7 +3,7 @@ using Engine.Core.Data;
 using Engine.Core.Physics;
 using Microsoft.Xna.Framework;
 
-namespace ArcadeJam;
+namespace ArcadeJam.Enemies;
 
 public abstract class EnemyMovement{
     protected Vector2Data vel;
