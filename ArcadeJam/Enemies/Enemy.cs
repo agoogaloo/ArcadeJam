@@ -12,23 +12,24 @@ namespace ArcadeJam;
 public class Enemy : Node {
 	private Sprite sprite = new(Assets.enemy);
     private Vector2Data vel = new(20f,0);
-    private FloatRect bounds = new(0,0,10,10);
+    private FloatRect bounds = new(20,0,10,10);
 
     private RectRender renderer;
-    private VelMovement velMovement;
+
+    private EnemyMovement movement;
     Straight pattern;
     Collision collision;
 
     public Enemy(){
         renderer= new(sprite, bounds);
-        velMovement = new(vel, bounds);
+        movement = new MoveToPoint(bounds, vel, new Vector2(20, 80));
         pattern = new(bounds);
         collision = new(bounds, this, "enemy");
     }
 
 
 	public override void Update(GameTime gameTime) {
-        velMovement.Update(gameTime);
+        movement.Update(gameTime);
         pattern.Update(gameTime);
 		
 	}
