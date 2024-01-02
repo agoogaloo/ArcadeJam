@@ -49,7 +49,7 @@ public class Straight : EnemyWeapon {
 }
 public class Tripple : EnemyWeapon {
     private float angle;
-    public Tripple(FloatRect pos, double delay = 1, float angle = 15, float speed = 60) : base(pos, delay, speed) {
+    public Tripple(FloatRect pos, double delay = 1, float angle = 30, float speed = 60) : base(pos, delay, speed) {
         this.angle = angle;
     }
 

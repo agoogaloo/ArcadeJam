@@ -57,7 +57,7 @@ public class Enemy : Node {
 public class BasicEnemy : Enemy {
 
     public BasicEnemy(EnemyMovement movement) : base(movement) {
-        health.val = 10;
+        health.val = 5;
 
     }
 }
