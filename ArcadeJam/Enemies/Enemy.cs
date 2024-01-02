@@ -24,6 +24,7 @@ public class Enemy : Node {
 
 
     public Enemy(EnemyMovement movement) {
+        renderHeight = 2;
         this.movement = movement;
         bounds = new(0, 0, 10, 10);
         vel = new(0, 0);
@@ -42,7 +43,6 @@ public class Enemy : Node {
         if (health.val <= 0) {
             Alive = false;
         }
-
     }
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
         renderer.Draw(gameTime, spriteBatch);

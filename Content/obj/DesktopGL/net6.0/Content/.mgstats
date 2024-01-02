@@ -3,4 +3,5 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemyBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemyBullet.xnb","TextureProcessor","Texture2DContent",210,341,0.0015284
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/iceWall.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/iceWall.xnb","TextureProcessor","Texture2DContent",402,1621,0.0008546
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/icicle.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/icicle.xnb","TextureProcessor","Texture2DContent",199,597,0.0004435
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/monoFont.spritefont","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/monoFont.xnb","FontDescriptionProcessor","SpriteFontContent",2011,9247,0.153124
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/peng.xnb","TextureProcessor","Texture2DContent",217,373,0.0004538

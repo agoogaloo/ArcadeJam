@@ -8,9 +8,11 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemyBullet.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/iceWall.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/icicle.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/monoFont.spritefont</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

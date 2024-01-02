@@ -61,6 +61,13 @@
 /processorParam:TextureFormat=Color
 /build:icicle.png
 
+#begin monoFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:monoFont.spritefont
+
 #begin peng.png
 /importer:TextureImporter
 /processor:TextureProcessor

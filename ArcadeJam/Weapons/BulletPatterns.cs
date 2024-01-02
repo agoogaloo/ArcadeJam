@@ -24,7 +24,7 @@ public abstract class EnemyWeapon {
     public virtual void Update(GameTime gameTime) {
         timeLeft -= gameTime.ElapsedGameTime.TotalSeconds;
         if (timeLeft < 0) {
-            timeLeft = delay.val;
+            timeLeft = delay.val+timeLeft;
             Shoot();
         }
     }
@@ -54,9 +54,9 @@ public class Tripple : EnemyWeapon {
     }
 
     protected override void Shoot() {
-        FireAtAngle(0, speed);
-        FireAtAngle(-angle, speed);
-        FireAtAngle(angle, speed);
+        FireAtAngle(180, speed);
+        FireAtAngle(180-angle, speed);
+        FireAtAngle(180+angle, speed);
     }
 }
 
@@ -64,7 +64,7 @@ public class Spiral : EnemyWeapon {
     private float angle;
     private float spinSpeed;
     int prongs;
-    public Spiral(FloatRect pos, double delay = 0.5, int prongs = 5, float spinSpeed = 50, float bulletSpeed = 60) : base(pos, delay, bulletSpeed) {
+    public Spiral(FloatRect pos, double delay = 0.25, int prongs = 4, float spinSpeed = 50, float bulletSpeed = 60) : base(pos, delay, bulletSpeed) {
         angle = 0;
         this.spinSpeed = spinSpeed;
         this.prongs = prongs;

@@ -26,6 +26,7 @@ public abstract class EnemyMovement {
     public virtual void Update(GameTime gameTime) {
         velMovement.Update(gameTime);
         vel.val = Vector2.Zero;
+        
 
     }
 
@@ -35,7 +36,7 @@ public class MoveToPoint : EnemyMovement {
     private Vector2 start, destination;
     private float speed, easing;
 
-    public MoveToPoint(Vector2 start, Vector2 destination, float speed = 3, float easing = 4) : base() {
+    public MoveToPoint(Vector2 start, Vector2 destination, float speed = 60, float easing = 4) : base() {
         this.start = start;
         this.destination = destination;
         this.speed = speed;
@@ -43,15 +44,15 @@ public class MoveToPoint : EnemyMovement {
     }
     public override void Init(FloatRect bounds, Vector2Data vel) {
         base.Init(bounds, vel);
-        Console.WriteLine(bounds+", "+start);
         this.bounds.Centre = start;
     }
 
     public override void Update(GameTime gameTime) {
         Vector2 movement = destination - bounds.Centre;
-        movement *= (float)(speed * gameTime.TotalGameTime.TotalSeconds / easing);
-        vel.val += movement;
+        movement *= (float)(speed * gameTime.ElapsedGameTime.TotalSeconds / easing);
+        vel.val = movement;
         base.Update(gameTime);
+         Console.WriteLine("movin enemy"+vel.val+", "+speed+", "+easing);
     }
     public MoveToPoint Copy() {
         return new MoveToPoint(start, destination, speed, easing);

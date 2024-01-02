@@ -31,6 +31,7 @@ public class Player : Node {
 
 
 	public Player() {
+		renderHeight = 1;
 		movement = new(Vel, Bounds, moveSpeed);
 		abilities = new(Bounds, moveSpeed);
 		render = new(Sprite, Bounds);
@@ -44,6 +45,7 @@ public class Player : Node {
 		movement.Update(gameTime);
 		abilities.Update(gameTime);
 		collision.Update(collisionGroups);
+		Console.WriteLine("e");
 		foreach( Node i in collisions){
 			if (i is Bullet b){
 				Console.WriteLine("hit by a bullet");
