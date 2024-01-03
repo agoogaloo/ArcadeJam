@@ -45,9 +45,9 @@ public class StringData {
     }
 }
 
-public class DoubleData {
-    public double val;
-    public DoubleData(double val = 0) {
+public class FloatData {
+    public float val;
+    public FloatData(float val = 0) {
         this.val = val;
     }
 }

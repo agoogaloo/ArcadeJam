@@ -7,14 +7,14 @@ using Microsoft.Xna.Framework;
 namespace ArcadeJam.Weapons;
 
 public abstract class EnemyWeapon {
-    protected DoubleData delay;
+    protected FloatData delay;
     protected FloatRect pos;
 
     protected double timeLeft = 0;
     protected float speed;
 
-    public EnemyWeapon(FloatRect pos, double delay = 1, float speed = 60) : this(pos, new DoubleData(delay), speed) { }
-    public EnemyWeapon(FloatRect pos, DoubleData delay, float speed = 60) {
+    public EnemyWeapon(FloatRect pos, float delay = 1, float speed = 60) : this(pos, new FloatData(delay), speed) { }
+    public EnemyWeapon(FloatRect pos, FloatData delay, float speed = 60) {
         this.delay = delay;
         this.speed = speed;
         this.pos = pos;
@@ -40,7 +40,7 @@ public abstract class EnemyWeapon {
 }
 
 public class Straight : EnemyWeapon {
-    public Straight(FloatRect pos, double delay = 1) : base(pos, delay) {
+    public Straight(FloatRect pos, float delay = 1) : base(pos, delay) {
     }
 
     protected override void Shoot() {
@@ -49,7 +49,7 @@ public class Straight : EnemyWeapon {
 }
 public class Tripple : EnemyWeapon {
     private float angle;
-    public Tripple(FloatRect pos, double delay = 1, float angle = 30, float speed = 60) : base(pos, delay, speed) {
+    public Tripple(FloatRect pos, float delay = 1, float angle = 30, float speed = 60) : base(pos, delay, speed) {
         this.angle = angle;
     }
 
@@ -64,7 +64,7 @@ public class Spiral : EnemyWeapon {
     private float angle;
     private float spinSpeed;
     int prongs;
-    public Spiral(FloatRect pos, double delay = 0.25, int prongs = 4, float spinSpeed = 50, float bulletSpeed = 60) : base(pos, delay, bulletSpeed) {
+    public Spiral(FloatRect pos, float delay = 0.25f, int prongs = 4, float spinSpeed = 50, float bulletSpeed = 60) : base(pos, delay, bulletSpeed) {
         angle = 0;
         this.spinSpeed = spinSpeed;
         this.prongs = prongs;

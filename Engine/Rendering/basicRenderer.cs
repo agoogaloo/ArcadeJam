@@ -81,7 +81,6 @@ public class CropRender {
     public void Draw(SpriteBatch spriteBatch) {
         Vector2 drawLoc = new Vector2(drawRect.x, drawRect.y);
         Rectangle sourceRect = new(0, 0, (int)drawRect.width, (int)drawRect.height);
-        Console.WriteLine(drawRect.height+", "+drawRect.width);
         spriteBatch.Draw(sprite.texture, drawLoc, sourceRect, Color.White);
 
 

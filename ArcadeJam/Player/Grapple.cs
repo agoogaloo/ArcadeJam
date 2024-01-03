@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using ArcadeJam.Enemies;
 using ArcadeJam.Weapons;
 using Engine.Core.Components;
@@ -10,10 +11,19 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ArcadeJam;
 
+
+public enum GrappleState {
+    loaded, shooting, yoink, reloading, hit
+
+}
+
 public class Grapple {
 
-    private float shootSpeed = 120;
-    private const int BaseDamage = 20, damageMulti = 5;
+    public GrappleState grappleState = GrappleState.loaded;
+
+    private const float shootSpeed = 300, reloadAccel = 120;
+    private const int BaseDamage = 20, damageMulti = 5, yoinkSpeed = 120;
+    private float hookSpeed = 0;
     private int damage = BaseDamage;
     private Sprite hook = new(Assets.hook), chain = new(Assets.chain);
     FloatRect chainRect = new(0, 0, 10, 0);
@@ -21,7 +31,8 @@ public class Grapple {
 
 
 
-    BoolData shooting = new(false);
+
+    private Enemy target = null;
 
     FloatRect shipBounds, hookBounds = new FloatRect(0, 0, 9, 5);
     Collision collision;
@@ -42,51 +53,78 @@ public class Grapple {
         chainRenderer = new(chain, chainRect);
     }
     public void Update(GameTime gameTime) {
+        //Console.WriteLine("grapple state:" + grappleState);
         hookBounds.x = shipBounds.Centre.X - hookBounds.width / 2;
-        if (shooting.val) {
-            //moving the hook/chain
-            hookBounds.y -= (float)(shootSpeed * gameTime.ElapsedGameTime.TotalSeconds);
-            chainRect.x = hookBounds.x;
-            chainRect.y = hookBounds.Bottom;
-            chainRect.height = shipBounds.Top - hookBounds.Bottom;
-
-
-            collision.Update("enemyBullet");
-            foreach (Node i in collisions) {
-                if (i is EnemyBullet b) {
-                    b.OnHit();
-                }
-
-            }
-            collision.Update("enemy");
-            foreach (Node i in collisions) {
-                if (i is Enemy e) {
+        switch (grappleState) {
+            case GrappleState.loaded:
+                hookBounds.y = shipBounds.y - 5;
+                chainRect.height = 0;
+                return;
+            case GrappleState.shooting:
+                shootUpdate(gameTime);
+                break;
+            case GrappleState.yoink:
+                if (shipBounds.Top < hookBounds.Bottom) {
+                    grappleState = GrappleState.hit;
                     damage = BaseDamage + ((combo.val - 1) * damageMulti);
-                    e.Health.val -= damage;
-                    shooting.val = false;
+                    target.Health.val -= damage;
                     combo.val++;
-                    Console.WriteLine("hook dealt " + damage);
+                }
+                break;
+            case GrappleState.reloading:
+                hookSpeed += (float)(reloadAccel * gameTime.ElapsedGameTime.TotalSeconds);
+                hookBounds.y += (float)(hookSpeed * gameTime.ElapsedGameTime.TotalSeconds);
+                if (hookBounds.Bottom >= shipBounds.Top) {
+                    grappleState = GrappleState.loaded;
                 }
 
-            }
-            //stopping if it goes off screen
-            if (hookBounds.y < 0) {
-                shooting.val = false;
-            }
+                break;
         }
-        else {
-            hookBounds.y = shipBounds.y - 5;
-            chainRect.height = 0;
+        //setting chain size/location
+        chainRect.x = hookBounds.x;
+        chainRect.y = hookBounds.Bottom;
+        chainRect.height = shipBounds.Top - hookBounds.Bottom;
+    }
+
+    private void shootUpdate(GameTime gameTime) {
+        //moving the hook/chain
+        hookBounds.y -= (float)(shootSpeed * gameTime.ElapsedGameTime.TotalSeconds);
+
+        //destroying bullets it hits
+        collision.Update("enemyBullet");
+        foreach (Node i in collisions) {
+            if (i is EnemyBullet b) {
+                b.OnHit();
+            }
+
+        }
+        //grappling enemies it hits
+        collision.Update("enemy");
+        foreach (Node i in collisions) {
+            if (i is Enemy e) {
+                target = e;
+                grappleState = GrappleState.yoink;
+
+            }
+
+        }
+        //stopping if it goes off screen
+        if (hookBounds.y < 0) {
+            grappleState = GrappleState.reloading;
+            hookSpeed = 0;
         }
     }
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
         chainRenderer.Draw(spriteBatch);
         hookRenderer.Draw(gameTime, spriteBatch);
-
     }
 
     public void Shoot() {
-        shooting.val = true;
+        if (grappleState == GrappleState.loaded) {
+            grappleState = GrappleState.shooting;
+        }
     }
+
+
 }
 
