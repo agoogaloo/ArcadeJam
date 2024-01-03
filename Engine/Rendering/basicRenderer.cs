@@ -35,16 +35,16 @@ public class RectRender {
 
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
 
-        int x = (int)(bounds.x + (bounds.width  - sprite.texture.Width)/2+0.5);
-        int y = (int)(bounds.y + bounds.height / 2 - sprite.texture.Height / 2+0.5);
+        int x = (int)(bounds.x + (bounds.width - sprite.texture.Width) / 2 + 0.5);
+        int y = (int)(bounds.y + bounds.height / 2 - sprite.texture.Height / 2 + 0.5);
         Vector2 centre = -sprite.texture.Bounds.Center.ToVector2();
         centre += bounds.Centre;
         //rounding centre
         centre.X = (int)Math.Round(centre.X);
         centre.Y = (int)Math.Round(centre.Y);
 
-       
-        spriteBatch.Draw(sprite.texture, new Vector2(x,y), Color.White);
+
+        spriteBatch.Draw(sprite.texture, new Vector2(x, y), Color.White);
     }
 
 
@@ -61,10 +61,29 @@ public class RectVisualizer {
     }
 
     public void Draw(SpriteBatch spriteBatch) {
-        Rectangle drawRect = new((int)(bounds.x+0.5), (int)(bounds.y+0.5),
-            (int)Math.Round(bounds.width-1), (int)Math.Round(bounds.height-1));
-            
+        Rectangle drawRect = new((int)(bounds.x + 0.5), (int)(bounds.y + 0.5),
+            (int)Math.Round(bounds.width - 1), (int)Math.Round(bounds.height - 1));
+
         //RenderUtils.DrawRectangle(spriteBatch, drawRect, Color.Red);
+
+    }
+}
+
+public class CropRender {
+    Sprite sprite;
+    FloatRect drawRect;
+
+    public CropRender(Sprite sprite, FloatRect drawRect) {
+        this.sprite = sprite;
+        this.drawRect = drawRect;
+    }
+
+    public void Draw(SpriteBatch spriteBatch) {
+        Vector2 drawLoc = new Vector2(drawRect.x, drawRect.y);
+        Rectangle sourceRect = new(0, 0, (int)drawRect.width, (int)drawRect.height);
+        Console.WriteLine(drawRect.height+", "+drawRect.width);
+        spriteBatch.Draw(sprite.texture, drawLoc, sourceRect, Color.White);
+
 
     }
 }

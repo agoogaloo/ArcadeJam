@@ -16,7 +16,9 @@ public class Grapple {
     private const int BaseDamage = 20, damageMulti = 5;
     private int damage = BaseDamage;
     private Sprite hook = new(Assets.hook), chain = new(Assets.chain);
+    FloatRect chainRect = new(0, 0, 10, 0);
     IntData combo;
+
 
 
     BoolData shooting = new(false);
@@ -26,7 +28,8 @@ public class Grapple {
     List<Node> collisions = new();
 
 
-    RectRender renderer;
+    RectRender hookRenderer;
+    CropRender chainRenderer;
 
 
 
@@ -35,15 +38,19 @@ public class Grapple {
         this.combo = combo;
 
         collision = new(hookBounds, null, "grapple", collisions);
-        renderer = new(hook, hookBounds);
+        hookRenderer = new(hook, hookBounds);
+        chainRenderer = new(chain, chainRect);
     }
     public void Update(GameTime gameTime) {
         hookBounds.x = shipBounds.Centre.X - hookBounds.width / 2;
         if (shooting.val) {
+            //moving the hook/chain
             hookBounds.y -= (float)(shootSpeed * gameTime.ElapsedGameTime.TotalSeconds);
-            if (hookBounds.y < 0) {
-                shooting.val = false;
-            }
+            chainRect.x = hookBounds.x;
+            chainRect.y = hookBounds.Bottom;
+            chainRect.height = shipBounds.Top - hookBounds.Bottom;
+
+
             collision.Update("enemyBullet");
             foreach (Node i in collisions) {
                 if (i is EnemyBullet b) {
@@ -54,7 +61,7 @@ public class Grapple {
             collision.Update("enemy");
             foreach (Node i in collisions) {
                 if (i is Enemy e) {
-                    damage = BaseDamage + ((combo.val-1) * damageMulti);
+                    damage = BaseDamage + ((combo.val - 1) * damageMulti);
                     e.Health.val -= damage;
                     shooting.val = false;
                     combo.val++;
@@ -62,21 +69,24 @@ public class Grapple {
                 }
 
             }
+            //stopping if it goes off screen
+            if (hookBounds.y < 0) {
+                shooting.val = false;
+            }
         }
         else {
             hookBounds.y = shipBounds.y - 5;
+            chainRect.height = 0;
         }
     }
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-        renderer.Draw(gameTime, spriteBatch);
+        chainRenderer.Draw(spriteBatch);
+        hookRenderer.Draw(gameTime, spriteBatch);
 
     }
 
     public void Shoot() {
         shooting.val = true;
     }
-
-
-
-
 }
+

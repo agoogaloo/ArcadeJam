@@ -19,7 +19,7 @@ public class Assets {
         enemy2 = manager.Load<Texture2D>("iceWall");
         enemyBullet = manager.Load<Texture2D>("enemyBullet");
         hook = manager.Load<Texture2D>("enemyBullet");
-        chain = manager.Load<Texture2D>("peng");
+        chain = manager.Load<Texture2D>("chain");
 
         font = manager.Load<SpriteFont>("monoFont");
 
