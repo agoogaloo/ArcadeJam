@@ -46,8 +46,9 @@ public class Player : Node {
 	}
 
 	public override void Update(GameTime gameTime) {
-		abilities.Update(gameTime);
+		
 		movement.Update(gameTime);
+		abilities.Update(gameTime);
 		collision.Update(collisionGroups);
 		if (invincibleTime.val >= 0f) {
 			invincibleTime.val -= (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -73,7 +74,7 @@ public class Player : Node {
 
 	public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
 		abilities.Draw(gameTime, spriteBatch);
-		if (invincibleTime.val < 0 || (int)(invincibleTime.val*10)%2==1) {
+		if (invincibleTime.val < 0 || (int)(invincibleTime.val*10)%2==0) {
 			render.Draw(gameTime, spriteBatch);
 		}
 		showBounds.Draw(spriteBatch);

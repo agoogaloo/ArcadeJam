@@ -1,10 +1,13 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/cannonBall.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/cannonBall.xnb","TextureProcessor","Texture2DContent",123,121,0.0870075
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/chain.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/chain.xnb","TextureProcessor","Texture2DContent",389,6485,0.093331
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/cannonBall.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/cannonBall.xnb","TextureProcessor","Texture2DContent",133,185,0.0866865
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/chain.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/chain.xnb","TextureProcessor","Texture2DContent",139,2497,0.0015066
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/darkBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/darkBullet.xnb","TextureProcessor","Texture2DContent",133,185,0.0007574
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemy.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemy.xnb","TextureProcessor","Texture2DContent",252,625,0.0012906
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemyBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemyBullet.xnb","TextureProcessor","Texture2DContent",210,341,0.0015284
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/hook.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/hook.xnb","TextureProcessor","Texture2DContent",126,145,0.0003749
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/iceWall.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/iceWall.xnb","TextureProcessor","Texture2DContent",402,1621,0.0008546
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/icicle.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/icicle.xnb","TextureProcessor","Texture2DContent",199,597,0.0004435
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/lightBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/lightBullet.xnb","TextureProcessor","Texture2DContent",133,185,0.0003048
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/monoFont.spritefont","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/monoFont.xnb","FontDescriptionProcessor","SpriteFontContent",2011,9247,0.153124
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/peng.xnb","TextureProcessor","Texture2DContent",217,373,0.0874805
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/player.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/player.xnb","TextureProcessor","Texture2DContent",232,553,0.0871878
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/player.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/player.xnb","TextureProcessor","Texture2DContent",245,481,0.0003115

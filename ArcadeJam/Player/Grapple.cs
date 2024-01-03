@@ -26,7 +26,7 @@ public class Grapple {
     private float hookSpeed = 0;
     private int damage = BaseDamage;
     private Sprite hook = new(Assets.hook), chain = new(Assets.chain);
-    FloatRect chainRect = new(0, 0, 10, 0);
+    FloatRect chainRect = new(0, 0, 3, 0);
     IntData combo;
 
 
@@ -80,10 +80,7 @@ public class Grapple {
 
                 break;
         }
-        //setting chain size/location
-        chainRect.x = hookBounds.x;
-        chainRect.y = hookBounds.Bottom;
-        chainRect.height = shipBounds.Top - hookBounds.Bottom;
+        
     }
 
     private void shootUpdate(GameTime gameTime) {
@@ -115,6 +112,10 @@ public class Grapple {
         }
     }
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
+        //setting chain size/location
+        chainRect.x = hookBounds.x+3;
+        chainRect.y = hookBounds.Bottom;
+        chainRect.height = shipBounds.Top - hookBounds.Bottom;
         chainRenderer.Draw(spriteBatch);
         hookRenderer.Draw(gameTime, spriteBatch);
     }

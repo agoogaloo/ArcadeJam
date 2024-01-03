@@ -45,6 +45,11 @@ public class PlayerAbilities {
         if (grappleButton.Held && !shootButton.Held) {
             grapple.Shoot();
         }
+        //focusing
+        if (grappleButton.Held && shootButton.Held) {
+            focusing.val = true;
+        }
+        else { focusing.val = false; }
         weapon.Update(gameTime);
         grapple.Update(gameTime);
 
@@ -53,12 +58,11 @@ public class PlayerAbilities {
         switch (grapple.grappleState) {
             case GrappleState.loaded:
                 useInput.val = true;
-                if (grappleButton.Held && shootButton.Held) {
-                    focusing.val = true;
+                if (focusing.val) {
                     speed.val = baseSpeed * 0.75f;
                 }
                 else {
-                    focusing.val = false;
+
                     speed.val = baseSpeed + (speedMulti * (combo.val - 1));
                 }
                 break;

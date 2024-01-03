@@ -17,8 +17,8 @@ public class Assets {
         PlayerBullet = manager.Load<Texture2D>("cannonBall");
         enemy = manager.Load<Texture2D>("enemy");
         enemy2 = manager.Load<Texture2D>("iceWall");
-        enemyBullet = manager.Load<Texture2D>("enemyBullet");
-        hook = manager.Load<Texture2D>("enemyBullet");
+        enemyBullet = manager.Load<Texture2D>("lightBullet");
+        hook = manager.Load<Texture2D>("hook");
         chain = manager.Load<Texture2D>("chain");
 
         font = manager.Load<SpriteFont>("monoFont");

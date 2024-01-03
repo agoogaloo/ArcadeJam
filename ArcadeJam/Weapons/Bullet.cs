@@ -82,14 +82,14 @@ public class PlayerBullet : Bullet {
     public int Damage{get;protected set;} = 1;
 
     public PlayerBullet(Vector2Data vel, Vector2 startPos) : base(vel, startPos, new Sprite(Assets.PlayerBullet),
-        new(startPos.X - 3, startPos.Y - 12, 6, 12), "playerBullet") { 
+        new(startPos.X - 3, startPos.Y - 12, 7, 7), "playerBullet") { 
             renderHeight = 3;
         }
 
 }
 
 public class EnemyBullet : Bullet {
-    private const int width = 6, height = 6;
+    private const int width = 5, height = 5;
 
     public EnemyBullet(Vector2Data vel, Vector2 startPos):base(vel, startPos, new(Assets.enemyBullet), 
     new(startPos.X-width/2, startPos.Y-height/2, width, height), "enemyBullet") {
