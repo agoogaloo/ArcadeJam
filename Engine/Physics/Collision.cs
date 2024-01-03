@@ -35,9 +35,9 @@ public class Collision {
         Update( new string[] { group });
     }
 
-    public void Update(String[] groups) {
-        if (!node.Alive) {
-            groupDict[group].Remove(bounds);
+    public void Update(params String[] groups) {
+        if (node!=null && !node.Alive) {
+            end();
             return;
         }
         if (collisions == null) {
@@ -56,8 +56,8 @@ public class Collision {
         }
 
     }
+    public void end(){
+        groupDict[group].Remove(bounds);
+    }
 }
 
-public interface ICollisionAction{
-    public abstract void onCollide();
-}

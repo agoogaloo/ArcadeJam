@@ -21,27 +21,33 @@ public class Vector2Data {
     public Vector2Data(Vector2 value) {
         this.val = value;
     }
-    public Vector2Data(float x,float y):this(new Vector2(x,y)) {   }
+    public Vector2Data(float x, float y) : this(new Vector2(x, y)) { }
 
 }
 
 public class IntData {
     public int val;
-    public IntData(int val) {
+    public IntData(int val = 0) {
+        this.val = val;
+    }
+}
+public class BoolData {
+    public bool val;
+    public BoolData(bool val = true) {
         this.val = val;
     }
 }
 
 public class StringData {
     public String val;
-    public StringData(String val) {
+    public StringData(String val = "") {
         this.val = val;
     }
 }
 
 public class DoubleData {
     public double val;
-    public DoubleData(double val) {
+    public DoubleData(double val = 0) {
         this.val = val;
     }
 }

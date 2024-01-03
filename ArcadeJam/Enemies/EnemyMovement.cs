@@ -52,7 +52,6 @@ public class MoveToPoint : EnemyMovement {
         movement *= (float)(speed * gameTime.ElapsedGameTime.TotalSeconds / easing);
         vel.val = movement;
         base.Update(gameTime);
-         Console.WriteLine("movin enemy"+vel.val+", "+speed+", "+easing);
     }
     public MoveToPoint Copy() {
         return new MoveToPoint(start, destination, speed, easing);

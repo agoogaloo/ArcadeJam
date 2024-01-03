@@ -48,7 +48,7 @@ public class NodeManager {
             nodes[i].Draw(gameTime, batch);
         }
         String info = "NODES: " + nodes.Count + "\nFPS: " + Math.Round(10 / gameTime.ElapsedGameTime.TotalSeconds)/10;
-        batch.DrawString(Assets.font, info, new Vector2(1, -5), Color.White);
+        //batch.DrawString(Assets.font, info, new Vector2(1, -5), Color.White);
 
     }
     public static void AddNode(Node node) {

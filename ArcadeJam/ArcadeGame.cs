@@ -142,7 +142,8 @@ public class ArcadeGame : Game {
 
 		//drawing the game to render target at game resolution
 		graphics.GraphicsDevice.SetRenderTarget(renderTarget);
-		GraphicsDevice.Clear(Color.DarkCyan);
+		
+		GraphicsDevice.Clear(new Color(44,33,55));
 		spriteBatch.Begin();
 		NodeManager.Draw(gameTime, spriteBatch);
 		spriteBatch.End();

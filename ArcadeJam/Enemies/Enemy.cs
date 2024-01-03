@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ArcadeJam.Enemies;
 
 public class Enemy : Node {
-    protected IntData health = new IntData(20);
+    public IntData Health{get; protected set;} = new IntData(20);
     protected Sprite sprite = new(Assets.enemy);
     protected Vector2Data vel;
     protected FloatRect bounds;
@@ -31,7 +31,7 @@ public class Enemy : Node {
         movement.Init(bounds, vel);
         weapon = new Straight(bounds);
         renderer = new(sprite, bounds);
-        damager = new(bounds, this, health);
+        damager = new(bounds, this, Health);
 
     }
 
@@ -40,13 +40,14 @@ public class Enemy : Node {
         movement.Update(gameTime);
         weapon.Update(gameTime);
         damager.Update();
-        if (health.val <= 0) {
+        if (Health.val <= 0) {
             Alive = false;
         }
     }
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
         renderer.Draw(gameTime, spriteBatch);
     }
+
 
     public override void End() {
         damager.Update();
@@ -57,7 +58,7 @@ public class Enemy : Node {
 public class BasicEnemy : Enemy {
 
     public BasicEnemy(EnemyMovement movement) : base(movement) {
-        health.val = 5;
+        Health.val = 5;
 
     }
 }
@@ -65,7 +66,7 @@ public class BasicEnemy : Enemy {
 public class TrippleEnemy : Enemy {
 
     public TrippleEnemy(EnemyMovement movement) : base(movement) {
-        health.val = 20;
+        Health.val = 20;
         weapon = new Tripple(bounds);
 
     }
@@ -74,8 +75,10 @@ public class TrippleEnemy : Enemy {
 public class SpinEnemy : Enemy {
 
     public SpinEnemy(EnemyMovement movement) : base(movement) {
-        health.val = 15;
+        Health.val = 15;
         weapon = new Spiral(bounds);
+        sprite = new(Assets.enemy2);
+        renderer = new(sprite, bounds);
 
     }
 	

@@ -7,16 +7,19 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ArcadeJam;
 
 public class Assets {
-    public static Texture2D player, icicle, enemy, enemyBullet;
+    public static Texture2D player, PlayerBullet, enemy, enemy2, enemyBullet, hook, chain;
     public static Texture2D pixel = null;
 
     public static SpriteFont font;
     public static void Load(ContentManager manager, Texture2D whitePixel) {
         pixel = whitePixel;
-        player = manager.Load<Texture2D>("peng");
-        icicle = manager.Load<Texture2D>("icicle");
+        player = manager.Load<Texture2D>("player");
+        PlayerBullet = manager.Load<Texture2D>("cannonBall");
         enemy = manager.Load<Texture2D>("enemy");
+        enemy2 = manager.Load<Texture2D>("iceWall");
         enemyBullet = manager.Load<Texture2D>("enemyBullet");
+        hook = manager.Load<Texture2D>("enemyBullet");
+        chain = manager.Load<Texture2D>("peng");
 
         font = manager.Load<SpriteFont>("monoFont");
 
