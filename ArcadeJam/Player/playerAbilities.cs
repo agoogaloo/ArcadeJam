@@ -1,4 +1,5 @@
 ﻿using System;
+using ArcadeJam.Weapons;
 using Engine.Core.Data;
 using Engine.Core.Input;
 using Microsoft.Xna.Framework;
@@ -17,11 +18,9 @@ public class PlayerAbilities {
     private IntData combo;
 
     private Button shootButton = InputHandler.getButton("A"), grappleButton = InputHandler.getButton("B");
-    private BasicGun gun;
+    private PlayerWeapon weapon;
     private Grapple grapple;
 
-    private const double reloadTime = 0.2;
-    private double gunTimer = 0;
 
     public PlayerAbilities(FloatRect bounds, Vector2Data vel, FloatData speed, IntData combo, FloatData invincibleTime, BoolData useInput) {
         this.bounds = bounds;
@@ -30,30 +29,24 @@ public class PlayerAbilities {
         this.vel = vel;
         this.invincibleTime = invincibleTime;
         this.useInput = useInput;
-        gun = new(bounds);
+        weapon = new Level1(bounds, focusing);
         grapple = new(bounds, combo);
     }
 
 
     public void Update(GameTime gameTime) {
-        grapple.Update(gameTime);
-
-        //this should probably be int its own weapon component thing
-        //updating reload time
-        if (gunTimer > 0) {
-            gunTimer -= gameTime.ElapsedGameTime.TotalSeconds;
-        }
-        //shooting
-        if (shootButton.Held && gunTimer <= 0) {
-            gun.shoot();
-            gunTimer = reloadTime;
-        }
 
         //inputs
+        //shooting
+        if (shootButton.Held) {
+            weapon.Use();
+        }
         //grappling
         if (grappleButton.Held && !shootButton.Held) {
             grapple.Shoot();
         }
+        weapon.Update(gameTime);
+        grapple.Update(gameTime);
 
         useInput.val = false;
         // updateing movement to match focus/grappling state
@@ -72,11 +65,11 @@ public class PlayerAbilities {
             case GrappleState.yoink:
 
                 vel.val.X = 0;
-                if(vel.val.Y>-10){
-                    vel.val.Y=-10;
+                if (vel.val.Y > -10) {
+                    vel.val.Y = -10;
                 }
                 vel.val.Y -= (float)(yoinkAccel * gameTime.ElapsedGameTime.TotalSeconds);
-                invincibleTime.val = 0.1f;
+                invincibleTime.val = 0.3f;
                 break;
             case GrappleState.hit:
                 grapple.grappleState = GrappleState.loaded;

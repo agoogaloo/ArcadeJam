@@ -54,26 +54,28 @@ public class Player : Node {
 			//Console.WriteLine("invincible, "+invincibleTime.val);
 
 		}
-
-		else {
-			foreach (Node i in collisions) {
-				if (i is Bullet b) {
-					Console.WriteLine("hit by a bullet");
-					b.OnHit();
+		foreach (Node i in collisions) {
+			if (i is Bullet b) {
+				Console.WriteLine("hit by a bullet");
+				b.OnHit();
+				if (invincibleTime.val < 0f) {
 					combo.val = 1;
 					invincibleTime.val = 3;
 				}
-				else {
-					Console.WriteLine("hit by somthing else"+i);
-				}
+			}
+			else {
+				Console.WriteLine("hit by somthing else" + i);
 			}
 		}
+
 
 	}
 
 	public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
 		abilities.Draw(gameTime, spriteBatch);
-		render.Draw(gameTime, spriteBatch);
+		if (invincibleTime.val < 0 || (int)(invincibleTime.val*10)%2==1) {
+			render.Draw(gameTime, spriteBatch);
+		}
 		showBounds.Draw(spriteBatch);
 
 		spriteBatch.DrawString(Assets.font, "COMBO:" + combo.val, new Vector2(1, 5), Color.Red);
