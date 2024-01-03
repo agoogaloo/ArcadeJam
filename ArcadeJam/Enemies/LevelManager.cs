@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 namespace ArcadeJam;
 
 public class LevelManager {
-    static Level[] levels = {new Level1(), new Level2(), new Level3()};
+    static Level[] levels = { new Level1(), new Level2(), new Level3() };
     static int currentLevel = 0;
     static bool started = false;
 
@@ -14,18 +14,19 @@ public class LevelManager {
         levels[currentLevel].Update(gameTime);
         if (started && levels[currentLevel].Cleared) {
             Console.WriteLine("starting new level");
-            currentLevel++;            
-            if(currentLevel>=levels.Length){
+            currentLevel++;
+            if (currentLevel >= levels.Length) {
                 currentLevel = 0;
                 levels[0] = new Level();
             }
-             levels[currentLevel].Start();
+            levels[currentLevel].Start();
         }
 
     }
     public static void startLevels() {
         levels[currentLevel].Start();
         started = true;
+
     }
 
 
