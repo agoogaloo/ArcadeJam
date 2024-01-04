@@ -30,7 +30,7 @@ public class PlayerAbilities {
         this.score = score;
         this.invincibleTime = invincibleTime;
         this.useInput = useInput;
-        weapon = new Level1(bounds, focusing);
+        weapon = new Level3Gun(bounds, focusing);
         grapple = new(bounds, combo);
     }
 

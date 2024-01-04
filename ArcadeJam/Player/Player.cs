@@ -16,7 +16,7 @@ namespace ArcadeJam;
 public class Player : Node {
 
 	FloatData invincibleTime = new();
-	FloatRect Bounds { get; set; } = new(new Rectangle(75, 150, 5, 8));
+	FloatRect Bounds { get; set; } = new(new Rectangle(75, 150, 5, 7));
 	Vector2Data Vel { get; set; } = new(new Vector2(0, 0));
 	FloatData moveSpeed = new(1.5f);
 

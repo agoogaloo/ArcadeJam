@@ -17,8 +17,10 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/monoFont.spritefont</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/player.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/playerSmearBullet.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
