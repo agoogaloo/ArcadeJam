@@ -1,4 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/borders.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/borders.xnb","TextureProcessor","Texture2DContent",1360,120085,0.1030978
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/cannonBall.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/cannonBall.xnb","TextureProcessor","Texture2DContent",133,185,0.0871283
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/chain.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/chain.xnb","TextureProcessor","Texture2DContent",139,2497,0.0014685
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/darkBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/darkBullet.xnb","TextureProcessor","Texture2DContent",133,185,0.0006997

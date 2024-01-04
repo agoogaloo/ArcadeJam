@@ -21,11 +21,11 @@ public class LockToScreen
         if (bounds.Top<=0){
             bounds.y = 0;
         }
-        if (bounds.Right>=ArcadeGame.width){
-            bounds.x = ArcadeGame.width-bounds.width;
+        if (bounds.Right>=ArcadeGame.gameWidth){
+            bounds.x = ArcadeGame.gameWidth-bounds.width;
         }
-        if (bounds.Bottom>=ArcadeGame.height){
-            bounds.y = ArcadeGame.height-bounds.height;
+        if (bounds.Bottom>=ArcadeGame.gameHeight){
+            bounds.y = ArcadeGame.gameHeight-bounds.height;
         }
         
         

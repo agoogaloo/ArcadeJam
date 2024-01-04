@@ -16,13 +16,15 @@ namespace ArcadeJam;
 public class Player : Node {
 
 	FloatData invincibleTime = new();
-	FloatRect Bounds { get; set; } = new(new Rectangle(150, 150, 5, 8));
+	FloatRect Bounds { get; set; } = new(new Rectangle(75, 150, 5, 8));
 	Vector2Data Vel { get; set; } = new(new Vector2(0, 0));
 	FloatData moveSpeed = new(1.5f);
 
-	IntData combo = new IntData(1);
+	IntData combo = new IntData(1), score;
 	Sprite Sprite { get; set; } = new Sprite(Assets.player);
 	List<Node> collisions = new();
+
+
 
 	private PlayerMovement movement;
 	private RectRender render;
@@ -34,11 +36,12 @@ public class Player : Node {
 
 
 
-	public Player() {
+	public Player(IntData score) {
+		this.score = score;
 		renderHeight = 1;
 		BoolData useInput = new(true);
 		movement = new(Vel, Bounds, moveSpeed, combo, useInput);
-		abilities = new(Bounds, Vel, moveSpeed, combo, invincibleTime, useInput);
+		abilities = new(Bounds, Vel, moveSpeed, combo, invincibleTime, useInput, score);
 		render = new(Sprite, Bounds);
 		showBounds = new(Bounds);
 		collision = new(Bounds, this, "player", collisions);

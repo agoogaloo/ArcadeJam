@@ -13,7 +13,7 @@ public class Level {
 
     public virtual void Start() {
         enemies = new Enemy[] {
-        new BasicEnemy(new MoveToPoint(new Vector2(180,0), new Vector2(180,50))) };
+        new BasicEnemy(new MoveToPoint(new Vector2(75,0), new Vector2(75,50))) };
         addEnemies();
     }
     protected void addEnemies() {
@@ -34,11 +34,11 @@ public class Level {
 public class Level1 : Level {
     public override void Start() {
         enemies = new Enemy[]{
-        new TrippleEnemy(new MoveToPoint(new Vector2(150,-20), new Vector2(160,40))),
+        new TrippleEnemy(new MoveToPoint(new Vector2(60,-20), new Vector2(60,40))),
 
-        new BasicEnemy(new MoveToPoint(new Vector2(180,0), new Vector2(180,50))),
+        new BasicEnemy(new MoveToPoint(new Vector2(75,0), new Vector2(75,50))),
 
-        new TrippleEnemy(new MoveToPoint(new Vector2(210,-25), new Vector2(200,40))),
+        new TrippleEnemy(new MoveToPoint(new Vector2(90,-25), new Vector2(90,40))),
         };
         addEnemies();
     }
@@ -49,13 +49,14 @@ public class Level2 : Level {
     public override void Start() {
         enemies = new Enemy[]{
 
-         new BasicEnemy(new MoveToPoint(new Vector2(150,-20), new Vector2(160,50))),
-         new BasicEnemy(new MoveToPoint(new Vector2(140,-30), new Vector2(130,50))),
+         new BasicEnemy(new MoveToPoint(new Vector2(30,-20), new Vector2(50,50))),
 
-        new TrippleEnemy(new MoveToPoint(new Vector2(180,0), new Vector2(180,50))),
-         new BasicEnemy(new MoveToPoint(new Vector2(210,0), new Vector2(200,50))),
+         new BasicEnemy(new MoveToPoint(new Vector2(60,-40), new Vector2(65,50))),
 
-         new BasicEnemy(new MoveToPoint(new Vector2(220,0), new Vector2(230,50))),
+        new TrippleEnemy(new MoveToPoint(new Vector2(75,0), new Vector2(75,50))),
+         new BasicEnemy(new MoveToPoint(new Vector2(90,-40), new Vector2(85,50))),
+
+         new BasicEnemy(new MoveToPoint(new Vector2(120,-20), new Vector2(100,50))),
 
         };
         addEnemies();
@@ -65,9 +66,9 @@ public class Level2 : Level {
 public class Level3 : Level {
     public override void Start() {
         enemies = new Enemy[]{
-        new BasicEnemy(new MoveToPoint(new Vector2(150,-20), new Vector2(160,50))),
-        new SpinEnemy(new MoveToPoint(new Vector2(180,0), new Vector2(180,50))),
-        new BasicEnemy(new MoveToPoint(new Vector2(220,0), new Vector2(230,50))),
+        new BasicEnemy(new MoveToPoint(new Vector2(25,-20), new Vector2(60,50))),
+        new SpinEnemy(new MoveToPoint(new Vector2(75,0), new Vector2(180,50),speed:40f)),
+        new BasicEnemy(new MoveToPoint(new Vector2(130,-20), new Vector2(90,50))),
         };
         addEnemies();
     }
