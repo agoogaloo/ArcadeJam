@@ -9,7 +9,7 @@ namespace ArcadeJam;
 
 public class PlayerAbilities {
     private PlayerWeapon[] upgrades;
-    private const float yoinkAccel = 600, baseSpeed = 90, speedMulti = 30;
+    private const float yoinkAccel = 600, baseSpeed = 90, speedMulti = 20;
 
     private BoolData focusing = new(false), useInput;
     private FloatRect bounds;
@@ -62,13 +62,11 @@ public class PlayerAbilities {
         switch (grapple.grappleState) {
             case GrappleState.loaded:
                 useInput.val = true;
+                speed.val = baseSpeed + (speedMulti * (combo.val - 1));
                 if (focusing.val) {
-                    speed.val = baseSpeed * 0.75f;
+                    speed.val *=  0.6f;
                 }
-                else {
-
-                    speed.val = baseSpeed + (speedMulti * (combo.val - 1));
-                }
+               
                 break;
             case GrappleState.yoink:
 
