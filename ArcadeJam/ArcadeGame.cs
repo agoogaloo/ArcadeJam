@@ -39,6 +39,8 @@ public class ArcadeGame : Game {
 
 	IntData score = new();
 
+
+	Player player;
 	public ArcadeGame() {
 		graphics = new GraphicsDeviceManager(this);
 		Content.RootDirectory = "Content";
@@ -83,10 +85,10 @@ public class ArcadeGame : Game {
 		InputHandler.addAnalogBind("U", GPadInput.LStickUp);
 		InputHandler.addAnalogBind("D", GPadInput.LStickDown);
 
-		Player p = new Player(score);
+		player = new Player(score);
 
-		NodeManager.AddNode(p);
-		LevelManager.startLevels(p);
+		NodeManager.AddNode(player);
+		LevelManager.startLevels(player);
 
 
 	}
@@ -189,6 +191,8 @@ public class ArcadeGame : Game {
 
 	}
 	private void drawBorder() {
+		Rectangle comboRect = new(0,0,31,26);
+		comboRect.X = (player.combo.val-1)*31;
 		//drawing the ui stuff around the game
 		graphics.GraphicsDevice.SetRenderTarget(windowTarget);
 
@@ -198,6 +202,7 @@ public class ArcadeGame : Game {
 
 		String scoreString = score.val.ToString("D6");
 		spriteBatch.Draw(Assets.borders,Vector2.Zero, Color.White);
+		spriteBatch.Draw(Assets.comboCounter,new Vector2(3,52),comboRect, Color.White);
 		spriteBatch.DrawString(Assets.font, scoreString, new Vector2(1,27),new Color(169,104,104));
 		//NodeManager.Draw(gameTime, spriteBatch);
 		spriteBatch.End();

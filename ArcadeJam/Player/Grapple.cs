@@ -21,7 +21,7 @@ public class Grapple {
 
     public GrappleState grappleState = GrappleState.loaded;
 
-    private const float shootSpeed = 300, reloadAccel = 150;
+    private const float shootSpeed = 300, reloadAccel = 160;
     private const int BaseDamage = 20, damageMulti = 5, yoinkSpeed = 120;
     private float hookSpeed = 0;
     private int damage = BaseDamage;
@@ -68,7 +68,10 @@ public class Grapple {
                     grappleState = GrappleState.hit;
                     damage = BaseDamage + ((combo.val - 1) * damageMulti);
                     target.Health.val -= damage;
-                    combo.val++;
+                    if (combo.val < 6) {
+                        combo.val++;
+                    }
+
                 }
                 break;
             case GrappleState.reloading:
@@ -80,7 +83,7 @@ public class Grapple {
 
                 break;
         }
-        
+
     }
 
     private void shootUpdate(GameTime gameTime) {
@@ -113,7 +116,7 @@ public class Grapple {
     }
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
         //setting chain size/location
-        chainRect.x = hookBounds.x+3;
+        chainRect.x = hookBounds.x + 3;
         chainRect.y = hookBounds.Bottom;
         chainRect.height = shipBounds.Top - hookBounds.Bottom;
         chainRenderer.Draw(spriteBatch);

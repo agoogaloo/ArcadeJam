@@ -20,7 +20,8 @@ public class Player : Node {
 	Vector2Data Vel { get; set; } = new(new Vector2(0, 0));
 	FloatData moveSpeed = new(1.5f);
 
-	IntData combo = new IntData(1), score;
+	public IntData combo{ get; private set;} = new IntData(1);
+	IntData score;
 	Sprite Sprite { get; set; } = new Sprite(Assets.player);
 	List<Node> collisions = new();
 

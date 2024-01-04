@@ -58,7 +58,7 @@ public class Enemy : Node {
 public class BasicEnemy : Enemy {
 
     public BasicEnemy(EnemyMovement movement) : base(movement) {
-        Health.val = 5;
+        Health.val = 10;
 
     }
 }
@@ -66,7 +66,7 @@ public class BasicEnemy : Enemy {
 public class TrippleEnemy : Enemy {
 
     public TrippleEnemy(EnemyMovement movement) : base(movement) {
-        Health.val = 20;
+        Health.val = 30;
         weapon = new Tripple(bounds);
 
     }
@@ -75,7 +75,7 @@ public class TrippleEnemy : Enemy {
 public class SpinEnemy : Enemy {
 
     public SpinEnemy(EnemyMovement movement) : base(movement) {
-        Health.val = 15;
+        Health.val = 50;
         weapon = new Spiral(bounds);
         sprite = new(Assets.enemy2);
         renderer = new(sprite, bounds);
