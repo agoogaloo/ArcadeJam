@@ -10,6 +10,8 @@ public class LevelManager {
     static int currentLevel = 0;
     static bool started = false;
 
+    private static Player player;
+
     public static void Update(GameTime gameTime) {
         levels[currentLevel].Update(gameTime);
         if (started && levels[currentLevel].Cleared) {
@@ -17,13 +19,14 @@ public class LevelManager {
             currentLevel++;
             if (currentLevel >= levels.Length) {
                 currentLevel = 0;
-                levels[0] = new Level();
             }
             levels[currentLevel].Start();
+            player.upgradeGun();
         }
 
     }
-    public static void startLevels() {
+    public static void startLevels(Player playerVal) {
+        player = playerVal;
         levels[currentLevel].Start();
         started = true;
 

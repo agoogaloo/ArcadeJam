@@ -49,7 +49,7 @@ public class Player : Node {
 	}
 
 	public override void Update(GameTime gameTime) {
-		
+
 		movement.Update(gameTime);
 		abilities.Update(gameTime);
 		collision.Update(collisionGroups);
@@ -64,6 +64,9 @@ public class Player : Node {
 				b.OnHit();
 				if (invincibleTime.val < 0f) {
 					combo.val = 1;
+					if (abilities.weapon >= 1) {
+						abilities.weapon--;
+					}
 					invincibleTime.val = 3;
 				}
 			}
@@ -71,20 +74,22 @@ public class Player : Node {
 				Console.WriteLine("hit by somthing else" + i);
 			}
 		}
-
-
 	}
 
 	public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
 		abilities.Draw(gameTime, spriteBatch);
-		if (invincibleTime.val < 0 || (int)(invincibleTime.val*10)%2==0) {
+		if (invincibleTime.val < 0 || (int)(invincibleTime.val * 10) % 2 == 0) {
 			render.Draw(gameTime, spriteBatch);
 		}
 		showBounds.Draw(spriteBatch);
 
 		spriteBatch.DrawString(Assets.font, "COMBO:" + combo.val, new Vector2(1, 5), Color.Red);
+	}
 
-
+	public void upgradeGun() {
+		if (abilities.weapon < 2) {
+			abilities.weapon += 1;
+		}
 	}
 }
 

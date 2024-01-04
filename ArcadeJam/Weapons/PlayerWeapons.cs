@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Globalization;
 using ArcadeJam.Weapons;
 using Engine.Core.Data;
 using Engine.Core.Nodes;

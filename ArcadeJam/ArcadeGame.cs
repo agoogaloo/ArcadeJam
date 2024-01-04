@@ -83,8 +83,10 @@ public class ArcadeGame : Game {
 		InputHandler.addAnalogBind("U", GPadInput.LStickUp);
 		InputHandler.addAnalogBind("D", GPadInput.LStickDown);
 
-		NodeManager.AddNode(new Player(score));
-		LevelManager.startLevels();
+		Player p = new Player(score);
+
+		NodeManager.AddNode(p);
+		LevelManager.startLevels(p);
 
 
 	}

@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ArcadeJam;
 
 public class PlayerAbilities {
+    private PlayerWeapon[] upgrades;
     private const float yoinkAccel = 600, baseSpeed = 90, speedMulti = 30;
 
     private BoolData focusing = new(false), useInput;
@@ -18,7 +19,8 @@ public class PlayerAbilities {
     private IntData combo;
 
     private Button shootButton = InputHandler.getButton("A"), grappleButton = InputHandler.getButton("B");
-    private PlayerWeapon weapon;
+    
+    public int weapon;
     private Grapple grapple;
 
 
@@ -30,7 +32,8 @@ public class PlayerAbilities {
         this.score = score;
         this.invincibleTime = invincibleTime;
         this.useInput = useInput;
-        weapon = new Level3Gun(bounds, focusing);
+        upgrades = new PlayerWeapon[]{new Level1Gun(bounds, focusing),new Level2Gun(bounds, focusing),new Level3Gun(bounds, focusing)};
+        weapon = 0;
         grapple = new(bounds, combo);
     }
 
@@ -40,7 +43,7 @@ public class PlayerAbilities {
         //inputs
         //shooting
         if (shootButton.Held) {
-            weapon.Use();
+            upgrades[weapon].Use();
         }
         //grappling
         if (grappleButton.Held && !shootButton.Held) {
@@ -51,7 +54,7 @@ public class PlayerAbilities {
             focusing.val = true;
         }
         else { focusing.val = false; }
-        weapon.Update(gameTime);
+        upgrades[weapon].Update(gameTime);
         grapple.Update(gameTime);
 
         useInput.val = false;
