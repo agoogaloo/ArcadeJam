@@ -10,13 +10,13 @@ public class PlayerMovement {
     private FloatRect bounds;
     private FloatData moveSpeed;
 
-    IntData combo;
+    FloatData combo;
     private InputMovement inputMove;
     private VelMovement VelMove;
     private LockToScreen screenLock;
     private BoolData useInput;
 
-    public PlayerMovement(Vector2Data vel, FloatRect bounds, FloatData moveSpeed, IntData combo, BoolData useInput) {
+    public PlayerMovement(Vector2Data vel, FloatRect bounds, FloatData moveSpeed, FloatData combo, BoolData useInput) {
         this.vel = vel;
         this.bounds = bounds;
         this.moveSpeed = moveSpeed;

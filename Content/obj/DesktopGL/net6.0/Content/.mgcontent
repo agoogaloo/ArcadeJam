@@ -7,6 +7,8 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/borders.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/cannonBall.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/chain.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboBar.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboBarBorder.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboCounter.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/darkBullet.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemy.png</File>
@@ -21,6 +23,8 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/playerSmearBullet.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

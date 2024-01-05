@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Net.NetworkInformation;
 using ArcadeJam.Enemies;
 using Engine.Core;
 using Engine.Core.Components;
@@ -34,7 +35,7 @@ public class ArcadeGame : Game {
 
 	public const int width = 200, height = 150, gameWidth = 153, gameHeight = 150;
 	private int screenWidth = width * 3, screenHeight = height * 3;
-	private WindowMode windowMode = WindowMode.WindowedPPerfect;
+	private WindowMode windowMode = WindowMode.FScreenPPerfect;
 	private bool windowToggled = false;
 
 	IntData score = new();
@@ -191,20 +192,27 @@ public class ArcadeGame : Game {
 
 	}
 	private void drawBorder() {
+		String scoreString = score.val.ToString("D6");
+		//combo meter
 		Rectangle comboRect = new(0,0,31,26);
-		comboRect.X = (player.combo.val-1)*31;
-		//drawing the ui stuff around the game
+		comboRect.X = ((int)player.combo.val)*31;
+		if(player.combo.val==1){
+			comboRect.X = 0;
+		}
+		double comboDecimal = player.combo.val-Math.Truncate(player.combo.val);
+		Rectangle comboBarRect = new(32-(int)(32*comboDecimal),0,32,6);
+		
+		//actual drawing
 		graphics.GraphicsDevice.SetRenderTarget(windowTarget);
-
 		GraphicsDevice.Clear(new Color(255, 0, 0));
 		spriteBatch.Begin();
-		spriteBatch.Draw(gameTarget, new Vector2(38,0), Color.White);
-
-		String scoreString = score.val.ToString("D6");
+		spriteBatch.Draw(gameTarget, new Vector2(38,0), Color.White);		
 		spriteBatch.Draw(Assets.borders,Vector2.Zero, Color.White);
 		spriteBatch.Draw(Assets.comboCounter,new Vector2(3,52),comboRect, Color.White);
 		spriteBatch.DrawString(Assets.font, scoreString, new Vector2(1,27),new Color(169,104,104));
-		//NodeManager.Draw(gameTime, spriteBatch);
+		spriteBatch.Draw(Assets.comboBar,new Vector2(4,76),comboBarRect, Color.White);
+		spriteBatch.Draw(Assets.comboBarBorder,new Vector2(4,76), Color.White);
+
 		spriteBatch.End();
 
 

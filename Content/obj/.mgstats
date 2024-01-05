@@ -1,8 +1,10 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/borders.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/borders.xnb","TextureProcessor","Texture2DContent",1326,120085,0.0981881
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/borders.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/borders.xnb","TextureProcessor","Texture2DContent",1180,120085,0.0946358
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/cannonBall.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/cannonBall.xnb","TextureProcessor","Texture2DContent",133,185,0.0014251
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/chain.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/chain.xnb","TextureProcessor","Texture2DContent",139,2497,0.0010102
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboCounter.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/comboCounter.xnb","TextureProcessor","Texture2DContent",1168,19429,0.089526
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboBar.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/comboBar.xnb","TextureProcessor","Texture2DContent",118,853,0.0860214
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboBarBorder.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/comboBarBorder.xnb","TextureProcessor","Texture2DContent",133,829,0.000785
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboCounter.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/comboCounter.xnb","TextureProcessor","Texture2DContent",1313,22653,0.0920765
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/darkBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/darkBullet.xnb","TextureProcessor","Texture2DContent",133,185,0.0003214
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemy.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemy.xnb","TextureProcessor","Texture2DContent",252,625,0.0415178
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemyBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemyBullet.xnb","TextureProcessor","Texture2DContent",210,341,0.0005132

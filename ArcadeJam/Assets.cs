@@ -7,14 +7,16 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ArcadeJam;
 
 public class Assets {
-    public static Texture2D player, PlayerBullet,PlayerSmearBullet, enemy, enemy2, enemyBullet, hook, chain, 
-        borders,comboCounter;
+    public static Texture2D player, PlayerBullet, PlayerSmearBullet, enemy, enemy2, enemyBullet, hook, chain,
+        borders, comboCounter, comboBar, comboBarBorder;
     public static Texture2D pixel = null;
 
     public static SpriteFont font;
     public static void Load(ContentManager manager, Texture2D whitePixel) {
         borders = manager.Load<Texture2D>("borders");
         comboCounter = manager.Load<Texture2D>("comboCounter");
+        comboBar = manager.Load<Texture2D>("comboBar");
+        comboBarBorder = manager.Load<Texture2D>("comboBarBorder");
 
         pixel = whitePixel;
         player = manager.Load<Texture2D>("player");

@@ -27,7 +27,7 @@ public class Grapple {
     private int damage = BaseDamage;
     private Sprite hook = new(Assets.hook), chain = new(Assets.chain);
     FloatRect chainRect = new(0, 0, 3, 0);
-    IntData combo;
+    FloatData combo;
 
 
 
@@ -44,7 +44,7 @@ public class Grapple {
 
 
 
-    public Grapple(FloatRect shipBounds, IntData combo) {
+    public Grapple(FloatRect shipBounds, FloatData combo) {
         this.shipBounds = shipBounds;
         this.combo = combo;
 
@@ -66,12 +66,14 @@ public class Grapple {
             case GrappleState.yoink:
                 if (shipBounds.Top < hookBounds.Bottom) {
                     grappleState = GrappleState.hit;
-                    damage = BaseDamage + ((combo.val - 1) * damageMulti);
+                    damage = (int)(BaseDamage + ((combo.val - 1) * damageMulti));
                     target.Health.val -= damage;
-                    if (combo.val < 6) {
+                    if (combo.val == 1) {
                         combo.val++;
                     }
-
+                    else {
+                        combo.val = Math.Min((int)Math.Truncate(combo.val) + 2, 7);
+                    }
                 }
                 break;
             case GrappleState.reloading:
