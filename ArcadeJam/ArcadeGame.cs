@@ -183,7 +183,7 @@ public class ArcadeGame : Game {
 
 		String info = "FPS: " + Math.Round(10 / gameTime.ElapsedGameTime.TotalSeconds)/10;
         spriteBatch.DrawString(Assets.font, info, new Vector2(1, -5), Color.White);
-		spriteBatch.DrawString(Assets.font, "COMBO:" + GamePad.GetState(1).Buttons.ToString(), new Vector2(1, 5), Color.Red);
+		spriteBatch.DrawString(Assets.font, "COMBO:" + GamePad.GetState(PlayerIndex.One).Buttons.ToString(), new Vector2(1, 5), Color.Red);
 		spriteBatch.End();
 
 
