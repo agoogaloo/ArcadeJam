@@ -11,11 +11,13 @@ public class Collision {
     private static Dictionary<String, Dictionary<FloatRect, Node>> groupDict = new();
 
     private String group;
-    String Group{get=>group;set{
-        groupDict[group].Remove(bounds);
-        group = value;
-        groupDict[group].Add(bounds, node);    
-    }}
+    String Group {
+        get => group; set {
+            groupDict[group].Remove(bounds);
+            group = value;
+            groupDict[group].Add(bounds, node);
+        }
+    }
     private FloatRect bounds;
     private Node node;
     private List<Node> collisions;
@@ -32,12 +34,12 @@ public class Collision {
 
     }
     public void Update() {
-        Update( new string[] { group });
+        Update(new string[] { group });
     }
 
     public void Update(params String[] groups) {
-        if (node!=null && !node.Alive) {
-            end();
+        if (node != null && !node.Alive) {
+            Remove();
             return;
         }
         if (collisions == null) {
@@ -56,8 +58,15 @@ public class Collision {
         }
 
     }
-    public void end(){
+    public void Remove() {
         groupDict[group].Remove(bounds);
+    }
+    public void Readd() {
+        if (!groupDict.ContainsKey(group)) {
+            groupDict.Add(group, new Dictionary<FloatRect, Node>());
+        }
+        groupDict[group].Add(bounds, node);
+
     }
 }
 

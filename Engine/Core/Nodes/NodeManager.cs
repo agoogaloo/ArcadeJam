@@ -47,12 +47,19 @@ public class NodeManager {
         for (int i = nodes.Count - 1; i >= 0; i--) {
             nodes[i].Draw(gameTime, batch);
         }
-        String info = "NODES: " + nodes.Count + "\nFPS: " + Math.Round(10 / gameTime.ElapsedGameTime.TotalSeconds)/10;
+        String info = "NODES: " + nodes.Count + "\nFPS: " + Math.Round(10 / gameTime.ElapsedGameTime.TotalSeconds) / 10;
         //batch.DrawString(Assets.font, info, new Vector2(1, -5), Color.White);
 
     }
     public static void AddNode(Node node) {
         nodesToAdd.Add(node);
 
+    }
+    public static void clearNodes() {
+        for (int i = nodes.Count - 1; i >= 0; i--) {
+            nodes[i].End();
+            nodes.RemoveAt(i);
+        }
+        nodesToAdd.Clear();
     }
 }

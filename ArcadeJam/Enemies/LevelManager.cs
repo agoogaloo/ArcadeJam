@@ -27,6 +27,7 @@ public class LevelManager {
     }
     public static void startLevels(Player playerVal) {
         player = playerVal;
+        currentLevel = 0;
         levels[currentLevel].Start();
         started = true;
 

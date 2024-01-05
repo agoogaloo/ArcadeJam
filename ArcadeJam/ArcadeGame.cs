@@ -41,7 +41,7 @@ public class ArcadeGame : Game {
 	IntData score = new();
 
 
-	Player player;
+	public static Player player;
 	public ArcadeGame() {
 		graphics = new GraphicsDeviceManager(this);
 		Content.RootDirectory = "Content";
@@ -59,7 +59,7 @@ public class ArcadeGame : Game {
 		//window settings
 		graphics.PreferredBackBufferWidth = width * 3;
 		graphics.PreferredBackBufferHeight = height * 3;
-		graphics.ApplyChanges();
+		
 
 		PresentationParameters pp = graphics.GraphicsDevice.PresentationParameters;
 		windowTarget = new(graphics.GraphicsDevice, width, height, false,
@@ -69,8 +69,13 @@ public class ArcadeGame : Game {
 			GraphicsDevice.PresentationParameters.BackBufferFormat,
 			DepthFormat.Depth24);
 
+		/*CycleWindowSettings();
 		CycleWindowSettings();
-		CycleWindowSettings();
+		CycleWindowSettings();*/
+
+		/*****REMEMBER TO UNCOMMENT THIS WHEN YOU RELEASE TO THE CABINET*****/
+		//graphics.IsFullScreen = true;
+		graphics.ApplyChanges();
 
 		
 
@@ -78,7 +83,7 @@ public class ArcadeGame : Game {
 		//adding all the input bindings
 		InputHandler.addButtonBind("A", Keys.X);
 		InputHandler.addButtonBind("B", Keys.Z);
-		InputHandler.addButtonBind("A", GPadInput.A);
+		InputHandler.addButtonBind("A", GPadInput.Y);
 		InputHandler.addButtonBind("B", GPadInput.B);
 		InputHandler.addAnalogBind("L", Keys.Left);
 		InputHandler.addAnalogBind("R", Keys.Right);
@@ -111,6 +116,9 @@ public class ArcadeGame : Game {
 		InputHandler.Update();
 
 		NodeManager.Update(gameTime);
+		if (!player.Alive){
+			gameOver();
+		}
 		LevelManager.Update(gameTime);
 		//changing window modes if they press f11
 		if (Keyboard.GetState().IsKeyDown(Keys.F12)) {
@@ -183,9 +191,8 @@ public class ArcadeGame : Game {
 
 		String info = "FPS: " + Math.Round(10 / gameTime.ElapsedGameTime.TotalSeconds)/10;
         spriteBatch.DrawString(Assets.font, info, new Vector2(1, -5), Color.White);
-		spriteBatch.DrawString(Assets.font, "COMBO:" + GamePad.GetState(PlayerIndex.One).Buttons.ToString(), new Vector2(1, 5), Color.Red);
+		//spriteBatch.DrawString(Assets.font,  GamePad.GetState(PlayerIndex.One).Buttons.ToString(), new Vector2(1, 5), Color.Red);
 		spriteBatch.End();
-
 
 		base.Draw(gameTime);
 	}
@@ -220,7 +227,22 @@ public class ArcadeGame : Game {
 		spriteBatch.Draw(Assets.comboBar,new Vector2(4,76),comboBarRect, Color.White);
 		spriteBatch.Draw(Assets.comboBarBorder,new Vector2(4,76), Color.White);
 
+		for(int i=0;i<player.lives.val;i++){
+			spriteBatch.Draw(Assets.lives,new Vector2(4+6*i,139), Color.White);
+		}
+
 		spriteBatch.End();
+
+
+	}
+
+	public void gameOver(){
+		NodeManager.clearNodes();
+		score.val = 0;
+		player = new Player(score);
+
+		NodeManager.AddNode(player);
+		LevelManager.startLevels(player);
 
 
 

@@ -20,8 +20,8 @@ public class Player : Node {
 	Vector2Data Vel { get; set; } = new(new Vector2(0, 0));
 	FloatData moveSpeed = new(1.5f);
 
-	public FloatData combo{ get; private set;} = new FloatData(1);
-	IntData score;
+	public FloatData combo { get; private set; } = new FloatData(1);
+	public IntData score, lives = new IntData(3), grappleDamage = new();
 	Sprite Sprite { get; set; } = new Sprite(Assets.player);
 	List<Node> collisions = new();
 
@@ -42,7 +42,7 @@ public class Player : Node {
 		renderHeight = 1;
 		BoolData useInput = new(true);
 		movement = new(Vel, Bounds, moveSpeed, combo, useInput);
-		abilities = new(Bounds, Vel, moveSpeed, combo, invincibleTime, useInput, score);
+		abilities = new(Bounds, Vel, moveSpeed, combo, invincibleTime, useInput, score, grappleDamage);
 		render = new(Sprite, Bounds);
 		showBounds = new(Bounds);
 		collision = new(Bounds, this, "player", collisions);
@@ -65,14 +65,16 @@ public class Player : Node {
 				b.OnHit();
 				if (invincibleTime.val < 0f) {
 					combo.val = 1;
+					lives.val--;
 					if (abilities.weapon >= 1) {
 						abilities.weapon--;
 					}
+					if (lives.val < 0) {
+						Alive = false;
+					}
+
 					invincibleTime.val = 3;
 				}
-			}
-			else {
-				Console.WriteLine("hit by somthing else" + i);
 			}
 		}
 	}
@@ -83,7 +85,7 @@ public class Player : Node {
 			render.Draw(gameTime, spriteBatch);
 		}
 		showBounds.Draw(spriteBatch);
-		
+
 
 		//spriteBatch.DrawString(Assets.font, "COMBO:" + combo.val, new Vector2(1, 5), Color.Red);
 	}

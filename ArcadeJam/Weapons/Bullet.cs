@@ -71,7 +71,7 @@ public abstract class Bullet : Node {
         movement.Draw(gameTime, spriteBatch);
     }
     public override void End() {
-        collision.Update(null);
+        collision.Remove();
     }
 
 }

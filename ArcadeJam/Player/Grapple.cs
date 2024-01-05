@@ -21,13 +21,14 @@ public class Grapple {
 
     public GrappleState grappleState = GrappleState.loaded;
 
-    private const float shootSpeed = 300, reloadAccel = 160;
+    private const float shootSpeed = 400, reloadAccel = 160;
     private const int BaseDamage = 20, damageMulti = 5, yoinkSpeed = 120;
     private float hookSpeed = 0;
     private int damage = BaseDamage;
     private Sprite hook = new(Assets.hook), chain = new(Assets.chain);
     FloatRect chainRect = new(0, 0, 3, 0);
     FloatData combo;
+    IntData grappleDamage;
 
 
 
@@ -44,9 +45,10 @@ public class Grapple {
 
 
 
-    public Grapple(FloatRect shipBounds, FloatData combo) {
+    public Grapple(FloatRect shipBounds, FloatData combo, IntData grappleDamage) {
         this.shipBounds = shipBounds;
         this.combo = combo;
+        this.grappleDamage = grappleDamage;
 
         collision = new(hookBounds, null, "grapple", collisions);
         hookRenderer = new(hook, hookBounds);
@@ -55,35 +57,43 @@ public class Grapple {
     public void Update(GameTime gameTime) {
         //Console.WriteLine("grapple state:" + grappleState);
         hookBounds.x = shipBounds.Centre.X - hookBounds.width / 2;
+        grappleDamage.val = (int)(BaseDamage + ((combo.val - 1) * damageMulti));
         switch (grappleState) {
             case GrappleState.loaded:
                 hookBounds.y = shipBounds.y - 5;
                 chainRect.height = 0;
                 return;
+
             case GrappleState.shooting:
                 shootUpdate(gameTime);
                 break;
+
             case GrappleState.yoink:
                 if (shipBounds.Top < hookBounds.Bottom) {
                     grappleState = GrappleState.hit;
-                    damage = (int)(BaseDamage + ((combo.val - 1) * damageMulti));
-                    target.Health.val -= damage;
-                    if (combo.val == 1) {
-                        combo.val++;
-                    }
-                    else {
-                        combo.val = Math.Min((int)Math.Truncate(combo.val) + 2, 7);
-                    }
                 }
                 break;
+
+            case GrappleState.hit:
+                grappleState = GrappleState.loaded;
+                target.GrappleHit(grappleDamage.val);
+                if (combo.val == 1) {
+                    combo.val++;
+                }
+                else {
+                    combo.val = Math.Min((int)Math.Truncate(combo.val) + 2, 7);
+                }
+                
+                break;
+
             case GrappleState.reloading:
                 hookSpeed += (float)(reloadAccel * gameTime.ElapsedGameTime.TotalSeconds);
                 hookBounds.y += (float)(hookSpeed * gameTime.ElapsedGameTime.TotalSeconds);
                 if (hookBounds.Bottom >= shipBounds.Top) {
                     grappleState = GrappleState.loaded;
                 }
-
                 break;
+
         }
 
     }
@@ -101,19 +111,27 @@ public class Grapple {
 
         }
         //grappling enemies it hits
-        collision.Update("enemy");
+        collision.Update("grapple");
         foreach (Node i in collisions) {
             if (i is Enemy e) {
                 target = e;
                 grappleState = GrappleState.yoink;
-
             }
-
         }
-        //stopping if it goes off screen
-        if (hookBounds.y < 0) {
+        collision.Update("enemy");
+        if (grappleState == GrappleState.yoink) {
+            target.GrappleStun();
+        }
+        
+        else if (collisions.Count > 0) {
             grappleState = GrappleState.reloading;
-            hookSpeed = 0;
+            hookSpeed = 75;
+        }
+        
+        //stopping if it goes off screen
+        else if (hookBounds.y < 0) {
+            grappleState = GrappleState.reloading;
+            hookSpeed = 75;
         }
     }
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {

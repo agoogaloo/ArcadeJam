@@ -32,5 +32,8 @@ public class EnemyDamage {
         }
         
     }
+    public void End(){
+        collision.Remove();
+    }
 }
 
