@@ -83,8 +83,9 @@ public class Player : Node {
 			render.Draw(gameTime, spriteBatch);
 		}
 		showBounds.Draw(spriteBatch);
+		
 
-		spriteBatch.DrawString(Assets.font, "COMBO:" + combo.val, new Vector2(1, 5), Color.Red);
+		//spriteBatch.DrawString(Assets.font, "COMBO:" + combo.val, new Vector2(1, 5), Color.Red);
 	}
 
 	public void upgradeGun() {

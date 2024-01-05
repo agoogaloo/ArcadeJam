@@ -21,6 +21,9 @@ public class InputMovement {
     }
 
     public void Update(GameTime gameTime) {
+        Vector2 direction = new(right.Value-left.Value,down.Value-up.Value);
+
+        
 
         vel.val.X=(float)((right.Value-left.Value)*moveSpeed.val);
         vel.val.Y=(float)((down.Value-up.Value)*moveSpeed.val);

@@ -35,7 +35,7 @@ public class ArcadeGame : Game {
 
 	public const int width = 200, height = 150, gameWidth = 153, gameHeight = 150;
 	private int screenWidth = width * 3, screenHeight = height * 3;
-	private WindowMode windowMode = WindowMode.FScreenPPerfect;
+	private WindowMode windowMode = WindowMode.WindowedPPerfect;
 	private bool windowToggled = false;
 
 	IntData score = new();
@@ -68,6 +68,9 @@ public class ArcadeGame : Game {
 		gameTarget = new(graphics.GraphicsDevice, gameWidth, gameHeight, false,
 			GraphicsDevice.PresentationParameters.BackBufferFormat,
 			DepthFormat.Depth24);
+
+		CycleWindowSettings();
+		CycleWindowSettings();
 
 		
 
@@ -177,6 +180,10 @@ public class ArcadeGame : Game {
 		GraphicsDevice.Clear(Color.Black);
 
 		spriteBatch.Draw(windowTarget, destinationRect, Color.White);
+
+		String info = "FPS: " + Math.Round(10 / gameTime.ElapsedGameTime.TotalSeconds)/10;
+        spriteBatch.DrawString(Assets.font, info, new Vector2(1, -5), Color.White);
+		spriteBatch.DrawString(Assets.font, "COMBO:" + GamePad.GetState(1).Buttons.ToString(), new Vector2(1, 5), Color.Red);
 		spriteBatch.End();
 
 
