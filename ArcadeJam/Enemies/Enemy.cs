@@ -68,7 +68,7 @@ public class Enemy : Node,IGrappleable {
     }
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
         
-        renderer.Draw(gameTime, spriteBatch);
+        renderer.Draw( spriteBatch);
         hitBoxVisualizer.bounds = grappleBounds;
         hitBoxVisualizer.Draw(spriteBatch);
         hitBoxVisualizer.bounds = bounds;

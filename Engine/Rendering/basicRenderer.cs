@@ -7,7 +7,11 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Engine.Core.Components;
-public class PointRender {
+
+public interface IRenderer{
+    public void Draw( SpriteBatch spriteBatch,GameTime gameTime = null);
+}
+public class PointRender:IRenderer {
     private Sprite sprite;
     private Vector2Data position;
     private bool centred;
@@ -19,7 +23,7 @@ public class PointRender {
         this.centred = centred;
     }
 
-    public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
+    public void Draw( SpriteBatch spriteBatch,GameTime gameTime = null) {
         int x = (int)Math.Round(position.val.X), y = (int)Math.Round(position.val.Y);
         if (centred){
             x-=(int)(sprite.texture.Width/2+0.5);
@@ -30,7 +34,7 @@ public class PointRender {
 
 
 }
-public class RectRender {
+public class RectRender:IRenderer {
     private Sprite sprite;
     private FloatRect bounds;
 
@@ -40,7 +44,7 @@ public class RectRender {
         this.bounds = bounds;
     }
 
-    public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
+    public void Draw(SpriteBatch spriteBatch, GameTime gameTime = null) {
 
         int x = (int)(bounds.x + (bounds.width - sprite.texture.Width) / 2 + 0.5);
         int y = (int)(bounds.y + (bounds.height - sprite.texture.Height) / 2 + 0.5);
@@ -57,7 +61,7 @@ public class RectRender {
 
 }
 
-public class RectVisualizer {
+public class RectVisualizer:IRenderer {
 
     public FloatRect bounds;
 
@@ -67,7 +71,7 @@ public class RectVisualizer {
         this.bounds = bounds;
     }
 
-    public void Draw(SpriteBatch spriteBatch) {
+    public void Draw(SpriteBatch spriteBatch, GameTime gameTime = null) {
         Rectangle drawRect = new((int)(bounds.x + 0.5), (int)(bounds.y + 0.5),
             (int)Math.Round(bounds.width - 1), (int)Math.Round(bounds.height - 1));
 
@@ -76,7 +80,7 @@ public class RectVisualizer {
     }
 }
 
-public class CropRender {
+public class CropRender:IRenderer {
     Sprite sprite;
     FloatRect drawRect;
 
@@ -85,11 +89,9 @@ public class CropRender {
         this.drawRect = drawRect;
     }
 
-    public void Draw(SpriteBatch spriteBatch) {
+    public void Draw(SpriteBatch spriteBatch, GameTime gameTime = null) {
         Vector2 drawLoc = new Vector2((int)(drawRect.x + 0.5), (int)(drawRect.y + 0.5));
         Rectangle sourceRect = new(0, 0, (int)(drawRect.width + 0.5), (int)(drawRect.height + 0.5));
         spriteBatch.Draw(sprite.texture, drawLoc, sourceRect, Color.White);
-
-
     }
 }

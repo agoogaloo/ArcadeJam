@@ -76,7 +76,7 @@ public class CrabBoss : Node, IGrappleable {
     }
 
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-        renderer.Draw(gameTime, spriteBatch);
+        renderer.Draw( spriteBatch);
         leftClaw.Draw(gameTime, spriteBatch);
         rightClaw.Draw(gameTime, spriteBatch);
 
@@ -160,9 +160,9 @@ public class Claw {
 
         }
         foreach (PointRender i in armSegs) {
-            i.Draw(gameTime, spriteBatch);
+            i.Draw( spriteBatch);
         }
-        renderer.Draw(gameTime, spriteBatch);
+        renderer.Draw( spriteBatch);
         hitBoxVisualizer.Draw(spriteBatch);
 
 

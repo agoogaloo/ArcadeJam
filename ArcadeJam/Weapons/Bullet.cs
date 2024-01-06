@@ -32,7 +32,7 @@ public class BulletBasicMovement {
 
     }
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-        renderer.Draw(gameTime, spriteBatch);
+        renderer.Draw( spriteBatch);
         boundsVisualizer.Draw(spriteBatch);
 
     }

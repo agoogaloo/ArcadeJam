@@ -140,7 +140,7 @@ public class Grapple {
         chainRect.y = hookBounds.Bottom;
         chainRect.height = shipBounds.Top - hookBounds.Bottom;
         chainRenderer.Draw(spriteBatch);
-        hookRenderer.Draw(gameTime, spriteBatch);
+        hookRenderer.Draw( spriteBatch);
     }
 
     public void Shoot() {

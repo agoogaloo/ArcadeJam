@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 namespace ArcadeJam;
 
 public class LevelManager {
-    static Level[] levels = {new CrabBossStage(), new ShipBossStage(), new Enemies.Level1(), new Level2(), new Level3() };
+    static Level[] levels = {new Level1(), new CrabBossStage(), new ShipBossStage(), new Level1(), new Level2(), new Level3() };
     static int currentLevel = 0;
     static bool started = false;
 
