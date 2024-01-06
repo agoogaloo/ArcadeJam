@@ -18,6 +18,7 @@ public class Sprite {
 
 public class Vector2Data {
     public Vector2 val;
+    public Vector2Data():this(Vector2.Zero) {  }
     public Vector2Data(Vector2 value) {
         this.val = value;
     }

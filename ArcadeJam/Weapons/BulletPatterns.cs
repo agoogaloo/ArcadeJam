@@ -24,7 +24,7 @@ public abstract class EnemyWeapon {
     public virtual void Update(GameTime gameTime) {
         timeLeft -= gameTime.ElapsedGameTime.TotalSeconds;
         if (timeLeft < 0) {
-            timeLeft = delay.val+timeLeft;
+            timeLeft = delay.val + timeLeft;
             Shoot();
         }
     }
@@ -55,8 +55,34 @@ public class Tripple : EnemyWeapon {
 
     protected override void Shoot() {
         FireAtAngle(180, speed);
-        FireAtAngle(180-angle, speed);
-        FireAtAngle(180+angle, speed);
+        FireAtAngle(180 - angle, speed);
+        FireAtAngle(180 + angle, speed);
+    }
+}
+public class SpreadAlternating : EnemyWeapon {
+    private float angle, rowAngle;
+    private int rows;
+    private bool switched;
+    public SpreadAlternating(FloatRect pos, float delay = 1, float angle = 60, int rows = 5, float speed = 60) : base(pos, delay, speed) {
+        this.angle = angle;
+        this.rows = rows;
+        rowAngle = angle * 2 / rows;
+    }
+
+    protected override void Shoot() {
+        switched = !switched;
+        if (switched) {
+            for (int i = 0; i <= rows; i++) {
+                FireAtAngle(180 - angle + (rowAngle * i), speed);
+            }
+
+        }
+        else {
+            for (int i =0; i < rows; i++) {
+                FireAtAngle(180 - angle + (rowAngle * i) + rowAngle / 2, speed);
+            }
+        }
+
     }
 }
 
@@ -71,13 +97,13 @@ public class Spiral : EnemyWeapon {
 
     }
     public override void Update(GameTime gameTime) {
-		base.Update(gameTime);
-        angle+=(float)(spinSpeed*gameTime.ElapsedGameTime.TotalSeconds);
-	}
+        base.Update(gameTime);
+        angle += (float)(spinSpeed * gameTime.ElapsedGameTime.TotalSeconds);
+    }
 
     protected override void Shoot() {
         for (int i = 1; i <= prongs; i++) {
-            FireAtAngle(angle+i*360/prongs, speed);
+            FireAtAngle(angle + i * 360 / prongs, speed);
         }
     }
 

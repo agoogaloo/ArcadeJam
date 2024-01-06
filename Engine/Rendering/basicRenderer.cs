@@ -3,21 +3,28 @@ using System.Collections.Generic;
 using ArcadeJam;
 using Engine.Core.Data;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Engine.Core.Components;
 public class PointRender {
     private Sprite sprite;
     private Vector2Data position;
+    private bool centred;
 
 
-    public PointRender(Sprite sprite, Vector2Data position) {
+    public PointRender(Sprite sprite, Vector2Data position, bool centred = false) {
         this.sprite = sprite;
         this.position = position;
+        this.centred = centred;
     }
 
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
         int x = (int)Math.Round(position.val.X), y = (int)Math.Round(position.val.Y);
+        if (centred){
+            x-=(int)(sprite.texture.Width/2+0.5);
+            y -=(int)(sprite.texture.Width/2+0.5);
+        }
         spriteBatch.Draw(sprite.texture, new Vector2(x, y), Color.White);
     }
 
