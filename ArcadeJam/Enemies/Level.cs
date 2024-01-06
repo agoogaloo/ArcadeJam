@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 namespace ArcadeJam.Enemies;
 
 public class Level {
-    protected Enemy[] enemies;
+    protected Node[] enemies;
     public bool Cleared { get; protected set; } = false;
 
     public virtual void Start() {
@@ -17,13 +17,13 @@ public class Level {
         addEnemies();
     }
     protected void addEnemies() {
-        foreach (Enemy i in enemies) {
+        foreach (Node i in enemies) {
             NodeManager.AddNode(i);
         }
     }
     public void Update(GameTime gameTime) {
         Cleared = true;
-        foreach (Enemy i in enemies) {
+        foreach (Node i in enemies) {
             if (i.Alive) {
                 Cleared = false;
             }
@@ -77,6 +77,13 @@ public class Level3 : Level {
 public class ShipBossStage : Level {
     public override void Start() {
         enemies = new Enemy[]{new ShipBoss()};
+        addEnemies();
+    }
+
+}
+public class CrabBossStage : Level {
+    public override void Start() {
+       enemies = new Node[]{new CrabBoss()};
         addEnemies();
     }
 
