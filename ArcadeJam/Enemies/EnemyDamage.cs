@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using ArcadeJam.Weapons;
 using Engine.Core.Data;
 using Engine.Core.Nodes;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ArcadeJam.Enemies;
 
@@ -14,11 +15,16 @@ public class EnemyDamage {
     FloatRect bounds;
     Collision collision;
 
+    Sprite sprite;
+    Texture2D damageTex;
 
 
-    public EnemyDamage(FloatRect bounds, Node enemy, IntData health) {
+
+    public EnemyDamage(FloatRect bounds, Node enemy, IntData health, Sprite sprite, Texture2D damageTex) {
         this.health = health;
         this.enemy = enemy;
+        this.sprite = sprite;
+        this.damageTex = damageTex;
         collision = new(bounds, null, "enemy", collisionList);
     }
 
@@ -28,6 +34,7 @@ public class EnemyDamage {
             if (i is PlayerBullet b) {
                 b.OnHit();
                 health.val -= b.Damage;
+                sprite.texture = damageTex;
             }
         }
         

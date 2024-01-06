@@ -3,7 +3,7 @@
   <SourceFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBoss.png</SourceFile>
   <SourceTime>2024-01-05T15:51:36.4255821-07:00</SourceTime>
   <DestFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/shipBoss.xnb</DestFile>
-  <DestTime>2024-01-05T16:01:08.1131018-07:00</DestTime>
+  <DestTime>2024-01-06T15:49:18.3054568-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T05:44:56-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

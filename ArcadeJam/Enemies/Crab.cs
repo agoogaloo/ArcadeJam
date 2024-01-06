@@ -17,7 +17,7 @@ public enum Movements {
 public class CrabBoss : Node, IGrappleable {
     IntData health = new(150), phase = new(0);
     FloatRect bounds = new(0, 0, 75, 48);
-    Sprite sprite = new(Assets.crabBody);
+    Sprite sprite = new(Assets.crabBody[0]);
     Claw leftClaw;
     Claw rightClaw;
 
@@ -31,7 +31,7 @@ public class CrabBoss : Node, IGrappleable {
         rightClaw = new(false, bounds);
         renderer = new(sprite, bounds);
         movement = new(leftClaw.Bounds, rightClaw.Bounds, bounds);
-        damager = new(bounds, null, health);
+        damager = new(bounds, null, health, sprite, Assets.crabBody[2]);
 
     }
 
@@ -100,6 +100,7 @@ public class CrabBoss : Node, IGrappleable {
 
 public class Claw {
     bool left;
+    Texture2D[] textures;
     IntData health = new(150), phase = new(0);
     public FloatRect Bounds { get; private set; } = new(0, 0, 24, 28);
     FloatRect bodyBounds;
@@ -119,11 +120,13 @@ public class Claw {
         currentPattern = new SpreadAlternating(Bounds);
         this.bodyBounds = bodyBounds;
         if (left) {
-            sprite = new(Assets.clawL);
+            textures = Assets.clawL;
+            
         }
         else {
-            sprite = new(Assets.clawR);
+           textures = Assets.clawR;
         }
+        sprite = new(textures[0]);
         armSegs = new PointRender[armLocs.Length];
         for (int i = 0; i < armLocs.Length; i++) {
             Console.WriteLine(armLocs[i]);
@@ -131,7 +134,7 @@ public class Claw {
         }
 
         renderer = new(sprite, Bounds);
-        damager = new(Bounds, null, health);
+        damager = new(Bounds, null, health, sprite, textures[2]);
         hitBoxVisualizer = new(Bounds);
 
 
