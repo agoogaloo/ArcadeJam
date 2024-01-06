@@ -1,12 +1,17 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/borders.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/borders.xnb","TextureProcessor","Texture2DContent",1180,120085,0.0946358
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/borders.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/borders.xnb","TextureProcessor","Texture2DContent",1144,120085,0.1389482
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/cannonBall.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/cannonBall.xnb","TextureProcessor","Texture2DContent",133,185,0.0014251
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/chain.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/chain.xnb","TextureProcessor","Texture2DContent",139,2497,0.0010102
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboBar.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/comboBar.xnb","TextureProcessor","Texture2DContent",118,853,0.0860214
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboBarBorder.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/comboBarBorder.xnb","TextureProcessor","Texture2DContent",133,829,0.000785
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboCounter.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/comboCounter.xnb","TextureProcessor","Texture2DContent",1313,22653,0.0920765
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/darkBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/darkBullet.xnb","TextureProcessor","Texture2DContent",133,185,0.0003214
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemy.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemy.xnb","TextureProcessor","Texture2DContent",252,625,0.0415178
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabArm.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabArm.xnb","TextureProcessor","Texture2DContent",140,761,0.0862612
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabBody.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabBody.xnb","TextureProcessor","Texture2DContent",860,14485,0.0968462
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawL.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabClawL.xnb","TextureProcessor","Texture2DContent",357,2773,0.0870625
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawR.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabClawR.xnb","TextureProcessor","Texture2DContent",366,2773,0.0013637
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/enemy.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/enemy.xnb","TextureProcessor","Texture2DContent",252,625,0.0860475
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBoss.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/shipBoss.xnb","TextureProcessor","Texture2DContent",446,3213,0.0017439
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemyBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemyBullet.xnb","TextureProcessor","Texture2DContent",210,341,0.0005132
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/hook.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/hook.xnb","TextureProcessor","Texture2DContent",126,145,0.0005327
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/iceWall.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/iceWall.xnb","TextureProcessor","Texture2DContent",402,1621,0.0004843

@@ -74,3 +74,10 @@ public class Level3 : Level {
     }
 
 }
+public class ShipBossStage : Level {
+    public override void Start() {
+        enemies = new Enemy[]{new ShipBoss()};
+        addEnemies();
+    }
+
+}

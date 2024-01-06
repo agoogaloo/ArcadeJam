@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ArcadeJam.Enemies;
 
-public class Enemy : Node {
+public class Enemy : Node,IGrappleable {
     public IntData Health { get; protected set; } = new IntData(20);
     protected Sprite sprite = new(Assets.enemy);
     protected Vector2Data vel;
@@ -22,7 +22,7 @@ public class Enemy : Node {
     protected EnemyWeapon weapon;
     protected Collision grappleCollision;
     protected FloatRect grappleBounds;
-    RectVisualizer grapleVisualizer;
+    RectVisualizer hitBoxVisualizer;
     protected bool stunned = false, grappleable = false;
 
 
@@ -39,9 +39,7 @@ public class Enemy : Node {
         damager = new(bounds, this, Health);
         grappleCollision = new(grappleBounds, this, "grapple");
         grappleCollision.Remove();
-        grapleVisualizer = new(grappleBounds);
-
-
+        hitBoxVisualizer = new(grappleBounds);
     }
 
 
@@ -71,10 +69,10 @@ public class Enemy : Node {
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
         
         renderer.Draw(gameTime, spriteBatch);
-        grapleVisualizer.bounds = grappleBounds;
-        grapleVisualizer.Draw(spriteBatch);
-        grapleVisualizer.bounds = bounds;
-        grapleVisualizer.Draw(spriteBatch);
+        hitBoxVisualizer.bounds = grappleBounds;
+        hitBoxVisualizer.Draw(spriteBatch);
+        hitBoxVisualizer.bounds = bounds;
+        hitBoxVisualizer.Draw(spriteBatch);
     }
 
     public void GrappleStun() {

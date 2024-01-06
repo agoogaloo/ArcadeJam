@@ -19,7 +19,7 @@ public class EnemyDamage {
     public EnemyDamage(FloatRect bounds, Node enemy, IntData health) {
         this.health = health;
         this.enemy = enemy;
-        collision = new(bounds, enemy, "enemy", collisionList);
+        collision = new(bounds, null, "enemy", collisionList);
     }
 
     public void Update() {

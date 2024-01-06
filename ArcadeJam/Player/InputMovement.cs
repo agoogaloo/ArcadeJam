@@ -17,17 +17,18 @@ public class InputMovement {
     public InputMovement(Vector2Data vel, FloatData moveSpeed) {
         this.vel = vel;
         this.moveSpeed = moveSpeed;
-       
+
     }
 
     public void Update(GameTime gameTime) {
-        Vector2 direction = new(right.Value-left.Value,down.Value-up.Value);
+        Vector2 direction = new(right.Value - left.Value, down.Value - up.Value);
+        if (direction.LengthSquared() > 0) {
+            direction.Normalize();
+        }
+        vel.val = direction * moveSpeed.val;
+        //Console.WriteLine(vel.val);
+      
 
-        
-
-        vel.val.X=(float)((right.Value-left.Value)*moveSpeed.val);
-        vel.val.Y=(float)((down.Value-up.Value)*moveSpeed.val);
-        
     }
 }
 

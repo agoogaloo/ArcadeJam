@@ -33,7 +33,7 @@ public class Grapple {
 
 
 
-    private Enemy target = null;
+    private IGrappleable target = null;
 
     FloatRect shipBounds, hookBounds = new FloatRect(0, 0, 9, 5);
     Collision collision;
@@ -113,7 +113,7 @@ public class Grapple {
         //grappling enemies it hits
         collision.Update("grapple");
         foreach (Node i in collisions) {
-            if (i is Enemy e) {
+            if (i is IGrappleable e) {
                 target = e;
                 grappleState = GrappleState.yoink;
             }
