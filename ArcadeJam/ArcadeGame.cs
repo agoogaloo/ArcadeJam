@@ -42,6 +42,7 @@ public class ArcadeGame : Game {
 
 
 	public static Player player;
+	private HighScores gameOverScreen;
 	public ArcadeGame() {
 		graphics = new GraphicsDeviceManager(this);
 		Content.RootDirectory = "Content";
@@ -59,7 +60,7 @@ public class ArcadeGame : Game {
 		//window settings
 		graphics.PreferredBackBufferWidth = width * 3;
 		graphics.PreferredBackBufferHeight = height * 3;
-		
+
 
 		PresentationParameters pp = graphics.GraphicsDevice.PresentationParameters;
 		windowTarget = new(graphics.GraphicsDevice, width, height, false,
@@ -77,7 +78,7 @@ public class ArcadeGame : Game {
 		//graphics.IsFullScreen = true;
 		graphics.ApplyChanges();
 
-		
+
 
 
 		//adding all the input bindings
@@ -116,8 +117,8 @@ public class ArcadeGame : Game {
 		InputHandler.Update();
 
 		NodeManager.Update(gameTime);
-		if (!player.Alive){
-			gameOver();
+		if (!player.Alive) {
+			gameOver(gameTime);
 		}
 		LevelManager.Update(gameTime);
 		//changing window modes if they press f11
@@ -189,8 +190,8 @@ public class ArcadeGame : Game {
 
 		spriteBatch.Draw(windowTarget, destinationRect, Color.White);
 
-		String info = "FPS: " + Math.Round(10 / gameTime.ElapsedGameTime.TotalSeconds)/10;
-        spriteBatch.DrawString(Assets.font, info, new Vector2(1, -5), Color.White);
+		String info = "FPS: " + Math.Round(10 / gameTime.ElapsedGameTime.TotalSeconds) / 10;
+		spriteBatch.DrawString(Assets.font, info, new Vector2(1, -5), Color.White);
 		//spriteBatch.DrawString(Assets.font,  GamePad.GetState(PlayerIndex.One).Buttons.ToString(), new Vector2(1, 5), Color.Red);
 		spriteBatch.End();
 
@@ -202,33 +203,36 @@ public class ArcadeGame : Game {
 		GraphicsDevice.Clear(new Color(44, 33, 55));
 		spriteBatch.Begin();
 		NodeManager.Draw(gameTime, spriteBatch);
+		if(gameOverScreen!=null){
+			gameOverScreen.Draw(spriteBatch);
+		}
 		spriteBatch.End();
 
 	}
 	private void drawBorder() {
 		String scoreString = score.val.ToString("D6");
 		//combo meter
-		Rectangle comboRect = new(0,0,31,26);
-		comboRect.X = ((int)player.combo.val)*31;
-		if(player.combo.val==1){
+		Rectangle comboRect = new(0, 0, 31, 26);
+		comboRect.X = ((int)player.combo.val) * 31;
+		if (player.combo.val == 1) {
 			comboRect.X = 0;
 		}
-		double comboDecimal = player.combo.val-Math.Truncate(player.combo.val);
-		Rectangle comboBarRect = new(32-(int)(32*comboDecimal),0,32,6);
-		
+		double comboDecimal = player.combo.val - Math.Truncate(player.combo.val);
+		Rectangle comboBarRect = new(32 - (int)(32 * comboDecimal), 0, 32, 6);
+
 		//actual drawing
 		graphics.GraphicsDevice.SetRenderTarget(windowTarget);
 		GraphicsDevice.Clear(new Color(255, 0, 0));
 		spriteBatch.Begin();
-		spriteBatch.Draw(gameTarget, new Vector2(38,0), Color.White);		
-		spriteBatch.Draw(Assets.borders,Vector2.Zero, Color.White);
-		spriteBatch.Draw(Assets.comboCounter,new Vector2(3,52),comboRect, Color.White);
-		spriteBatch.DrawString(Assets.font, scoreString, new Vector2(1,27),new Color(169,104,104));
-		spriteBatch.Draw(Assets.comboBar,new Vector2(4,76),comboBarRect, Color.White);
-		spriteBatch.Draw(Assets.comboBarBorder,new Vector2(4,76), Color.White);
+		spriteBatch.Draw(gameTarget, new Vector2(38, 0), Color.White);
+		spriteBatch.Draw(Assets.borders, Vector2.Zero, Color.White);
+		spriteBatch.Draw(Assets.comboCounter, new Vector2(3, 52), comboRect, Color.White);
+		spriteBatch.DrawString(Assets.font, scoreString, new Vector2(1, 27), new Color(169, 104, 104));
+		spriteBatch.Draw(Assets.comboBar, new Vector2(4, 76), comboBarRect, Color.White);
+		spriteBatch.Draw(Assets.comboBarBorder, new Vector2(4, 76), Color.White);
 
-		for(int i=0;i<player.lives.val;i++){
-			spriteBatch.Draw(Assets.lives,new Vector2(4+6*i,139), Color.White);
+		for (int i = 0; i < player.lives.val; i++) {
+			spriteBatch.Draw(Assets.lives, new Vector2(4 + 6 * i, 139), Color.White);
 		}
 
 		spriteBatch.End();
@@ -236,14 +240,21 @@ public class ArcadeGame : Game {
 
 	}
 
-	public void gameOver(){
-		NodeManager.clearNodes();
-		score.val = 0;
-		player = new Player(score);
+	public void gameOver(GameTime gameTime) {
+		if (gameOverScreen == null) {
+			gameOverScreen = new HighScores(score.val);
 
-		NodeManager.AddNode(player);
-		LevelManager.startLevels(player);
-
+		}
+		else if (gameOverScreen.finished) {
+			NodeManager.clearNodes();
+			player = new Player(score);
+			NodeManager.AddNode(player);
+			score.val = 0;
+			gameOverScreen = null;
+			LevelManager.startLevels(player);
+		}else{
+			gameOverScreen.Update(gameTime);
+		}
 
 
 	}

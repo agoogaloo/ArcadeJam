@@ -105,7 +105,7 @@ public class IntroChest : Enemy {
     public IntroChest() : base(new Stationary(), Assets.introChest) {
         Health.val = 27;
         weapon = new Nothing();
-        bounds.Centre = new Vector2(71, 70);
+        bounds.Centre = new Vector2(71, 65);
         bounds.width = 14;
         bounds.height = 20;
         grappleBounds.width = 14;
