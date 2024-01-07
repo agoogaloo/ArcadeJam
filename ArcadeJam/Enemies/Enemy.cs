@@ -89,7 +89,7 @@ public class Enemy : Node, IGrappleable {
         stunned = true;
 
     }
-    public void GrappleHit(int damage) {
+    public virtual void GrappleHit(int damage) {
         Health.val -= damage;
         stunned = false;
 
@@ -101,7 +101,31 @@ public class Enemy : Node, IGrappleable {
         grappleCollision.Remove();
     }
 }
+public class IntroChest : Enemy {
+    public IntroChest() : base(new Stationary(), Assets.introChest) {
+        Health.val = 27;
+        weapon = new Nothing();
+        bounds.Centre = new Vector2(71, 70);
+        bounds.width = 14;
+        bounds.height = 20;
+        grappleBounds.width = 14;
+        grappleBounds.height = 20;
 
+    }
+    public override void Update(GameTime gameTime) {
+        if (!grappleable) {
+            base.Update(gameTime);
+        }
+    }
+    public override void GrappleHit(int damage) {
+        Alive = false;
+    }
+    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
+        base.Draw(gameTime, spriteBatch);
+        spriteBatch.Draw(Assets.introText, new Vector2(ArcadeGame.gameWidth / 2 - Assets.introText.Width / 2, 5), Color.White);
+
+    }
+}
 
 public class BasicEnemy : Enemy {
 
@@ -131,5 +155,6 @@ public class SpinEnemy : Enemy {
     }
 
 }
+
 
 

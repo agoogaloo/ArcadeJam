@@ -25,11 +25,15 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/enemyDamage.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/enemyLow.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/iceWall.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/introChest.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/introChestDamage.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/introChestLow.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBoss.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBossDamage.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemyBullet.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/hook.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/icicle.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/introText.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/lightBullet.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/monoFont.spritefont</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png</File>
@@ -37,6 +41,10 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/playerSmearBullet.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

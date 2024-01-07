@@ -38,6 +38,14 @@ public abstract class EnemyWeapon {
     }
 
 }
+public class Nothing : EnemyWeapon {
+	public Nothing() : base(null, 9999999, 0) {
+	}
+
+	protected override void Shoot() {
+		
+	}
+}
 
 public class Straight : EnemyWeapon {
     public Straight(FloatRect pos, float delay = 1) : base(pos, delay) {

@@ -9,10 +9,10 @@ namespace ArcadeJam;
 public class Assets {
     public static Texture2D player, PlayerBullet, PlayerSmearBullet, hook, chain,
         enemyStun, enemyBullet, crabArm,
-        borders, comboCounter, comboBar, comboBarBorder, lives;
+        borders, comboCounter, comboBar, comboBarBorder, lives,introText;
     public static Texture2D pixel = null;
 
-    public static Texture2D[] enemy, enemy2,
+    public static Texture2D[] introChest, enemy, enemy2,
         shipBoss, crabBody, clawL, clawR;
 
     public static SpriteFont font;
@@ -24,6 +24,7 @@ public class Assets {
         comboBar = manager.Load<Texture2D>("comboBar");
         comboBarBorder = manager.Load<Texture2D>("comboBarBorder");
         lives = manager.Load<Texture2D>("lightBullet");
+        introText = manager.Load<Texture2D>("introText");
 
         //player
         player = manager.Load<Texture2D>("player");
@@ -33,7 +34,8 @@ public class Assets {
         hook = manager.Load<Texture2D>("hook");
         chain = manager.Load<Texture2D>("chain");
         //enemies
-        enemy =loadEnemy("enemy", manager);
+        introChest = loadEnemy("introChest", manager);
+        enemy = loadEnemy("enemy", manager);
         enemy2 = loadEnemy("iceWall", manager);
         //bosses
         shipBoss = loadEnemy("shipBoss", manager);
@@ -47,21 +49,23 @@ public class Assets {
         font = manager.Load<SpriteFont>("monoFont");
 
     }
-    private static Texture2D[]loadEnemy(String name, ContentManager manager){
+    private static Texture2D[] loadEnemy(String name, ContentManager manager) {
         Texture2D[] textures = new Texture2D[3];
-        textures[0]= manager.Load<Texture2D>("enemies/"+name);
-        try{
-            textures[1]= manager.Load<Texture2D>("enemies/"+name+"Damage");
-        } catch{
-            Console.WriteLine("couldnt load damage tex for "+name);
-            textures[1]= textures[0];
+        textures[0] = manager.Load<Texture2D>("enemies/" + name);
+        try {
+            textures[1] = manager.Load<Texture2D>("enemies/" + name + "Damage");
+        }
+        catch {
+            Console.WriteLine("couldnt load damage tex for " + name);
+            textures[1] = textures[0];
         }
 
-        try{
-            textures[2]= manager.Load<Texture2D>("enemies/"+name+"Low");
-        } catch{
-             Console.WriteLine("couldnt load grapple tex for "+name);
-            textures[2]= textures[0];
+        try {
+            textures[2] = manager.Load<Texture2D>("enemies/" + name + "Low");
+        }
+        catch {
+            Console.WriteLine("couldnt load grapple tex for " + name);
+            textures[2] = textures[0];
         }
         return textures;
 

@@ -31,6 +31,13 @@ public class Level {
 
     }
 }
+public class Intro : Level {
+    public override void Start() {
+        enemies = new Enemy[] { new IntroChest() };
+        addEnemies();
+    }
+
+}
 public class Level1 : Level {
     public override void Start() {
         enemies = new Enemy[]{
@@ -76,14 +83,14 @@ public class Level3 : Level {
 }
 public class ShipBossStage : Level {
     public override void Start() {
-        enemies = new Enemy[]{new ShipBoss()};
+        enemies = new Enemy[] { new ShipBoss() };
         addEnemies();
     }
 
 }
 public class CrabBossStage : Level {
     public override void Start() {
-       enemies = new Node[]{new CrabBoss()};
+        enemies = new Node[] { new CrabBoss() };
         addEnemies();
     }
 

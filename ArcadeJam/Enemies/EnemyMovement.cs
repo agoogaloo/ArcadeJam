@@ -31,6 +31,10 @@ public abstract class EnemyMovement {
     }
 
 }
+public  class Stationary : EnemyMovement {
+    
+}
+
 
 public class MoveToPoint : EnemyMovement {
     private Vector2 start, destination;
