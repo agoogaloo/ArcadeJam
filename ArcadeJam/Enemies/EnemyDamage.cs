@@ -15,12 +15,12 @@ public class EnemyDamage {
     FloatRect bounds;
     Collision collision;
 
-    Sprite sprite;
-    Texture2D damageTex;
+    Sprite sprite, damageTex;
 
 
-
-    public EnemyDamage(FloatRect bounds, Node enemy, IntData health, Sprite sprite, Texture2D damageTex) {
+    public EnemyDamage(FloatRect bounds, Node enemy, IntData health, Sprite sprite, Texture2D damageTex) :
+    this(bounds, enemy, health, sprite, new Sprite(damageTex)) { }
+    public EnemyDamage(FloatRect bounds, Node enemy, IntData health, Sprite sprite, Sprite damageTex) {
         this.health = health;
         this.enemy = enemy;
         this.sprite = sprite;
@@ -34,12 +34,12 @@ public class EnemyDamage {
             if (i is PlayerBullet b) {
                 b.OnHit();
                 health.val -= b.Damage;
-                sprite.texture = damageTex;
+                sprite.texture = damageTex.texture;
             }
         }
-        
+
     }
-    public void End(){
+    public void End() {
         collision.Remove();
     }
 }

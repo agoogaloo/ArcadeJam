@@ -169,7 +169,7 @@
 /processorParam:TextureFormat=Color
 /build:enemies/crabClawLDamage.png
 
-#begin enemies/crabClawLLow.png
+#begin enemies/crabClawLOpen.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -179,7 +179,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:enemies/crabClawLLow.png
+/build:enemies/crabClawLOpen.png
+
+#begin enemies/crabClawLOpenDamage.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:enemies/crabClawLOpenDamage.png
 
 #begin enemies/crabClawR.png
 /importer:TextureImporter
@@ -205,7 +217,7 @@
 /processorParam:TextureFormat=Color
 /build:enemies/crabClawRDamage.png
 
-#begin enemies/crabClawRLow.png
+#begin enemies/crabClawROpen.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -215,7 +227,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:enemies/crabClawRLow.png
+/build:enemies/crabClawROpen.png
+
+#begin enemies/crabClawROpenDamage.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:enemies/crabClawROpenDamage.png
 
 #begin enemies/enemy.png
 /importer:TextureImporter
@@ -325,7 +349,7 @@
 /processorParam:TextureFormat=Color
 /build:enemies/shipBossDamage.png
 
-#begin enemyBullet.png
+#begin enemies/the_clawww_no_guns.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -335,7 +359,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:enemyBullet.png
+/build:enemies/the_clawww_no_guns.png
 
 #begin hook.png
 /importer:TextureImporter

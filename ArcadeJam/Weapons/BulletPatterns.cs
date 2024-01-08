@@ -60,7 +60,6 @@ public abstract class EnemyWeapon {
     public void fire() {
         timeLeft = 0;
         volliesLeft = volleys;
-        Console.WriteLine("fire in the hole!");
     }
 
 }
@@ -191,7 +190,7 @@ public class SpreadAlternating : EnemyWeapon {
 }
 public class Explosion : EnemyWeapon {
     private int prongs;
-    public Explosion(FloatRect pos, float delay = 999999999999, int prongs = 10, int volleys = 5, float speed = 60) : base(pos, delay, speed) {
+    public Explosion(FloatRect pos, float delay = 999999999999, int prongs = 12, int volleys = 5, float speed = 60) : base(pos, delay, speed) {
         this.volleys = volleys;
         this.prongs = prongs;
     }

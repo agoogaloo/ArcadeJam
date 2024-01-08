@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawL.png</SourceFile>
-  <SourceTime>2024-01-05T23:17:25.2887887-07:00</SourceTime>
-  <DestFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabClawL.xnb</DestFile>
-  <DestTime>2024-01-06T17:07:59.0723489-07:00</DestTime>
+  <SourceFile>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabClawL.png</SourceFile>
+  <SourceTime>2024-01-08T14:00:13.5405265-07:00</SourceTime>
+  <DestFile>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabClawL.xnb</DestFile>
+  <DestTime>2024-01-08T15:13:16.4341743-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T05:44:56-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
