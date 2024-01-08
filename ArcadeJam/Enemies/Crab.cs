@@ -25,7 +25,7 @@ public class CrabBoss : Node, IGrappleable {
     RectRender renderer;
 
     EnemyDamage damager;
-    EnemyWeapon currentPattern;
+    EnemyWeapon[] patterns = {};
     public CrabBoss() {
         leftClaw = new(true, bounds);
         rightClaw = new(false, bounds);
@@ -47,7 +47,7 @@ public class CrabBoss : Node, IGrappleable {
                 enter(gameTime);
                 break;
             case 1:
-                //phase1(gameTime);
+                phase1(gameTime);
                 break;
             case 2:
                 phase2(gameTime);
@@ -60,23 +60,29 @@ public class CrabBoss : Node, IGrappleable {
     }
 
     private void enter(GameTime gameTime) {
+        
         if (bounds.Centre.X >= 75) {
             phase.val++;
-            currentPattern = new Spiral(bounds, 0.5f, 20, 180 * 2 / 20, 50);
+            patterns = new EnemyWeapon[]{new AimedParallel(bounds, 1f)};
             movement.movementState = Movements.idle;
+            
         }
 
     }
     private void phase1(GameTime gameTime) {
-        currentPattern.Update(gameTime);
+        foreach( EnemyWeapon i in patterns){
+            i.Update(gameTime);
+        }
 
     }
     private void phase2(GameTime gameTime) {
-
+        foreach( EnemyWeapon i in patterns){
+            i.Update(gameTime);
+        }
     }
 
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-        renderer.Draw( spriteBatch);
+        renderer.Draw(spriteBatch);
         leftClaw.Draw(gameTime, spriteBatch);
         rightClaw.Draw(gameTime, spriteBatch);
 
@@ -117,14 +123,14 @@ public class Claw {
 
     public Claw(bool left, FloatRect bodyBounds) {
         this.left = left;
-        currentPattern = new SpreadAlternating(Bounds);
+        currentPattern = new Explosion(Bounds);
         this.bodyBounds = bodyBounds;
         if (left) {
             textures = Assets.clawL;
-            
+
         }
         else {
-           textures = Assets.clawR;
+            textures = Assets.clawR;
         }
         sprite = new(textures[0]);
         armSegs = new PointRender[armLocs.Length];
@@ -155,7 +161,7 @@ public class Claw {
             shoulderDiff = bodyBounds.Location;
             shoulderDiff.X += bodyBounds.width - 15;
         }
-        shoulderDiff.Y += Bounds.height / 2+15;
+        shoulderDiff.Y += Bounds.height / 2 + 15;
         shoulderDiff -= Bounds.Centre;
         for (int i = 0; i < armLocs.Length; i++) {
             armLocs[i].val = Bounds.Centre + i * shoulderDiff / (armLocs.Length);
@@ -163,9 +169,9 @@ public class Claw {
 
         }
         foreach (PointRender i in armSegs) {
-            i.Draw( spriteBatch);
+            i.Draw(spriteBatch);
         }
-        renderer.Draw( spriteBatch);
+        renderer.Draw(spriteBatch);
         hitBoxVisualizer.Draw(spriteBatch);
 
 
@@ -206,6 +212,7 @@ public class CrabMovement {
                 lClaw.x += (float)(Math.Cos(idleAnimTime) * gameTime.ElapsedGameTime.TotalSeconds * 5);
                 rClaw.x += (float)(Math.Sin(idleAnimTime) * gameTime.ElapsedGameTime.TotalSeconds * 5);
                 break;
+            
 
         }
     }

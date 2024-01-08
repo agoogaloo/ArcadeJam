@@ -10,41 +10,98 @@ public abstract class EnemyWeapon {
     protected FloatData delay;
     protected FloatRect pos;
 
-    protected double timeLeft = 0;
+    protected double timeLeft = 0, volleyDelay = 0.05;
     protected float speed;
+    protected int volleys, volliesLeft;
 
-    public EnemyWeapon(FloatRect pos, float delay = 1, float speed = 60) : this(pos, new FloatData(delay), speed) { }
-    public EnemyWeapon(FloatRect pos, FloatData delay, float speed = 60) {
+    public EnemyWeapon(FloatRect pos, float delay = 1, float speed = 60, int volleys = 1) :
+        this(pos, new FloatData(delay), speed, volleys) { }
+    public EnemyWeapon(FloatRect pos, FloatData delay, float speed = 60, int volleys = 1) {
         this.delay = delay;
         this.speed = speed;
         this.pos = pos;
+        this.volleys = volleys;
+        this.volliesLeft = volleys - 1;
         timeLeft = delay.val;
     }
 
     public virtual void Update(GameTime gameTime) {
         timeLeft -= gameTime.ElapsedGameTime.TotalSeconds;
         if (timeLeft < 0) {
-            timeLeft = delay.val + timeLeft;
+
+            if (volliesLeft <= 0) {
+                volliesLeft = volleys;
+                timeLeft = delay.val;
+            }
+            else {
+                timeLeft = volleyDelay;
+            }
+            if (volliesLeft == volleys - 1) {
+                newVolley();
+                Console.WriteLine("new volley");
+            }
             Shoot();
+            volliesLeft--;
+
         }
     }
     protected abstract void Shoot();
+    protected virtual void newVolley() { }
     protected void FireAtAngle(float angle, float speed) {
-        angle *= (float)(Math.PI / 180); //converting to radians
-        float y = -(float)(Math.Cos(angle) * speed);
-        float x = (float)(Math.Sin(angle) * speed);
-        NodeManager.AddNode(new EnemyBullet(new Vector2Data(x, y), pos.Centre));
+        FireAtAngle(angle, speed, pos.Centre);
+    }
 
+    protected void FireAtAngle(float angle, float speed, Vector2 loc) {
+        angle *= (float)(Math.PI / 180); //converting to radians
+        float x = (float)(Math.Sin(angle) * speed);
+        float y = -(float)(Math.Cos(angle) * speed);
+        NodeManager.AddNode(new EnemyBullet(new Vector2Data(x, y), loc));
+
+    }
+    public void fire() {
+        delay.val = 0;
     }
 
 }
 public class Nothing : EnemyWeapon {
-	public Nothing() : base(null, 9999999, 0) {
-	}
+    public Nothing() : base(null, 9999999, 0) {
+    }
 
-	protected override void Shoot() {
-		
-	}
+    protected override void Shoot() {
+
+    }
+}
+public class AimedParallel : EnemyWeapon {
+    int rows;
+    float seperation, angle;
+    public AimedParallel(FloatRect pos, float delay = 1, int rows = 3, float seperation = 25, int volleys = 8, float speed = 70) : base(pos, delay, speed, volleys) {
+        this.rows = rows;
+        this.seperation = seperation;
+    }
+
+    protected override void Shoot() {
+
+        float radPerpAngle = (angle + 90) * (float)(Math.PI / 180);
+
+
+        Vector2 shotLoc = new Vector2((float)(Math.Sin(radPerpAngle) * seperation), -(float)(Math.Cos(radPerpAngle) * seperation));
+        Vector2 seperationVector = shotLoc * 2 / (rows-1);
+        for (int i = 0; i < rows; i++) {
+            FireAtAngle(angle, speed, shotLoc + pos.Centre);
+            shotLoc -= seperationVector;
+        }
+
+    }
+    protected override void newVolley() {
+        base.newVolley();
+        Vector2 angleCartesian = ArcadeGame.player.Bounds.Centre - pos.Centre;
+        angle = (float)Math.Atan(angleCartesian.Y / angleCartesian.X);
+        angle /= (float)(Math.PI / 180);//converting to degrees
+        if (angleCartesian.X > 0) {
+            angle += 180;
+        }
+        angle -= 90;
+    }
 }
 
 public class Straight : EnemyWeapon {
@@ -68,17 +125,19 @@ public class Tripple : EnemyWeapon {
     }
 }
 public class SpreadAlternating : EnemyWeapon {
-    private float angle, rowAngle;
+    private float angle, rowAngle, roundDelay;
     private int rows;
     private bool switched;
-    public SpreadAlternating(FloatRect pos, float delay = 1, float angle = 60, int rows = 5, float speed = 60) : base(pos, delay, speed) {
+    public SpreadAlternating(FloatRect pos, float delay = 1, float angle = 60, int rows = 5, int volleys = 3, float speed = 60) :
+        base(pos, delay, speed, volleys) {
         this.angle = angle;
         this.rows = rows;
+
         rowAngle = angle * 2 / rows;
     }
 
     protected override void Shoot() {
-        switched = !switched;
+        Console.WriteLine("peew");
         if (switched) {
             for (int i = 0; i <= rows; i++) {
                 FireAtAngle(180 - angle + (rowAngle * i), speed);
@@ -86,11 +145,26 @@ public class SpreadAlternating : EnemyWeapon {
 
         }
         else {
-            for (int i =0; i < rows; i++) {
+            for (int i = 0; i < rows; i++) {
                 FireAtAngle(180 - angle + (rowAngle * i) + rowAngle / 2, speed);
             }
         }
+    }
+    protected override void newVolley() {
+        switched = !switched;
+    }
+}
+public class Explosion : EnemyWeapon {
+    private int prongs;
+    public Explosion(FloatRect pos, float delay = 999999999999, int prongs = 10, int volleys = 5, float speed = 60) : base(pos, delay, speed) {
+        this.volleys = volleys;
+        this.prongs = prongs;
+    }
 
+    protected override void Shoot() {
+        for (int i = 0; i < prongs; i++) {
+            FireAtAngle(360 / prongs * i, speed);
+        }
     }
 }
 
@@ -114,6 +188,6 @@ public class Spiral : EnemyWeapon {
             FireAtAngle(angle + i * 360 / prongs, speed);
         }
     }
-
 }
+
 

@@ -16,12 +16,12 @@ namespace ArcadeJam;
 public class Player : Node {
 
 	FloatData invincibleTime = new();
-	FloatRect Bounds { get; set; } = new(new Rectangle(75, 120, 5, 7));
+	public FloatRect Bounds { get; private set; } = new(new Rectangle(75, 120, 5, 7));
 	Vector2Data Vel { get; set; } = new(new Vector2(0, 0));
 	FloatData moveSpeed = new(1.5f);
 
 	public FloatData combo { get; private set; } = new FloatData(1);
-	public IntData score, lives = new IntData(1), grappleDamage = new();
+	public IntData score, lives = new IntData(30), grappleDamage = new();
 	Sprite Sprite { get; set; } = new Sprite(Assets.player);
 	List<Node> collisions = new();
 
