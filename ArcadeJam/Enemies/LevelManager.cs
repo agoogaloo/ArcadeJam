@@ -16,10 +16,12 @@ public class LevelManager {
         levels[currentLevel].Update(gameTime);
         if (started && levels[currentLevel].Cleared) {
             Console.WriteLine("starting new level");
+            levels[currentLevel].Cleared = false;
             currentLevel++;
             if (currentLevel >= levels.Length) {
                 currentLevel = 0;
             }
+            
             levels[currentLevel].Start();
             player.upgradeGun();
         }

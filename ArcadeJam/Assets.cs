@@ -3,17 +3,20 @@ using System.Drawing;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace ArcadeJam;
 
 public class Assets {
     public static Texture2D player, PlayerBullet, PlayerSmearBullet, hook, chain,
         enemyStun, enemyBullet, crabArm,
-        borders, comboCounter, comboBar, comboBarBorder, lives,introText;
+        borders, comboCounter, comboBar, comboBarBorder, lives, introText;
     public static Texture2D pixel = null;
 
     public static Texture2D[] introChest, enemy, enemy2,
         shipBoss, crabBody, clawL, clawR;
+
+    public static Song music;
 
     public static SpriteFont font;
     public static void Load(ContentManager manager, Texture2D whitePixel) {
@@ -44,8 +47,10 @@ public class Assets {
         clawL = loadEnemy("crabClawL", manager);
         clawR = loadEnemy("crabClawR", manager);
 
+        //sounds
+        music = manager.Load<Song>("sounds/music");
 
-
+        //fonts
         font = manager.Load<SpriteFont>("monoFont");
 
     }

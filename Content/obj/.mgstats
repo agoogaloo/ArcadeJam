@@ -28,9 +28,10 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemyBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemyBullet.xnb","TextureProcessor","Texture2DContent",210,341,0.0006018
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/hook.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/hook.xnb","TextureProcessor","Texture2DContent",126,145,0.0005333
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/icicle.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/icicle.xnb","TextureProcessor","Texture2DContent",199,597,0.0006025
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/introText.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/introText.xnb","TextureProcessor","Texture2DContent",542,12097,0.0010509
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/introText.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/introText.xnb","TextureProcessor","Texture2DContent",541,11789,0.1187121
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/lightBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/lightBullet.xnb","TextureProcessor","Texture2DContent",133,185,0.0005554
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/monoFont.spritefont","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/monoFont.xnb","FontDescriptionProcessor","SpriteFontContent",2011,9247,0.071734
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/peng.xnb","TextureProcessor","Texture2DContent",217,373,0.0005366
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/player.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/player.xnb","TextureProcessor","Texture2DContent",245,481,0.0004552
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/playerSmearBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/playerSmearBullet.xnb","TextureProcessor","Texture2DContent",117,385,0.000448
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/music.wav","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/sounds/music.xnb","SongProcessor","SongContent",3309346,123,0.1969753

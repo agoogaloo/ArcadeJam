@@ -34,3 +34,4 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/peng.xnb","TextureProcessor","Texture2DContent",217,373,0.0874805
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/player.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/player.xnb","TextureProcessor","Texture2DContent",245,481,0.0003115
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/playerSmearBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/playerSmearBullet.xnb","TextureProcessor","Texture2DContent",117,385,0.0868091
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/music.wav","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/sounds/music.xnb","SongProcessor","SongContent",3309346,123,0.3650964

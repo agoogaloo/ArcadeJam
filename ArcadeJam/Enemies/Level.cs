@@ -4,12 +4,13 @@ using System.Security.Cryptography.X509Certificates;
 using ArcadeJam.Enemies;
 using Engine.Core.Nodes;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
 
 namespace ArcadeJam.Enemies;
 
 public class Level {
     protected Node[] enemies;
-    public bool Cleared { get; protected set; } = false;
+    public bool Cleared { get;  set; } = false;
 
     public virtual void Start() {
         enemies = new Enemy[] {
@@ -22,19 +23,33 @@ public class Level {
         }
     }
     public void Update(GameTime gameTime) {
-        Cleared = true;
+        bool enemiesLeft = false;
         foreach (Node i in enemies) {
             if (i.Alive) {
-                Cleared = false;
+                enemiesLeft = true;
+
             }
         }
+        if (!enemiesLeft) {
+            EnemiesDefeated();
 
+
+        }
+
+    }
+    protected virtual void EnemiesDefeated() {
+        Cleared = true;
     }
 }
 public class Intro : Level {
     public override void Start() {
         enemies = new Enemy[] { new IntroChest() };
         addEnemies();
+    }
+    protected override void EnemiesDefeated() {
+        base.EnemiesDefeated();
+        MediaPlayer.Play(Assets.music);
+        MediaPlayer.IsRepeating = true;
     }
 
 }
