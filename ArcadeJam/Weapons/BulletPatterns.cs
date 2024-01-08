@@ -36,7 +36,7 @@ public abstract class EnemyWeapon {
             else {
                 timeLeft = volleyDelay;
             }
-            if (volliesLeft == volleys - 1) {
+            if (volliesLeft == volleys - 1||volleys==1) {
                 newVolley();
                 Console.WriteLine("new volley");
             }
@@ -74,7 +74,7 @@ public class Nothing : EnemyWeapon {
 public class AimedParallel : EnemyWeapon {
     int rows;
     float seperation, angle;
-    public AimedParallel(FloatRect pos, float delay = 1, int rows = 3, float seperation = 25, int volleys = 8, float speed = 70) : base(pos, delay, speed, volleys) {
+    public AimedParallel(FloatRect pos, float delay = 1.6f, int rows = 3, float seperation = 25, int volleys = 8, float speed = 70) : base(pos, delay, speed, volleys) {
         this.rows = rows;
         this.seperation = seperation;
     }
@@ -111,6 +111,42 @@ public class Straight : EnemyWeapon {
     protected override void Shoot() {
         FireAtAngle(180, speed);
     }
+}
+public class WallAlternate:EnemyWeapon{
+    private int rows;
+    private float seperation;
+    private bool switched;
+    public WallAlternate(FloatRect pos, float delay = 1, int rows = 2,float seperation = 18,int volleys = 1, float speed = 60) :
+        base(pos, delay, speed, volleys) {
+        this.rows = rows;
+        this.seperation = seperation;
+    }
+
+    protected override void Shoot() {
+        Console.WriteLine("peew");
+        Vector2 shootLoc = pos.Centre;
+        shootLoc.X-=seperation*rows/2;
+        if (switched) {
+            
+            for (int i = 0; i <= rows; i++) {
+                FireAtAngle(180, speed, shootLoc);
+                shootLoc.X+=seperation;
+            }
+
+        }
+        else {
+            shootLoc.X+=seperation/2;
+            for (int i = 0; i < rows; i++) {
+                FireAtAngle(180, speed, shootLoc);
+                shootLoc.X+=seperation;
+            }
+        }
+    }
+    protected override void newVolley() {
+        switched = !switched;
+
+    }
+
 }
 public class Tripple : EnemyWeapon {
     private float angle;

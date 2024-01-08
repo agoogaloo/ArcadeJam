@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using ArcadeJam.Enemies;
 using ArcadeJam.Weapons;
 using Engine.Core.Components;
@@ -6,6 +7,7 @@ using Engine.Core.Data;
 using Engine.Core.Nodes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace ArcadeJam;
 
@@ -15,11 +17,13 @@ public enum Movements {
 }
 
 public class CrabBoss : Node, IGrappleable {
-    IntData health = new(150), phase = new(0);
+    IntData health = new(150), phase = new(0), lClawPhase = new(), rClawPhase = new();
+    FloatData time = new();
     FloatRect bounds = new(0, 0, 75, 48);
     Sprite sprite = new(Assets.crabBody[0]);
     Claw leftClaw;
     Claw rightClaw;
+
 
     CrabMovement movement;
     RectRender renderer;
@@ -27,8 +31,8 @@ public class CrabBoss : Node, IGrappleable {
     EnemyDamage damager;
     EnemyWeapon[] patterns = {};
     public CrabBoss() {
-        leftClaw = new(true, bounds);
-        rightClaw = new(false, bounds);
+        leftClaw = new(true, bounds, lClawPhase);
+        rightClaw = new(false, bounds, rClawPhase);
         renderer = new(sprite, bounds);
         movement = new(leftClaw.Bounds, rightClaw.Bounds, bounds);
         damager = new(bounds, null, health, sprite, Assets.crabBody[2]);
@@ -63,13 +67,17 @@ public class CrabBoss : Node, IGrappleable {
         
         if (bounds.Centre.X >= 75) {
             phase.val++;
-            patterns = new EnemyWeapon[]{new AimedParallel(bounds, 1f)};
+            
+            patterns = new EnemyWeapon[]{new AimedParallel(bounds, 1.6f)};
             movement.movementState = Movements.idle;
+            lClawPhase.val = 1;
+            rClawPhase.val = 1;
             
         }
 
     }
     private void phase1(GameTime gameTime) {
+       
         foreach( EnemyWeapon i in patterns){
             i.Update(gameTime);
         }
@@ -98,85 +106,14 @@ public class CrabBoss : Node, IGrappleable {
     }
     public override void End() {
         base.End();
+        leftClaw.end();
+        rightClaw.end();
         damager.End();
 
     }
 }
 
 
-public class Claw {
-    bool left;
-    Texture2D[] textures;
-    IntData health = new(150), phase = new(0);
-    public FloatRect Bounds { get; private set; } = new(0, 0, 24, 28);
-    FloatRect bodyBounds;
-    Sprite sprite;
-    RectRender renderer;
-    RectVisualizer hitBoxVisualizer;
-
-    Vector2Data[] armLocs = { new(), new(), new() };
-    PointRender[] armSegs;
-
-
-    EnemyDamage damager;
-    EnemyWeapon currentPattern;
-
-    public Claw(bool left, FloatRect bodyBounds) {
-        this.left = left;
-        currentPattern = new Explosion(Bounds);
-        this.bodyBounds = bodyBounds;
-        if (left) {
-            textures = Assets.clawL;
-
-        }
-        else {
-            textures = Assets.clawR;
-        }
-        sprite = new(textures[0]);
-        armSegs = new PointRender[armLocs.Length];
-        for (int i = 0; i < armLocs.Length; i++) {
-            Console.WriteLine(armLocs[i]);
-            armSegs[i] = new(new Sprite(Assets.crabArm), armLocs[i], true);
-        }
-
-        renderer = new(sprite, Bounds);
-        damager = new(Bounds, null, health, sprite, textures[2]);
-        hitBoxVisualizer = new(Bounds);
-
-
-
-    }
-    public void Update(GameTime gameTime) {
-        currentPattern.Update(gameTime);
-    }
-    public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-        Vector2 shoulderDiff = new();
-
-        if (left) {
-            shoulderDiff = bodyBounds.Location;
-            shoulderDiff.X += 15;
-
-        }
-        else {
-            shoulderDiff = bodyBounds.Location;
-            shoulderDiff.X += bodyBounds.width - 15;
-        }
-        shoulderDiff.Y += Bounds.height / 2 + 15;
-        shoulderDiff -= Bounds.Centre;
-        for (int i = 0; i < armLocs.Length; i++) {
-            armLocs[i].val = Bounds.Centre + i * shoulderDiff / (armLocs.Length);
-            armLocs[i].val.Y -= Bounds.height / 2;
-
-        }
-        foreach (PointRender i in armSegs) {
-            i.Draw(spriteBatch);
-        }
-        renderer.Draw(spriteBatch);
-        hitBoxVisualizer.Draw(spriteBatch);
-
-
-    }
-}
 public class CrabMovement {
     FloatRect lClaw, rClaw;
     FloatRect bounds;

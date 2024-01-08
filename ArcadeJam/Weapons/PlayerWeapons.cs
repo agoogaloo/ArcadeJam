@@ -77,10 +77,10 @@ public class Level1Gun : PlayerWeapon {
     protected override void FocusShoot() {
 
         Vector2 shootPos = pos.Location;
-        shootPos.X -=1;
-        shootPos.Y+=5;
+        shootPos.X -=1.5f;
+        
 		FireAtAngle(0, speed, shootPos,3);
-        shootPos.X = pos.Right;
+        shootPos.X = pos.Right+1.5f;
 		FireAtAngle(0, speed, shootPos,3);
 
 
