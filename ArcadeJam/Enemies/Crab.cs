@@ -18,19 +18,20 @@ public enum Movements {
 }
 
 public class CrabBoss : Node, IGrappleable {
-    IntData health = new(150), phase = new(0), lClawPhase = new(), rClawPhase = new();
+    IntData health = new(150),crownHealth = new(100), phase = new(0), lClawPhase = new(), rClawPhase = new();
     FloatData time = new();
-    FloatRect bounds = new(0, 0, 75, 48);
-    Sprite sprite = new(Assets.crabBody[0]);
+    FloatRect bounds = new(0, 0, 75, 48),crownBounds, grappleBounds;
+    Sprite sprite = new(Assets.crabBody[0]), crownSprite = new(Assets.crown);
     Claw leftClaw;
     Claw rightClaw;
 
 
-    CrabMovement movement;
-    RectRender renderer;
 
-    EnemyDamage damager;
-    EnemyWeapon[] patterns = { };
+    CrabMovement movement;
+    RectRender renderer, crownRender;
+
+    EnemyDamage damager, crownDamager;
+    EnemyWeapon[] patterns = {};
     public CrabBoss() {
         BoolData lJabbing = new(false), rJabbing = new(false);
         Vector2Data lVel = new(), rVel = new();
@@ -38,8 +39,11 @@ public class CrabBoss : Node, IGrappleable {
         leftClaw = new(true, lJabbing, bounds, lClawPhase, lVel);
         rightClaw = new(false, rJabbing, bounds, rClawPhase, rVel);
         renderer = new(sprite, bounds);
+        crownRender = new(crownSprite, crownBounds);
         movement = new(leftClaw.Bounds, lVel, rightClaw.Bounds, rVel, lJabbing, rJabbing, bounds);
-        damager = new(bounds, null, health, sprite, Assets.crabBody[2]);
+        damager = new(bounds, null, health, sprite, Assets.crabBody[1]);
+        crownDamager = new(crownBounds, null, crownHealth, crownSprite, Assets.gunCrown[1]);
+        
 
     }
 

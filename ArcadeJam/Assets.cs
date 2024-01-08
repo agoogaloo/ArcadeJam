@@ -9,12 +9,12 @@ namespace ArcadeJam;
 
 public class Assets {
     public static Texture2D player, PlayerBullet, PlayerSmearBullet, hook, chain,
-        enemyStun, enemyBullet,crabArm,
+        enemyStun, enemyBullet,crabArm, crown,
         borders, comboCounter, comboBar, comboBarBorder, lives, introText;
-    public static Texture2D pixel = null, pain;
+    public static Texture2D pixel = null;
 
     public static Texture2D[] introChest, enemy, enemy2,
-        shipBoss, crabBody,crabBodyDamage, crabBodyGrapple, clawL,clawLOpen, clawR,clawROpen;
+        shipBoss, crabBody,crabBodyDamage, crabBodyGrapple, clawL,clawLOpen, clawR,clawROpen, gunCrown;
 
     public static Song music;
 
@@ -48,7 +48,8 @@ public class Assets {
         clawR = loadEnemy("crabClawR", manager);
         clawLOpen = loadEnemy("crabClawLOpen", manager);
         clawROpen = loadEnemy("crabClawROpen", manager);
-        pain = manager.Load<Texture2D>("enemies/crabClawLDamage");
+        gunCrown = loadEnemy("crabClawLOpen",manager);
+        crown = manager.Load<Texture2D>("enemies/crabClawL");
 
         //sounds
         music = manager.Load<Song>("sounds/music");
