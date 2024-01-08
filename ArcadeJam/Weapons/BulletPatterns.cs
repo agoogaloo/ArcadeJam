@@ -36,9 +36,8 @@ public abstract class EnemyWeapon {
             else {
                 timeLeft = volleyDelay;
             }
-            if (volliesLeft == volleys - 1||volleys==1) {
+            if (volliesLeft == volleys - 1 || volleys == 1) {
                 newVolley();
-                Console.WriteLine("new volley");
             }
             Shoot();
             volliesLeft--;
@@ -59,7 +58,9 @@ public abstract class EnemyWeapon {
 
     }
     public void fire() {
-        delay.val = 0;
+        timeLeft = 0;
+        volliesLeft = volleys;
+        Console.WriteLine("fire in the hole!");
     }
 
 }
@@ -85,7 +86,7 @@ public class AimedParallel : EnemyWeapon {
 
 
         Vector2 shotLoc = new Vector2((float)(Math.Sin(radPerpAngle) * seperation), -(float)(Math.Cos(radPerpAngle) * seperation));
-        Vector2 seperationVector = shotLoc * 2 / (rows-1);
+        Vector2 seperationVector = shotLoc * 2 / (rows - 1);
         for (int i = 0; i < rows; i++) {
             FireAtAngle(angle, speed, shotLoc + pos.Centre);
             shotLoc -= seperationVector;
@@ -112,33 +113,32 @@ public class Straight : EnemyWeapon {
         FireAtAngle(180, speed);
     }
 }
-public class WallAlternate:EnemyWeapon{
+public class WallAlternate : EnemyWeapon {
     private int rows;
     private float seperation;
     private bool switched;
-    public WallAlternate(FloatRect pos, float delay = 1, int rows = 2,float seperation = 18,int volleys = 1, float speed = 60) :
+    public WallAlternate(FloatRect pos, float delay = 1, int rows = 2, float seperation = 18, int volleys = 1, float speed = 60) :
         base(pos, delay, speed, volleys) {
         this.rows = rows;
         this.seperation = seperation;
     }
 
     protected override void Shoot() {
-        Console.WriteLine("peew");
         Vector2 shootLoc = pos.Centre;
-        shootLoc.X-=seperation*rows/2;
+        shootLoc.X -= seperation * rows / 2;
         if (switched) {
-            
+
             for (int i = 0; i <= rows; i++) {
                 FireAtAngle(180, speed, shootLoc);
-                shootLoc.X+=seperation;
+                shootLoc.X += seperation;
             }
 
         }
         else {
-            shootLoc.X+=seperation/2;
+            shootLoc.X += seperation / 2;
             for (int i = 0; i < rows; i++) {
                 FireAtAngle(180, speed, shootLoc);
-                shootLoc.X+=seperation;
+                shootLoc.X += seperation;
             }
         }
     }
@@ -173,7 +173,6 @@ public class SpreadAlternating : EnemyWeapon {
     }
 
     protected override void Shoot() {
-        Console.WriteLine("peew");
         if (switched) {
             for (int i = 0; i <= rows; i++) {
                 FireAtAngle(180 - angle + (rowAngle * i), speed);

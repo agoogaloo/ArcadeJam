@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/borders.png</SourceFile>
-  <SourceTime>2024-01-04T22:14:49.2424777-07:00</SourceTime>
-  <DestFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/borders.xnb</DestFile>
-  <DestTime>2024-01-04T22:17:43.9418989-07:00</DestTime>
+  <SourceFile>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/borders.png</SourceFile>
+  <SourceTime>2024-01-06T14:38:37.8223193-07:00</SourceTime>
+  <DestFile>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/borders.xnb</DestFile>
+  <DestTime>2024-01-08T00:32:49.111688-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T05:44:56-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

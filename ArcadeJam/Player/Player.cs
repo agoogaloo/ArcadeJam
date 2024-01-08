@@ -21,7 +21,7 @@ public class Player : Node {
 	FloatData moveSpeed = new(1.5f);
 
 	public FloatData combo { get; private set; } = new FloatData(1);
-	public IntData score, lives = new IntData(3), grappleDamage = new();
+	public IntData score, lives = new IntData(30), grappleDamage = new();
 	Sprite Sprite { get; set; } = new Sprite(Assets.player);
 	List<Node> collisions = new();
 
@@ -61,7 +61,7 @@ public class Player : Node {
 		}
 		foreach (Node i in collisions) {
 			if (i is Bullet b) {
-				Console.WriteLine("hit by a bullet");
+				//Console.WriteLine("hit by a bullet");
 				b.OnHit();
 				if (invincibleTime.val < 0f) {
 					combo.val = 1;

@@ -8,7 +8,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 public class Claw {
-    bool left, Alive, started = false;
+    public bool left, Alive = true, started = false;
+    BoolData jabbing;
 
     Texture2D[] textures;
     IntData health = new(150), phase = new(0);
@@ -25,10 +26,12 @@ public class Claw {
     EnemyDamage damager;
     EnemyWeapon currentPattern;
 
-    public Claw(bool left, FloatRect bodyBounds, IntData phase) {
+    public Claw(bool left,BoolData jabbing, FloatRect bodyBounds, IntData phase) {
         this.left = left;
         this.phase = phase;
+        this.jabbing = jabbing;
         currentPattern = new WallAlternate(Bounds);
+        
         this.bodyBounds = bodyBounds;
         if (left) {
             textures = Assets.clawL;
@@ -61,9 +64,17 @@ public class Claw {
             case 2:
             phase2(gameTime);
             break;
+            case 3:
+            phase3(gameTime);
+            break;
+
         }
        
         damager.Update();
+        if(health.val<=0){
+            Alive = false;
+            Console.WriteLine("claw is gone");
+        }
     }
     private void phase1(GameTime gameTime) {
          currentPattern.Update(gameTime);
@@ -77,6 +88,15 @@ public class Claw {
     private void phase2(GameTime gameTime) {
          currentPattern.Update(gameTime);
 
+    }
+    private void phase3(GameTime gameTime){
+        
+        currentPattern.Update(gameTime);
+        if(jabbing.val &&(Bounds.Centre.X<0||Bounds.Centre.Y<0||
+            Bounds.Centre.X>ArcadeGame.gameWidth||Bounds.Centre.Y>ArcadeGame.gameHeight)){
+                jabbing.val = false;
+                currentPattern.fire();
+            }
     }
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
         Vector2 shoulderDiff = new();
@@ -108,5 +128,10 @@ public class Claw {
     
     public void end() {
         damager.End();
+    }
+    public void startPhase3(){
+        phase.val = 3;
+        currentPattern = new Explosion(Bounds);
+        
     }
 }
