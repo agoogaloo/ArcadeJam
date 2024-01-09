@@ -11,11 +11,15 @@ public class ExplosionEffect : Node {
     IntData frame = new();
     Sprite sprite;
     PointAnim render;
-    public ExplosionEffect(Vector2 loc) {
-        renderHeight = 0;
+    public ExplosionEffect(Vector2 loc, bool fast = false) {
+        renderHeight = 3;
         sprite = new(Assets.explosion);
-       
-        render = new(sprite, new Vector2Data(loc), frame, Assets.explosionSize, 10);
+        if (fast) {
+            render = new(sprite, new Vector2Data(loc), frame, Assets.explosionSize, 20);
+        }
+        else {
+            render = new(sprite, new Vector2Data(loc), frame, Assets.explosionSize, 10);
+        }
 
 
     }

@@ -3,7 +3,7 @@ using System.Reflection.Metadata.Ecma335;
 using Engine.Core.Data;
 using Engine.Core.Nodes;
 using Microsoft.Xna.Framework;
-
+ 
 namespace ArcadeJam.Weapons;
 
 public abstract class EnemyWeapon {

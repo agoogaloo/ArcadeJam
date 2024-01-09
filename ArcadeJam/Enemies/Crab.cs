@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
 using System.Net.NetworkInformation;
 using ArcadeJam.Enemies;
 using ArcadeJam.Weapons;
@@ -19,11 +20,11 @@ public enum Movements {
 }
 
 public class CrabBoss : Node, IGrappleable {
-    int[] phasePoints = {300,300,200,500};
+    int[] phasePoints = { 300, 300, 200, 500 };
     Vector2 crownVel = new(50, -50);
     bool grapplable = false;
     IntData health = new(300), crownHealth = new(200), phase = new(0), lClawPhase = new(), rClawPhase = new();
-    float time = 0;
+    float time = 0, deathTimer = 4;
     FloatRect bounds = new(-60, 0, 43, 30), crownBounds = new(-50, 0, 20, 20),
         grappleBounds = new(-20, 0, 17, 10);
     Sprite sprite = new(Assets.crabEnter), crownSprite = new(Assets.crown);
@@ -66,13 +67,37 @@ public class CrabBoss : Node, IGrappleable {
 
     public override void Update(GameTime gameTime) {
         movement.Update(gameTime);
-        if (health.val <= 0) {
+        if (deathTimer <= 0) {
             Alive = false;
-            score.addScore(phasePoints[3]);
+
         }
+        if (health.val <= 0) {
+            if (deathTimer == 4) {
+                sprite.texture = Assets.angryCrabBody[0];
+                score.addScore(phasePoints[3]);
+                //NodeManager.AddNode(new ExplosionEffect(crownBounds.Centre, true));
+                NodeManager.AddNode(new Ripple(new Vector2(crownBounds.x - 3f, crownBounds.y - 2), true));
+                NodeManager.AddNode(new Ripple(new Vector2(crownBounds.Right + 2f, crownBounds.y - 2), false));
+
+            }
+            if(time>=0.2){
+                Console.WriteLine("boom");
+                time = 0;
+                Random rand = new Random();
+                Vector2 explosionLoc =new((float)rand.NextDouble()*bounds.width,(float)rand.NextDouble()*bounds.height); 
+                NodeManager.AddNode(new ExplosionEffect(bounds.Location+explosionLoc, false));
+
+            }
+            deathTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            time += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            return;
+
+        }
+
+
         switch (phase.val) {
             case 0:
-                enter(gameTime);
+                Enter(gameTime);
                 break;
             case 1:
                 FullBodyPhase(gameTime);
@@ -92,11 +117,11 @@ public class CrabBoss : Node, IGrappleable {
 
     }
 
-    private void enter(GameTime gameTime) {
+    private void Enter(GameTime gameTime) {
 
         if (bounds.y >= 1) {
             phase.val++;
-            patterns = new EnemyWeapon[] { new AimedParallel(bounds, 2, rows: 3, seperation: 10) };
+            patterns = new EnemyWeapon[] { new AimedParallel(bounds, 2, rows: 3, seperation: 5) };
             movement.movementState = Movements.idle;
 
             lClawPhase.val = 1;
@@ -230,7 +255,9 @@ public class CrabBoss : Node, IGrappleable {
 
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
         renderer.Draw(spriteBatch);
-        crownRender.Draw(spriteBatch);
+        if (deathTimer == 4) {
+            crownRender.Draw(spriteBatch);
+        }
         if (leftClaw.Alive) {
             leftClaw.Draw(gameTime, spriteBatch);
         }
@@ -263,6 +290,8 @@ public class CrabBoss : Node, IGrappleable {
             grappleBounds.Centre = bounds.Centre;
             grappleBounds.y = bounds.Bottom;
             score.addScore(phasePoints[2]);
+            NodeManager.AddNode(new ExplosionEffect(crownBounds.Centre));
+
         }
         else if (phase.val == 4) {
             grapplable = false;
@@ -338,7 +367,7 @@ public class CrabMovement {
                 break;
             case Movements.leftJab:
 
-                Jab(gameTime, lClawJab, lClaw, lVel, new Vector2(bounds.x - 5,  bounds.y+15));
+                Jab(gameTime, lClawJab, lClaw, lVel, new Vector2(bounds.x - 5, bounds.y + 15));
 
                 break;
             case Movements.rightJab:

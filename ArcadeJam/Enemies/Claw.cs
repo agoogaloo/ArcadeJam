@@ -24,7 +24,7 @@ public class Claw : Node, IGrappleable {
 
     Vector2Data[] armLocs = { new(), new(), new(), new(), new(), new(), new(), new(), new() };
     PointRender[] armSegs;
-    
+
 
 
     EnemyDamage damager;
@@ -37,7 +37,7 @@ public class Claw : Node, IGrappleable {
         this.left = left;
         this.phase = phase;
         this.jabbing = jabbing;
-        currentPattern = new CirclePath(Bounds, speed:20,size:40,loopSpeed:0.3f,delay:2);
+        currentPattern = new CirclePath(Bounds, speed: 20, size: 40, loopSpeed: 0.3f, delay: 2);
 
         this.bodyBounds = bodyBounds;
         if (left) {
@@ -80,7 +80,7 @@ public class Claw : Node, IGrappleable {
                 break;
 
         }
-        if(!(jabbing.val && phase.val == 3)){
+        if (!(jabbing.val && phase.val == 3)) {
             grappleCollision.Remove();
 
 
@@ -107,8 +107,12 @@ public class Claw : Node, IGrappleable {
             Bounds.height = 33;
         }
         damager.Update();
-        if (health.val <= 0) {
+        if (health.val <= 0 && Alive) {
             Alive = false;
+            NodeManager.AddNode(new ExplosionEffect(Bounds.Centre));
+            NodeManager.AddNode(new ExplosionEffect(new Vector2(Bounds.Centre.X, Bounds.Top)));
+            NodeManager.AddNode(new ExplosionEffect(new Vector2(Bounds.Centre.X, Bounds.Bottom)));
+
             Console.WriteLine("claw is gone");
         }
         if (!grappled) {
@@ -119,7 +123,7 @@ public class Claw : Node, IGrappleable {
     private void phase1(GameTime gameTime) {
         currentPattern.Update(gameTime);
         if (health.val <= 200) {
-            currentPattern = new SpreadAlternating(Bounds,delay:1.5f);
+            currentPattern = new SpreadAlternating(Bounds, delay: 1.5f);
             phase.val = 2;
         }
 
@@ -157,20 +161,20 @@ public class Claw : Node, IGrappleable {
             armLocs[i].val.Y -= Bounds.height / 2;
 
         }
-        armSprite.texture =Assets.crabArm;
+        armSprite.texture = Assets.crabArm;
         foreach (PointRender i in armSegs) {
 
             i.Draw(spriteBatch);
         }
         //drawing hinges
-        for (int i = 0; i < armLocs.Length; i+=3) {
+        for (int i = 0; i < armLocs.Length; i += 3) {
             armLocs[i].val = Bounds.Centre + i * shoulderDiff / (armLocs.Length);
             armLocs[i].val.Y -= Bounds.height / 2;
 
         }
-        armSprite.texture =Assets.crabHinge;
-        for (int i=0;i<armSegs.Length;i+=3) {
-         armSegs[i].Draw(spriteBatch);
+        armSprite.texture = Assets.crabHinge;
+        for (int i = 0; i < armSegs.Length; i += 3) {
+            armSegs[i].Draw(spriteBatch);
         }
         renderer.Draw(spriteBatch);
         hitBoxVisualizer.bounds = Bounds;
@@ -184,6 +188,9 @@ public class Claw : Node, IGrappleable {
     public void end() {
         damager.End();
         grappleCollision.Remove();
+
+
+
     }
     public void startPhase3() {
         phase.val = 3;
