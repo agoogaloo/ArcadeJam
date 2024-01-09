@@ -38,7 +38,8 @@ public class ArcadeGame : Game {
 	private WindowMode windowMode = WindowMode.WindowedPPerfect;
 	private bool windowToggled = false;
 
-	IntData score = new();
+	ScoreData score;
+	FloatData combo = new();
 
 
 	public static Player player;
@@ -95,10 +96,13 @@ public class ArcadeGame : Game {
 		InputHandler.addAnalogBind("U", GPadInput.LStickUp);
 		InputHandler.addAnalogBind("D", GPadInput.LStickDown);
 
-		player = new Player(score);
+		score = new(combo);
+		player = new Player(score, combo);
 
 		NodeManager.AddNode(player);
 		LevelManager.startLevels(player);
+		LevelManager.scoreData = score;
+
 
 
 	}
@@ -211,6 +215,7 @@ public class ArcadeGame : Game {
 	}
 	private void drawBorder() {
 		String scoreString = score.val.ToString("D6");
+		String bonusString = "+"+LevelManager.speedBonus.ToString("D4");
 		//combo meter
 		Rectangle comboRect = new(0, 0, 31, 26);
 		comboRect.X = ((int)player.combo.val) * 31;
@@ -226,10 +231,11 @@ public class ArcadeGame : Game {
 		spriteBatch.Begin();
 		spriteBatch.Draw(gameTarget, new Vector2(38, 0), Color.White);
 		spriteBatch.Draw(Assets.borders, Vector2.Zero, Color.White);
-		spriteBatch.Draw(Assets.comboCounter, new Vector2(3, 52), comboRect, Color.White);
 		spriteBatch.DrawString(Assets.font, scoreString, new Vector2(1, 27), new Color(169, 104, 104));
-		spriteBatch.Draw(Assets.comboBar, new Vector2(4, 76), comboBarRect, Color.White);
-		spriteBatch.Draw(Assets.comboBarBorder, new Vector2(4, 76), Color.White);
+		spriteBatch.DrawString(Assets.font, bonusString, new Vector2(4, 54), new Color(169, 104, 104));
+		spriteBatch.Draw(Assets.comboCounter, new Vector2(3, 79), comboRect, Color.White);
+		spriteBatch.Draw(Assets.comboBar, new Vector2(4, 103), comboBarRect, Color.White);
+		spriteBatch.Draw(Assets.comboBarBorder, new Vector2(4, 103), Color.White);
 
 		for (int i = 0; i < player.lives.val; i++) {
 			spriteBatch.Draw(Assets.lives, new Vector2(4 + 6 * i, 139), Color.White);
@@ -247,9 +253,11 @@ public class ArcadeGame : Game {
 		}
 		else if (gameOverScreen.finished) {
 			NodeManager.clearNodes();
-			player = new Player(score);
+			
+			player = new Player(score, combo);
 			NodeManager.AddNode(player);
 			score.val = 0;
+			combo.val = 0;
 			gameOverScreen = null;
 			LevelManager.startLevels(player);
 		}else{

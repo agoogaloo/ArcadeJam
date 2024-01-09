@@ -14,7 +14,8 @@ public class PlayerAbilities {
     private BoolData focusing = new(false), useInput;
     private FloatRect bounds;
     private Vector2Data vel;
-    private IntData score, grappleDamage;
+    private ScoreData score;
+    IntData grappleDamage;
     private FloatData speed, invincibleTime = new(1);
     private FloatData combo;
 
@@ -25,7 +26,7 @@ public class PlayerAbilities {
 
 
     public PlayerAbilities(FloatRect bounds, Vector2Data vel, FloatData speed, FloatData combo, FloatData invincibleTime, BoolData useInput, 
-    IntData score, IntData grappleDamage) {
+    ScoreData score, IntData grappleDamage) {
         this.bounds = bounds;
         this.speed = speed;
         this.combo = combo;
@@ -81,7 +82,6 @@ public class PlayerAbilities {
                 invincibleTime.val = 0.3f;
                 break;
             case GrappleState.hit:
-                score.val += 50 + (5 * (int)combo.val);
                 break;
             case GrappleState.shooting:
             case GrappleState.reloading:

@@ -20,8 +20,9 @@ public class Player : Node {
 	Vector2Data Vel { get; set; } = new(new Vector2(0, 0));
 	FloatData moveSpeed = new(1.5f);
 
-	public FloatData combo { get; private set; } = new FloatData(1);
-	public IntData score, lives = new IntData(5), grappleDamage = new();
+	public FloatData combo { get; private set; }
+	public IntData lives = new IntData(5), grappleDamage = new();
+	ScoreData score;
 	Sprite Sprite { get; set; } = new Sprite(Assets.player);
 	List<Node> collisions = new();
 
@@ -39,8 +40,9 @@ public class Player : Node {
 
 
 
-	public Player(IntData score) {
+	public Player(ScoreData score ,FloatData combo) {
 		this.score = score;
+		this.combo = combo;
 		renderHeight = 1;
 		BoolData useInput = new(true);
 		movement = new(Vel, Bounds, moveSpeed, combo, useInput);
