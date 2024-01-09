@@ -99,6 +99,7 @@ public class Enemy : Node, IGrappleable {
     public override void End() {
         damager.End();
         grappleCollision.Remove();
+        NodeManager.AddNode(new ExplosionEffect(bounds.Centre));
     }
 }
 public class IntroChest : Enemy {
