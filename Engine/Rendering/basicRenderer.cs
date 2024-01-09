@@ -12,7 +12,7 @@ public interface IRenderer{
     public void Draw( SpriteBatch spriteBatch,GameTime gameTime = null);
 }
 public class PointRender:IRenderer {
-    private Sprite sprite;
+    public Sprite sprite;
     private Vector2Data position;
     private bool centred;
 
@@ -75,7 +75,7 @@ public class RectVisualizer:IRenderer {
         Rectangle drawRect = new((int)(bounds.x + 0.5), (int)(bounds.y + 0.5),
             (int)Math.Round(bounds.width - 1), (int)Math.Round(bounds.height - 1));
 
-       RenderUtils.DrawRectangle(spriteBatch, drawRect, Color.Red);
+       //RenderUtils.DrawRectangle(spriteBatch, drawRect, Color.Red);
 
     }
 }

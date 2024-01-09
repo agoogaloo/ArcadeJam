@@ -19,12 +19,13 @@ public enum Movements {
 }
 
 public class CrabBoss : Node, IGrappleable {
-    Vector2 crownVel = new(50, 50);
-    IntData health = new(150), crownHealth = new(100), phase = new(0), lClawPhase = new(), rClawPhase = new();
-    FloatData time = new();
-    FloatRect bounds = new(0, 0, 43, 30), crownBounds = new(0, 0, 20, 20),
-        grappleBounds = new(0, 0, 10, 10);
-    Sprite sprite = new(Assets.crabBody[0]), crownSprite = new(Assets.crown);
+    Vector2 crownVel = new(50, -50);
+    bool grapplable = false;
+    IntData health = new(300), crownHealth = new(200), phase = new(0), lClawPhase = new(), rClawPhase = new();
+     float time = 0;
+    FloatRect bounds = new(-60, 0, 43, 30), crownBounds = new(-50, 0, 20, 20),
+        grappleBounds = new(-20, 0, 17, 10);
+    Sprite sprite = new(Assets.crabEnter), crownSprite = new(Assets.crown);
     Claw leftClaw;
     Claw rightClaw;
 
@@ -46,11 +47,14 @@ public class CrabBoss : Node, IGrappleable {
         renderer = new(sprite, bounds);
         crownRender = new(crownSprite, crownBounds);
         movement = new(leftClaw.Bounds, lVel, rightClaw.Bounds, rVel, lJabbing, rJabbing, bounds);
-        damager = new(bounds, null, health, sprite, Assets.crabBody[1]);
+
         crownDamager = new(crownBounds, null, crownHealth, crownSprite, Assets.gunCrown[1]);
         grappleCollision = new(grappleBounds, this, "grapple");
         crownGrapple = new(crownBounds, this, "grapple");
         visualizer = new(crownBounds);
+        grappleCollision.Remove();
+        crownGrapple.Remove();
+
 
 
     }
@@ -87,12 +91,12 @@ public class CrabBoss : Node, IGrappleable {
 
         if (bounds.Centre.X >= 75) {
             phase.val++;
-            phase.val = 3;
-            patterns = new EnemyWeapon[] { new AimedParallel(bounds, 1.6f) };
+            patterns = new EnemyWeapon[] { new AimedParallel(bounds, 1.6f,rows:3,seperation:10) };
             movement.movementState = Movements.idle;
 
             lClawPhase.val = 1;
             rClawPhase.val = 1;
+            sprite.texture = Assets.crabBody;
 
         }
         crownBounds.Centre = bounds.Centre;
@@ -124,6 +128,7 @@ public class CrabBoss : Node, IGrappleable {
 
     }
     private void JabPhase(GameTime gameTime) {
+
         foreach (EnemyWeapon i in patterns) {
             i.Update(gameTime);
         }
@@ -135,8 +140,12 @@ public class CrabBoss : Node, IGrappleable {
             rightClaw.Update(gameTime);
         }
         else {
+            rightClaw.end();
+            leftClaw.end();
             phase.val++;
-            patterns = new EnemyWeapon[] { new SpreadAlternating(bounds, rows: 50, angle: 360) };
+            patterns = new EnemyWeapon[] { new SpreadAlternating(bounds, rows: 50, angle: 360),
+            new SpreadAlternating(bounds, delay: 99999999999, rows: 300, angle: 360, volleys: 2,speed:40) };
+
 
         }
         crownBounds.Centre = bounds.Centre;
@@ -150,15 +159,30 @@ public class CrabBoss : Node, IGrappleable {
             i.Update(gameTime);
         }
         if (crownHealth.val <= 0) {
-            crownSprite.texture = Assets.gunCrown[2];
 
+            crownGrapple.Readd();
+            crownSprite.texture = Assets.gunCrown[2];
+            if (crownHealth.val > -100) {
+
+                patterns[1].fire();
+                patterns[0].fire();
+            }
+
+            crownHealth.val = -100;
         }
 
 
 
     }
     private void BodyPhase(GameTime gameTime) {
+        time+=(float)gameTime.ElapsedGameTime.TotalSeconds;
+        
+        sprite.texture = Assets.angryCrabBody[0];
+        if(grapplable){
+            sprite.texture = Assets.angryCrabBody[2];
+        }
         damager.Update();
+        //updating crown
         crownBounds.Location += crownVel * (float)gameTime.ElapsedGameTime.TotalSeconds;
         if (crownBounds.Top <= 0 || crownBounds.Bottom >= ArcadeGame.gameHeight) {
             crownVel.Y *= -1;
@@ -175,6 +199,21 @@ public class CrabBoss : Node, IGrappleable {
         foreach (EnemyWeapon i in patterns) {
             i.Update(gameTime);
         }
+        if (grapplable && time>2){
+            grapplable = false;
+            grappleCollision.Remove();
+            
+        }
+
+        if(time>=5){
+            patterns[1].fire();
+            grapplable = true;
+            grappleCollision.Readd();
+            Console.WriteLine("peeeew");
+            time = 0;
+        }
+        Console.WriteLine(time);
+
 
     }
 
@@ -187,6 +226,9 @@ public class CrabBoss : Node, IGrappleable {
         if (rightClaw.Alive) {
             rightClaw.Draw(gameTime, spriteBatch);
         }
+        visualizer.bounds = bounds;
+        visualizer.Draw(spriteBatch);
+        visualizer.bounds = grappleBounds;
         visualizer.Draw(spriteBatch);
 
 
@@ -200,17 +242,34 @@ public class CrabBoss : Node, IGrappleable {
     public void GrappleHit(int damage) {
         if (phase.val == 3) {
             phase.val++;
+            crownGrapple.Remove();
+            crownSprite.texture = Assets.gunCrown[0];
+            damager = new(bounds, null, health, sprite, Assets.angryCrabBody[1]);
             patterns = new EnemyWeapon[] { new Spread(crownBounds, delay: 99999999, shots: 20, angle: 360, volleys: 0)
-            ,new SpreadAlternating(bounds, delay: 5, rows: 300, angle: 360, volleys: 3)};
-
+            ,new SpreadAlternating(bounds, delay: 9999999999, rows: 300, angle: 360, volleys: 2),
+            new CirclePath(bounds),new CirclePath(bounds,angle:180-60)
+             ,new CirclePath(bounds,angle:180+60)};
+             grappleBounds.Centre = bounds.Centre;
+             grappleBounds.y = bounds.Bottom;
+        }else if (phase.val==4){
+            grapplable = false;
+            grappleCollision.Remove();
+            health.val-=damage;
+            time = 0;
         }
     }
     public override void End() {
         base.End();
         leftClaw.end();
         rightClaw.end();
-        damager.End();
-
+        if (damager!=null){
+            damager.End();
+        }
+        if(crownDamager!=null){
+            crownDamager.End();
+        }
+        crownGrapple.Remove();
+        grappleCollision.Remove();
     }
 }
 
@@ -301,7 +360,7 @@ public class CrabMovement {
 
 
         }
-        Console.WriteLine(jabbing.val + ", " + jabAngle / (float)(Math.PI / 180));
+
 
 
     }

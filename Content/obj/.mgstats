@@ -6,8 +6,12 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboBarBorder.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/comboBarBorder.xnb","TextureProcessor","Texture2DContent",133,829,0.0002998
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboCounter.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/comboCounter.xnb","TextureProcessor","Texture2DContent",1313,22653,0.000974
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/darkBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/darkBullet.xnb","TextureProcessor","Texture2DContent",133,185,0.0002738
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/angryCrabBody.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/angryCrabBody.xnb","TextureProcessor","Texture2DContent",1298,17017,0.0871204
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/angryCrabBodyDamage.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/angryCrabBodyDamage.xnb","TextureProcessor","Texture2DContent",1228,17017,0.0020009
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/angryCrabBodyLow.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/angryCrabBodyLow.xnb","TextureProcessor","Texture2DContent",1442,17017,0.0034876
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/clawHinge.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/clawHinge.xnb","TextureProcessor","Texture2DContent",219,485,0.0888167
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabArm.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabArm.xnb","TextureProcessor","Texture2DContent",126,409,0.089108
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabBody.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabBody.xnb","TextureProcessor","Texture2DContent",1207,14569,0.0008262
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabBody.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabBody.xnb","TextureProcessor","Texture2DContent",1234,17017,0.0010854
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabBodyDamage.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabBodyDamage.xnb","TextureProcessor","Texture2DContent",1156,17017,0.0008616
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabBodyLow.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabBodyLow.xnb","TextureProcessor","Texture2DContent",1381,14569,0.001341
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawL.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabClawL.xnb","TextureProcessor","Texture2DContent",410,2065,0.0004281
@@ -18,6 +22,7 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawRDamage.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabClawRDamage.xnb","TextureProcessor","Texture2DContent",339,2065,0.0004043
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawROpen.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabClawROpen.xnb","TextureProcessor","Texture2DContent",411,2773,0.0004426
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawROpenDamage.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabClawROpenDamage.xnb","TextureProcessor","Texture2DContent",374,2689,0.0004283
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabEnter.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabEnter.xnb","TextureProcessor","Texture2DContent",1108,17017,0.0009802
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crown.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crown.xnb","TextureProcessor","Texture2DContent",369,2405,0.0004815
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/enemy.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/enemy.xnb","TextureProcessor","Texture2DContent",252,625,0.0003411
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/enemyDamage.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/enemyDamage.xnb","TextureProcessor","Texture2DContent",207,625,0.0003908
@@ -29,9 +34,11 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/introChest.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/introChest.xnb","TextureProcessor","Texture2DContent",302,2901,0.0004763
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/introChestDamage.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/introChestDamage.xnb","TextureProcessor","Texture2DContent",301,2901,0.0004516
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/introChestLow.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/introChestLow.xnb","TextureProcessor","Texture2DContent",381,2901,0.0004992
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/king_crab_downgraded.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/king_crab_downgraded.xnb","TextureProcessor","Texture2DContent",3704,84745,0.0029678
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBoss.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/shipBoss.xnb","TextureProcessor","Texture2DContent",446,3213,0.0004687
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBossDamage.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/shipBossDamage.xnb","TextureProcessor","Texture2DContent",346,3213,0.0004642
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/the_clawww_no_guns.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/the_clawww_no_guns.xnb","TextureProcessor","Texture2DContent",2396,50881,0.0016503
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/explosion.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/explosion.xnb","TextureProcessor","Texture2DContent",455,3001,0.0014251
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/hook.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/hook.xnb","TextureProcessor","Texture2DContent",126,145,0.0002883
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/icicle.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/icicle.xnb","TextureProcessor","Texture2DContent",199,597,0.0003192
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/introText.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/introText.xnb","TextureProcessor","Texture2DContent",541,11789,0.0007654
@@ -40,4 +47,5 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/peng.xnb","TextureProcessor","Texture2DContent",217,373,0.0003701
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/player.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/player.xnb","TextureProcessor","Texture2DContent",245,481,0.0003286
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/playerSmearBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/playerSmearBullet.xnb","TextureProcessor","Texture2DContent",117,385,0.0003343
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/ripple.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/ripple.xnb","TextureProcessor","Texture2DContent",179,1485,0.0008261
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/music.ogg","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/sounds/music.xnb","SongProcessor","SongContent",6733836,123,1.7632167

@@ -150,7 +150,7 @@ public class WallAlternate : EnemyWeapon {
 public class Spread : EnemyWeapon {
     private float angle, rowAngle;
     int shots;
-    public Spread(FloatRect pos, float delay = 1,int shots = 3, float angle = 30, float speed = 60, int volleys = 3) :
+    public Spread(FloatRect pos, float delay = 1, int shots = 3, float angle = 30, float speed = 60, int volleys = 3) :
      base(pos, delay, speed, volleys) {
         this.angle = angle;
         this.shots = shots;
@@ -159,8 +159,8 @@ public class Spread : EnemyWeapon {
 
     protected override void Shoot() {
         for (int i = 0; i <= shots; i++) {
-                FireAtAngle(180 - angle + (rowAngle * i), speed);
-            }
+            FireAtAngle(180 - angle + (rowAngle * i), speed);
+        }
         // FireAtAngle(180, speed);
         // FireAtAngle(180 - angle, speed);
         // FireAtAngle(180 + angle, speed);
@@ -228,6 +228,28 @@ public class Spiral : EnemyWeapon {
         for (int i = 1; i <= prongs; i++) {
             FireAtAngle(angle + i * 360 / prongs, speed);
         }
+    }
+}
+
+public class CirclePath : EnemyWeapon {
+    bool doubled;
+    float size, angle, loopSpeed;
+
+    public CirclePath(FloatRect pos, bool doubled = false, float delay = 2, float speed = 30, float size = 55, float loopSpeed = 0.1f,
+        int volleys = 6, float angle = 180) :
+    base(pos, delay, speed, volleys) {
+        this.doubled = doubled;
+        this.size = size;
+        this.angle = angle*(float)(Math.PI / 180);
+        this.loopSpeed = loopSpeed;
+    }
+   
+
+    protected override void Shoot() {
+        float x = (float)(Math.Sin(angle) * speed);
+        float y = -(float)(Math.Cos(angle) * speed);
+        NodeManager.AddNode(new EnemyCircleBullet(new Vector2Data(x, y), pos.Centre,size,loopSpeed));
+        NodeManager.AddNode(new EnemyCircleBullet(new Vector2Data(x, y), pos.Centre,size,loopSpeed,reversed:true));
     }
 }
 

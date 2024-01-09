@@ -11,6 +11,10 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboBarBorder.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboCounter.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/darkBullet.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/angryCrabBody.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/angryCrabBodyDamage.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/angryCrabBodyLow.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/clawHinge.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabArm.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabBody.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabBodyDamage.png</File>
@@ -23,6 +27,7 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawRDamage.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawROpen.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawROpenDamage.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabEnter.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crown.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/enemy.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/enemyDamage.png</File>
@@ -34,9 +39,11 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/introChest.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/introChestDamage.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/introChestLow.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/king_crab_downgraded.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBoss.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBossDamage.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/the_clawww_no_guns.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/explosion.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/hook.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/icicle.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/introText.png</File>
@@ -45,9 +52,18 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/player.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/playerSmearBullet.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/ripple.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/music.ogg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

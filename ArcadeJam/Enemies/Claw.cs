@@ -13,8 +13,8 @@ public class Claw : Node, IGrappleable {
     BoolData jabbing;
 
     Texture2D[] openTextures, closedTextures;
-    Sprite damageTex;
-    IntData health = new(150), phase = new(0);
+    Sprite damageTex, armSprite = new(Assets.crabArm);
+    IntData health = new(300), phase = new(0);
     public FloatRect Bounds { get; private set; } = new(0, 0, 15, 33);
     Vector2Data vel;
     FloatRect bodyBounds;
@@ -22,8 +22,9 @@ public class Claw : Node, IGrappleable {
     RectRender renderer;
     RectVisualizer hitBoxVisualizer;
 
-    Vector2Data[] armLocs = { new(), new(), new(), new(), new(), new(), new(), new() };
+    Vector2Data[] armLocs = { new(), new(), new(), new(), new(), new(), new(), new(), new() };
     PointRender[] armSegs;
+    
 
 
     EnemyDamage damager;
@@ -36,7 +37,7 @@ public class Claw : Node, IGrappleable {
         this.left = left;
         this.phase = phase;
         this.jabbing = jabbing;
-        currentPattern = new WallAlternate(Bounds);
+        currentPattern = new CirclePath(Bounds, speed:20,size:40,loopSpeed:0.3f,delay:2);
 
         this.bodyBounds = bodyBounds;
         if (left) {
@@ -51,7 +52,7 @@ public class Claw : Node, IGrappleable {
         damageTex = new(closedTextures[1]);
         armSegs = new PointRender[armLocs.Length];
         for (int i = 0; i < armLocs.Length; i++) {
-            armSegs[i] = new(new Sprite(Assets.crabArm), armLocs[i], true);
+            armSegs[i] = new(armSprite, armLocs[i], true);
         }
 
         renderer = new(sprite, Bounds);
@@ -59,7 +60,7 @@ public class Claw : Node, IGrappleable {
         this.vel = vel;
         grappleCollision = new(Bounds, this, "grapple");
         hitBoxVisualizer = new(Bounds);
-
+        grappleCollision.Remove();
 
 
     }
@@ -79,9 +80,19 @@ public class Claw : Node, IGrappleable {
                 break;
 
         }
+        if(!(jabbing.val && phase.val == 3)){
+            grappleCollision.Remove();
+
+
+        }
         if (jabbing.val && phase.val == 3) {
+
+            grappleCollision.Readd();
+
+
             damageTex.texture = openTextures[1];
             sprite.texture = openTextures[0];
+
             Bounds.width = 21;
             Bounds.height = 15;
         }
@@ -107,7 +118,7 @@ public class Claw : Node, IGrappleable {
     }
     private void phase1(GameTime gameTime) {
         currentPattern.Update(gameTime);
-        if (health.val <= 100) {
+        if (health.val <= 200) {
             currentPattern = new SpreadAlternating(Bounds);
             phase.val = 2;
         }
@@ -128,8 +139,9 @@ public class Claw : Node, IGrappleable {
         }
     }
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
+        //drawing arms
+        //calculating shoulter location
         Vector2 shoulderDiff = bodyBounds.Centre;
-
         if (left) {
             shoulderDiff.X -= 15;
         }
@@ -137,18 +149,31 @@ public class Claw : Node, IGrappleable {
 
             shoulderDiff.X += 15;
         }
-        shoulderDiff.Y +=  25;
+        shoulderDiff.Y += 25;
         shoulderDiff -= Bounds.Centre;
+        //drawing arm
         for (int i = 0; i < armLocs.Length; i++) {
             armLocs[i].val = Bounds.Centre + i * shoulderDiff / (armLocs.Length);
             armLocs[i].val.Y -= Bounds.height / 2;
 
         }
+        armSprite.texture =Assets.crabArm;
         foreach (PointRender i in armSegs) {
+
             i.Draw(spriteBatch);
         }
+        //drawing hinges
+        for (int i = 0; i < armLocs.Length; i+=3) {
+            armLocs[i].val = Bounds.Centre + i * shoulderDiff / (armLocs.Length);
+            armLocs[i].val.Y -= Bounds.height / 2;
+
+        }
+        armSprite.texture =Assets.crabHinge;
+        for (int i=0;i<armSegs.Length;i+=3) {
+         armSegs[i].Draw(spriteBatch);
+        }
         renderer.Draw(spriteBatch);
-         hitBoxVisualizer.bounds = Bounds;
+        hitBoxVisualizer.bounds = Bounds;
         hitBoxVisualizer.Draw(spriteBatch);
         hitBoxVisualizer.bounds = bodyBounds;
         hitBoxVisualizer.Draw(spriteBatch);
@@ -158,6 +183,7 @@ public class Claw : Node, IGrappleable {
 
     public void end() {
         damager.End();
+        grappleCollision.Remove();
     }
     public void startPhase3() {
         phase.val = 3;
@@ -174,5 +200,7 @@ public class Claw : Node, IGrappleable {
     public void GrappleHit(int damage) {
         grappled = false;
         health.val -= damage;
+        grappleCollision.Remove();
     }
+
 }

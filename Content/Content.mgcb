@@ -97,7 +97,7 @@
 /processorParam:TextureFormat=Color
 /build:darkBullet.png
 
-#begin enemies/crabArm.png
+#begin enemies/angryCrabBody.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -107,7 +107,43 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:enemies/crabArm.png
+/build:enemies/angryCrabBody.png
+
+#begin enemies/angryCrabBodyDamage.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:enemies/angryCrabBodyDamage.png
+
+#begin enemies/angryCrabBodyLow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:enemies/angryCrabBodyLow.png
+
+#begin enemies/clawHinge.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:enemies/clawHinge.png
 
 #begin enemies/crabArm.png
 /importer:TextureImporter
@@ -133,18 +169,6 @@
 /processorParam:TextureFormat=Color
 /build:enemies/crabBody.png
 
-#begin enemies/crabBody.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/crabBody.png
-
 #begin enemies/crabBodyDamage.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -156,30 +180,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:enemies/crabBodyDamage.png
-
-#begin enemies/crabBodyDamage.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/crabBodyDamage.png
-
-#begin enemies/crabBodyLow.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/crabBodyLow.png
 
 #begin enemies/crabBodyLow.png
 /importer:TextureImporter
@@ -205,18 +205,6 @@
 /processorParam:TextureFormat=Color
 /build:enemies/crabClawL.png
 
-#begin enemies/crabClawL.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/crabClawL.png
-
 #begin enemies/crabClawLDamage.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -228,30 +216,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:enemies/crabClawLDamage.png
-
-#begin enemies/crabClawLDamage.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/crabClawLDamage.png
-
-#begin enemies/crabClawLOpen.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/crabClawLOpen.png
 
 #begin enemies/crabClawLOpen.png
 /importer:TextureImporter
@@ -277,18 +241,6 @@
 /processorParam:TextureFormat=Color
 /build:enemies/crabClawLOpenDamage.png
 
-#begin enemies/crabClawLOpenDamage.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/crabClawLOpenDamage.png
-
 #begin enemies/crabClawR.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -300,30 +252,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:enemies/crabClawR.png
-
-#begin enemies/crabClawR.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/crabClawR.png
-
-#begin enemies/crabClawRDamage.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/crabClawRDamage.png
 
 #begin enemies/crabClawRDamage.png
 /importer:TextureImporter
@@ -349,18 +277,6 @@
 /processorParam:TextureFormat=Color
 /build:enemies/crabClawROpen.png
 
-#begin enemies/crabClawROpen.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/crabClawROpen.png
-
 #begin enemies/crabClawROpenDamage.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -373,7 +289,7 @@
 /processorParam:TextureFormat=Color
 /build:enemies/crabClawROpenDamage.png
 
-#begin enemies/crabClawROpenDamage.png
+#begin enemies/crabEnter.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -383,7 +299,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:enemies/crabClawROpenDamage.png
+/build:enemies/crabEnter.png
 
 #begin enemies/crown.png
 /importer:TextureImporter
@@ -409,18 +325,6 @@
 /processorParam:TextureFormat=Color
 /build:enemies/enemy.png
 
-#begin enemies/enemy.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/enemy.png
-
 #begin enemies/enemyDamage.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -432,30 +336,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:enemies/enemyDamage.png
-
-#begin enemies/enemyDamage.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/enemyDamage.png
-
-#begin enemies/enemyLow.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/enemyLow.png
 
 #begin enemies/enemyLow.png
 /importer:TextureImporter
@@ -517,18 +397,6 @@
 /processorParam:TextureFormat=Color
 /build:enemies/iceWall.png
 
-#begin enemies/iceWall.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/iceWall.png
-
 #begin enemies/introChest.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -540,30 +408,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:enemies/introChest.png
-
-#begin enemies/introChest.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/introChest.png
-
-#begin enemies/introChestDamage.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/introChestDamage.png
 
 #begin enemies/introChestDamage.png
 /importer:TextureImporter
@@ -589,7 +433,7 @@
 /processorParam:TextureFormat=Color
 /build:enemies/introChestLow.png
 
-#begin enemies/introChestLow.png
+#begin enemies/king_crab_downgraded.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -599,19 +443,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:enemies/introChestLow.png
-
-#begin enemies/shipBoss.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/shipBoss.png
+/build:enemies/king_crab_downgraded.png
 
 #begin enemies/shipBoss.png
 /importer:TextureImporter
@@ -637,18 +469,6 @@
 /processorParam:TextureFormat=Color
 /build:enemies/shipBossDamage.png
 
-#begin enemies/shipBossDamage.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/shipBossDamage.png
-
 #begin enemies/the_clawww_no_guns.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -661,7 +481,7 @@
 /processorParam:TextureFormat=Color
 /build:enemies/the_clawww_no_guns.png
 
-#begin enemies/the_clawww_no_guns.png
+#begin explosion.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -671,7 +491,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:enemies/the_clawww_no_guns.png
+/build:explosion.png
 
 #begin hook.png
 /importer:TextureImporter
@@ -763,6 +583,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:playerSmearBullet.png
+
+#begin ripple.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:ripple.png
 
 #begin sounds/music.ogg
 /importer:OggImporter

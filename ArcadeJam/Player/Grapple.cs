@@ -26,7 +26,7 @@ public class Grapple {
     private float hookSpeed = 0;
     private int damage = BaseDamage;
     private Sprite hook = new(Assets.hook), chain = new(Assets.chain);
-    FloatRect chainRect = new(0, 0, 3, 0);
+    FloatRect chainRect = new(-50, 0, 3, 0);
     FloatData combo;
     IntData grappleDamage;
 

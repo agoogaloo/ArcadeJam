@@ -59,13 +59,18 @@ public class Collision {
 
     }
     public void Remove() {
-        groupDict[group].Remove(bounds);
+        if (groupDict.ContainsKey(group) && groupDict[group].ContainsKey(bounds)) {
+            groupDict[group].Remove(bounds);
+        }
     }
     public void Readd() {
+
         if (!groupDict.ContainsKey(group)) {
             groupDict.Add(group, new Dictionary<FloatRect, Node>());
         }
-        groupDict[group].Add(bounds, node);
+        if (!groupDict[group].ContainsKey(bounds)) {
+            groupDict[group].Add(bounds, node);
+        }
 
     }
 }
