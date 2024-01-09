@@ -50,6 +50,7 @@ public class Intro : Level {
         base.EnemiesDefeated();
         MediaPlayer.Play(Assets.music);
         MediaPlayer.IsRepeating = true;
+        
     }
 
 }

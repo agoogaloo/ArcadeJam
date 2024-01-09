@@ -147,16 +147,23 @@ public class WallAlternate : EnemyWeapon {
     }
 
 }
-public class Tripple : EnemyWeapon {
-    private float angle;
-    public Tripple(FloatRect pos, float delay = 1, float angle = 30, float speed = 60) : base(pos, delay, speed) {
+public class Spread : EnemyWeapon {
+    private float angle, rowAngle;
+    int shots;
+    public Spread(FloatRect pos, float delay = 1,int shots = 3, float angle = 30, float speed = 60, int volleys = 3) :
+     base(pos, delay, speed, volleys) {
         this.angle = angle;
+        this.shots = shots;
+        rowAngle = angle * 2 / shots;
     }
 
     protected override void Shoot() {
-        FireAtAngle(180, speed);
-        FireAtAngle(180 - angle, speed);
-        FireAtAngle(180 + angle, speed);
+        for (int i = 0; i <= shots; i++) {
+                FireAtAngle(180 - angle + (rowAngle * i), speed);
+            }
+        // FireAtAngle(180, speed);
+        // FireAtAngle(180 - angle, speed);
+        // FireAtAngle(180 + angle, speed);
     }
 }
 public class SpreadAlternating : EnemyWeapon {

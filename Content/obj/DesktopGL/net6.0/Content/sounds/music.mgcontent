@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/sounds/music.wav</SourceFile>
-  <SourceTime>2024-01-08T00:32:20.2293741-07:00</SourceTime>
-  <DestFile>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/sounds/music.xnb</DestFile>
-  <DestTime>2024-01-08T14:36:11.1098481-07:00</DestTime>
-  <Importer>WavImporter</Importer>
+  <SourceFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/music.ogg</SourceFile>
+  <SourceTime>2024-01-08T18:13:15.549249-07:00</SourceTime>
+  <DestFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/sounds/music.xnb</DestFile>
+  <DestTime>2024-01-08T18:15:12.6419989-07:00</DestTime>
+  <Importer>OggImporter</Importer>
   <ImporterTime>2022-07-26T05:44:56-06:00</ImporterTime>
   <Processor>SongProcessor</Processor>
   <ProcessorTime>2022-07-26T05:44:56-06:00</ProcessorTime>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/sounds/music.ogg</string>
+    <string>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/sounds/music.ogg</string>
   </BuildOutput>
 </PipelineBuildEvent>

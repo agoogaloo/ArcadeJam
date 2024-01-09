@@ -48,8 +48,8 @@ public class Assets {
         clawR = loadEnemy("crabClawR", manager);
         clawLOpen = loadEnemy("crabClawLOpen", manager);
         clawROpen = loadEnemy("crabClawROpen", manager);
-        gunCrown = loadEnemy("crabClawLOpen",manager);
-        crown = manager.Load<Texture2D>("enemies/crabClawL");
+        gunCrown = loadEnemy("gunCrown",manager);
+        crown = manager.Load<Texture2D>("enemies/crown");
 
         //sounds
         music = manager.Load<Song>("sounds/music");

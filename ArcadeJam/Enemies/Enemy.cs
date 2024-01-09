@@ -139,7 +139,7 @@ public class TrippleEnemy : Enemy {
 
     public TrippleEnemy(EnemyMovement movement) : base(movement, Assets.enemy) {
         Health.val = 30;
-        weapon = new Tripple(bounds);
+        weapon = new Spread(bounds);
 
     }
 }

@@ -22,7 +22,7 @@ public class Claw : Node, IGrappleable {
     RectRender renderer;
     RectVisualizer hitBoxVisualizer;
 
-    Vector2Data[] armLocs = { new(), new(), new() };
+    Vector2Data[] armLocs = { new(), new(), new(), new(), new(), new(), new(), new() };
     PointRender[] armSegs;
 
 
@@ -85,7 +85,7 @@ public class Claw : Node, IGrappleable {
             Bounds.width = 21;
             Bounds.height = 15;
         }
-        else if (grappled){
+        else if (grappled) {
             sprite.texture = openTextures[1];
 
         }
@@ -128,18 +128,16 @@ public class Claw : Node, IGrappleable {
         }
     }
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-        Vector2 shoulderDiff = new();
+        Vector2 shoulderDiff = bodyBounds.Centre;
 
         if (left) {
-            shoulderDiff = bodyBounds.Location;
-            shoulderDiff.X += 15;
-
+            shoulderDiff.X -= 15;
         }
         else {
-            shoulderDiff = bodyBounds.Location;
-            shoulderDiff.X += bodyBounds.width - 15;
+
+            shoulderDiff.X += 15;
         }
-        shoulderDiff.Y += Bounds.height / 2 + 15;
+        shoulderDiff.Y +=  25;
         shoulderDiff -= Bounds.Centre;
         for (int i = 0; i < armLocs.Length; i++) {
             armLocs[i].val = Bounds.Centre + i * shoulderDiff / (armLocs.Length);
@@ -150,6 +148,9 @@ public class Claw : Node, IGrappleable {
             i.Draw(spriteBatch);
         }
         renderer.Draw(spriteBatch);
+         hitBoxVisualizer.bounds = Bounds;
+        hitBoxVisualizer.Draw(spriteBatch);
+        hitBoxVisualizer.bounds = bodyBounds;
         hitBoxVisualizer.Draw(spriteBatch);
 
 

@@ -4,46 +4,54 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/borders.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/cannonBall.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/chain.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/comboBar.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/comboBarBorder.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/comboCounter.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/darkBullet.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabArm.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabBody.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabBodyDamage.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabBodyLow.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabClawL.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabClawLDamage.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabClawLOpen.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabClawLOpenDamage.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabClawR.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabClawRDamage.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabClawROpen.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabClawROpenDamage.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/enemy.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/enemyDamage.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/enemyLow.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/iceWall.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/introChest.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/introChestDamage.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/introChestLow.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/shipBoss.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/shipBossDamage.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/the_clawww_no_guns.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/hook.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/icicle.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/introText.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/lightBullet.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/monoFont.spritefont</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/peng.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/player.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/playerSmearBullet.png</File>
-    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/sounds/music.wav</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/borders.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/cannonBall.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/chain.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboBar.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboBarBorder.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/comboCounter.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/darkBullet.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabArm.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabBody.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabBodyDamage.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabBodyLow.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawL.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawLDamage.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawLOpen.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawLOpenDamage.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawR.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawRDamage.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawROpen.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawROpenDamage.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crown.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/enemy.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/enemyDamage.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/enemyLow.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/gunCrown.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/gunCrownDamage.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/gunCrownLow.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/iceWall.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/introChest.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/introChestDamage.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/introChestLow.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBoss.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBossDamage.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/the_clawww_no_guns.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/hook.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/icicle.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/introText.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/lightBullet.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/monoFont.spritefont</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/player.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/playerSmearBullet.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/music.ogg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
