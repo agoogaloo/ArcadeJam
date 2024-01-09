@@ -5,6 +5,8 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/borders.png</File>
+    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bossBar.png</File>
+    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bossBarFrame.png</File>
     <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/cannonBall.png</File>
     <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/chain.png</File>
     <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/comboBar.png</File>
@@ -57,6 +59,8 @@
     <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/sounds/music.ogg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
