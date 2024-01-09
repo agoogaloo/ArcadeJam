@@ -29,7 +29,7 @@ public class InputHandler {
     private static Dictionary<GPadInput, string> controllerBinds = new();
 
 
-    public static void Update() {
+    public static void Update(GameTime gameTime) {
         var x = GamePad.GetState(PlayerIndex.One);
 
         //updating all the keyboard inputs
@@ -65,7 +65,7 @@ public class InputHandler {
 
         //updating the input objects
         foreach (KeyValuePair<string, Button> button in buttons) {
-            button.Value.update();
+            button.Value.update(gameTime);
         }
         foreach (KeyValuePair<string, Analog> input in analogInputs) {
             input.Value.update();

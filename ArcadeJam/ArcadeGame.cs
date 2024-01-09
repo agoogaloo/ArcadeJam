@@ -114,7 +114,7 @@ public class ArcadeGame : Game {
 
 	protected override void Update(GameTime gameTime) {
 		base.Update(gameTime);
-		InputHandler.Update();
+		InputHandler.Update(gameTime);
 
 		NodeManager.Update(gameTime);
 		if (!player.Alive) {

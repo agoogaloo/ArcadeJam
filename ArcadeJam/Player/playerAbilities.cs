@@ -18,7 +18,7 @@ public class PlayerAbilities {
     private FloatData speed, invincibleTime = new(1);
     private FloatData combo;
 
-    private Button shootButton = InputHandler.getButton("A"), grappleButton = InputHandler.getButton("B");
+    private Button shootButton = InputHandler.getButton("A"), focusButton = InputHandler.getButton("B");
 
     public int weapon;
     private Grapple grapple;
@@ -48,12 +48,13 @@ public class PlayerAbilities {
             upgrades[weapon].Use();
         }
         //grappling
-        if (grappleButton.Held && !shootButton.Held) {
+        if (focusButton.HoldTime>=0.05 && shootButton.HoldTime>=0.05) {
             grapple.Shoot();
         }
         //focusing
-        if (grappleButton.Held && shootButton.Held) {
+        if (focusButton.Held && !shootButton.Held) {
             focusing.val = true;
+            upgrades[weapon].Use();
         }
         else { focusing.val = false; }
         upgrades[weapon].Update(gameTime);

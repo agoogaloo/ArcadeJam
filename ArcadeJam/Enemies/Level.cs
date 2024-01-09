@@ -49,6 +49,7 @@ public class Intro : Level {
     protected override void EnemiesDefeated() {
         base.EnemiesDefeated();
         MediaPlayer.Play(Assets.music);
+        Console.WriteLine("AAAAAA");
         MediaPlayer.IsRepeating = true;
         
     }

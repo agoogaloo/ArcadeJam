@@ -41,7 +41,7 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/explosion.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/explosion.xnb","TextureProcessor","Texture2DContent",455,3001,0.0014521
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/hook.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/hook.xnb","TextureProcessor","Texture2DContent",126,145,0.0003964
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/icicle.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/icicle.xnb","TextureProcessor","Texture2DContent",199,597,0.0004612
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/introText.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/introText.xnb","TextureProcessor","Texture2DContent",541,11789,0.0007857
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/introText.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/introText.xnb","TextureProcessor","Texture2DContent",527,12701,0.1388229
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/lightBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/lightBullet.xnb","TextureProcessor","Texture2DContent",133,185,0.000387
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/monoFont.spritefont","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/monoFont.xnb","FontDescriptionProcessor","SpriteFontContent",2011,9247,0.059866
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/peng.xnb","TextureProcessor","Texture2DContent",217,373,0.0004448

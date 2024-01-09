@@ -62,8 +62,8 @@ public class Player : Node {
 			rippleDelay = 20/Vel.val.Length();
 		}
 		if(rippleTimer>=rippleDelay){
-			NodeManager.AddNode(new Ripple(new Vector2(Bounds.x-2, Bounds.y), true));
-			NodeManager.AddNode(new Ripple(new Vector2(Bounds.Right+2, Bounds.y), false));
+			NodeManager.AddNode(new Ripple(new Vector2(Bounds.x-3f, Bounds.y-2), true));
+			NodeManager.AddNode(new Ripple(new Vector2(Bounds.Right+2f, Bounds.y-2), false));
 			rippleTimer = 0;
 		}
 		collision.Update(collisionGroups);
