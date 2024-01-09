@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Drawing;
-using System.Security.Cryptography.X509Certificates;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
@@ -8,9 +7,10 @@ using Microsoft.Xna.Framework.Media;
 namespace ArcadeJam;
 
 public class Assets {
+    public static Rectangle rippleSize = new (0,0,5,14);
     public static Texture2D player, PlayerBullet, PlayerSmearBullet, hook, chain,
         enemyStun, enemyBullet,crabArm,crabHinge, crown, crabBody, crabEnter,
-        borders, comboCounter, comboBar, comboBarBorder, lives, introText;
+        borders, comboCounter, comboBar, comboBarBorder, lives, introText, rippleL, rippleR;
     public static Texture2D pixel = null;
 
     public static Texture2D[] introChest, enemy, enemy2,
@@ -36,6 +36,8 @@ public class Assets {
         enemyBullet = manager.Load<Texture2D>("lightBullet");
         hook = manager.Load<Texture2D>("hook");
         chain = manager.Load<Texture2D>("chain");
+        rippleL = manager.Load<Texture2D>("rippleL");
+        rippleR = manager.Load<Texture2D>("rippleR");
         //enemies
         introChest = loadEnemy("introChest", manager);
         enemy = loadEnemy("enemy", manager);

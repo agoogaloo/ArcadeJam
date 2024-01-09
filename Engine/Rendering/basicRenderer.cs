@@ -34,6 +34,44 @@ public class PointRender:IRenderer {
 
 
 }
+public class PointAnim:IRenderer {
+    public Sprite sprite;
+    IntData frame;
+    float timer = 0, frameTime;
+    private Vector2Data position;
+    private bool centred;
+    Rectangle sourceRect;
+
+
+    public PointAnim(Sprite sprite, Vector2Data position, IntData frame,Rectangle size, float fps = 5, bool centred = true) {
+        this.sprite = sprite;
+        this.position = position;
+        this.centred = centred;
+        this.frame = frame;
+        this.sourceRect = size;
+        frameTime = 1f/fps;
+    }
+
+    public void Draw( SpriteBatch spriteBatch,GameTime gameTime = null) {
+        
+        
+        int x = (int)Math.Round(position.val.X), y = (int)Math.Round(position.val.Y);
+        sourceRect.X = frame.val*sourceRect.Width;
+        if (centred){
+            x-=(int)(sourceRect.Width/2+0.5);
+            y -=(int)(sourceRect.Width/2+0.5);
+        }
+        spriteBatch.Draw(sprite.texture, new Vector2(x, y),sourceRect, Color.White);
+        timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+        if (timer > frameTime) {
+            frame.val++;
+            timer = 0;
+        }
+    }
+
+
+}
+
 public class RectRender:IRenderer {
     private Sprite sprite;
     private FloatRect bounds;

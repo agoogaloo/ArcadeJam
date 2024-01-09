@@ -52,10 +52,12 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/player.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/playerSmearBullet.png</File>
-    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/ripple.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/rippleL.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/rippleR.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/music.ogg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -584,7 +584,7 @@
 /processorParam:TextureFormat=Color
 /build:playerSmearBullet.png
 
-#begin ripple.png
+#begin rippleL.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -594,7 +594,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:ripple.png
+/build:rippleL.png
+
+#begin rippleR.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:rippleR.png
 
 #begin sounds/music.ogg
 /importer:OggImporter

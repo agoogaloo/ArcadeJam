@@ -47,5 +47,6 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/peng.xnb","TextureProcessor","Texture2DContent",217,373,0.0004448
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/player.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/player.xnb","TextureProcessor","Texture2DContent",245,481,0.0004057
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/playerSmearBullet.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/playerSmearBullet.xnb","TextureProcessor","Texture2DContent",117,385,0.0003837
-"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/ripple.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/ripple.xnb","TextureProcessor","Texture2DContent",179,1485,0.0007757
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/rippleL.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/rippleL.xnb","TextureProcessor","Texture2DContent",179,1485,0.0876003
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/rippleR.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/rippleR.xnb","TextureProcessor","Texture2DContent",154,1485,0.0014327
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/music.ogg","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/sounds/music.xnb","SongProcessor","SongContent",6733836,123,4.3913345

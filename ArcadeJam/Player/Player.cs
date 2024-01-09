@@ -21,9 +21,11 @@ public class Player : Node {
 	FloatData moveSpeed = new(1.5f);
 
 	public FloatData combo { get; private set; } = new FloatData(1);
-	public IntData score, lives = new IntData(3), grappleDamage = new();
+	public IntData score, lives = new IntData(5), grappleDamage = new();
 	Sprite Sprite { get; set; } = new Sprite(Assets.player);
 	List<Node> collisions = new();
+
+	float rippleTimer = 0;
 
 
 
@@ -50,9 +52,20 @@ public class Player : Node {
 	}
 
 	public override void Update(GameTime gameTime) {
+		float rippleDelay = 0.75f;
 
 		movement.Update(gameTime);
 		abilities.Update(gameTime);
+
+		rippleTimer+=(float)gameTime.ElapsedGameTime.TotalSeconds;
+		if(Vel.val!=Vector2.Zero){
+			rippleDelay = 20/Vel.val.Length();
+		}
+		if(rippleTimer>=rippleDelay){
+			NodeManager.AddNode(new Ripple(new Vector2(Bounds.x-2, Bounds.y), true));
+			NodeManager.AddNode(new Ripple(new Vector2(Bounds.Right+2, Bounds.y), false));
+			rippleTimer = 0;
+		}
 		collision.Update(collisionGroups);
 		if (invincibleTime.val >= 0f) {
 			invincibleTime.val -= (float)gameTime.ElapsedGameTime.TotalSeconds;
