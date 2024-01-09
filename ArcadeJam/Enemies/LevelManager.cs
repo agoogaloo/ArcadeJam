@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 namespace ArcadeJam;
 
 public class LevelManager {
-    static Level[] levels = { new Intro(), new ShipBossStage(), new Level1(), new Level2(), new Level3() ,new CrabBossStage()};
+    static Level[] levels = { new Intro(), new CrabBossStage(),new ShipBossStage(), new Level1(), new Level2(), new Level3() ,new CrabBossStage()};
     static int currentLevel = 0;
     public static int speedBonus =0, maxBonus = 1500;
     static float bonusTimer = 0;
@@ -30,7 +30,6 @@ public class LevelManager {
         levels[currentLevel].Update(gameTime);
         if (started && levels[currentLevel].Cleared) {
             scoreData.addScore(speedBonus);
-            speedBonus = 1500;
             bonusTimer = 0;
             Console.WriteLine("starting new level");
             levels[currentLevel].Cleared = false;
@@ -39,7 +38,8 @@ public class LevelManager {
                 currentLevel = 0;
             }
             
-            levels[currentLevel].Start();
+            levels[currentLevel].Start(scoreData);
+            speedBonus = levels[currentLevel].SpeedBonus;
             player.upgradeGun();
         }
 
@@ -47,7 +47,7 @@ public class LevelManager {
     public static void startLevels(Player playerVal) {
         player = playerVal;
         currentLevel = 0;
-        levels[currentLevel].Start();
+        levels[currentLevel].Start(scoreData);
         started = true;
 
     }

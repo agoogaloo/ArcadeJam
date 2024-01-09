@@ -19,6 +19,7 @@ public enum Movements {
 }
 
 public class CrabBoss : Node, IGrappleable {
+    int[] phasePoints = {300,300,200,500};
     Vector2 crownVel = new(50, -50);
     bool grapplable = false;
     IntData health = new(300), crownHealth = new(200), phase = new(0), lClawPhase = new(), rClawPhase = new();
@@ -38,7 +39,10 @@ public class CrabBoss : Node, IGrappleable {
     EnemyDamage damager, crownDamager;
     Collision grappleCollision, crownGrapple;
     EnemyWeapon[] patterns = { };
-    public CrabBoss() {
+
+    ScoreData score;
+    public CrabBoss(ScoreData score) {
+        this.score = score;
         BoolData lJabbing = new(false), rJabbing = new(false);
         Vector2Data lVel = new(), rVel = new();
 
@@ -64,6 +68,7 @@ public class CrabBoss : Node, IGrappleable {
         movement.Update(gameTime);
         if (health.val <= 0) {
             Alive = false;
+            score.addScore(phasePoints[3]);
         }
         switch (phase.val) {
             case 0:
@@ -117,6 +122,7 @@ public class CrabBoss : Node, IGrappleable {
             patterns = new EnemyWeapon[] { new SpreadAlternating(bounds, rows: 6) };
             movement.movementState = Movements.rightJab;
             movement.timer = 0;
+            score.addScore(phasePoints[0]);
         }
         if (!rightClaw.Alive) {
 
@@ -126,6 +132,7 @@ public class CrabBoss : Node, IGrappleable {
             patterns = new EnemyWeapon[] { new SpreadAlternating(bounds, rows: 6) };
             movement.movementState = Movements.leftJab;
             movement.timer = 0;
+            score.addScore(phasePoints[0]);
         }
         crownBounds.Centre = bounds.Centre;
 
@@ -148,6 +155,7 @@ public class CrabBoss : Node, IGrappleable {
             phase.val++;
             patterns = new EnemyWeapon[] { new SpreadAlternating(bounds, rows: 50, angle: 360),
             new SpreadAlternating(bounds, delay: 99999999999, rows: 300, angle: 360, volleys: 2,speed:40) };
+            score.addScore(phasePoints[1]);
 
 
         }
@@ -254,6 +262,7 @@ public class CrabBoss : Node, IGrappleable {
              ,new CirclePath(bounds,angle:180+60)};
             grappleBounds.Centre = bounds.Centre;
             grappleBounds.y = bounds.Bottom;
+            score.addScore(phasePoints[2]);
         }
         else if (phase.val == 4) {
             grapplable = false;

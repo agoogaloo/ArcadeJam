@@ -28,7 +28,7 @@ public class Enemy : Node, IGrappleable {
 
 
 
-    public Enemy(EnemyMovement movement, Texture2D[] textures) {
+    public Enemy(EnemyMovement movement, Texture2D[] textures, ScoreData scoreData) {
         renderHeight = 2;
         this.movement = movement;
         this.textures = textures;
@@ -102,7 +102,7 @@ public class Enemy : Node, IGrappleable {
     }
 }
 public class IntroChest : Enemy {
-    public IntroChest() : base(new Stationary(), Assets.introChest) {
+    public IntroChest() : base(new Stationary(), Assets.introChest, null) {
         Health.val = 27;
         weapon = new Nothing();
         bounds.Centre = new Vector2(71, 65);
@@ -129,7 +129,7 @@ public class IntroChest : Enemy {
 
 public class BasicEnemy : Enemy {
 
-    public BasicEnemy(EnemyMovement movement) : base(movement, Assets.enemy) {
+    public BasicEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.enemy, score) {
         Health.val = 10;
 
     }
@@ -137,7 +137,7 @@ public class BasicEnemy : Enemy {
 
 public class TrippleEnemy : Enemy {
 
-    public TrippleEnemy(EnemyMovement movement) : base(movement, Assets.enemy) {
+    public TrippleEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.enemy, score) {
         Health.val = 30;
         weapon = new Spread(bounds);
 
@@ -146,7 +146,7 @@ public class TrippleEnemy : Enemy {
 
 public class SpinEnemy : Enemy {
 
-    public SpinEnemy(EnemyMovement movement) : base(movement, Assets.enemy2) {
+    public SpinEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.enemy2, score) {
         Health.val = 50;
         bounds.width = 32;
         weapon = new Spiral(bounds);
