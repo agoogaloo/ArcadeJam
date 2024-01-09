@@ -119,7 +119,7 @@ public class Claw : Node, IGrappleable {
     private void phase1(GameTime gameTime) {
         currentPattern.Update(gameTime);
         if (health.val <= 200) {
-            currentPattern = new SpreadAlternating(Bounds);
+            currentPattern = new SpreadAlternating(Bounds,delay:1.5f);
             phase.val = 2;
         }
 
