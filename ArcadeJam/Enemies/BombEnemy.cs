@@ -12,6 +12,10 @@ public class BombEnemy : Enemy {
     public BombEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.bombEnemy, score) {
         Health.val = 100;
         weapon = new Nothing();
+        bounds.width = 22;
+        bounds.height = 13;
+        grappleBounds.width = bounds.width;
+        grappleBounds.height = bounds.height;
 
     }
     public override void Update(GameTime gameTime) {
@@ -42,14 +46,19 @@ public class Mine : Enemy {
     bool exploded = false;
 
     public Mine(EnemyMovement movement, ScoreData score) : base(movement, Assets.mine, score) {
-        Health.val = 15;
+        Health.val = 30;
         weapon = new Explosion(bounds,volleys:2);
+        bounds.width = 7;
+        bounds.height = 7;
+        grappleBounds.width = 7;
+        grappleBounds.height = 7;
     }
     public override void Update(GameTime gameTime) {
         sprite.texture = textures[0];
         damager.Update();
         movement.Update(gameTime);
         weapon.Update(gameTime);
+        updateGrappleBounds();
         if (Health.val <= 0) {
 
             if (!exploded) {
@@ -63,6 +72,20 @@ public class Mine : Enemy {
         }
         if (deathTime <= 0) {
             Alive = false;
+        }
+        if (!grappleable && Health.val < ArcadeGame.player.grappleDamage.val) {
+            grappleCollision.Readd();
+            grappleable = true;
+        }
+        else if (grappleable && Health.val > ArcadeGame.player.grappleDamage.val) {
+            grappleable = false;
+            grappleCollision.Remove();
+        }
+
+        sprite.texture = textures[0];
+        if (grappleable) {
+            sprite.texture = textures[2];
+
         }
 
     }
