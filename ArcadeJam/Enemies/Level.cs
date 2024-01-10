@@ -62,11 +62,11 @@ public class Intro : Level {
 public class Level1 : Level {
     public override void Start(ScoreData score, int loops = 1) {
         enemies = new Enemy[]{
-        new Mine(new MoveToPoint(new Vector2(60,-20), new Vector2(60,40)), score),
+        new BombEnemy(new MoveToPoint(new Vector2(60,-20), new Vector2(60,40)), score),
 
         new BasicEnemy(new MoveToPoint(new Vector2(75,0), new Vector2(75,50)), score),
 
-        new TrippleEnemy(new MoveToPoint(new Vector2(90,-25), new Vector2(90,40)), score),
+        new BombEnemy(new MoveToPoint(new Vector2(200,20), new Vector2(90,40)), score),
         };
         addEnemies();
     }

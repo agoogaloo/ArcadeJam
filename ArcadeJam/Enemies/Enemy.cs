@@ -28,7 +28,7 @@ public class Enemy : Node, IGrappleable {
     protected bool stunned = false, grappleable = false;
 
     protected int killPoints = 50, grapplePoints = 100;
-    ScoreData score;
+    protected ScoreData score;
 
 
 
@@ -154,39 +154,6 @@ public class TrippleEnemy : Enemy {
         weapon = new Spread(bounds);
 
     }
-}
-public class Mine : Enemy {
-    double deathTime = 0.25f;
-    bool exploded = false;
-
-    public Mine(EnemyMovement movement, ScoreData score) : base(movement, Assets.mine, score) {
-        Health.val = 15;
-        weapon = new Explosion(bounds);
-    }
-    public override void Update(GameTime gameTime) {
-        sprite.texture = textures[0];
-        damager.Update();
-        movement.Update(gameTime);
-        weapon.Update(gameTime);
-        if (Health.val <= 0) {
-            
-            if (!exploded) {
-                weapon.fire();
-                NodeManager.AddNode(new ExplosionEffect(bounds.Centre, false));
-                Console.WriteLine("boom!");
-
-            }
-            exploded = true;
-            deathTime -= gameTime.ElapsedGameTime.TotalSeconds;
-            Console.WriteLine(deathTime);
-        }
-        if (deathTime <= 0) {
-            Alive = false;
-        }
-
-    }
-
-
 }
 
 
