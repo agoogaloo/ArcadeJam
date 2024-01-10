@@ -44,6 +44,8 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/king_crab_downgraded.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBoss.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBossDamage.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBossLow.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBossLowR.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/the_clawww_no_guns.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/explosion.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/hook.png</File>
@@ -59,6 +61,8 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/music.ogg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -74,7 +74,7 @@ public class CrabBoss : Node, IGrappleable {
     public override void Update(GameTime gameTime) {
         movement.Update(gameTime);
         int currentHealth = health.val+Math.Max(0,crownHealth.val)+leftClaw.health.val+rightClaw.health.val;
-        Console.WriteLine(currentHealth+"/"+maxHealth+":"+(currentHealth/(float)maxHealth));
+        //Console.WriteLine(currentHealth+"/"+maxHealth+":"+(currentHealth/(float)maxHealth));
         progress.val = (float)currentHealth/maxHealth;
         if (deathTimer <= 0) {
             Alive = false;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 using ArcadeJam.Enemies;
 using Engine.Core.Data;
 using Engine.Core.Nodes;
@@ -15,7 +16,7 @@ public class Level {
     public bool Cleared { get; set; } = false;
     public int SpeedBonus { get; protected set; } = 1500;
 
-    public virtual void Start(ScoreData score) {
+    public virtual void Start(ScoreData score, int loops = 1) {
         enemies = new Enemy[] {
         new BasicEnemy(new MoveToPoint(new Vector2(75,0), new Vector2(75,50)), score) };
         addEnemies();
@@ -45,7 +46,7 @@ public class Level {
     }
 }
 public class Intro : Level {
-    public override void Start(ScoreData score) {
+    public override void Start(ScoreData score, int loops = 1) {
         enemies = new Enemy[] { new IntroChest() };
         addEnemies();
     }
@@ -59,7 +60,7 @@ public class Intro : Level {
 
 }
 public class Level1 : Level {
-    public override void Start(ScoreData score) {
+    public override void Start(ScoreData score, int loops = 1) {
         enemies = new Enemy[]{
         new TrippleEnemy(new MoveToPoint(new Vector2(60,-20), new Vector2(60,40)), score),
 
@@ -73,7 +74,7 @@ public class Level1 : Level {
 }
 
 public class Level2 : Level {
-    public override void Start(ScoreData score) {
+    public override void Start(ScoreData score, int loops = 1) {
         enemies = new Enemy[]{
 
          new BasicEnemy(new MoveToPoint(new Vector2(30,-20), new Vector2(50,50)), score),
@@ -91,7 +92,7 @@ public class Level2 : Level {
 
 }
 public class Level3 : Level {
-    public override void Start(ScoreData score) {
+    public override void Start(ScoreData score, int loops = 1) {
         enemies = new Enemy[]{
         new BasicEnemy(new MoveToPoint(new Vector2(25,-20), new Vector2(60,50)), score),
         new SpinEnemy(new MoveToPoint(new Vector2(75,0), new Vector2(180,50),speed:40f), score),
@@ -102,7 +103,7 @@ public class Level3 : Level {
 
 }
 public class ShipBossStage : Level {
-    public override void Start(ScoreData score) {
+    public override void Start(ScoreData score, int loops = 1) {
         enemies = new Enemy[] { new ShipBoss(score) };
         addEnemies();
     }
@@ -114,8 +115,8 @@ public class CrabBossStage : Level {
         SpeedBonus = 5000;
         this.bossBar = bossBar;
     }
-    public override void Start(ScoreData score) {
-        enemies = new Node[] { new CrabBoss(score, bossBar) };
+    public override void Start(ScoreData score, int loops = 1) {
+        enemies = new Node[] { new CrabBoss(score, bossBar)};
         addEnemies();
     }
 
