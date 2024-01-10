@@ -102,7 +102,7 @@ public class Player : Node {
 
 	public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
 		abilities.Draw(gameTime, spriteBatch);
-		if (invincibleTime.val < 0 || (int)(invincibleTime.val * 10) % 2 == 0) {
+		if (invincibleTime.val < 0 || (int)(invincibleTime.val * 13) % 2 == 0) {
 			render.Draw( spriteBatch);
 		}
 		showBounds.Draw(spriteBatch);

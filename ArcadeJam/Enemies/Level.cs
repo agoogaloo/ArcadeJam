@@ -31,8 +31,6 @@ public class Level {
         foreach (Node i in enemies) {
             if (i.Alive) {
                 enemiesLeft = true;
-                Console.WriteLine(i+" is still alive");
-
             }
         }
         if (!enemiesLeft) {
@@ -55,7 +53,7 @@ public class Intro : Level {
         base.EnemiesDefeated();
         
         MediaPlayer.Play(Assets.music);
-        Console.WriteLine("AAAAAA");
+       
         MediaPlayer.IsRepeating = true;
 
     }

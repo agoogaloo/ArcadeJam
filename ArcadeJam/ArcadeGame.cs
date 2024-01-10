@@ -207,7 +207,7 @@ public class ArcadeGame : Game {
 		GraphicsDevice.Clear(new Color(44, 33, 55));
 		spriteBatch.Begin();
 		NodeManager.Draw(gameTime, spriteBatch);
-		if(gameOverScreen!=null){
+		if (gameOverScreen != null) {
 			gameOverScreen.Draw(spriteBatch);
 		}
 		spriteBatch.End();
@@ -215,7 +215,7 @@ public class ArcadeGame : Game {
 	}
 	private void drawBorder() {
 		String scoreString = score.val.ToString("D6");
-		String bonusString = "+"+LevelManager.speedBonus.ToString("D4");
+		String bonusString = "+" + LevelManager.speedBonus.ToString("D4");
 		//combo meter
 		Rectangle comboRect = new(0, 0, 31, 26);
 		comboRect.X = ((int)player.combo.val) * 31;
@@ -232,16 +232,20 @@ public class ArcadeGame : Game {
 		spriteBatch.Draw(gameTarget, new Vector2(38, 0), Color.White);
 		spriteBatch.Draw(Assets.borders, Vector2.Zero, Color.White);
 		spriteBatch.DrawString(Assets.font, scoreString, new Vector2(1, 27), new Color(169, 104, 104));
-		spriteBatch.DrawString(Assets.font, bonusString, new Vector2(4, 54), new Color(169, 104, 104));
+		if ((int)(LevelManager.transitionTimer * 8) % 2 == 0) {
+			spriteBatch.DrawString(Assets.font, bonusString, new Vector2(4, 54), new Color(169, 104, 104));
+			spriteBatch.DrawString(Assets.font, LevelManager.loops + "-" + LevelManager.currentLevel, new Vector2(9, 6), new Color(169, 104, 104));
+
+		}
+
 		//combo bar
 		spriteBatch.Draw(Assets.comboCounter, new Vector2(3, 78), comboRect, Color.White);
 		spriteBatch.Draw(Assets.comboBar, new Vector2(4, 102), comboBarRect, Color.White);
 		spriteBatch.Draw(Assets.comboBarBorder, new Vector2(4, 102), Color.White);
 		//boss health
-		Rectangle barRect = new(0,0,4,(int)(Assets.bossBar.Height*LevelManager.BossBar.val));
-		spriteBatch.Draw(Assets.bossBar, new Vector2(194, 11+Assets.bossBar.Height-barRect.Height),barRect, Color.White);
+		Rectangle barRect = new(0, 0, 4, (int)(Assets.bossBar.Height * LevelManager.BossBar.val));
+		spriteBatch.Draw(Assets.bossBar, new Vector2(194, 11 + Assets.bossBar.Height - barRect.Height), barRect, Color.White);
 		spriteBatch.Draw(Assets.bossBarFrame, new Vector2(173, 0), Color.White);
-		spriteBatch.DrawString(Assets.font, LevelManager.loops+"-"+LevelManager.currentLevel, new Vector2(9, 6), new Color(169, 104, 104));
 
 		for (int i = 0; i < player.lives.val; i++) {
 			spriteBatch.Draw(Assets.lives, new Vector2(4 + 6 * i, 139), Color.White);
@@ -259,14 +263,15 @@ public class ArcadeGame : Game {
 		}
 		else if (gameOverScreen.finished) {
 			NodeManager.clearNodes();
-			
+
 			player = new Player(score, combo);
 			NodeManager.AddNode(player);
 			score.val = 0;
 			combo.val = 0;
 			gameOverScreen = null;
 			LevelManager.startLevels(player);
-		}else{
+		}
+		else {
 			gameOverScreen.Update(gameTime);
 		}
 

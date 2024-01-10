@@ -33,7 +33,7 @@ public class LevelManager {
 
         bool cleared = true;
         for (int i = 0; i < loops && currentLevel + i < levels.Length; i++) {
-            Console.WriteLine(levels[currentLevel + i].Cleared + "," + i);
+
             levels[currentLevel + i].Update(gameTime);
             if (!levels[currentLevel + i].Cleared) {
                 cleared = false;
@@ -41,7 +41,7 @@ public class LevelManager {
         }
         if (started && cleared) {
             transitionTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (transitionTimer >= 1) {
+            if (transitionTimer >= 1.5) {
                 nextLevel();
                 transitionTimer = 0;
             }
@@ -71,7 +71,7 @@ public class LevelManager {
     }
     public static void startLevels(Player playerVal) {
         player = playerVal;
-        levels = new Level[] { new Intro(), new ShipBossStage(), new Level2(), new Level3() };
+        levels = new Level[] { new Intro(), new Level1(), new Level2(), new Level3() };
         currentLevel = 0;
         levels[currentLevel].Start(scoreData);
         started = true;

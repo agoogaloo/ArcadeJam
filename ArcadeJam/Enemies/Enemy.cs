@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ArcadeJam.Enemies;
 
 public class Enemy : Node, IGrappleable {
+    protected static Random rand =new();
     public IntData Health { get; protected set; } = new IntData(20);
     protected Sprite sprite;
     protected Texture2D[] textures;
@@ -29,10 +30,9 @@ public class Enemy : Node, IGrappleable {
 
     protected int killPoints = 50, grapplePoints = 100;
     protected ScoreData score;
+	protected double rippleTimer, rippleDelay = 2;
 
-
-
-    public Enemy(EnemyMovement movement, Texture2D[] textures, ScoreData scoreData) {
+	public Enemy(EnemyMovement movement, Texture2D[] textures, ScoreData scoreData) {
         renderHeight = 2;
         this.movement = movement;
         this.textures = textures;
@@ -54,6 +54,7 @@ public class Enemy : Node, IGrappleable {
     public override void Update(GameTime gameTime) {
         if (!stunned) {
             movement.Update(gameTime);
+            
             weapon.Update(gameTime);
             updateGrappleBounds();
         }
@@ -77,6 +78,17 @@ public class Enemy : Node, IGrappleable {
             Alive = false;
             score.addScore(killPoints);
         }
+        doRipples(gameTime);
+        
+    }
+    protected virtual void doRipples(GameTime gameTime){
+        rippleTimer+=gameTime.ElapsedGameTime.TotalSeconds;
+        if(rippleTimer>=rippleDelay){
+			NodeManager.AddNode(new Ripple(new Vector2(bounds.x-3f, bounds.Centre.Y-5), true));
+			NodeManager.AddNode(new Ripple(new Vector2(bounds.Right+2f, bounds.Centre.Y-5), false));
+            rippleTimer = rand.NextDouble()*0.5f;
+            Console.WriteLine(rippleTimer);
+		}
     }
     protected void updateGrappleBounds() {
         grappleBounds.x = bounds.Centre.X - grappleBounds.width / 2;
@@ -136,6 +148,15 @@ public class IntroChest : Enemy {
         base.Draw(gameTime, spriteBatch);
         spriteBatch.Draw(Assets.introText, new Vector2(ArcadeGame.gameWidth / 2 - Assets.introText.Width / 2, 5), Color.White);
 
+    }
+    protected override void doRipples(GameTime gameTime){
+       
+        rippleTimer+=gameTime.ElapsedGameTime.TotalSeconds;
+        if(rippleTimer>=rippleDelay){
+			NodeManager.AddNode(new Ripple(new Vector2(bounds.x-3f, bounds.Centre.Y+6), true));
+			NodeManager.AddNode(new Ripple(new Vector2(bounds.Right+2f, bounds.Centre.Y+6), false));
+            rippleTimer = 0;
+		}
     }
 }
 
