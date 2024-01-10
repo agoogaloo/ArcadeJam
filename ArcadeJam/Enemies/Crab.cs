@@ -130,7 +130,7 @@ public class CrabBoss : Node, IGrappleable {
 
         if (bounds.y >= 1) {
             phase.val++;
-            patterns = new EnemyWeapon[] { new AimedParallel(bounds, 2, rows: 3, seperation: 5,speed:90) };
+            patterns = new EnemyWeapon[] { new AimedParallel(bounds, 2, rows: 2, seperation: 3,speed:90) };
             movement.movementState = Movements.idle;
 
             lClawPhase.val = 1;

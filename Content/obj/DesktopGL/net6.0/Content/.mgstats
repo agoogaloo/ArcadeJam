@@ -1,5 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/borders.png","C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/borders.xnb","TextureProcessor","Texture2DContent",1087,120085,0.3580086
+"C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/borders.png","C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/borders.xnb","TextureProcessor","Texture2DContent",1034,120085,0.1442012
 "C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bossBar.png","C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/bossBar.xnb","TextureProcessor","Texture2DContent",124,2245,0.0032646
 "C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bossBarFrame.png","C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/bossBarFrame.xnb","TextureProcessor","Texture2DContent",330,16285,0.0062269
 "C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/cannonBall.png","C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/cannonBall.xnb","TextureProcessor","Texture2DContent",133,185,0.0040623

@@ -8,48 +8,70 @@ namespace ArcadeJam;
 
 public class LevelManager {
     static Level[] levels;
-    static int currentLevel = 0;
-    public static int speedBonus =0, maxBonus = 1500;
+    public static int currentLevel = 0, loops = 1;
+    public static int speedBonus = 0, maxBonus = 1500;
+    public static float transitionTimer = 0;
     static float bonusTimer = 0;
     static bool started = false;
-    public static FloatData BossBar{get; private set;} = new();
+    public static FloatData BossBar { get; private set; } = new();
 
     private static Player player;
     public static ScoreData scoreData;
 
 
-    
+
 
     public static void Update(GameTime gameTime) {
-        bonusTimer+=(float)gameTime.ElapsedGameTime.TotalSeconds;
-        if(bonusTimer>1.5){
-            bonusTimer=0;
-            speedBonus-=100;
-            speedBonus = Math.Max(0,speedBonus);
+        bonusTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+        if (bonusTimer > 1.5) {
+            bonusTimer = 0;
+            speedBonus -= 100;
+            speedBonus = Math.Max(0, speedBonus);
         }
 
-        
-        levels[currentLevel].Update(gameTime);
-        if (started && levels[currentLevel].Cleared) {
-            scoreData.addScore(speedBonus);
-            bonusTimer = 0;
-            Console.WriteLine("starting new level");
-            levels[currentLevel].Cleared = false;
-            currentLevel++;
-            if (currentLevel >= levels.Length) {
-                currentLevel = 0;
+
+
+        bool cleared = true;
+        for (int i = 0; i < loops && currentLevel + i < levels.Length; i++) {
+            Console.WriteLine(levels[currentLevel + i].Cleared + "," + i);
+            levels[currentLevel + i].Update(gameTime);
+            if (!levels[currentLevel + i].Cleared) {
+                cleared = false;
             }
-            
-            levels[currentLevel].Start(scoreData);
-            speedBonus = levels[currentLevel].SpeedBonus;
-            player.upgradeGun();
-            BossBar.val+=1f/(levels.Length-1);
         }
+        if (started && cleared) {
+            transitionTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (transitionTimer >= 1) {
+                nextLevel();
+                transitionTimer = 0;
+            }
+
+        }
+
+    }
+    private static void nextLevel() {
+        scoreData.addScore(speedBonus);
+        bonusTimer = 0;
+        Console.WriteLine("starting new level");
+       
+        currentLevel++;
+        if (currentLevel >= levels.Length) {
+            currentLevel = 0;
+            loops++;
+        }
+        speedBonus = 0;
+        for (int i = 0; i < loops && currentLevel + i < levels.Length; i++) {
+             levels[currentLevel+i].Cleared = false;
+            levels[currentLevel + i].Start(scoreData);
+            speedBonus += levels[currentLevel + i].SpeedBonus;
+        }
+        player.upgradeGun();
+        BossBar.val += 1f / (levels.Length - 1);
 
     }
     public static void startLevels(Player playerVal) {
         player = playerVal;
-        levels = new Level[]{ new Intro(),new Level1(),new ShipBossStage(), new Level1(), new Level2(), new Level3() ,new CrabBossStage(BossBar)};
+        levels = new Level[] { new Intro(), new ShipBossStage(), new Level2(), new Level3() };
         currentLevel = 0;
         levels[currentLevel].Start(scoreData);
         started = true;

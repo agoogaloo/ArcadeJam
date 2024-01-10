@@ -241,6 +241,7 @@ public class ArcadeGame : Game {
 		Rectangle barRect = new(0,0,4,(int)(Assets.bossBar.Height*LevelManager.BossBar.val));
 		spriteBatch.Draw(Assets.bossBar, new Vector2(194, 11+Assets.bossBar.Height-barRect.Height),barRect, Color.White);
 		spriteBatch.Draw(Assets.bossBarFrame, new Vector2(173, 0), Color.White);
+		spriteBatch.DrawString(Assets.font, LevelManager.loops+"-"+LevelManager.currentLevel, new Vector2(9, 6), new Color(169, 104, 104));
 
 		for (int i = 0; i < player.lives.val; i++) {
 			spriteBatch.Draw(Assets.lives, new Vector2(4 + 6 * i, 139), Color.White);

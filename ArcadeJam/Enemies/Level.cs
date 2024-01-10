@@ -31,6 +31,7 @@ public class Level {
         foreach (Node i in enemies) {
             if (i.Alive) {
                 enemiesLeft = true;
+                Console.WriteLine(i+" is still alive");
 
             }
         }
@@ -52,6 +53,7 @@ public class Intro : Level {
     }
     protected override void EnemiesDefeated() {
         base.EnemiesDefeated();
+        
         MediaPlayer.Play(Assets.music);
         Console.WriteLine("AAAAAA");
         MediaPlayer.IsRepeating = true;
