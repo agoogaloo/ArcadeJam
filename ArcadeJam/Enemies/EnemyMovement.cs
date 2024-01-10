@@ -10,7 +10,7 @@ public abstract class EnemyMovement {
     protected Vector2Data vel;
     protected FloatRect bounds;
 
-    private VelMovement velMovement;
+    protected VelMovement velMovement;
 
     public EnemyMovement() { }
 

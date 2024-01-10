@@ -1,6 +1,8 @@
 ﻿using System;
 using ArcadeJam.Weapons;
+using Engine.Core.Data;
 using Engine.Core.Nodes;
+using Engine.Core.Physics;
 using Microsoft.Xna.Framework;
 
 namespace ArcadeJam.Enemies;
@@ -8,39 +10,42 @@ namespace ArcadeJam.Enemies;
 
 public class ShipBoss : Enemy {
 
-    int phase = 0;
+    int phase = 1;
     float deathTime = 2, timer;
     ScoreData score;
 
-    public ShipBoss(ScoreData score) : base(new MoveToPoint(new Vector2(75, -50), new Vector2(75, 50), easing: 2),
-         Assets.shipBoss, score) {
+    EnemyWeapon[] patterns;
+    FloatRect patternBounds = new(0, 0, 2, 2);
+
+    public ShipBoss(ScoreData score) : base(new ShipPhase1Movement(), Assets.shipBoss, score) {
         Health.val = 60;
         bounds.width = 23;
         bounds.height = 34;
         this.score = score;
-        weapon = new Spiral(bounds);
+        patterns = new EnemyWeapon[]{new Straight(patternBounds, 0.2f, 30, -90-60),
+        new Straight(patternBounds, 0.2f, 30, -90+60)};
 
         renderer = new(sprite, bounds);
     }
 
     public override void Update(GameTime gameTime) {
 
-        if(doDeathExplosion(gameTime)){
+        if (doDeathExplosion(gameTime)) {
             return;
         }
+        switch (phase) {
+            case 1:
+                phase1(gameTime);
+                break;
+            case 2:
+                phase2(gameTime);
+                break;
+        }
+
 
         movement.Update(gameTime);
-        weapon.Update(gameTime);
-        updateGrappleBounds();
-
-
-        if (!grappleable && Health.val < ArcadeGame.player.grappleDamage.val) {
-            grappleCollision.Readd();
-            grappleable = true;
-        }
-        else if (grappleable && Health.val > ArcadeGame.player.grappleDamage.val) {
-            grappleable = false;
-            grappleCollision.Remove();
+        foreach (EnemyWeapon i in patterns) {
+            i.Update(gameTime);
         }
 
         sprite.texture = textures[0];
@@ -80,17 +85,41 @@ public class ShipBoss : Enemy {
         }
         return false;
     }
-    public void phase1() {
+    public void phase1(GameTime gameTime) {
+        patternBounds.Centre = bounds.Centre;
+        patternBounds.x = bounds.Right+10;
+        Console.WriteLine(patternBounds.Centre);
 
     }
-    public void phase2() {
+    public void phase2(GameTime gameTime) {
 
     }
 }
 
 
 
-public class ShipBossMovement : EnemyMovement {
+public class ShipPhase1Movement : EnemyMovement {
+    int lane = 1;
+    public override void Init(FloatRect bounds, Vector2Data vel) {
+        base.Init(bounds, vel);
+        bounds.x = -40;
+        bounds.y = 30;
+        vel.val = new(00, 0);
+    }
+    public override void Update(GameTime gameTime) {
+        velMovement.Update(gameTime);
+        vel.val.X+=(float)(gameTime.ElapsedGameTime.TotalSeconds*30f);
+        if (bounds.x > ArcadeGame.width + 50) {
+            lane++;
+            if (lane >= 4) {
+                lane = 0;
+            }
+            bounds.y = 5 + 15 * lane;
+            bounds.x = -30;
+            vel.val = new(5, 0);
+        }
+    }
+
 
 }
 

@@ -3,7 +3,7 @@ using System.Reflection.Metadata.Ecma335;
 using Engine.Core.Data;
 using Engine.Core.Nodes;
 using Microsoft.Xna.Framework;
- 
+
 namespace ArcadeJam.Weapons;
 
 public abstract class EnemyWeapon {
@@ -105,11 +105,14 @@ public class AimedParallel : EnemyWeapon {
 }
 
 public class Straight : EnemyWeapon {
-    public Straight(FloatRect pos, float delay = 1) : base(pos, delay) {
+    float angle;
+    public Straight(FloatRect pos, float delay = 1, float speed = 60, float angle = 180, int volleys = 0) :
+        base(pos, delay, speed, volleys) {
+        this.angle = angle;
     }
 
     protected override void Shoot() {
-        FireAtAngle(180, speed);
+        FireAtAngle(angle, speed);
     }
 }
 public class WallAlternate : EnemyWeapon {
@@ -240,16 +243,16 @@ public class CirclePath : EnemyWeapon {
     base(pos, delay, speed, volleys) {
         this.doubled = doubled;
         this.size = size;
-        this.angle = angle*(float)(Math.PI / 180);
+        this.angle = angle * (float)(Math.PI / 180);
         this.loopSpeed = loopSpeed;
     }
-   
+
 
     protected override void Shoot() {
         float x = (float)(Math.Sin(angle) * speed);
         float y = -(float)(Math.Cos(angle) * speed);
-        NodeManager.AddNode(new EnemyCircleBullet(new Vector2Data(x, y), pos.Centre,size,loopSpeed));
-        NodeManager.AddNode(new EnemyCircleBullet(new Vector2Data(x, y), pos.Centre,size,loopSpeed,reversed:true));
+        NodeManager.AddNode(new EnemyCircleBullet(new Vector2Data(x, y), pos.Centre, size, loopSpeed));
+        NodeManager.AddNode(new EnemyCircleBullet(new Vector2Data(x, y), pos.Centre, size, loopSpeed, reversed: true));
     }
 }
 
