@@ -51,8 +51,9 @@ public class Assets {
         bombEnemy = loadEnemy("bombEnemy", manager);
         mine = loadEnemy("mine", manager);
         trippleEnemyR = loadEnemy("trippleEnemyR", manager);
-        Array.Resize(ref trippleEnemyR, 4);
+        Array.Resize(ref trippleEnemyR, 5);
         trippleEnemyR[3] = manager.Load<Texture2D>("enemies/trippleEnemyRLow2");
+        trippleEnemyR[4] = manager.Load<Texture2D>("enemies/trippleEnemyRLow3");
         //bosses
         shipBoss = loadEnemy("shipBoss", manager);
 

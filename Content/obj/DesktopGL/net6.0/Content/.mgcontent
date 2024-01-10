@@ -61,6 +61,7 @@
     <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyRDamage.png</File>
     <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyRLow.png</File>
     <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyRLow2.png</File>
+    <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyRLow3.png</File>
     <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/explosion.png</File>
     <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/hook.png</File>
     <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/icicle.png</File>
@@ -85,6 +86,7 @@
     <File>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/sounds/playerHit.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

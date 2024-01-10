@@ -661,30 +661,6 @@
 /processorParam:TextureFormat=Color
 /build:enemies/trippleEnemyR.png
 
-#begin enemies/trippleEnemyR.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/trippleEnemyR.png
-
-#begin enemies/trippleEnemyRDamage.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:enemies/trippleEnemyRDamage.png
-
 #begin enemies/trippleEnemyRDamage.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -720,6 +696,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:enemies/trippleEnemyRLow2.png
+
+#begin enemies/trippleEnemyRLow3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:enemies/trippleEnemyRLow3.png
 
 #begin explosion.png
 /importer:TextureImporter

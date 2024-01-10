@@ -87,27 +87,36 @@ public class ShipBoss : Enemy {
     }
     public void phase1(GameTime gameTime) {
         patternBounds.Centre = bounds.Centre;
-        patternBounds.x = bounds.Right+10;
+        patternBounds.x = bounds.Right + 10;
 
     }
     public void phase2(GameTime gameTime) {
 
+    }
+    public override void End() {
+        base.End();
+        if (ArcadeGame.player.lives.val < 5) {
+            ArcadeGame.player.lives.val++;
+        }
+        else {
+            score.addScore(3000);
+        }
     }
 }
 
 
 
 public class ShipPhase1Movement : EnemyMovement {
-    int lane = 1;
+    int lane = 0;
     public override void Init(FloatRect bounds, Vector2Data vel) {
         base.Init(bounds, vel);
         bounds.x = -40;
-        bounds.y = 30;
-        vel.val = new(00, 0);
+        bounds.y = 00;
+        vel.val = new(100, 0);
     }
     public override void Update(GameTime gameTime) {
         velMovement.Update(gameTime);
-        vel.val.X+=(float)(gameTime.ElapsedGameTime.TotalSeconds*30f);
+        vel.val.X += (float)(gameTime.ElapsedGameTime.TotalSeconds *60f);
         if (bounds.x > ArcadeGame.width + 50) {
             lane++;
             if (lane >= 4) {
@@ -115,7 +124,7 @@ public class ShipPhase1Movement : EnemyMovement {
             }
             bounds.y = 5 + 15 * lane;
             bounds.x = -30;
-            vel.val = new(5, 0);
+            vel.val = new(0, 0);
         }
     }
 

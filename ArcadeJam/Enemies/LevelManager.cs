@@ -8,7 +8,7 @@ namespace ArcadeJam;
 
 public class LevelManager {
     static Level[] levels;
-    public static int currentLevel = 0, loops = 1;
+    public static int currentLevel = 3, loops = 1;
     public static int speedBonus = 0, maxBonus = 1500;
     public static float transitionTimer = 0;
     static float bonusTimer = 0;
@@ -22,14 +22,6 @@ public class LevelManager {
 
 
     public static void Update(GameTime gameTime) {
-        bonusTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-        if (bonusTimer > 1.5) {
-            bonusTimer = 0;
-            speedBonus -= 100;
-            speedBonus = Math.Max(0, speedBonus);
-        }
-
-
 
         bool cleared = true;
         for (int i = 0; i < loops && currentLevel + i < levels.Length; i++) {
@@ -39,6 +31,14 @@ public class LevelManager {
                 cleared = false;
             }
         }
+        bonusTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+        if (bonusTimer > 1.5 && !cleared) {
+            bonusTimer = 0;
+            speedBonus -= 100;
+            speedBonus = Math.Max(0, speedBonus);
+        }
+
+
         if (started && cleared) {
             transitionTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (transitionTimer >= 1.5) {
@@ -71,7 +71,8 @@ public class LevelManager {
     }
     public static void startLevels(Player playerVal) {
         player = playerVal;
-        levels = new Level[] { new Intro(), new Level2(), new Level2(), new Level3(),new ShipBossStage() };
+        levels = new Level[] { new Intro(), new Level1(), new Level2(), new Level3(),new Level4(),new Level5(),
+        new ShipBossStage() ,new CrabBossStage(BossBar)};
         currentLevel = 0;
         levels[currentLevel].Start(scoreData);
         started = true;

@@ -49,7 +49,7 @@ public class Mine : Enemy {
     bool exploded = false;
 
     public Mine(EnemyMovement movement, ScoreData score) : base(movement, Assets.mine, score) {
-        Health.val = 25;
+        Health.val = 23;
         weapon = new Explosion(bounds,volleys:2);
         bounds.width = 7;
         bounds.height = 7;

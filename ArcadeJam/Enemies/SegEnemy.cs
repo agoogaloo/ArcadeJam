@@ -5,30 +5,37 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ArcadeJam.Enemies;
 
 public class SegmentEnemy : Enemy {
-    bool pointOnLeft;
-    public SegmentEnemy(EnemyMovement movement, ScoreData scoreData, bool leftPoint = true) :
+    int grapplePoint;
+    public SegmentEnemy(EnemyMovement movement, ScoreData scoreData, int grapplePoint = 1) :
     base(movement, Assets.trippleEnemyR, scoreData) {
-        this.pointOnLeft = leftPoint;
+        this.grapplePoint = grapplePoint;
         Health.val = 100;
-        weapon = new SpreadAlternating(bounds, rows: 2);
+        weapon = new SpreadAlternating(bounds, rows: 3);
         bounds.width = 32;
         bounds.height = 17;
-        grappleBounds.width = 14;
+        grappleBounds.width = 10;
+        if(grapplePoint==3){
+            grappleBounds.width = 14;
+        }
         grappleBounds.height = bounds.height;
     }
 	public override void Update(GameTime gameTime) {
 		base.Update(gameTime);
-         if (grappleable && pointOnLeft) {
+         if (grappleable && grapplePoint==1) {
+            sprite.texture = textures[2];
+
+        }
+         if (grappleable && grapplePoint==2) {
             sprite.texture = textures[3];
+
+        }
+         if (grappleable && grapplePoint==3) {
+            sprite.texture = textures[4];
 
         }
 	}
 	protected override void updateGrappleBounds() {
         grappleBounds.y = bounds.y;
-        if (pointOnLeft) {
-            grappleBounds.x = bounds.x;
-        }else{
-            grappleBounds.x = bounds.Right-grappleBounds.width;
-        }
+        grappleBounds.x = bounds.x+(grapplePoint-1)*9;
     }
 }

@@ -13,7 +13,7 @@ namespace ArcadeJam.Enemies;
 
 public class Enemy : Node, IGrappleable {
     protected static Random rand = new();
-    public IntData Health { get; protected set; } = new IntData(20);
+    public IntData Health { get; protected set; } = new IntData(30);
     protected Sprite sprite;
     protected Texture2D[] textures;
     protected Vector2Data vel;
@@ -164,7 +164,7 @@ public class BasicEnemy : Enemy {
 
     public BasicEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.enemy, score) {
        
-        doGrapple = false;
+       // doGrapple = false;
 
     }
 }
@@ -174,7 +174,7 @@ public class AimedEnemy : Enemy {
     public AimedEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.enemy, score) {
        
         weapon = new AimedParallel(bounds, delay: 1.5f, rows: 1,seperation:0, volleys: 3);
-        doGrapple = false;
+       // doGrapple = false;
 
     }
 }
@@ -183,7 +183,7 @@ public class TrippleEnemy : Enemy {
     public TrippleEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.enemy, score) {
        
         weapon = new Spread(bounds,delay:1.5f,shots:2);
-        doGrapple = false;
+       // doGrapple = false;
 
     }
 }

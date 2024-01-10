@@ -23,7 +23,7 @@ public class Grapple {
     public GrappleState grappleState = GrappleState.loaded;
 
     private const float shootSpeed = 400, reloadAccel = 160;
-    private const int BaseDamage = 20, damageMulti = 5, yoinkSpeed = 120;
+    private const int BaseDamage = 20, damageMulti = 2, yoinkSpeed = 120;
     private float hookSpeed = 0;
     private int damage = BaseDamage;
     private Sprite hook = new(Assets.hook), chain = new(Assets.chain);

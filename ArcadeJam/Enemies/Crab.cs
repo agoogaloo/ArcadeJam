@@ -47,7 +47,7 @@ public class CrabBoss : Node, IGrappleable {
     public CrabBoss(ScoreData score, FloatData progress) {
         this.score = score;
         this.progress = progress;
-        progress.val = 1;        
+        progress.val = 1;
 
         BoolData lJabbing = new(false), rJabbing = new(false);
         Vector2Data lVel = new(), rVel = new();
@@ -64,7 +64,7 @@ public class CrabBoss : Node, IGrappleable {
         visualizer = new(crownBounds);
         grappleCollision.Remove();
         crownGrapple.Remove();
-        maxHealth = health.val+crownHealth.val+leftClaw.health.val+rightClaw.health.val;
+        maxHealth = health.val + crownHealth.val + leftClaw.health.val + rightClaw.health.val;
 
 
 
@@ -73,11 +73,18 @@ public class CrabBoss : Node, IGrappleable {
 
     public override void Update(GameTime gameTime) {
         movement.Update(gameTime);
-        int currentHealth = health.val+Math.Max(0,crownHealth.val)+leftClaw.health.val+rightClaw.health.val;
+        int currentHealth = health.val + Math.Max(0, crownHealth.val) + leftClaw.health.val + rightClaw.health.val;
         //Console.WriteLine(currentHealth+"/"+maxHealth+":"+(currentHealth/(float)maxHealth));
-        progress.val = (float)currentHealth/maxHealth;
+        progress.val = (float)currentHealth / maxHealth;
         if (deathTimer <= 0) {
             Alive = false;
+            if (ArcadeGame.player.lives.val < 5) {
+                ArcadeGame.player.lives.val++;
+            }
+            else {
+                score.addScore(3000);
+            }
+
 
         }
         if (health.val <= 0) {
@@ -89,12 +96,12 @@ public class CrabBoss : Node, IGrappleable {
                 NodeManager.AddNode(new Ripple(new Vector2(crownBounds.Right + 2f, crownBounds.y - 2), false));
 
             }
-            if(time>=0.2){
+            if (time >= 0.2) {
                 Console.WriteLine("boom");
                 time = 0;
                 Random rand = new Random();
-                Vector2 explosionLoc =new((float)rand.NextDouble()*bounds.width,(float)rand.NextDouble()*bounds.height); 
-                NodeManager.AddNode(new ExplosionEffect(bounds.Location+explosionLoc, false));
+                Vector2 explosionLoc = new((float)rand.NextDouble() * bounds.width, (float)rand.NextDouble() * bounds.height);
+                NodeManager.AddNode(new ExplosionEffect(bounds.Location + explosionLoc, false));
 
             }
             deathTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -130,7 +137,7 @@ public class CrabBoss : Node, IGrappleable {
 
         if (bounds.y >= 1) {
             phase.val++;
-            patterns = new EnemyWeapon[] { new AimedParallel(bounds, 2, rows: 2, seperation: 3,speed:90) };
+            patterns = new EnemyWeapon[] { new AimedParallel(bounds, 2, rows: 2, seperation: 3, speed: 90) };
             movement.movementState = Movements.idle;
 
             lClawPhase.val = 1;
@@ -232,7 +239,7 @@ public class CrabBoss : Node, IGrappleable {
         if (crownBounds.Top <= 0 || crownBounds.Bottom >= ArcadeGame.gameHeight) {
             crownVel.Y *= -1;
             patterns[0].fire();
-             Assets.shootSounds[2].CreateInstance();
+            Assets.shootSounds[2].CreateInstance();
             Assets.shootSounds[2].Play();
             crownBounds.y = Math.Max(crownBounds.y, 0);
             crownBounds.y = Math.Min(crownBounds.y, ArcadeGame.gameHeight);
