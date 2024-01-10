@@ -196,6 +196,7 @@ public class Claw : Node, IGrappleable {
     public void startPhase3() {
         phase.val = 3;
         currentPattern = new Explosion(Bounds);
+        currentPattern.sound = Assets.grappleHit;
 
     }
 
@@ -209,6 +210,9 @@ public class Claw : Node, IGrappleable {
         grappled = false;
         health.val -= damage;
         grappleCollision.Remove();
+        NodeManager.AddNode(new ExplosionEffect(Bounds.Centre, true, false));
+            Assets.bigExplosion.CreateInstance();
+            Assets.bigExplosion.Play();
     }
 
 }

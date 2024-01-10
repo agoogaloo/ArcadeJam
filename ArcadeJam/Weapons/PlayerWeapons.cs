@@ -36,7 +36,7 @@ public abstract class PlayerWeapon {
             else {
                 NormalShoot();
             }
-            
+
         }
         else {
             timeLeft -= (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -77,21 +77,25 @@ public class Level1Gun : PlayerWeapon {
     protected override void FocusShoot() {
 
         Vector2 shootPos = pos.Location;
-        shootPos.X -=1.5f;
-        
-		FireAtAngle(0, speed, shootPos,3);
-        shootPos.X = pos.Right+1.5f;
-		FireAtAngle(0, speed, shootPos,3);
+        shootPos.X -= 1.5f;
+
+        FireAtAngle(0, speed, shootPos, 3);
+        shootPos.X = pos.Right + 1.5f;
+        FireAtAngle(0, speed, shootPos, 3);
+        Assets.shootSounds[0].CreateInstance();
+        Assets.shootSounds[0].Play();
 
 
     }
 
     protected override void NormalShoot() {
         Vector2 shootPos = new Vector2(pos.Centre.X, pos.Top);
-        shootPos.Y+=5;
-		FireAtAngle(0, speed, shootPos,3);
-		FireAtAngle(-30, speed, shootPos,3);
-		FireAtAngle(30, speed, shootPos,3);
+        shootPos.Y += 5;
+        FireAtAngle(0, speed, shootPos, 3);
+        FireAtAngle(-30, speed, shootPos, 3);
+        FireAtAngle(30, speed, shootPos, 3);
+        Assets.shootSounds[0].CreateInstance();
+        Assets.shootSounds[0].Play();
 
     }
 
@@ -114,29 +118,33 @@ public class Level2Gun : PlayerWeapon {
     protected override void FocusShoot() {
 
         Vector2 shootPos = pos.Location;
-        shootPos.X -=3.5f;
-        
-		FireAtAngle(0, speed, shootPos,2);
-        
-        shootPos.X = pos.Right+3.5f;
-		FireAtAngle(0, speed, shootPos,2);
+        shootPos.X -= 3.5f;
+
+        FireAtAngle(0, speed, shootPos, 2);
+
+        shootPos.X = pos.Right + 3.5f;
+        FireAtAngle(0, speed, shootPos, 2);
         shootPos.X = pos.Centre.X;
-        shootPos.Y-=5;
-		FireAtAngle(0, speed, shootPos,3);
-        
+        shootPos.Y -= 5;
+        FireAtAngle(0, speed, shootPos, 3);
+        Assets.shootSounds[1].CreateInstance();
+        Assets.shootSounds[1].Play();
+
 
 
     }
 
     protected override void NormalShoot() {
         Vector2 shootPos = pos.Location;
-        shootPos.X -=1.5f;
-		FireAtAngle(-2.5f, speed, shootPos, 3);
-        shootPos.X = pos.Right+1.5f;
-		FireAtAngle(2.5f, speed, shootPos, 3);
+        shootPos.X -= 1.5f;
+        FireAtAngle(-2.5f, speed, shootPos, 3);
+        shootPos.X = pos.Right + 1.5f;
+        FireAtAngle(2.5f, speed, shootPos, 3);
         shootPos.X = pos.Centre.X;
-		FireAtAngle(-30, speed, shootPos, 2);
-		FireAtAngle(30, speed, shootPos, 2);
+        FireAtAngle(-30, speed, shootPos, 2);
+        FireAtAngle(30, speed, shootPos, 2);
+        Assets.shootSounds[1].CreateInstance();
+        Assets.shootSounds[1].Play();
 
     }
 
@@ -159,23 +167,25 @@ public class Level3Gun : PlayerWeapon {
     protected override void FocusShoot() {
 
         Vector2 shootPos = pos.Location;
-        shootPos.X -=5.5f;
-        shootPos.Y+=3;
-       
-		FireAtAngle(0, speed, shootPos,1);
-        shootPos.X = pos.Right+5.5f;
-		FireAtAngle(0, speed, shootPos,1);
+        shootPos.X -= 5.5f;
+        shootPos.Y += 3;
 
-        shootPos.X =pos.x-2.5f;
-        shootPos.Y-=3;
-       
-		FireAtAngle(0, speed, shootPos,1);
-        shootPos.X = pos.Right+2.5f;
-		FireAtAngle(0, speed, shootPos,1);
-        
+        FireAtAngle(0, speed, shootPos, 1);
+        shootPos.X = pos.Right + 5.5f;
+        FireAtAngle(0, speed, shootPos, 1);
+
+        shootPos.X = pos.x - 2.5f;
+        shootPos.Y -= 3;
+
+        FireAtAngle(0, speed, shootPos, 1);
+        shootPos.X = pos.Right + 2.5f;
+        FireAtAngle(0, speed, shootPos, 1);
+
         shootPos.X = pos.Centre.X;
-        shootPos.Y-=5;
-		NodeManager.AddNode(new PlayerSmearBullet(speed, shootPos, 2));
+        shootPos.Y -= 5;
+        NodeManager.AddNode(new PlayerSmearBullet(speed, shootPos, 2));
+        Assets.shootSounds[2].CreateInstance();
+        Assets.shootSounds[2].Play();
 
 
     }
@@ -183,13 +193,15 @@ public class Level3Gun : PlayerWeapon {
     protected override void NormalShoot() {
         Vector2 shootPos = new Vector2(pos.Centre.X, pos.Top);
         //shootPos.Y+=5;
-		NodeManager.AddNode(new PlayerSmearBullet(speed, shootPos, 3));
-		FireAtAngle(15, speed, shootPos,2);
-		FireAtAngle(-15, speed, shootPos,2);
-		FireAtAngle(30, speed, shootPos,2);
-		FireAtAngle(-30, speed, shootPos,2);
-		FireAtAngle(-45, speed, shootPos,1);
-		FireAtAngle(45, speed, shootPos,1);
+        NodeManager.AddNode(new PlayerSmearBullet(speed, shootPos, 3));
+        FireAtAngle(15, speed, shootPos, 2);
+        FireAtAngle(-15, speed, shootPos, 2);
+        FireAtAngle(30, speed, shootPos, 2);
+        FireAtAngle(-30, speed, shootPos, 2);
+        FireAtAngle(-45, speed, shootPos, 1);
+        FireAtAngle(45, speed, shootPos, 1);
+        Assets.shootSounds[2].CreateInstance();
+        Assets.shootSounds[2].Play();
 
     }
 

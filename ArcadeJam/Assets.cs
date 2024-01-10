@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
@@ -7,16 +8,19 @@ using Microsoft.Xna.Framework.Media;
 namespace ArcadeJam;
 
 public class Assets {
-    public static Rectangle rippleSize = new (0,0,5,14), explosionSize = new(0,0,27,27);
+    public static Rectangle rippleSize = new(0, 0, 5, 14), explosionSize = new(0, 0, 27, 27);
     public static Texture2D player, PlayerBullet, PlayerSmearBullet, hook, chain,
-        enemyStun, enemyBullet,crabArm,crabHinge, crown, crabBody, crabEnter,
-        borders, comboCounter, comboBar, comboBarBorder,bossBar, bossBarFrame, lives, introText, rippleL, rippleR, explosion;
+        enemyStun, enemyBullet, crabArm, crabHinge, crown, crabBody, crabEnter,
+        borders, comboCounter, comboBar, comboBarBorder, bossBar, bossBarFrame, lives, introText, rippleL, rippleR, explosion;
     public static Texture2D pixel = null;
 
     public static Texture2D[] introChest, enemy, enemy2,
-        shipBoss, angryCrabBody,crabBodyDamage, crabBodyGrapple, clawL,clawLOpen, clawR,clawROpen, gunCrown;
+        shipBoss, angryCrabBody, crabBodyDamage, crabBodyGrapple, clawL, clawLOpen, clawR, clawROpen, gunCrown;
 
     public static Song music;
+    public static SoundEffect bigExplosion, smallExplosion1, smallExplosion2, playerExplosion, playerHit, grappleHit, grappleShoot;
+
+    public static SoundEffect[] shootSounds = {null,null,null};
 
     public static SpriteFont font;
     public static void Load(ContentManager manager, Texture2D whitePixel) {
@@ -47,7 +51,7 @@ public class Assets {
         enemy2 = loadEnemy("iceWall", manager);
         //bosses
         shipBoss = loadEnemy("shipBoss", manager);
-        
+
         angryCrabBody = loadEnemy("angryCrabBody", manager);
         crabArm = manager.Load<Texture2D>("enemies/crabArm");
         crabHinge = manager.Load<Texture2D>("enemies/clawHinge");
@@ -57,18 +61,31 @@ public class Assets {
         clawR = loadEnemy("crabClawR", manager);
         clawLOpen = loadEnemy("crabClawLOpen", manager);
         clawROpen = loadEnemy("crabClawROpen", manager);
-        gunCrown = loadEnemy("gunCrown",manager);
+        gunCrown = loadEnemy("gunCrown", manager);
         crown = manager.Load<Texture2D>("enemies/crown");
 
         //sounds
         music = manager.Load<Song>("sounds/music");
+        bigExplosion = manager.Load<SoundEffect>("sounds/explosionBig");
+        smallExplosion1 = manager.Load<SoundEffect>("sounds/explosionSmall");
+        smallExplosion2 = manager.Load<SoundEffect>("sounds/explosionSmall2");
+        playerExplosion = manager.Load<SoundEffect>("sounds/playerExplosion");
+        playerHit = manager.Load<SoundEffect>("sounds/playerHit");
+        grappleShoot =  manager.Load<SoundEffect>("sounds/grappleShoot");
+        grappleHit = manager.Load<SoundEffect>("sounds/grappleHit");
+        shootSounds[0] = manager.Load<SoundEffect>("sounds/lv1Shoot");
+        shootSounds[1] = manager.Load<SoundEffect>("sounds/lv2Shoot");
+        shootSounds[2] = manager.Load<SoundEffect>("sounds/lv3Shoot");
+        //bigExplosion = manager.Load<SoundEffect>("sounds/explosionBig");
+
+
 
         //fonts
         font = manager.Load<SpriteFont>("monoFont");
 
     }
     private static Texture2D[] loadEnemy(String name, ContentManager manager) {
-        Console.WriteLine("loading enemy "+name);
+        Console.WriteLine("loading enemy " + name);
         Texture2D[] textures = new Texture2D[3];
         textures[0] = manager.Load<Texture2D>("enemies/" + name);
         try {

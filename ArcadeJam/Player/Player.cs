@@ -86,6 +86,12 @@ public class Player : Node {
 					}
 					if (lives.val < 0) {
 						Alive = false;
+						Assets.playerExplosion.CreateInstance();
+						Assets.playerExplosion.Play();
+						NodeManager.AddNode(new ExplosionEffect(Bounds.Centre,sound:false));
+					}else{
+					
+						Assets.playerHit.Play();	
 					}
 
 					invincibleTime.val = 3;

@@ -3,6 +3,7 @@ using System.Reflection.Metadata.Ecma335;
 using Engine.Core.Data;
 using Engine.Core.Nodes;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 
 namespace ArcadeJam.Weapons;
 
@@ -13,16 +14,20 @@ public abstract class EnemyWeapon {
     protected double timeLeft = 0, volleyDelay = 0.05;
     protected float speed;
     protected int volleys, volliesLeft;
+    public SoundEffect sound = Assets.shootSounds[1];
 
-    public EnemyWeapon(FloatRect pos, float delay = 1, float speed = 60, int volleys = 1) :
-        this(pos, new FloatData(delay), speed, volleys) { }
-    public EnemyWeapon(FloatRect pos, FloatData delay, float speed = 60, int volleys = 1) {
+    public EnemyWeapon(FloatRect pos, float delay = 1, float speed = 60, int volleys = 1, SoundEffect sound = null) :
+        this(pos, new FloatData(delay), speed, volleys, sound) { }
+    public EnemyWeapon(FloatRect pos, FloatData delay, float speed = 60, int volleys = 1, SoundEffect sound = null) {
         this.delay = delay;
         this.speed = speed;
         this.pos = pos;
         this.volleys = volleys;
         this.volliesLeft = volleys - 1;
         timeLeft = delay.val;
+        if (sound != null) {
+            this.sound = sound;
+        }
     }
 
     public virtual void Update(GameTime gameTime) {
@@ -45,7 +50,10 @@ public abstract class EnemyWeapon {
         }
     }
     protected abstract void Shoot();
-    protected virtual void newVolley() { }
+    protected virtual void newVolley() {
+        sound.CreateInstance();
+        sound.Play();
+    }
     protected void FireAtAngle(float angle, float speed) {
         FireAtAngle(angle, speed, pos.Centre);
     }
@@ -145,6 +153,7 @@ public class WallAlternate : EnemyWeapon {
         }
     }
     protected override void newVolley() {
+        base.newVolley();
         switched = !switched;
 
     }
@@ -177,6 +186,9 @@ public class SpreadAlternating : EnemyWeapon {
         base(pos, delay, speed, volleys) {
         this.angle = angle;
         this.rows = rows;
+        if (rows > 100) {
+            sound = Assets.smallExplosion1;
+        }
 
         rowAngle = angle * 2 / rows;
     }
@@ -195,12 +207,14 @@ public class SpreadAlternating : EnemyWeapon {
         }
     }
     protected override void newVolley() {
+        base.newVolley();
         switched = !switched;
     }
 }
 public class Explosion : EnemyWeapon {
     private int prongs;
-    public Explosion(FloatRect pos, float delay = 999999999999, int prongs = 12, int volleys = 5, float speed = 60) : base(pos, delay, speed) {
+    public Explosion(FloatRect pos, float delay = 999999999999, int prongs = 12, int volleys = 5, float speed = 60) :
+     base(pos, delay, speed, sound: Assets.smallExplosion1) {
         this.volleys = volleys;
         this.prongs = prongs;
     }

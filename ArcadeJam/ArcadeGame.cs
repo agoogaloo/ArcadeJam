@@ -234,9 +234,9 @@ public class ArcadeGame : Game {
 		spriteBatch.DrawString(Assets.font, scoreString, new Vector2(1, 27), new Color(169, 104, 104));
 		spriteBatch.DrawString(Assets.font, bonusString, new Vector2(4, 54), new Color(169, 104, 104));
 		//combo bar
-		spriteBatch.Draw(Assets.comboCounter, new Vector2(3, 79), comboRect, Color.White);
-		spriteBatch.Draw(Assets.comboBar, new Vector2(4, 103), comboBarRect, Color.White);
-		spriteBatch.Draw(Assets.comboBarBorder, new Vector2(4, 103), Color.White);
+		spriteBatch.Draw(Assets.comboCounter, new Vector2(3, 78), comboRect, Color.White);
+		spriteBatch.Draw(Assets.comboBar, new Vector2(4, 102), comboBarRect, Color.White);
+		spriteBatch.Draw(Assets.comboBarBorder, new Vector2(4, 102), Color.White);
 		//boss health
 		Rectangle barRect = new(0,0,4,(int)(Assets.bossBar.Height*LevelManager.BossBar.val));
 		spriteBatch.Draw(Assets.bossBar, new Vector2(194, 11+Assets.bossBar.Height-barRect.Height),barRect, Color.White);

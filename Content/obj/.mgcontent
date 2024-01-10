@@ -58,9 +58,29 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/playerSmearBullet.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/rippleL.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/rippleR.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/explosionBig.wav</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/explosionSmall.wav</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/explosionSmall2.wav</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/grappleHit.wav</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/grappleShoot.wav</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/lv1Shoot.wav</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/lv2Shoot.wav</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/lv3Shoot.wav</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/music.ogg</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/playerExplosion.wav</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/playerHit.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

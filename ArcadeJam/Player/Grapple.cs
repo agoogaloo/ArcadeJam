@@ -7,6 +7,7 @@ using Engine.Core.Components;
 using Engine.Core.Data;
 using Engine.Core.Nodes;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ArcadeJam;
@@ -77,6 +78,8 @@ public class Grapple {
             case GrappleState.hit:
                 grappleState = GrappleState.loaded;
                 target.GrappleHit(grappleDamage.val);
+                Assets.grappleHit.CreateInstance();
+                Assets.grappleHit.Play();
                 if (combo.val == 1) {
                     combo.val++;
                 }
@@ -146,6 +149,7 @@ public class Grapple {
     public void Shoot() {
         if (grappleState == GrappleState.loaded) {
             grappleState = GrappleState.shooting;
+            Assets.grappleShoot.Play();
         }
     }
 
