@@ -88,7 +88,6 @@ public class ShipBoss : Enemy {
     public void phase1(GameTime gameTime) {
         patternBounds.Centre = bounds.Centre;
         patternBounds.x = bounds.Right+10;
-        Console.WriteLine(patternBounds.Centre);
 
     }
     public void phase2(GameTime gameTime) {

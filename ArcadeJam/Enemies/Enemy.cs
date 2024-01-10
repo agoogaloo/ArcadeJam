@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Common;
 using ArcadeJam.Weapons;
 using Engine.Core.Components;
 using Engine.Core.Data;
@@ -26,12 +27,16 @@ public class Enemy : Node, IGrappleable {
     RectVisualizer hitBoxVisualizer;
     protected bool stunned = false, grappleable = false;
 
+    protected int killPoints = 50, grapplePoints = 100;
+    ScoreData score;
+
 
 
     public Enemy(EnemyMovement movement, Texture2D[] textures, ScoreData scoreData) {
         renderHeight = 2;
         this.movement = movement;
         this.textures = textures;
+        this.score = scoreData;
         sprite = new(textures[0]);
         bounds = new(0, 0, 11, 13);
         grappleBounds = new(0, 0, 11, 13);
@@ -70,6 +75,7 @@ public class Enemy : Node, IGrappleable {
         damager.Update();
         if (Health.val <= 0) {
             Alive = false;
+            score.addScore(killPoints);
         }
     }
     protected void updateGrappleBounds() {
@@ -92,6 +98,11 @@ public class Enemy : Node, IGrappleable {
     public virtual void GrappleHit(int damage) {
         Health.val -= damage;
         stunned = false;
+        if (Health.val <= 0) {
+            score.addScore(grapplePoints);
+            Alive = false;
+
+        }
 
     }
 
@@ -99,7 +110,7 @@ public class Enemy : Node, IGrappleable {
     public override void End() {
         damager.End();
         grappleCollision.Remove();
-        NodeManager.AddNode(new ExplosionEffect(bounds.Centre));
+        NodeManager.AddNode(new ExplosionEffect(bounds.Centre, true));
     }
 }
 public class IntroChest : Enemy {
@@ -144,10 +155,45 @@ public class TrippleEnemy : Enemy {
 
     }
 }
+public class Mine : Enemy {
+    double deathTime = 0.25f;
+    bool exploded = false;
+
+    public Mine(EnemyMovement movement, ScoreData score) : base(movement, Assets.mine, score) {
+        Health.val = 15;
+        weapon = new Explosion(bounds);
+    }
+    public override void Update(GameTime gameTime) {
+        sprite.texture = textures[0];
+        damager.Update();
+        movement.Update(gameTime);
+        weapon.Update(gameTime);
+        if (Health.val <= 0) {
+            
+            if (!exploded) {
+                weapon.fire();
+                NodeManager.AddNode(new ExplosionEffect(bounds.Centre, false));
+                Console.WriteLine("boom!");
+
+            }
+            exploded = true;
+            deathTime -= gameTime.ElapsedGameTime.TotalSeconds;
+            Console.WriteLine(deathTime);
+        }
+        if (deathTime <= 0) {
+            Alive = false;
+        }
+
+    }
+
+
+}
+
+
 
 public class SpinEnemy : Enemy {
 
-    public SpinEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.enemy2, score) {
+    public SpinEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.bombEnemy, score) {
         Health.val = 50;
         bounds.width = 32;
         weapon = new Spiral(bounds);

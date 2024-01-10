@@ -14,7 +14,7 @@ public class Assets {
         borders, comboCounter, comboBar, comboBarBorder, bossBar, bossBarFrame, lives, introText, rippleL, rippleR, explosion;
     public static Texture2D pixel = null;
 
-    public static Texture2D[] introChest, enemy, enemy2,
+    public static Texture2D[] introChest, enemy, bombEnemy,mine,trippleEnemy,
         shipBoss, angryCrabBody, crabBodyDamage, crabBodyGrapple, clawL, clawLOpen, clawR, clawROpen, gunCrown;
 
     public static Song music;
@@ -48,7 +48,8 @@ public class Assets {
         //enemies
         introChest = loadEnemy("introChest", manager);
         enemy = loadEnemy("enemy", manager);
-        enemy2 = loadEnemy("iceWall", manager);
+        bombEnemy = loadEnemy("bombEnemy", manager);
+        mine = loadEnemy("mine", manager);
         //bosses
         shipBoss = loadEnemy("shipBoss", manager);
 

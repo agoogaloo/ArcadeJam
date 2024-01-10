@@ -16,6 +16,9 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/angryCrabBody.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/angryCrabBodyDamage.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/angryCrabBodyLow.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/bombEnemy.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/bombEnemyDamage.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/bombEnemyLow.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/clawHinge.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabArm.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabBody.png</File>
@@ -42,6 +45,8 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/introChestDamage.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/introChestLow.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/king_crab_downgraded.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/mine.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/mineDamage.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBoss.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBossDamage.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/shipBossLow.png</File>
@@ -71,6 +76,11 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/playerHit.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
