@@ -53,6 +53,14 @@
     <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/shipBossLow.png</File>
     <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/shipBossLowR.png</File>
     <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/the_clawww_no_guns.png</File>
+    <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyL.png</File>
+    <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyLDamage.png</File>
+    <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyLLow.png</File>
+    <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyLLow2.png</File>
+    <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyR.png</File>
+    <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyRDamage.png</File>
+    <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyRLow.png</File>
+    <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyRLow2.png</File>
     <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/explosion.png</File>
     <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/hook.png</File>
     <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/icicle.png</File>
@@ -77,6 +85,14 @@
     <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/sounds/playerHit.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -38,10 +38,11 @@ public  class Stationary : EnemyMovement {
 
 public class MoveToPoint : EnemyMovement {
     private Vector2 start, destination;
-    private float speed, easing;
+    private float speed, easing, delay;
 
-    public MoveToPoint(Vector2 start, Vector2 destination, float speed = 60, float easing = 4) : base() {
+    public MoveToPoint(Vector2 start, Vector2 destination, float speed = 60, float easing = 1.5f,float delay = 0) : base() {
         this.start = start;
+        this.delay = delay;
         this.destination = destination;
         this.speed = speed;
         this.easing = easing;
@@ -52,6 +53,10 @@ public class MoveToPoint : EnemyMovement {
     }
 
     public override void Update(GameTime gameTime) {
+        if(delay>0){
+            delay-=(float)gameTime.ElapsedGameTime.TotalSeconds;
+            return;
+        }
         Vector2 movement = destination - bounds.Centre;
         movement *= (float)(speed * gameTime.ElapsedGameTime.TotalSeconds / easing);
         vel.val = movement;

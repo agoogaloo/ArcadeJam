@@ -7,11 +7,12 @@ using Engine.Core.Nodes;
 using Engine.Core.Physics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace ArcadeJam.Enemies;
 
 public class Enemy : Node, IGrappleable {
-    protected static Random rand =new();
+    protected static Random rand = new();
     public IntData Health { get; protected set; } = new IntData(20);
     protected Sprite sprite;
     protected Texture2D[] textures;
@@ -26,13 +27,13 @@ public class Enemy : Node, IGrappleable {
     protected Collision grappleCollision;
     protected FloatRect grappleBounds;
     RectVisualizer hitBoxVisualizer;
-    protected bool stunned = false, grappleable = false;
+    protected bool stunned = false, grappleable = false, doGrapple = true;
 
     protected int killPoints = 50, grapplePoints = 100;
     protected ScoreData score;
-	protected double rippleTimer, rippleDelay = 2;
+    protected double rippleTimer, rippleDelay = 2;
 
-	public Enemy(EnemyMovement movement, Texture2D[] textures, ScoreData scoreData) {
+    public Enemy(EnemyMovement movement, Texture2D[] textures, ScoreData scoreData) {
         renderHeight = 2;
         this.movement = movement;
         this.textures = textures;
@@ -54,12 +55,11 @@ public class Enemy : Node, IGrappleable {
     public override void Update(GameTime gameTime) {
         if (!stunned) {
             movement.Update(gameTime);
-            
             weapon.Update(gameTime);
             updateGrappleBounds();
         }
 
-        if (!grappleable && Health.val < ArcadeGame.player.grappleDamage.val) {
+        if (doGrapple && !grappleable && Health.val < ArcadeGame.player.grappleDamage.val) {
             grappleCollision.Readd();
             grappleable = true;
         }
@@ -69,7 +69,7 @@ public class Enemy : Node, IGrappleable {
         }
 
         sprite.texture = textures[0];
-        if (grappleable) {
+        if (doGrapple && grappleable) {
             sprite.texture = textures[2];
 
         }
@@ -79,18 +79,18 @@ public class Enemy : Node, IGrappleable {
             score.addScore(killPoints);
         }
         doRipples(gameTime);
-        
+
     }
-    protected virtual void doRipples(GameTime gameTime){
-        rippleTimer+=gameTime.ElapsedGameTime.TotalSeconds;
-        if(rippleTimer>=rippleDelay){
-			NodeManager.AddNode(new Ripple(new Vector2(bounds.x-3f, bounds.Centre.Y-5), true));
-			NodeManager.AddNode(new Ripple(new Vector2(bounds.Right+2f, bounds.Centre.Y-5), false));
-            rippleTimer = rand.NextDouble()*0.5f;
+    protected virtual void doRipples(GameTime gameTime) {
+        rippleTimer += gameTime.ElapsedGameTime.TotalSeconds;
+        if (rippleTimer >= rippleDelay) {
+            NodeManager.AddNode(new Ripple(new Vector2(bounds.x - 3f, bounds.Centre.Y - 5), true));
+            NodeManager.AddNode(new Ripple(new Vector2(bounds.Right + 2f, bounds.Centre.Y - 5), false));
+            rippleTimer = rand.NextDouble() * 0.5f;
             Console.WriteLine(rippleTimer);
-		}
+        }
     }
-    protected void updateGrappleBounds() {
+    protected virtual void updateGrappleBounds() {
         grappleBounds.x = bounds.Centre.X - grappleBounds.width / 2;
         grappleBounds.y = bounds.y;
     }
@@ -149,30 +149,41 @@ public class IntroChest : Enemy {
         spriteBatch.Draw(Assets.introText, new Vector2(ArcadeGame.gameWidth / 2 - Assets.introText.Width / 2, 5), Color.White);
 
     }
-    protected override void doRipples(GameTime gameTime){
-       
-        rippleTimer+=gameTime.ElapsedGameTime.TotalSeconds;
-        if(rippleTimer>=rippleDelay){
-			NodeManager.AddNode(new Ripple(new Vector2(bounds.x-3f, bounds.Centre.Y+6), true));
-			NodeManager.AddNode(new Ripple(new Vector2(bounds.Right+2f, bounds.Centre.Y+6), false));
+    protected override void doRipples(GameTime gameTime) {
+
+        rippleTimer += gameTime.ElapsedGameTime.TotalSeconds;
+        if (rippleTimer >= rippleDelay) {
+            NodeManager.AddNode(new Ripple(new Vector2(bounds.x - 3f, bounds.Centre.Y + 6), true));
+            NodeManager.AddNode(new Ripple(new Vector2(bounds.Right + 2f, bounds.Centre.Y + 6), false));
             rippleTimer = 0;
-		}
+        }
     }
 }
 
 public class BasicEnemy : Enemy {
 
     public BasicEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.enemy, score) {
-        Health.val = 10;
+       
+        doGrapple = false;
 
     }
 }
 
+public class AimedEnemy : Enemy {
+
+    public AimedEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.enemy, score) {
+       
+        weapon = new AimedParallel(bounds, delay: 1.5f, rows: 1,seperation:0, volleys: 3);
+        doGrapple = false;
+
+    }
+}
 public class TrippleEnemy : Enemy {
 
     public TrippleEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.enemy, score) {
-        Health.val = 30;
-        weapon = new Spread(bounds);
+       
+        weapon = new Spread(bounds,delay:1.5f,shots:2);
+        doGrapple = false;
 
     }
 }

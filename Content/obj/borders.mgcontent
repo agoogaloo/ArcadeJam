@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/borders.png</SourceFile>
-  <SourceTime>2024-01-09T16:26:23.7542642-07:00</SourceTime>
+  <SourceTime>2024-01-10T12:15:30.0945788-07:00</SourceTime>
   <DestFile>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/borders.xnb</DestFile>
-  <DestTime>2024-01-10T11:30:57.1732588-07:00</DestTime>
+  <DestTime>2024-01-10T13:34:40.7905915-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T05:44:56-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -14,13 +14,13 @@ public class Assets {
         borders, comboCounter, comboBar, comboBarBorder, bossBar, bossBarFrame, lives, introText, rippleL, rippleR, explosion;
     public static Texture2D pixel = null;
 
-    public static Texture2D[] introChest, enemy, bombEnemy,mine,trippleEnemy,
+    public static Texture2D[] introChest, enemy, bombEnemy, mine, trippleEnemyR,
         shipBoss, angryCrabBody, crabBodyDamage, crabBodyGrapple, clawL, clawLOpen, clawR, clawROpen, gunCrown;
 
     public static Song music;
     public static SoundEffect bigExplosion, smallExplosion1, smallExplosion2, playerExplosion, playerHit, grappleHit, grappleShoot;
 
-    public static SoundEffect[] shootSounds = {null,null,null};
+    public static SoundEffect[] shootSounds = { null, null, null };
 
     public static SpriteFont font;
     public static void Load(ContentManager manager, Texture2D whitePixel) {
@@ -50,6 +50,9 @@ public class Assets {
         enemy = loadEnemy("enemy", manager);
         bombEnemy = loadEnemy("bombEnemy", manager);
         mine = loadEnemy("mine", manager);
+        trippleEnemyR = loadEnemy("trippleEnemyR", manager);
+        Array.Resize(ref trippleEnemyR, 4);
+        trippleEnemyR[3] = manager.Load<Texture2D>("enemies/trippleEnemyRLow2");
         //bosses
         shipBoss = loadEnemy("shipBoss", manager);
 
@@ -72,7 +75,7 @@ public class Assets {
         smallExplosion2 = manager.Load<SoundEffect>("sounds/explosionSmall2");
         playerExplosion = manager.Load<SoundEffect>("sounds/playerExplosion");
         playerHit = manager.Load<SoundEffect>("sounds/playerHit");
-        grappleShoot =  manager.Load<SoundEffect>("sounds/grappleShoot");
+        grappleShoot = manager.Load<SoundEffect>("sounds/grappleShoot");
         grappleHit = manager.Load<SoundEffect>("sounds/grappleHit");
         shootSounds[0] = manager.Load<SoundEffect>("sounds/lv1Shoot");
         shootSounds[1] = manager.Load<SoundEffect>("sounds/lv2Shoot");

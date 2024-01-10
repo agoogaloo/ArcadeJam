@@ -1,5 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/borders.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/borders.xnb","TextureProcessor","Texture2DContent",1087,120085,0.1343925
+"c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/borders.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/borders.xnb","TextureProcessor","Texture2DContent",1034,120085,0.1431961
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bossBar.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/bossBar.xnb","TextureProcessor","Texture2DContent",124,2245,0.0023834
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bossBarFrame.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/bossBarFrame.xnb","TextureProcessor","Texture2DContent",330,16285,0.0033732
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/cannonBall.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/cannonBall.xnb","TextureProcessor","Texture2DContent",133,185,0.0017364
@@ -13,7 +13,7 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/angryCrabBodyLow.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/angryCrabBodyLow.xnb","TextureProcessor","Texture2DContent",1442,17017,0.0044312
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/bombEnemy.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/bombEnemy.xnb","TextureProcessor","Texture2DContent",298,1229,0.001491
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/bombEnemyDamage.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/bombEnemyDamage.xnb","TextureProcessor","Texture2DContent",245,1229,0.0016473
-"c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/bombEnemyLow.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/bombEnemyLow.xnb","TextureProcessor","Texture2DContent",287,1229,0.0022652
+"c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/bombEnemyLow.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/bombEnemyLow.xnb","TextureProcessor","Texture2DContent",277,1229,0.0015817
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/clawHinge.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/clawHinge.xnb","TextureProcessor","Texture2DContent",219,485,0.0016224
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabArm.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabArm.xnb","TextureProcessor","Texture2DContent",126,409,0.0015164
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crabBody.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabBody.xnb","TextureProcessor","Texture2DContent",1234,17017,0.0026047
@@ -48,6 +48,14 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/shipBossLow.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/shipBossLow.xnb","TextureProcessor","Texture2DContent",507,4845,0.002601
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/shipBossLowR.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/shipBossLowR.xnb","TextureProcessor","Texture2DContent",508,4845,0.0017614
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/the_clawww_no_guns.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/the_clawww_no_guns.xnb","TextureProcessor","Texture2DContent",2396,50881,0.002841
+"c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyL.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/trippleEnemyL.xnb","TextureProcessor","Texture2DContent",257,2261,0.0017374
+"c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyLDamage.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/trippleEnemyLDamage.xnb","TextureProcessor","Texture2DContent",225,2261,0.007149
+"c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyLLow.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/trippleEnemyLLow.xnb","TextureProcessor","Texture2DContent",303,2261,0.1416636
+"c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyLLow2.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/trippleEnemyLLow2.xnb","TextureProcessor","Texture2DContent",301,2261,0.0027946
+"c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyR.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/trippleEnemyR.xnb","TextureProcessor","Texture2DContent",273,2261,0.0020514
+"c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyRDamage.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/trippleEnemyRDamage.xnb","TextureProcessor","Texture2DContent",241,2261,0.0020804
+"c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyRLow.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/trippleEnemyRLow.xnb","TextureProcessor","Texture2DContent",303,2261,0.0074055
+"c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyRLow2.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/enemies/trippleEnemyRLow2.xnb","TextureProcessor","Texture2DContent",319,2261,0.0026056
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/explosion.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/explosion.xnb","TextureProcessor","Texture2DContent",1035,14665,0.0027445
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/hook.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/hook.xnb","TextureProcessor","Texture2DContent",126,145,0.0017885
 "c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/icicle.png","c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/icicle.xnb","TextureProcessor","Texture2DContent",199,597,0.0021116

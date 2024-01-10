@@ -2,6 +2,7 @@
 using ArcadeJam.Weapons;
 using Engine.Core.Nodes;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ArcadeJam.Enemies;
 
@@ -18,7 +19,9 @@ public class BombEnemy : Enemy {
         grappleBounds.height = bounds.height;
 
     }
-    public override void Update(GameTime gameTime) {
+
+
+	public override void Update(GameTime gameTime) {
         base.Update(gameTime);
         timer+=(float)gameTime.ElapsedGameTime.TotalSeconds;
         if (timer >= bombDelay) {
