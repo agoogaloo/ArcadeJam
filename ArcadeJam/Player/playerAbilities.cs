@@ -9,7 +9,7 @@ namespace ArcadeJam;
 
 public class PlayerAbilities {
     private PlayerWeapon[] upgrades;
-    private const float yoinkAccel = 600, baseSpeed = 80, speedMulti = 20, comboDecay = 5;
+    private const float yoinkAccel = 600, baseSpeed = 80, speedMulti = 20, comboDecay = 6;
 
     private BoolData focusing = new(false), useInput;
     private FloatRect bounds;

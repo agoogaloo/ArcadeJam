@@ -14,7 +14,7 @@ public class Claw : Node, IGrappleable {
 
     Texture2D[] openTextures, closedTextures;
     Sprite damageTex, armSprite = new(Assets.crabArm);
-    IntData health = new(300), phase = new(0);
+    public IntData health = new(300), phase = new(0);
     public FloatRect Bounds { get; private set; } = new(0, 0, 15, 33);
     Vector2Data vel;
     FloatRect bodyBounds;
@@ -24,6 +24,7 @@ public class Claw : Node, IGrappleable {
 
     Vector2Data[] armLocs = { new(), new(), new(), new(), new(), new(), new(), new(), new() };
     PointRender[] armSegs;
+
 
 
 
@@ -37,7 +38,7 @@ public class Claw : Node, IGrappleable {
         this.left = left;
         this.phase = phase;
         this.jabbing = jabbing;
-        currentPattern = new CirclePath(Bounds, speed: 20, size: 40, loopSpeed: 0.3f, delay: 2);
+        currentPattern = new CirclePath(Bounds, speed: 20, size: 40, loopSpeed: 0.3f, delay: 3);
 
         this.bodyBounds = bodyBounds;
         if (left) {

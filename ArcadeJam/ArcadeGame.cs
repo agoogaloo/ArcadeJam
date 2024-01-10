@@ -227,7 +227,7 @@ public class ArcadeGame : Game {
 
 		//actual drawing
 		graphics.GraphicsDevice.SetRenderTarget(windowTarget);
-		GraphicsDevice.Clear(new Color(255, 0, 0));
+		GraphicsDevice.Clear(new Color(169, 104, 104));
 		spriteBatch.Begin();
 		spriteBatch.Draw(gameTarget, new Vector2(38, 0), Color.White);
 		spriteBatch.Draw(Assets.borders, Vector2.Zero, Color.White);
@@ -238,9 +238,9 @@ public class ArcadeGame : Game {
 		spriteBatch.Draw(Assets.comboBar, new Vector2(4, 103), comboBarRect, Color.White);
 		spriteBatch.Draw(Assets.comboBarBorder, new Vector2(4, 103), Color.White);
 		//boss health
-		Rectangle barRect = new(0,0,4,(int)(Assets.bossBar.Height*LevelManager.BossBar));
-		spriteBatch.Draw(Assets.comboBar, new Vector2(180, 5),barRect, Color.White);
-		spriteBatch.Draw(Assets.comboBarBorder, new Vector2(173, 0), Color.White);
+		Rectangle barRect = new(0,0,4,(int)(Assets.bossBar.Height*LevelManager.BossBar.val));
+		spriteBatch.Draw(Assets.bossBar, new Vector2(194, 11+Assets.bossBar.Height-barRect.Height),barRect, Color.White);
+		spriteBatch.Draw(Assets.bossBarFrame, new Vector2(173, 0), Color.White);
 
 		for (int i = 0; i < player.lives.val; i++) {
 			spriteBatch.Draw(Assets.lives, new Vector2(4 + 6 * i, 139), Color.White);

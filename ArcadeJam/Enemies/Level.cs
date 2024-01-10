@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using ArcadeJam.Enemies;
+using Engine.Core.Data;
 using Engine.Core.Nodes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
@@ -108,11 +109,13 @@ public class ShipBossStage : Level {
 
 }
 public class CrabBossStage : Level {
-    public CrabBossStage() {
+    FloatData bossBar;
+    public CrabBossStage(FloatData bossBar) {
         SpeedBonus = 5000;
+        this.bossBar = bossBar;
     }
     public override void Start(ScoreData score) {
-        enemies = new Node[] { new CrabBoss(score) };
+        enemies = new Node[] { new CrabBoss(score, bossBar) };
         addEnemies();
     }
 

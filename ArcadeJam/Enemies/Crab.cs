@@ -21,6 +21,7 @@ public enum Movements {
 
 public class CrabBoss : Node, IGrappleable {
     int[] phasePoints = { 300, 300, 200, 500 };
+    int maxHealth;
     Vector2 crownVel = new(50, -50);
     bool grapplable = false;
     IntData health = new(300), crownHealth = new(200), phase = new(0), lClawPhase = new(), rClawPhase = new();
@@ -42,8 +43,12 @@ public class CrabBoss : Node, IGrappleable {
     EnemyWeapon[] patterns = { };
 
     ScoreData score;
-    public CrabBoss(ScoreData score) {
+    FloatData progress;
+    public CrabBoss(ScoreData score, FloatData progress) {
         this.score = score;
+        this.progress = progress;
+        progress.val = 1;        
+
         BoolData lJabbing = new(false), rJabbing = new(false);
         Vector2Data lVel = new(), rVel = new();
 
@@ -59,6 +64,7 @@ public class CrabBoss : Node, IGrappleable {
         visualizer = new(crownBounds);
         grappleCollision.Remove();
         crownGrapple.Remove();
+        maxHealth = health.val+crownHealth.val+leftClaw.health.val+rightClaw.health.val;
 
 
 
@@ -67,6 +73,9 @@ public class CrabBoss : Node, IGrappleable {
 
     public override void Update(GameTime gameTime) {
         movement.Update(gameTime);
+        int currentHealth = health.val+Math.Max(0,crownHealth.val)+leftClaw.health.val+rightClaw.health.val;
+        Console.WriteLine(currentHealth+"/"+maxHealth+":"+(currentHealth/(float)maxHealth));
+        progress.val = (float)currentHealth/maxHealth;
         if (deathTimer <= 0) {
             Alive = false;
 
