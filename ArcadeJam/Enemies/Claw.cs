@@ -195,7 +195,7 @@ public class Claw : Node, IGrappleable {
     }
     public void startPhase3() {
         phase.val = 3;
-        currentPattern = new Explosion(Bounds);
+        currentPattern = new Explosion(Bounds,speed:100);
         currentPattern.sound = Assets.grappleHit;
 
     }

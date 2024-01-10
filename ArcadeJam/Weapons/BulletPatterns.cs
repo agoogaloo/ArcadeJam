@@ -19,12 +19,17 @@ public abstract class EnemyWeapon {
     public EnemyWeapon(FloatRect pos, float delay = 1, float speed = 60, int volleys = 1, SoundEffect sound = null) :
         this(pos, new FloatData(delay), speed, volleys, sound) { }
     public EnemyWeapon(FloatRect pos, FloatData delay, float speed = 60, int volleys = 1, SoundEffect sound = null) {
+       
+        //timeLeft = delay.val;
         this.delay = delay;
         this.speed = speed;
         this.pos = pos;
         this.volleys = volleys;
         this.volliesLeft = volleys - 1;
-        timeLeft = delay.val;
+         if(delay.val== -1){
+            delay.val = 999999999999;
+            timeLeft = delay.val;
+         }
         if (sound != null) {
             this.sound = sound;
         }
@@ -213,7 +218,7 @@ public class SpreadAlternating : EnemyWeapon {
 }
 public class Explosion : EnemyWeapon {
     private int prongs;
-    public Explosion(FloatRect pos, float delay = 999999999999, int prongs = 12, int volleys = 5, float speed = 60) :
+    public Explosion(FloatRect pos, float delay = -1, int prongs = 12, int volleys = 5, float speed = 60) :
      base(pos, delay, speed, sound: Assets.smallExplosion1) {
         this.volleys = volleys;
         this.prongs = prongs;

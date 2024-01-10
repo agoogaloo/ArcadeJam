@@ -22,8 +22,8 @@ public class ShipBoss : Enemy {
         bounds.width = 23;
         bounds.height = 34;
         this.score = score;
-        patterns = new EnemyWeapon[]{new Straight(patternBounds, 0.2f, 30, -90-60),
-        new Straight(patternBounds, 0.2f, 30, -90+60)};
+        patterns = new EnemyWeapon[]{new Straight(patternBounds, 0.15f, 30, -90-60),
+        new Straight(patternBounds, 0.15f,30, -90+60)};
 
         renderer = new(sprite, bounds);
     }

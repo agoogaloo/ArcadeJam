@@ -24,7 +24,7 @@ public class CrabBoss : Node, IGrappleable {
     int maxHealth;
     Vector2 crownVel = new(50, -50);
     bool grapplable = false;
-    IntData health = new(300), crownHealth = new(200), phase = new(0), lClawPhase = new(), rClawPhase = new();
+    IntData health = new(350), crownHealth = new(200), phase = new(0), lClawPhase = new(), rClawPhase = new();
     float time = 0, deathTimer = 4;
     FloatRect bounds = new(-60, 0, 43, 30), crownBounds = new(-50, 0, 20, 20),
         grappleBounds = new(-20, 0, 17, 10);
@@ -130,7 +130,7 @@ public class CrabBoss : Node, IGrappleable {
 
         if (bounds.y >= 1) {
             phase.val++;
-            patterns = new EnemyWeapon[] { new AimedParallel(bounds, 2, rows: 3, seperation: 5) };
+            patterns = new EnemyWeapon[] { new AimedParallel(bounds, 2, rows: 3, seperation: 5,speed:90) };
             movement.movementState = Movements.idle;
 
             lClawPhase.val = 1;
@@ -188,7 +188,7 @@ public class CrabBoss : Node, IGrappleable {
             leftClaw.end();
             phase.val++;
             patterns = new EnemyWeapon[] { new SpreadAlternating(bounds, rows: 50, angle: 360),
-            new SpreadAlternating(bounds, delay: 99999999999, rows: 300, angle: 360, volleys: 2,speed:40) };
+            new SpreadAlternating(bounds, delay: -1, rows: 300, angle: 360, volleys: 2,speed:40) };
             score.addScore(phasePoints[1]);
 
 
@@ -298,8 +298,8 @@ public class CrabBoss : Node, IGrappleable {
             crownGrapple.Remove();
             crownSprite.texture = Assets.gunCrown[0];
             damager = new(bounds, null, health, sprite, Assets.angryCrabBody[1]);
-            patterns = new EnemyWeapon[] { new Spread(crownBounds, delay: 99999999, shots: 10, angle: 360, volleys: 0)
-            ,new SpreadAlternating(bounds, delay: 9999999999, rows: 300, angle: 360, volleys: 2,speed:40),
+            patterns = new EnemyWeapon[] { new Spread(crownBounds, delay: -1, shots: 10, angle: 360, volleys: 0)
+            ,new SpreadAlternating(bounds, delay: -1, rows: 300, angle: 360, volleys: 2,speed:40),
             new CirclePath(bounds),new CirclePath(bounds,angle:180-60)
              ,new CirclePath(bounds,angle:180+60)};
             grappleBounds.Centre = bounds.Centre;

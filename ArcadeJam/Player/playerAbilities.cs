@@ -79,7 +79,7 @@ public class PlayerAbilities {
                     vel.val.Y = -10;
                 }
                 vel.val.Y -= (float)(yoinkAccel * gameTime.ElapsedGameTime.TotalSeconds);
-                invincibleTime.val = 0.3f;
+                invincibleTime.val = 0.5f;
                 break;
             case GrappleState.hit:
                 break;
