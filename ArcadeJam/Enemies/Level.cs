@@ -52,9 +52,11 @@ public class Intro : Level {
     protected override void EnemiesDefeated() {
         base.EnemiesDefeated();
 
-        MediaPlayer.Play(Assets.music);
-
-        MediaPlayer.IsRepeating = true;
+        if (MediaPlayer.State == MediaState.Stopped) {
+            MediaPlayer.Play(Assets.music);
+            Console.WriteLine("AAAAAA");
+            MediaPlayer.IsRepeating = true;
+        }
 
     }
 
@@ -125,8 +127,22 @@ public class Level5 : Level {
     }
 
 }
+public class Level6 : Level {
+    public override void Start(ScoreData score, int loops = 1) {
+        enemies = new Enemy[]{
+        new SegmentEnemy(new MoveToPoint(new Vector2(-35,10),new Vector2(100,15),speed:40),score,3),
+        new SegmentEnemy(new MoveToPoint(new Vector2(153+35,30),new Vector2(50,25),speed:20),score,1),
+        new Mine(new MoveToPoint(new Vector2(75,-5),new Vector2(75,50),speed:30,delay:1.5f),score ),
+        new Mine(new MoveToPoint(new Vector2(70,-5),new Vector2(75-45,45),speed:30,delay:2f),score),
+        new Mine(new MoveToPoint(new Vector2(80,-5),new Vector2(75+45,45),speed:30,delay:2f),score),
+        };
+        addEnemies();
+    }
+
+}
+
 public class ShipBossStage : Level {
-    
+
     public override void Start(ScoreData score, int loops = 1) {
         enemies = new Enemy[] { new ShipBoss(score) };
         addEnemies();

@@ -10,6 +10,7 @@ using Engine.Core.Nodes;
 using Engine.Core.Physics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace ArcadeJam;
 
@@ -21,7 +22,7 @@ public class Player : Node {
 	FloatData moveSpeed = new(1.5f);
 
 	public FloatData combo { get; private set; }
-	public IntData lives = new IntData(0), grappleDamage = new();
+	public IntData lives = new IntData(5), grappleDamage = new();
 	ScoreData score;
 	Sprite Sprite { get; set; } = new Sprite(Assets.player);
 	List<Node> collisions = new();
@@ -89,6 +90,7 @@ public class Player : Node {
 						Assets.playerExplosion.CreateInstance();
 						Assets.playerExplosion.Play();
 						NodeManager.AddNode(new ExplosionEffect(Bounds.Centre,sound:false));
+						MediaPlayer.Stop();
 					}else{
 					
 						Assets.playerHit.Play();	

@@ -10,7 +10,7 @@ public class SegmentEnemy : Enemy {
     base(movement, Assets.trippleEnemyR, scoreData) {
         this.grapplePoint = grapplePoint;
         Health.val = 100;
-        weapon = new SpreadAlternating(bounds, rows: 3);
+        weapon = new SpreadAlternating(bounds, rows: 3,delay:2);
         bounds.width = 32;
         bounds.height = 17;
         grappleBounds.width = 10;

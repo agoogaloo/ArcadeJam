@@ -365,7 +365,7 @@ public class CrabMovement {
         lClaw.y = -30;
         rClaw.y = -30;
         lClaw.x = 25 - lClaw.Centre.X / 2;
-        rClaw.x = ArcadeGame.gameWidth - 25 - rClaw.Centre.X / 2;
+        rClaw.x = ArcadeGame.gameWidth - 30 - rClaw.Centre.X / 2;
 
 
     }
