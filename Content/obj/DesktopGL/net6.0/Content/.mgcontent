@@ -4,6 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bigShot.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/borders.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bossBar.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bossBarFrame.png</File>
@@ -87,6 +88,7 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/playerHit.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -70,7 +70,7 @@ public class Grapple {
                 break;
 
             case GrappleState.yoink:
-                if (shipBounds.Top < hookBounds.Bottom) {
+                if (shipBounds.Top < hookBounds.Bottom || shipBounds.Top<=0) {
                     grappleState = GrappleState.hit;
                 }
                 break;

@@ -41,7 +41,7 @@ public class Player : Node {
 
 
 
-	public Player(ScoreData score ,FloatData combo) {
+	public Player(ScoreData score, FloatData combo) {
 		this.score = score;
 		this.combo = combo;
 		renderHeight = 1;
@@ -60,13 +60,13 @@ public class Player : Node {
 		movement.Update(gameTime);
 		abilities.Update(gameTime);
 
-		rippleTimer+=(float)gameTime.ElapsedGameTime.TotalSeconds;
-		if(Vel.val!=Vector2.Zero){
-			rippleDelay = 20/Vel.val.Length();
+		rippleTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+		if (Vel.val != Vector2.Zero) {
+			rippleDelay = 20 / Vel.val.Length();
 		}
-		if(rippleTimer>=rippleDelay){
-			NodeManager.AddNode(new Ripple(new Vector2(Bounds.x-3f, Bounds.y-2), true));
-			NodeManager.AddNode(new Ripple(new Vector2(Bounds.Right+2f, Bounds.y-2), false));
+		if (rippleTimer >= rippleDelay) {
+			NodeManager.AddNode(new Ripple(new Vector2(Bounds.x - 3f, Bounds.y - 2), true));
+			NodeManager.AddNode(new Ripple(new Vector2(Bounds.Right + 2f, Bounds.y - 2), false));
 			rippleTimer = 0;
 		}
 		collision.Update(collisionGroups);
@@ -79,33 +79,46 @@ public class Player : Node {
 			if (i is Bullet b) {
 				//Console.WriteLine("hit by a bullet");
 				b.OnHit();
-				if (invincibleTime.val < 0f) {
-					combo.val = 1;
-					lives.val--;
-					if (abilities.weapon >= 1) {
-						abilities.weapon--;
-					}
-					if (lives.val < 0) {
-						Alive = false;
-						Assets.playerExplosion.CreateInstance();
-						Assets.playerExplosion.Play();
-						NodeManager.AddNode(new ExplosionEffect(Bounds.Centre,sound:false));
-						MediaPlayer.Stop();
-					}else{
-					
-						Assets.playerHit.Play();	
-					}
+				bulletHit();
 
-					invincibleTime.val = 3;
-				}
 			}
 		}
+	}
+
+	private void bulletHit() {
+		if (invincibleTime.val >= 0f) {
+			return;
+		}
+		foreach(Node n in NodeManager.Nodes){
+			if(n is Bullet b){
+				b.OnHit();
+			}
+		}
+
+		combo.val = 1;
+		lives.val--;
+		if (abilities.weapon >= 1) {
+			abilities.weapon--;
+		}
+		if (lives.val < 0) {
+			Alive = false;
+			Assets.playerExplosion.CreateInstance();
+			Assets.playerExplosion.Play();
+			NodeManager.AddNode(new ExplosionEffect(Bounds.Centre, sound: false));
+			MediaPlayer.Stop();
+		}
+		else {
+
+			Assets.playerHit.Play();
+		}
+
+		invincibleTime.val = 3;
 	}
 
 	public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
 		abilities.Draw(gameTime, spriteBatch);
 		if (invincibleTime.val < 0 || (int)(invincibleTime.val * 13) % 2 == 0) {
-			render.Draw( spriteBatch);
+			render.Draw(spriteBatch);
 		}
 		showBounds.Draw(spriteBatch);
 
@@ -118,5 +131,6 @@ public class Player : Node {
 			abilities.weapon += 1;
 		}
 	}
+
 }
 

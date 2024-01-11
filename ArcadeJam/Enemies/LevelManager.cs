@@ -53,7 +53,10 @@ public class LevelManager {
         scoreData.addScore(speedBonus);
         bonusTimer = 0;
         Console.WriteLine("starting new level");
-       
+
+        if (currentLevel != 0) {
+            player.upgradeGun();
+        }
         currentLevel++;
         if (currentLevel >= levels.Length) {
             currentLevel = 0;
@@ -61,21 +64,22 @@ public class LevelManager {
         }
         speedBonus = 0;
         for (int i = 0; i < loops && currentLevel + i < levels.Length; i++) {
-             levels[currentLevel+i].Cleared = false;
+            levels[currentLevel + i].Cleared = false;
             levels[currentLevel + i].Start(scoreData);
             speedBonus += levels[currentLevel + i].SpeedBonus;
         }
-        player.upgradeGun();
         BossBar.val += 1f / (levels.Length - 1);
 
     }
     public static void startLevels(Player playerVal) {
         player = playerVal;
-        levels = new Level[] { new Intro(),new Level6(), new Level2(), new Level3(),new Level4(),new Level5(),
-        new ShipBossStage(),new Level6() ,new CrabBossStage(BossBar)};
+        levels = new Level[] { new Intro(),new Level1(),new Level2(), new Level3(),new Level4(),new Level5(),
+        new ShipBossStage(),new Level6(),new Level7(),new Level8(),new Level9(),new CrabBossStage(BossBar)};
         currentLevel = 0;
         levels[currentLevel].Start(scoreData);
         started = true;
+        loops = 1;
+        BossBar.val = 0;
 
     }
 

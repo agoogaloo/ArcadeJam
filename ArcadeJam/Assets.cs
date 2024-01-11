@@ -9,7 +9,7 @@ namespace ArcadeJam;
 
 public class Assets {
     public static Rectangle rippleSize = new(0, 0, 5, 14), explosionSize = new(0, 0, 27, 27);
-    public static Texture2D player, PlayerBullet, PlayerSmearBullet, hook, chain,
+    public static Texture2D player, PlayerBullet, PlayerSmearBullet, bigShot,hook, chain,
         enemyStun, enemyBullet, crabArm, crabHinge, crown, crabBody, crabEnter,
         borders, comboCounter, comboBar, comboBarBorder, bossBar, bossBarFrame, lives, introText,
          rippleL, rippleR, explosion, cursor;
@@ -42,6 +42,7 @@ public class Assets {
         PlayerBullet = manager.Load<Texture2D>("cannonBall");
         PlayerSmearBullet = manager.Load<Texture2D>("playerSmearBullet");
         enemyBullet = manager.Load<Texture2D>("lightBullet");
+        bigShot = manager.Load<Texture2D>("bigShot");
         hook = manager.Load<Texture2D>("hook");
         chain = manager.Load<Texture2D>("chain");
         rippleL = manager.Load<Texture2D>("rippleL");
@@ -58,6 +59,8 @@ public class Assets {
         trippleEnemyR[4] = manager.Load<Texture2D>("enemies/trippleEnemyRLow3");
         //bosses
         shipBoss = loadEnemy("shipBoss", manager);
+        Array.Resize(ref shipBoss, 4);
+        shipBoss[3] = manager.Load<Texture2D>("enemies/shipBossLowR");
 
         angryCrabBody = loadEnemy("angryCrabBody", manager);
         crabArm = manager.Load<Texture2D>("enemies/crabArm");

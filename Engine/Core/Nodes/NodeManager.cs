@@ -10,30 +10,30 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Engine.Core.Nodes;
 
 public class NodeManager {
-    private static readonly List<Node> nodes = new();
+    public static  List<Node> Nodes{get;private set;} = new();
     private static readonly List<Node> nodesToAdd = new();
 
 
     public static void Update(GameTime gameTime) {
         //updating nodes
-        for (int i = nodes.Count - 1; i >= 0; i--) {
-            if (!nodes[i].Alive) {
-                nodes[i].End();
-                nodes.RemoveAt(i);
+        for (int i = Nodes.Count - 1; i >= 0; i--) {
+            if (!Nodes[i].Alive) {
+                Nodes[i].End();
+                Nodes.RemoveAt(i);
 
             }
-            else if (!nodes[i].Paused) {
-                nodes[i].Update(gameTime);
+            else if (!Nodes[i].Paused) {
+                Nodes[i].Update(gameTime);
             }
         }
         //adding new nodes
         if (nodesToAdd.Count > 0) {
             foreach (Node i in nodesToAdd) {
-                nodes.Add(i);
+                Nodes.Add(i);
             }
             nodesToAdd.Clear();
             //sorting them so the render order is right
-            nodes.Sort(delegate (Node x, Node y) {
+            Nodes.Sort(delegate (Node x, Node y) {
                 return -x.renderHeight.CompareTo(y.renderHeight);
             });
         }
@@ -44,10 +44,10 @@ public class NodeManager {
 
     public static void Draw(GameTime gameTime, SpriteBatch batch) {
 
-        for (int i = nodes.Count - 1; i >= 0; i--) {
-            nodes[i].Draw(gameTime, batch);
+        for (int i = Nodes.Count - 1; i >= 0; i--) {
+            Nodes[i].Draw(gameTime, batch);
         }
-        String info = "NODES: " + nodes.Count + "\nFPS: " + Math.Round(10 / gameTime.ElapsedGameTime.TotalSeconds) / 10;
+        String info = "NODES: " + Nodes.Count + "\nFPS: " + Math.Round(10 / gameTime.ElapsedGameTime.TotalSeconds) / 10;
         //batch.DrawString(Assets.font, info, new Vector2(1, -5), Color.White);
 
     }
@@ -56,9 +56,9 @@ public class NodeManager {
 
     }
     public static void clearNodes() {
-        for (int i = nodes.Count - 1; i >= 0; i--) {
-            nodes[i].End();
-            nodes.RemoveAt(i);
+        for (int i = Nodes.Count - 1; i >= 0; i--) {
+            Nodes[i].End();
+            Nodes.RemoveAt(i);
         }
         nodesToAdd.Clear();
     }

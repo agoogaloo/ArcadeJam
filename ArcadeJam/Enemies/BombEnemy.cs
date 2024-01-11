@@ -11,7 +11,7 @@ public class BombEnemy : Enemy {
     int cycle = 3;
 
     public BombEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.bombEnemy, score) {
-        Health.val = 100;
+        Health.val = 80;
         weapon = new Nothing();
         bounds.width = 22;
         bounds.height = 13;

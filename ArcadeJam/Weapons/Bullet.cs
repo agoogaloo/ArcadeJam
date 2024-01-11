@@ -118,6 +118,16 @@ public class EnemyBullet : Bullet {
     }
 
 }
+//now's your chance!
+public class BigShot : Bullet {
+    private const int width = 11, height = 11;
+
+    public BigShot(Vector2Data vel, Vector2 startPos) : base(vel, startPos, new(Assets.bigShot),
+    new(startPos.X - width / 2, startPos.Y - height / 2, width, height), "enemyBullet") {
+        renderHeight = 4;
+    }
+
+}
 public class EnemyCircleBullet : Bullet {
     private const int width = 5, height = 5;
     private float time = 0, size, loopTime;

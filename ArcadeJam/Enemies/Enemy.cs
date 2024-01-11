@@ -87,7 +87,7 @@ public class Enemy : Node, IGrappleable {
             NodeManager.AddNode(new Ripple(new Vector2(bounds.x - 3f, bounds.Centre.Y - 5), true));
             NodeManager.AddNode(new Ripple(new Vector2(bounds.Right + 2f, bounds.Centre.Y - 5), false));
             rippleTimer = rand.NextDouble() * 0.5f;
-            Console.WriteLine(rippleTimer);
+          
         }
     }
     protected virtual void updateGrappleBounds() {
