@@ -118,11 +118,13 @@ public class HighScores {
     public void Draw(SpriteBatch spriteBatch) {
         if (addingScore) {
             spriteBatch.DrawString(Assets.font, "NEW HIGH SCORE!", new Vector2(5, 10), Color.White);
-            spriteBatch.DrawString(Assets.font, name, new Vector2(5, 20), Color.White);
+            spriteBatch.DrawString(Assets.font, "NAME:"+name, new Vector2(10, 20), Color.White);
+             spriteBatch.Draw(Assets.cursor, new Vector2(10+30+cursor*6,22),Color.White);
         }
         for (int i = 0; i <5; i++) {
             spriteBatch.DrawString(Assets.font, scores[i * 2] + ":" + scores[i * 2 + 1], new Vector2(5, 30 + 6 * i), Color.White);
         }
+       
 
 
     }

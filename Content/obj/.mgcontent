@@ -12,6 +12,7 @@
     <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/comboBar.png</File>
     <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/comboBarBorder.png</File>
     <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/comboCounter.png</File>
+    <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/cursor.png</File>
     <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/darkBullet.png</File>
     <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/angryCrabBody.png</File>
     <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/angryCrabBodyDamage.png</File>
@@ -86,6 +87,7 @@
     <File>c:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/sounds/playerHit.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -21,7 +21,7 @@ public class Player : Node {
 	FloatData moveSpeed = new(1.5f);
 
 	public FloatData combo { get; private set; }
-	public IntData lives = new IntData(5), grappleDamage = new();
+	public IntData lives = new IntData(0), grappleDamage = new();
 	ScoreData score;
 	Sprite Sprite { get; set; } = new Sprite(Assets.player);
 	List<Node> collisions = new();

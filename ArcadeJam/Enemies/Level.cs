@@ -126,9 +126,11 @@ public class Level5 : Level {
 
 }
 public class ShipBossStage : Level {
+    
     public override void Start(ScoreData score, int loops = 1) {
         enemies = new Enemy[] { new ShipBoss(score) };
         addEnemies();
+        SpeedBonus = 3000;
     }
 
 }
