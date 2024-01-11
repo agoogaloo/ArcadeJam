@@ -890,6 +890,12 @@
 /processorParam:Quality=Best
 /build:sounds/grappleShoot.wav
 
+#begin sounds/lifeGet.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/lifeGet.wav
+
 #begin sounds/lv1Shoot.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

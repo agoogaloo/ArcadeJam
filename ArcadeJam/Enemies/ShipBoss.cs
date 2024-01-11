@@ -11,8 +11,8 @@ namespace ArcadeJam.Enemies;
 public class ShipBoss : Enemy {
 
     int phase = 1;
-    float deathTime = 2, timer, switchAttackTimer =0;
-    bool leftSideShooting = true;
+    float deathTime = 2, timer, switchAttackTimer = 0;
+    bool leftSideShooting = true, pastEdge = false;
 
 
     EnemyWeapon[] patterns;
@@ -20,19 +20,19 @@ public class ShipBoss : Enemy {
 
     Mine lMine, rMine;
 
-    int[] phasePoints = {200,200,300};
+    int[] phasePoints = { 200, 200, 300 };
 
 
     public ShipBoss(ScoreData score) : base(new ShipPhase1Movement(), Assets.shipBoss, score) {
-        Health.val = 550;
+        Health.val = 530;
         bounds.width = 34;
         bounds.height = 23;
         grappleBounds.width = 8;
         grappleBounds.height = 9;
         this.score = score;
         killPoints = phasePoints[2];
-        patterns = new EnemyWeapon[]{new Straight(patternBounds, 0.15f, 30, -90-60),
-        new Straight(patternBounds, 0.15f,30, -90+60)};
+        patterns = new EnemyWeapon[]{new Straight(patternBounds, 0.2f, 30, -90-60),
+        new Straight(patternBounds, 0.2f,30, -90+60)};
 
         renderer = new(sprite, bounds);
     }
@@ -42,7 +42,7 @@ public class ShipBoss : Enemy {
         if (doDeathExplosion(gameTime)) {
             return;
         }
-        
+
         switch (phase) {
             case 1:
                 phase1(gameTime);
@@ -64,13 +64,14 @@ public class ShipBoss : Enemy {
 
 
         movement.Update(gameTime);
-        
+
 
         sprite.texture = textures[0];
         if (grappleable && leftSideShooting) {
             sprite.texture = textures[2];
 
-        }else if (grappleable && !leftSideShooting) {
+        }
+        else if (grappleable && !leftSideShooting) {
             sprite.texture = textures[3];
 
         }
@@ -109,11 +110,18 @@ public class ShipBoss : Enemy {
     private void phase1(GameTime gameTime) {
         patternBounds.Centre = bounds.Centre;
         patternBounds.x = bounds.Right + 10;
-        if (Health.val <= 475) {
+        //edge of screen attack
+        Console.WriteLine(patternBounds.Right);
+        if (patternBounds.Right  >= ArcadeGame.gameWidth-5) {
+            pastEdge = true;
+            NodeManager.AddNode(new BigShot(new Vector2Data(new Vector2(0, 90)), patternBounds.Centre));
+            NodeManager.AddNode(new BigShot(new Vector2Data(new Vector2(0, -90)), patternBounds.Centre));
+        }
+        if (Health.val <= 500) {
             phase++;
             movement = new ShipPhaseTransMovement();
             movement.Init(bounds, vel);
-            patterns = new EnemyWeapon[] {};
+            patterns = new EnemyWeapon[] { };
             score.addScore(phasePoints[0]);
         }
 
@@ -132,9 +140,9 @@ public class ShipBoss : Enemy {
     private void phase3(GameTime gameTime) {
         timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
         patternBounds.y = bounds.y + 17;
-       
 
-        if (timer >= 1.5) {
+
+        if (timer >= 2) {
             mineshoot();
             patterns[0].fire();
             leftSideShooting = !leftSideShooting;
@@ -142,11 +150,11 @@ public class ShipBoss : Enemy {
         }
 
         patternBounds.Centre = bounds.Centre;
-        if (Health.val <= 225) {
+        if (Health.val <= 250) {
             phase++;
             score.addScore(phasePoints[1]);
-            patterns =new EnemyWeapon[]{new Spread(patternBounds, delay:-1,shots:6,speed:50),
-            new Spread(patternBounds, delay:-1,shots:3,speed:70),
+            patterns = new EnemyWeapon[]{new Spread(patternBounds, delay:-1,shots:5,speed:50),
+            new Spread(patternBounds, delay:-1,shots:2,speed:70),
            };
         }
 
@@ -184,8 +192,8 @@ public class ShipBoss : Enemy {
         switchAttackTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
         patternBounds.y = bounds.Bottom;
         grappleBounds.y = bounds.Bottom;
-        
-        if(timer>=2){
+
+        if (timer >= 2) {
             timer = -20;
             patterns[0].fire();
             leftSideShooting = !leftSideShooting;
@@ -194,24 +202,24 @@ public class ShipBoss : Enemy {
 
         }
 
-        if(switchAttackTimer>2.75){
+        if (switchAttackTimer > 2.75) {
             timer = 0;
             switchAttackTimer = 0;
 
             patterns[1].fire();
             grappleCollision.Remove();
             grappleable = false;
-       
+
         }
         if (leftSideShooting) {
-            
+
             patternBounds.x = bounds.x + 6.5f;
-            grappleBounds.x =bounds.x + 6.5f-grappleBounds.width/2;
+            grappleBounds.x = bounds.x + 6.5f - grappleBounds.width / 2;
 
         }
         else {
             patternBounds.x = bounds.x + 19.5f;
-            grappleBounds.x =bounds.x + 19.5f-grappleBounds.width/2;
+            grappleBounds.x = bounds.x + 19.5f - grappleBounds.width / 2;
         }
 
     }
@@ -224,12 +232,13 @@ public class ShipBoss : Enemy {
         else {
             score.addScore(3000);
         }
+        Assets.lifeGet.Play();
     }
-	public override void GrappleHit(int damage) {
+    public override void GrappleHit(int damage) {
         Health.val -= damage;
         stunned = false;
         switchAttackTimer = 4;
-	}
+    }
 }
 
 
@@ -245,7 +254,7 @@ public class ShipPhase1Movement : EnemyMovement {
     public override void Update(GameTime gameTime) {
         velMovement.Update(gameTime);
         vel.val.X += (float)(gameTime.ElapsedGameTime.TotalSeconds * 60f);
-        if (bounds.x > ArcadeGame.width + 50) {
+        if (bounds.x > ArcadeGame.gameWidth +30) {
             lane++;
             if (lane >= 4) {
                 lane = 0;
@@ -268,7 +277,7 @@ public class ShipPhaseTransMovement : EnemyMovement {
         if (Math.Abs(bounds.Centre.X - 75) < 15 && bounds.y == 10) {
             return;
         }
-        vel.val.X += (float)(gameTime.ElapsedGameTime.TotalSeconds * 60f);
+        vel.val.X += (float)(gameTime.ElapsedGameTime.TotalSeconds * 45f);
         if (bounds.x > ArcadeGame.width + 50) {
 
             bounds.y = 10;

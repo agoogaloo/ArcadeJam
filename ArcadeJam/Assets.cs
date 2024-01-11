@@ -19,7 +19,8 @@ public class Assets {
         shipBoss, angryCrabBody, crabBodyDamage, crabBodyGrapple, clawL, clawLOpen, clawR, clawROpen, gunCrown;
 
     public static Song music;
-    public static SoundEffect bigExplosion, smallExplosion1, smallExplosion2, playerExplosion, playerHit, grappleHit, grappleShoot;
+    public static SoundEffect bigExplosion, smallExplosion1, smallExplosion2, playerExplosion, playerHit, grappleHit,
+     grappleShoot, lifeGet;
 
     public static SoundEffect[] shootSounds = { null, null, null };
 
@@ -83,6 +84,7 @@ public class Assets {
         playerHit = manager.Load<SoundEffect>("sounds/playerHit");
         grappleShoot = manager.Load<SoundEffect>("sounds/grappleShoot");
         grappleHit = manager.Load<SoundEffect>("sounds/grappleHit");
+        lifeGet = manager.Load<SoundEffect>("sounds/lifeGet");
         shootSounds[0] = manager.Load<SoundEffect>("sounds/lv1Shoot");
         shootSounds[1] = manager.Load<SoundEffect>("sounds/lv2Shoot");
         shootSounds[2] = manager.Load<SoundEffect>("sounds/lv3Shoot");

@@ -84,6 +84,7 @@ public class CrabBoss : Node, IGrappleable {
             else {
                 score.addScore(3000);
             }
+            Assets.lifeGet.Play();
 
 
         }

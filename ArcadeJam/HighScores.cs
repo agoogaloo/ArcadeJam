@@ -115,16 +115,22 @@ public class HighScores {
 
     }
 
-    public void Draw(SpriteBatch spriteBatch) {
+    public void Draw(SpriteBatch spriteBatch, GameTime gameTime) {
+        spriteBatch.DrawString(Assets.font, "BAMBOOZLED BY A BUCCANEER", new Vector2(2, 10), Color.White);
         if (addingScore) {
-            spriteBatch.DrawString(Assets.font, "NEW HIGH SCORE!", new Vector2(5, 10), Color.White);
-            spriteBatch.DrawString(Assets.font, "NAME:"+name, new Vector2(10, 20), Color.White);
-             spriteBatch.Draw(Assets.cursor, new Vector2(10+30+cursor*6,22),Color.White);
+            spriteBatch.DrawString(Assets.font, "NEW HIGH SCORE!", new Vector2(76-(15*3), 25), Color.White);
+            spriteBatch.DrawString(Assets.font, "NAME:" + name, new Vector2(76-30, 35), Color.White);
+            if ((int)(gameTime.TotalGameTime.TotalSeconds * 3) % 2 == 0) {
+                spriteBatch.Draw(Assets.cursor, new Vector2(76 + cursor * 6, 37), Color.White);
+            }
+        }else{
+            spriteBatch.DrawString(Assets.font, "HIGH SCORES", new Vector2(76-(11*3), 30), Color.White);
         }
-        for (int i = 0; i <5; i++) {
-            spriteBatch.DrawString(Assets.font, scores[i * 2] + ":" + scores[i * 2 + 1], new Vector2(5, 30 + 6 * i), Color.White);
+        for (int i = 0; i < 5; i++) {
+            string text = scores[i * 2] + ":" + scores[i * 2 + 1];
+            spriteBatch.DrawString(Assets.font, text, new Vector2(76-(3*text.Length), 50+ 6 * i), Color.White);
         }
-       
+
 
 
     }

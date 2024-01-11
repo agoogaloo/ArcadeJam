@@ -208,7 +208,7 @@ public class ArcadeGame : Game {
 		spriteBatch.Begin();
 		NodeManager.Draw(gameTime, spriteBatch);
 		if (gameOverScreen != null) {
-			gameOverScreen.Draw(spriteBatch);
+			gameOverScreen.Draw(spriteBatch, gameTime);
 		}
 		spriteBatch.End();
 
