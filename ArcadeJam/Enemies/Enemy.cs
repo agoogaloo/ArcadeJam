@@ -76,7 +76,7 @@ public class Enemy : Node, IGrappleable {
         damager.Update();
         if (Health.val <= 0) {
             Alive = false;
-            score.addScore(killPoints);
+            score.addScore(killPoints, bounds.Centre);
         }
         doRipples(gameTime);
 
@@ -111,7 +111,7 @@ public class Enemy : Node, IGrappleable {
         Health.val -= damage;
         stunned = false;
         if (Health.val <= 0) {
-            score.addScore(grapplePoints);
+            score.addScore(grapplePoints, bounds.Centre);
             Alive = false;
 
         }
@@ -134,6 +134,7 @@ public class IntroChest : Enemy {
         bounds.height = 20;
         grappleBounds.width = 14;
         grappleBounds.height = 20;
+        grapplePoints = 0;
 
     }
     public override void Update(GameTime gameTime) {

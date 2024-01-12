@@ -89,7 +89,10 @@ public class ShipBoss : Enemy {
         if (Health.val <= 0) {
             if (deathTime == 2) {
                 sprite.texture = Assets.shipBoss[0];
-                score.addScore(500);
+                Vector2 loc = bounds.Centre;
+                loc.Y = bounds.Top;
+                score.addScore(500, loc);
+                timer = 0;
 
             }
             if (timer >= 0.2) {
@@ -122,7 +125,7 @@ public class ShipBoss : Enemy {
             movement = new ShipPhaseTransMovement();
             movement.Init(bounds, vel);
             patterns = new EnemyWeapon[] { };
-            score.addScore(phasePoints[0]);
+            score.addScore(phasePoints[0], bounds.Centre);
         }
 
     }
@@ -150,9 +153,11 @@ public class ShipBoss : Enemy {
         }
 
         patternBounds.Centre = bounds.Centre;
-        if (Health.val <= 250) {
+        if (Health.val <= 245) {
             phase++;
-            score.addScore(phasePoints[1]);
+            Vector2 loc = bounds.Centre;
+            loc.Y = bounds.Top;
+            score.addScore(phasePoints[1], loc);
             patterns = new EnemyWeapon[]{new Spread(patternBounds, delay:-1,shots:5,speed:50),
             new Spread(patternBounds, delay:-1,shots:2,speed:70),
            };
@@ -230,7 +235,7 @@ public class ShipBoss : Enemy {
             ArcadeGame.player.lives.val++;
         }
         else {
-            score.addScore(3000);
+            score.addScore(3000, bounds.Centre);
         }
         Assets.lifeGet.Play();
     }

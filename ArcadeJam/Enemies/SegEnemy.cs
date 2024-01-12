@@ -18,6 +18,8 @@ public class SegmentEnemy : Enemy {
             grappleBounds.width = 14;
         }
         grappleBounds.height = bounds.height;
+        killPoints = 100;
+        grapplePoints = 150;
     }
 	public override void Update(GameTime gameTime) {
 		base.Update(gameTime);

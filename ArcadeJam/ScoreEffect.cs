@@ -1,0 +1,51 @@
+﻿using System;
+using Engine.Core.Components;
+using Engine.Core.Data;
+using Engine.Core.Nodes;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace ArcadeJam;
+
+public class ScoreEffect : Node {
+    Vector2 loc;
+    int score;
+    double time;
+    Color colour = new(118,68,98);
+    public ScoreEffect(Vector2 loc, int score) {
+        renderHeight = 3;
+        int length = (score+"").Length;
+        loc.X-=length*3;
+        this.time = score/125f;
+        this.loc = loc;
+        this.score = score;
+        if(score>=6000){
+            colour = new(244,224,99);
+        }else if(score>=1000){
+            colour = new(237, 180, 161);
+        }
+        else if(score>150){
+            colour = new(169,104,104);
+        }
+       
+
+
+     
+
+    }
+    public override void Update(GameTime gameTime) {
+        time-=gameTime.ElapsedGameTime.TotalSeconds;
+        loc.Y-=(float)gameTime.ElapsedGameTime.TotalSeconds*10;
+        if(time<=0){
+            Alive = false;
+        }
+        
+
+    }
+    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
+        spriteBatch.DrawString(Assets.font, score+"", loc,colour);
+        
+    }
+
+
+}

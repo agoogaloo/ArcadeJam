@@ -17,6 +17,8 @@ public class BombEnemy : Enemy {
         bounds.height = 13;
         grappleBounds.width = bounds.width;
         grappleBounds.height = bounds.height;
+        killPoints = 100;
+        grapplePoints = 150;
 
     }
 
