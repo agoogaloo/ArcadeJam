@@ -49,6 +49,7 @@ public class ArcadeGame : Game {
 		Content.RootDirectory = "Content";
 		IsMouseVisible = true;
 		Window.AllowUserResizing = true;
+		Window.Title = "Captain Grapple";
 
 	}
 
@@ -87,6 +88,8 @@ public class ArcadeGame : Game {
 		InputHandler.addButtonBind("B", Keys.Z);
 		InputHandler.addButtonBind("A", GPadInput.Y);
 		InputHandler.addButtonBind("B", GPadInput.B);
+		InputHandler.addButtonBind("A", GPadInput.A);
+		InputHandler.addButtonBind("B", GPadInput.X);
 		InputHandler.addAnalogBind("L", Keys.Left);
 		InputHandler.addAnalogBind("R", Keys.Right);
 		InputHandler.addAnalogBind("U", Keys.Up);
@@ -195,7 +198,7 @@ public class ArcadeGame : Game {
 		spriteBatch.Draw(windowTarget, destinationRect, Color.White);
 
 		String info = "FPS: " + Math.Round(10 / gameTime.ElapsedGameTime.TotalSeconds) / 10;
-		spriteBatch.DrawString(Assets.font, info, new Vector2(1, -5), Color.White);
+		//spriteBatch.DrawString(Assets.font, info, new Vector2(1, -5), Color.White);
 		//spriteBatch.DrawString(Assets.font,  GamePad.GetState(PlayerIndex.One).Buttons.ToString(), new Vector2(1, 5), Color.Red);
 		spriteBatch.End();
 

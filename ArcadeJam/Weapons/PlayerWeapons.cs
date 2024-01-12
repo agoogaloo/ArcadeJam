@@ -29,13 +29,14 @@ public abstract class PlayerWeapon {
     public virtual void Update(GameTime gameTime) {
 
         if (timeLeft < 0 && shooting) {
-            timeLeft = reloadTime.val;
+           
             if (focused.val) {
                 FocusShoot();
             }
             else {
                 NormalShoot();
             }
+            timeLeft = reloadTime.val;
 
         }
         else {
@@ -65,13 +66,14 @@ public class Level1Gun : PlayerWeapon {
     }
 
     public override void Update(GameTime gameTime) {
-        base.Update(gameTime);
+        
         if (focused.val) {
             reloadTime.val = 0.2f;
         }
         else {
             reloadTime.val = 0.3f;
         }
+        base.Update(gameTime);
     }
 
     protected override void FocusShoot() {
@@ -106,13 +108,14 @@ public class Level2Gun : PlayerWeapon {
     }
 
     public override void Update(GameTime gameTime) {
-        base.Update(gameTime);
+       
         if (focused.val) {
             reloadTime.val = 0.2f;
         }
         else {
             reloadTime.val = 0.3f;
         }
+         base.Update(gameTime);
     }
 
     protected override void FocusShoot() {
@@ -155,13 +158,14 @@ public class Level3Gun : PlayerWeapon {
     }
 
     public override void Update(GameTime gameTime) {
-        base.Update(gameTime);
+        
         if (focused.val) {
             reloadTime.val = 0.15f;
         }
         else {
             reloadTime.val = 0.3f;
         }
+        base.Update(gameTime);
     }
 
     protected override void FocusShoot() {

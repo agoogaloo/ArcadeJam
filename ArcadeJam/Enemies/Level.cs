@@ -182,8 +182,8 @@ public class Level9 : Level {
 
         new SegmentEnemy(new MoveToPoint(new Vector2(-30,5),new Vector2(100,20),speed:40,delay:2),score,1),
         
-        new AimedEnemy(new MoveToPoint(new Vector2(20,-10), new Vector2(35,30),speed:25,delay:6f), score),
-        new AimedEnemy(new MoveToPoint(new Vector2(130,-10), new Vector2(125,60),speed:30,delay:5f), score),
+        new AimedEnemy(new MoveToPoint(new Vector2(30,-10), new Vector2(35,30),speed:25,delay:6f), score),
+        //new AimedEnemy(new MoveToPoint(new Vector2(130,-10), new Vector2(125,60),speed:30,delay:5f), score),
         
         };
         addEnemies();
