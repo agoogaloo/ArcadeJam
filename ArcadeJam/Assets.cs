@@ -24,8 +24,9 @@ public class Assets {
 
     public static SoundEffect[] shootSounds = { null, null, null };
 
-    public static SpriteFont font;
-    public static void Load(ContentManager manager, Texture2D whitePixel) {
+    public static SpriteFont font, smallNumFont;
+
+	public static void Load(ContentManager manager, Texture2D whitePixel) {
         pixel = whitePixel;
         //ui
         borders = manager.Load<Texture2D>("borders");
@@ -94,6 +95,7 @@ public class Assets {
 
         //fonts
         font = manager.Load<SpriteFont>("monoFont");
+        smallNumFont = manager.Load<SpriteFont>("smallNumFont");
 
     }
     private static Texture2D[] loadEnemy(String name, ContentManager manager) {

@@ -235,7 +235,7 @@ public class ShipBoss : Enemy {
             ArcadeGame.player.lives.val++;
         }
         else {
-            score.addScore(3000, bounds.Centre);
+            score.addScore(2500, bounds.Centre);
         }
         Assets.lifeGet.Play();
     }

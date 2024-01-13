@@ -12,20 +12,25 @@ public class ScoreEffect : Node {
     int score;
     double time;
     Color colour = new(118,68,98);
+    SpriteFont font = Assets.smallNumFont;
     public ScoreEffect(Vector2 loc, int score) {
-        renderHeight = 3;
+        renderHeight = 4;
         int length = (score+"").Length;
-        loc.X-=length*3;
+        loc.X-=length*2;
         this.time = score/125f;
         this.loc = loc;
         this.score = score;
-        if(score>=6000){
+        if(score>=3500){
             colour = new(244,224,99);
         }else if(score>=1000){
             colour = new(237, 180, 161);
         }
-        else if(score>150){
+        else if(score>200){
             colour = new(169,104,104);
+        }
+        if(score>100){
+            font = Assets.font;
+            loc.X-=length;
         }
        
 
@@ -43,7 +48,8 @@ public class ScoreEffect : Node {
 
     }
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
-        spriteBatch.DrawString(Assets.font, score+"", loc,colour);
+        Vector2 drawLoc = new Vector2((int)loc.X,(int)loc.Y);
+        spriteBatch.DrawString(font, score+"", drawLoc,colour);
         
     }
 

@@ -22,7 +22,7 @@ public class Player : Node {
 	FloatData moveSpeed = new(1.5f);
 
 	public FloatData combo { get; private set; }
-	public IntData lives = new IntData(7), grappleDamage = new();
+	public IntData lives = new IntData(5), grappleDamage = new();
 	ScoreData score;
 	Sprite Sprite { get; set; } = new Sprite(Assets.player);
 	List<Node> collisions = new();
@@ -121,9 +121,9 @@ public class Player : Node {
 			render.Draw(spriteBatch);
 		}
 		showBounds.Draw(spriteBatch);
+	
 
-
-		//spriteBatch.DrawString(Assets.font, "COMBO:" + combo.val, new Vector2(1, 5), Color.Red);
+		//spriteBatch.DrawString(spriteFont: Assets.smallNumFont, "COMBO:" + combo.val, new Vector2(1, 5), Color.Red);
 	}
 
 	public void upgradeGun() {

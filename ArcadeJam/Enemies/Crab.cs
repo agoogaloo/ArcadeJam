@@ -82,7 +82,7 @@ public class CrabBoss : Node, IGrappleable {
                 ArcadeGame.player.lives.val++;
             }
             else {
-                score.addScore(3000);
+                score.addScore(2500,bounds.Centre);
             }
             Assets.lifeGet.Play();
 
@@ -91,7 +91,7 @@ public class CrabBoss : Node, IGrappleable {
         if (health.val <= 0) {
             if (deathTimer == 4) {
                 sprite.texture = Assets.angryCrabBody[0];
-                score.addScore(phasePoints[3]);
+                score.addScore(phasePoints[3],bounds.Centre);
                 //NodeManager.AddNode(new ExplosionEffect(crownBounds.Centre, true));
                 NodeManager.AddNode(new Ripple(new Vector2(crownBounds.x - 3f, crownBounds.y - 2), true));
                 NodeManager.AddNode(new Ripple(new Vector2(crownBounds.Right + 2f, crownBounds.y - 2), false));
@@ -164,7 +164,7 @@ public class CrabBoss : Node, IGrappleable {
             patterns = new EnemyWeapon[] { new SpreadAlternating(bounds, rows: 6) };
             movement.movementState = Movements.rightJab;
             movement.timer = 0;
-            score.addScore(phasePoints[0]);
+            score.addScore(phasePoints[0],leftClaw.Bounds.Centre);
         }
         if (!rightClaw.Alive) {
 
@@ -174,7 +174,7 @@ public class CrabBoss : Node, IGrappleable {
             patterns = new EnemyWeapon[] { new SpreadAlternating(bounds, rows: 6) };
             movement.movementState = Movements.leftJab;
             movement.timer = 0;
-            score.addScore(phasePoints[0]);
+            score.addScore(phasePoints[0],rightClaw.Bounds.Centre);
         }
         crownBounds.Centre = bounds.Centre;
 
@@ -192,12 +192,17 @@ public class CrabBoss : Node, IGrappleable {
             rightClaw.Update(gameTime);
         }
         else {
+            if(movement.movementState==Movements.leftJab){
+                score.addScore(phasePoints[1],leftClaw.Bounds.Centre);
+            }else{
+                score.addScore(phasePoints[1],rightClaw.Bounds.Centre);
+            }
             rightClaw.end();
             leftClaw.end();
             phase.val++;
             patterns = new EnemyWeapon[] { new SpreadAlternating(bounds, rows: 50, angle: 360),
             new SpreadAlternating(bounds, delay: -1, rows: 300, angle: 360, volleys: 2,speed:40) };
-            score.addScore(phasePoints[1]);
+            
 
 
         }
@@ -312,7 +317,7 @@ public class CrabBoss : Node, IGrappleable {
              ,new CirclePath(bounds,angle:180+60)};
             grappleBounds.Centre = bounds.Centre;
             grappleBounds.y = bounds.Bottom;
-            score.addScore(phasePoints[2]);
+            score.addScore(phasePoints[2],bounds.Centre);
             NodeManager.AddNode(new ExplosionEffect(crownBounds.Centre));
 
         }

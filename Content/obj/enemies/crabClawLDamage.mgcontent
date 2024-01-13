@@ -3,7 +3,7 @@
   <SourceFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crabClawLDamage.png</SourceFile>
   <SourceTime>2024-01-08T17:06:27.4045909-07:00</SourceTime>
   <DestFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/crabClawLDamage.xnb</DestFile>
-  <DestTime>2024-01-10T21:31:05.9422892-07:00</DestTime>
+  <DestTime>2024-01-12T17:24:08.7772959-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T05:44:56-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -860,6 +860,13 @@
 /processorParam:TextureFormat=Color
 /build:rippleR.png
 
+#begin smallNumFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:smallNumFont.spritefont
+
 #begin sounds/explosionBig.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
