@@ -111,6 +111,11 @@ public class Grapple {
             if (i is EnemyBullet b) {
                 b.OnHit();
             }
+            if (i is EnemyCircleBullet c) {
+                c.OnHit();
+            }
+
+
 
         }
         //grappling enemies it hits

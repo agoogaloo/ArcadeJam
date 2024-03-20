@@ -115,7 +115,7 @@ public class ShipBoss : Enemy {
         patternBounds.x = bounds.Right + 10;
         //edge of screen attack
         Console.WriteLine(patternBounds.Right);
-        if (patternBounds.Right  >= ArcadeGame.gameWidth-5) {
+        if (patternBounds.Right >= ArcadeGame.gameWidth - 7) {
             pastEdge = true;
             NodeManager.AddNode(new BigShot(new Vector2Data(new Vector2(0, 90)), patternBounds.Centre));
             NodeManager.AddNode(new BigShot(new Vector2Data(new Vector2(0, -90)), patternBounds.Centre));
@@ -132,7 +132,7 @@ public class ShipBoss : Enemy {
     private void phaseTrans(GameTime gameTime) {
         if (Math.Abs(bounds.Centre.X - 75) < 15 && bounds.y == 10) {
             phase++;
-            patterns = new EnemyWeapon[] { new Spread(patternBounds, shots: 6, delay: -1, angle: 60) };
+            patterns = new EnemyWeapon[] { new Spread(patternBounds, shots: 7, delay: -1, angle: 65) };
             movement = new MoveToPoint(bounds.Centre, new Vector2(75, 10 + bounds.height / 2));
             movement.Init(bounds, vel);
 
@@ -144,11 +144,16 @@ public class ShipBoss : Enemy {
         timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
         patternBounds.y = bounds.y + 17;
 
-
         if (timer >= 2) {
+            leftSideShooting = !leftSideShooting;
+            if (leftSideShooting) {
+                patternBounds.x = bounds.x + 6.5f;
+            }
+            else {
+                patternBounds.x = bounds.x + 19.5f;
+            }
             mineshoot();
             patterns[0].fire();
-            leftSideShooting = !leftSideShooting;
             timer = 0;
         }
 
@@ -174,15 +179,15 @@ public class ShipBoss : Enemy {
     }
     private void mineshoot() {
         if ((leftSideShooting && (lMine == null || !lMine.Alive)) || (!leftSideShooting && (rMine == null || !rMine.Alive))) {
-
+            Vector2 start = new Vector2(bounds.x+16, patternBounds.y+5);
             if (leftSideShooting) {
                 Vector2 destination = new Vector2(patternBounds.Centre.X - 10, patternBounds.Centre.Y + 40);
-                lMine = new Mine(new MoveToPoint(patternBounds.Centre, destination), score);
+                lMine = new Mine(new MoveToPoint(start, destination), score);
                 NodeManager.AddNode(lMine);
             }
             else {
-                Vector2 destination = new Vector2(patternBounds.Centre.X + 15, patternBounds.Centre.Y + 40);
-                rMine = new Mine(new MoveToPoint(patternBounds.Centre, destination), score);
+                Vector2 destination = new Vector2(patternBounds.Centre.X + 12, patternBounds.Centre.Y + 40);
+                rMine = new Mine(new MoveToPoint(start, destination), score);
                 NodeManager.AddNode(rMine);
             }
 
@@ -259,7 +264,7 @@ public class ShipPhase1Movement : EnemyMovement {
     public override void Update(GameTime gameTime) {
         velMovement.Update(gameTime);
         vel.val.X += (float)(gameTime.ElapsedGameTime.TotalSeconds * 60f);
-        if (bounds.x > ArcadeGame.gameWidth +30) {
+        if (bounds.x > ArcadeGame.gameWidth + 30) {
             lane++;
             if (lane >= 4) {
                 lane = 0;
