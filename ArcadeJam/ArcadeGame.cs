@@ -49,7 +49,6 @@ public class ArcadeGame : Game {
 		Content.RootDirectory = "Content";
 		IsMouseVisible = true;
 		Window.AllowUserResizing = true;
-		Window.Title = "Captain Grapple";
 
 	}
 
@@ -60,6 +59,7 @@ public class ArcadeGame : Game {
 		base.Initialize();
 
 		//window settings
+		
 		graphics.PreferredBackBufferWidth = width * 3;
 		graphics.PreferredBackBufferHeight = height * 3;
 
@@ -106,11 +106,13 @@ public class ArcadeGame : Game {
 		LevelManager.startLevels(player);
 		LevelManager.scoreData = score;
 
+		Window.Title = "Captain Grapple";
 
 
 	}
 
 	protected override void LoadContent() {
+
 		spriteBatch = new SpriteBatch(GraphicsDevice);
 
 		Texture2D pixel = new Texture2D(GraphicsDevice, 1, 1);
@@ -169,6 +171,7 @@ public class ArcadeGame : Game {
 	}
 
 	protected override void Draw(GameTime gameTime) {
+
 		drawGame(gameTime);
 		drawBorder();
 

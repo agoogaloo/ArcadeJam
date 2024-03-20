@@ -3,7 +3,7 @@
   <SourceFile>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/sounds/explosionSmall2.wav</SourceFile>
   <SourceTime>2024-01-10T11:14:44.9093886-07:00</SourceTime>
   <DestFile>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/sounds/explosionSmall2.xnb</DestFile>
-  <DestTime>2024-03-20T12:01:49.9794051-06:00</DestTime>
+  <DestTime>2024-03-20T13:06:18.5375626-06:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2022-07-26T05:44:56-06:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>
