@@ -25,7 +25,7 @@ public class PlayerAbilities {
     private Grapple grapple;
 
 
-    public PlayerAbilities(FloatRect bounds, Vector2Data vel, FloatData speed, FloatData combo, FloatData invincibleTime, BoolData useInput, 
+    public PlayerAbilities(FloatRect bounds, Vector2Data vel, FloatData speed, FloatData combo, FloatData invincibleTime, BoolData useInput,
     ScoreData score, IntData grappleDamage) {
         this.bounds = bounds;
         this.speed = speed;
@@ -49,7 +49,7 @@ public class PlayerAbilities {
             upgrades[weapon].Use();
         }
         //grappling
-        if (focusButton.HoldTime>=0.05 && shootButton.HoldTime>=0.05) {
+        if (focusButton.HoldTime >= 0.05 && shootButton.HoldTime >= 0.05) {
             grapple.Shoot();
         }
         //focusing
@@ -79,7 +79,9 @@ public class PlayerAbilities {
                     vel.val.Y = -10;
                 }
                 vel.val.Y -= (float)(yoinkAccel * gameTime.ElapsedGameTime.TotalSeconds);
-                invincibleTime.val = 0.5f;
+                if (invincibleTime.val <= 0.5f) {
+                    invincibleTime.val = 0.5f;
+                }
                 break;
             case GrappleState.hit:
                 break;

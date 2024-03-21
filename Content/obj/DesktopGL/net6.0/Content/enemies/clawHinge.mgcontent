@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/clawHinge.png</SourceFile>
-  <SourceTime>2024-01-09T13:48:48.2858332-07:00</SourceTime>
-  <DestFile>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemies/clawHinge.xnb</DestFile>
-  <DestTime>2024-03-20T13:06:17.7519489-06:00</DestTime>
+  <SourceFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/clawHinge.png</SourceFile>
+  <SourceTime>2024-01-08T19:03:12.8427675-07:00</SourceTime>
+  <DestFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemies/clawHinge.xnb</DestFile>
+  <DestTime>2024-03-20T23:13:43.4693562-06:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T05:44:56-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
