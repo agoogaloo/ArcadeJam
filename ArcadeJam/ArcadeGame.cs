@@ -59,7 +59,7 @@ public class ArcadeGame : Game {
 		base.Initialize();
 
 		//window settings
-		
+
 		graphics.PreferredBackBufferWidth = width * 3;
 		graphics.PreferredBackBufferHeight = height * 3;
 
@@ -90,6 +90,12 @@ public class ArcadeGame : Game {
 		InputHandler.addButtonBind("B", GPadInput.B);
 		InputHandler.addButtonBind("A", GPadInput.A);
 		InputHandler.addButtonBind("B", GPadInput.X);
+		InputHandler.addButtonBind("A", GPadInput.LTrigger);
+		InputHandler.addButtonBind("B", GPadInput.RTrigger);
+		InputHandler.addButtonBind("A", GPadInput.LShoulder);
+		InputHandler.addButtonBind("B", GPadInput.RShoulder);
+
+
 		InputHandler.addAnalogBind("L", Keys.Left);
 		InputHandler.addAnalogBind("R", Keys.Right);
 		InputHandler.addAnalogBind("U", Keys.Up);
@@ -98,6 +104,11 @@ public class ArcadeGame : Game {
 		InputHandler.addAnalogBind("R", GPadInput.LStickRight);
 		InputHandler.addAnalogBind("U", GPadInput.LStickUp);
 		InputHandler.addAnalogBind("D", GPadInput.LStickDown);
+
+		InputHandler.addAnalogBind("L", GPadInput.DLeft);
+		InputHandler.addAnalogBind("R", GPadInput.DRight);
+		InputHandler.addAnalogBind("U", GPadInput.DUp);
+		InputHandler.addAnalogBind("D", GPadInput.DDown);
 
 		/*InputHandler.addButtonBind("key", Keys.X);
 		InputHandler.addButtonBind("key", Keys.Z);
