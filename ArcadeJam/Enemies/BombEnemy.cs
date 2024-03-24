@@ -23,22 +23,22 @@ public class BombEnemy : Enemy {
     }
 
 
-	public override void Update(GameTime gameTime) {
+    public override void Update(GameTime gameTime) {
         base.Update(gameTime);
-        timer+=(float)gameTime.ElapsedGameTime.TotalSeconds;
+        timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
         if (timer >= bombDelay) {
             Vector2 destination = bounds.Centre;
-            destination.Y+=distance;
-            destination.X+=-xOffset/2+(xOffset/5*cycle);
-            NodeManager.AddNode(new Mine(new MoveToPoint(bounds.Centre,destination,easing:1.5f),score));
+            destination.Y += distance;
+            destination.X += -xOffset / 2 + (xOffset / 5 * cycle);
+            NodeManager.AddNode(new Mine(new MoveToPoint(bounds.Centre, destination, easing: 1.5f), score));
             timer = 0;
             cycle++;
-            if(cycle>=5){
+            if (cycle >= 5) {
                 cycle = 0;
             }
         }
-        if(!Alive){
-            Mine mine = new Mine(new MoveToPoint(bounds.Centre,bounds.Centre,easing:100),score);
+        if (!Alive && !stunned) {
+            Mine mine = new Mine(new MoveToPoint(bounds.Centre, bounds.Centre, easing: 100), score);
             mine.Health.val = 0;
             NodeManager.AddNode(mine);
         }
@@ -52,7 +52,7 @@ public class Mine : Enemy {
 
     public Mine(EnemyMovement movement, ScoreData score) : base(movement, Assets.mine, score) {
         Health.val = 23;
-        weapon = new Explosion(bounds,volleys:2);
+        weapon = new Explosion(bounds, volleys: 2);
         bounds.width = 7;
         bounds.height = 7;
         grappleBounds.width = 7;
@@ -63,10 +63,16 @@ public class Mine : Enemy {
     public override void Update(GameTime gameTime) {
         sprite.texture = textures[0];
         damager.Update();
-        movement.Update(gameTime);
+        if (!stunned) {
+            movement.Update(gameTime);
+        }
         weapon.Update(gameTime);
         updateGrappleBounds();
-        if (Health.val <= 0) {
+        if (Health.val <= 0 && !stunned) {
+            //grappleable = false;
+            grappleCollision.Remove();
+            damager.End();
+
 
             if (!exploded) {
                 weapon.fire();
@@ -80,7 +86,7 @@ public class Mine : Enemy {
         if (deathTime <= 0) {
             Alive = false;
         }
-        if (!grappleable && Health.val < ArcadeGame.player.grappleDamage.val) {
+        if (!grappleable && Health.val < ArcadeGame.player.grappleDamage.val && Health.val > 0) {
             grappleCollision.Readd();
             grappleable = true;
         }
