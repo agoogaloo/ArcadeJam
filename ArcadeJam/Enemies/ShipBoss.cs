@@ -130,10 +130,10 @@ public class ShipBoss : Enemy {
 
     }
     private void phaseTrans(GameTime gameTime) {
-        if (Math.Abs(bounds.Centre.X - 75) < 15 && bounds.y == 10) {
+        if (Math.Abs(bounds.Centre.X - 75) < 15 && bounds.y == 15) {
             phase++;
             patterns = new EnemyWeapon[] { new Spread(patternBounds, shots: 7, delay: -1, angle: 65) };
-            movement = new MoveToPoint(bounds.Centre, new Vector2(75, 10 + bounds.height / 2));
+            movement = new MoveToPoint(bounds.Centre, new Vector2(75, 20 + bounds.height / 2));
             movement.Init(bounds, vel);
 
         }
@@ -160,11 +160,13 @@ public class ShipBoss : Enemy {
         patternBounds.Centre = bounds.Centre;
         if (Health.val <= 245) {
             phase++;
+            timer = 0;
             Vector2 loc = bounds.Centre;
             loc.Y = bounds.Top;
             score.addScore(phasePoints[1], loc);
-            patterns = new EnemyWeapon[]{new Spread(patternBounds, delay:-1,shots:5,speed:50),
+            patterns = new EnemyWeapon[]{new Spread(patternBounds, delay:-1,shots:5,angle:40,speed:50),
             new Spread(patternBounds, delay:-1,shots:2,speed:70),
+
            };
         }
 
@@ -284,13 +286,13 @@ public class ShipPhaseTransMovement : EnemyMovement {
     }
     public override void Update(GameTime gameTime) {
         velMovement.Update(gameTime);
-        if (Math.Abs(bounds.Centre.X - 75) < 15 && bounds.y == 10) {
+        if (Math.Abs(bounds.Centre.X - 75) < 15 && bounds.y == 15) {
             return;
         }
         vel.val.X += (float)(gameTime.ElapsedGameTime.TotalSeconds * 45f);
         if (bounds.x > ArcadeGame.width + 50) {
 
-            bounds.y = 10;
+            bounds.y = 15;
             bounds.x = -30;
 
             vel.val = new(0, 0);

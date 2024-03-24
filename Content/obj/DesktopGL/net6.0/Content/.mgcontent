@@ -68,6 +68,7 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/hook.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/icicle.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/introText.png</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/introTextKeyboard.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/lightBullet.png</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/monoFont.spritefont</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/peng.png</File>
@@ -90,6 +91,7 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/playerHit.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

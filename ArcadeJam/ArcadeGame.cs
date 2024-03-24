@@ -99,6 +99,19 @@ public class ArcadeGame : Game {
 		InputHandler.addAnalogBind("U", GPadInput.LStickUp);
 		InputHandler.addAnalogBind("D", GPadInput.LStickDown);
 
+		/*InputHandler.addButtonBind("key", Keys.X);
+		InputHandler.addButtonBind("key", Keys.Z);
+		InputHandler.addButtonBind("controller", Keys.Q);
+		InputHandler.addAnalogBind("key", Keys.Left);
+		InputHandler.addAnalogBind("key", Keys.Right);
+		InputHandler.addAnalogBind("key", Keys.Up);
+		InputHandler.addAnalogBind("key", Keys.Down);
+
+		InputHandler.addButtonBind("controller", GPadInput.Y);
+		InputHandler.addButtonBind("controller", GPadInput.B);
+		InputHandler.addButtonBind("controller", GPadInput.A);
+		InputHandler.addButtonBind("controller", GPadInput.X);*/
+
 		score = new(combo);
 		player = new Player(score, combo);
 

@@ -781,6 +781,18 @@
 /processorParam:TextureFormat=Color
 /build:introText.png
 
+#begin introTextKeyboard.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:introTextKeyboard.png
+
 #begin lightBullet.png
 /importer:TextureImporter
 /processor:TextureProcessor

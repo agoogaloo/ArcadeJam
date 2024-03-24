@@ -3,10 +3,12 @@ using System.Data.Common;
 using ArcadeJam.Weapons;
 using Engine.Core.Components;
 using Engine.Core.Data;
+using Engine.Core.Input;
 using Engine.Core.Nodes;
 using Engine.Core.Physics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 namespace ArcadeJam.Enemies;
@@ -126,6 +128,8 @@ public class Enemy : Node, IGrappleable {
     }
 }
 public class IntroChest : Enemy {
+    Texture2D intro = Assets.introText;
+    GamePadState gPadState = GamePad.GetState(PlayerIndex.One);
     public IntroChest() : base(new Stationary(), Assets.introChest, null) {
         Health.val = 27;
         weapon = new Nothing();
@@ -147,7 +151,15 @@ public class IntroChest : Enemy {
     }
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
         base.Draw(gameTime, spriteBatch);
-        spriteBatch.Draw(Assets.introText, new Vector2(ArcadeGame.gameWidth / 2 - Assets.introText.Width / 2, 5), Color.White);
+        
+        
+        if (GamePad.GetState(PlayerIndex.One)!=gPadState){
+            gPadState = GamePad.GetState(PlayerIndex.One);
+            intro = Assets.introText;
+        }else if(Keyboard.GetState().GetPressedKeyCount()>=1){
+            intro = Assets.introTextKeyboard;
+        }
+        spriteBatch.Draw(intro, new Vector2(ArcadeGame.gameWidth / 2 - Assets.introText.Width / 2, 5), Color.White);
 
     }
     protected override void doRipples(GameTime gameTime) {

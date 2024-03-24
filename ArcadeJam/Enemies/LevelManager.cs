@@ -73,7 +73,7 @@ public class LevelManager {
     }
     public static void startLevels(Player playerVal) {
         player = playerVal;
-        levels = new Level[] { new Intro(),new Level1(),new Level2(), new Level3(),new Level4(),new Level5(),
+        levels = new Level[] { new Intro(),new ShipBossStage(),new Level1(),new Level2(), new Level3(),new Level4(),new Level5(),
         new ShipBossStage(),new Level6(),new Level7(),new Level8(),new Level9(),new CrabBossStage(BossBar)};
         currentLevel = 0;
         levels[currentLevel].Start(scoreData);

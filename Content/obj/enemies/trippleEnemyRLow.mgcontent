@@ -3,7 +3,7 @@
   <SourceFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/trippleEnemyRLow.png</SourceFile>
   <SourceTime>2024-01-10T17:21:52.8257198-07:00</SourceTime>
   <DestFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/enemies/trippleEnemyRLow.xnb</DestFile>
-  <DestTime>2024-01-12T17:24:08.8052959-07:00</DestTime>
+  <DestTime>2024-03-24T16:40:28.7023859-06:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T05:44:56-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

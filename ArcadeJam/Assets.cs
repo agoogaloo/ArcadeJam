@@ -11,7 +11,7 @@ public class Assets {
     public static Rectangle rippleSize = new(0, 0, 5, 14), explosionSize = new(0, 0, 27, 27);
     public static Texture2D player, PlayerBullet, PlayerSmearBullet, bigShot,hook, chain,
         enemyStun, enemyBullet, crabArm, crabHinge, crown, crabBody, crabEnter,
-        borders, comboCounter, comboBar, comboBarBorder, bossBar, bossBarFrame, lives, introText,
+        borders, comboCounter, comboBar, comboBarBorder, bossBar, bossBarFrame, lives, introText,introTextKeyboard,
          rippleL, rippleR, explosion, cursor;
     public static Texture2D pixel = null;
 
@@ -37,6 +37,7 @@ public class Assets {
         bossBar = manager.Load<Texture2D>("bossBar");
         lives = manager.Load<Texture2D>("lightBullet");
         introText = manager.Load<Texture2D>("introText");
+        introTextKeyboard = manager.Load<Texture2D>("introTextKeyboard");
         cursor = manager.Load<Texture2D>("cursor");
 
         //player
