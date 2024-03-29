@@ -43,6 +43,12 @@ public class HighScores {
                 scores[i * 2] = "-----";
                 scores[i * 2 + 1] = "0";
             }
+            scores[0]= "AGOOG";
+            scores[1]= "100000";
+            scores[2]= "P.TDX";
+            scores[3]= "68000";
+            scores[4]= "CRABW";
+            scores[5]= "22222";
         }
 
     }
@@ -65,7 +71,7 @@ public class HighScores {
         if (addingScore) {
             AddNewScore(gameTime);
         }
-        else if (time > 90 || (time > 1 && InputHandler.getButton("A").JustPressed)) {
+        else if (time > 90 || (time > 2 && InputHandler.getButton("A").JustPressed)) {
             finished = true;
         }
 
@@ -74,6 +80,9 @@ public class HighScores {
     }
 
     private void AddNewScore(GameTime gameTime) {
+        if(time<0.5){
+            return;
+        }
         if (InputHandler.getAnalog("U").Value > 0.5 && !stickPressed) {
             currentLetter++;
             if (currentLetter >= letters.Length) {
@@ -99,11 +108,11 @@ public class HighScores {
             cursor = Math.Min(4, cursor);
             currentLetter = Array.IndexOf(letters, name[cursor]);
         }
-        else if (InputHandler.getButton("A").JustPressed && time > 1) {
+        else if (InputHandler.getButton("A").JustPressed && time > 2) {
             //save score
             saveScores();
             addingScore = false;
-            time = 0;
+            time = 0.9;
 
         }
         stickPressed = false;
@@ -116,8 +125,14 @@ public class HighScores {
     }
 
     public void Draw(SpriteBatch spriteBatch, GameTime gameTime) {
+        if(time<0.66){
+            return;
+        }
         spriteBatch.DrawString(Assets.font, "BAMBOOZLED BY A BUCCANEER", new Vector2(2, 10), Color.White);
-        if (addingScore) {
+        if(time<1){
+            return;
+        }
+       if (addingScore) {
             spriteBatch.DrawString(Assets.font, "NEW HIGH SCORE!", new Vector2(76-(15*3), 25), Color.White);
             spriteBatch.DrawString(Assets.font, "NAME:" + name, new Vector2(76-30, 35), Color.White);
             if ((int)(gameTime.TotalGameTime.TotalSeconds * 3) % 2 == 0) {
