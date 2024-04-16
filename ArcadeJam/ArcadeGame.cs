@@ -245,7 +245,7 @@ public class ArcadeGame : Game {
 	}
 	private void drawBorder() {
 		String scoreString = score.val.ToString("D6");
-		String bonusString = "+" + LevelManager.speedBonus.ToString("D4");
+		String bonusString = "+" + LevelManager.speedBonus.val.ToString("D4");
 		//combo meter
 		Rectangle comboRect = new(0, 0, 31, 26);
 		comboRect.X = ((int)player.combo.val) * 31;

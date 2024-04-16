@@ -47,7 +47,7 @@ public class Level {
 public class Intro : Level {
     bool startedMusic = false;
     public override void Start(ScoreData score, int loops = 1) {
-        enemies = new Enemy[] { new IntroChest() };
+        enemies = new Enemy[] { new IntroChest(new Vector2(45, 60)),new IntroChest(new Vector2(105, 75)) };
         addEnemies();
     }
     protected override void EnemiesDefeated() {
@@ -112,17 +112,17 @@ public class Level4 : Level {
 public class Level5 : Level {
     public override void Start(ScoreData score, int loops = 1) {
         enemies = new Enemy[]{
-        new Mine(new MoveToPoint(new Vector2(85,-10),new Vector2(65,55),speed:50),score),
+        new Mine(new MoveToPoint(new Vector2(90,-10),new Vector2(60,55),speed:50),score),
 
-        new BasicEnemy(new MoveToPoint(new Vector2(75,-10), new Vector2(75,60),speed:30,delay:1.5f), score),
-        new AimedEnemy(new MoveToPoint(new Vector2(65,-10), new Vector2(65,50),speed:30,delay:2.5f), score),
-        new AimedEnemy(new MoveToPoint(new Vector2(85,-10), new Vector2(85,50),speed:30,delay:2.5f), score),
-        new BasicEnemy(new MoveToPoint(new Vector2(55,-10), new Vector2(55,40),speed:30,delay:3.5f), score),
-        new BasicEnemy(new MoveToPoint(new Vector2(95,-10), new Vector2(95,40),speed:30,delay:3.5f), score),
-        new BasicEnemy(new MoveToPoint(new Vector2(45,-10), new Vector2(45,30),speed:30,delay:4.5f), score),
-        new BasicEnemy(new MoveToPoint(new Vector2(105,-10), new Vector2(105,30),speed:30,delay:4.5f), score),
-        new Mine(new MoveToPoint(new Vector2(-10,20),new Vector2(50,50),speed:30,delay:3.75f),score),
-        new Mine(new MoveToPoint(new Vector2(163,20),new Vector2(100,50),speed:30,delay:4f),score),
+        new BasicEnemy(new MoveToPoint(new Vector2(75,-10), new Vector2(75,60),speed:30,delay:1f), score),
+        new BasicEnemy(new MoveToPoint(new Vector2(50,-10), new Vector2(60,50),speed:35,delay:2f), score),
+        new BasicEnemy(new MoveToPoint(new Vector2(100,-10), new Vector2(90,50),speed:35,delay:4.5f), score),
+        new AimedEnemy(new MoveToPoint(new Vector2(65,-10), new Vector2(65,25),speed:30,delay:2.75f), score),
+        new AimedEnemy(new MoveToPoint(new Vector2(85,-10), new Vector2(85,25),speed:30,delay:5f), score),
+        new BasicEnemy(new MoveToPoint(new Vector2(0,-10), new Vector2(45,35),speed:35,delay:3.25f), score),
+        new BasicEnemy(new MoveToPoint(new Vector2(153,-10), new Vector2(105,35),speed:35,delay:5.5f), score),
+        new Mine(new MoveToPoint(new Vector2(10,-10),new Vector2(70,60),speed:30,delay:4f),score),
+        new Mine(new MoveToPoint(new Vector2(143,-10),new Vector2(80,60),speed:35,delay:4f),score),
 
         };
         addEnemies();
@@ -136,7 +136,7 @@ public class Level6 : Level {
         new SegmentEnemy(new MoveToPoint(new Vector2(-35,10),new Vector2(100,15),speed:40),score,1),
         new SegmentEnemy(new MoveToPoint(new Vector2(153+35,30),new Vector2(50,25),speed:20),score,3),
         new Mine(new MoveToPoint(new Vector2(75,-5),new Vector2(75,50),speed:30,delay:1.5f),score ),
-        new Mine(new MoveToPoint(new Vector2(70,-5),new Vector2(75-45,45),speed:30,delay:2f),score),
+        //new Mine(new MoveToPoint(new Vector2(70,-5),new Vector2(75-45,45),speed:30,delay:2f),score),
         new Mine(new MoveToPoint(new Vector2(80,-5),new Vector2(75+45,45),speed:30,delay:2f),score),
         };
         addEnemies();

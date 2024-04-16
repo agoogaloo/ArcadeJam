@@ -114,7 +114,7 @@ public class ShipBoss : Enemy {
         patternBounds.Centre = bounds.Centre;
         patternBounds.x = bounds.Right + 10;
         //edge of screen attack
-        Console.WriteLine(patternBounds.Right);
+        //Console.WriteLine(patternBounds.Right);
         if (patternBounds.Right >= ArcadeGame.gameWidth - 7) {
             pastEdge = true;
             NodeManager.AddNode(new BigShot(new Vector2Data(new Vector2(0, 90)), patternBounds.Centre));
@@ -164,7 +164,7 @@ public class ShipBoss : Enemy {
         patternBounds.Centre = bounds.Centre;
         if (Health.val <= 245) {
             phase++;
-            timer = 1;
+            timer = 13;
             Vector2 loc = bounds.Centre;
             loc.Y = bounds.Top;
             score.addScore(phasePoints[1], loc);

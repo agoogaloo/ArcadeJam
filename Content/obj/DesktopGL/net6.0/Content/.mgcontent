@@ -89,8 +89,10 @@
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/music.ogg</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/playerExplosion.wav</File>
     <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/playerHit.wav</File>
+    <File>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/startText.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

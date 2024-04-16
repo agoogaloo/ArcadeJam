@@ -130,10 +130,10 @@ public class Enemy : Node, IGrappleable {
 public class IntroChest : Enemy {
     Texture2D intro = Assets.introText;
     GamePadState gPadState = GamePad.GetState(PlayerIndex.One);
-    public IntroChest() : base(new Stationary(), Assets.introChest, null) {
+    public IntroChest(Vector2 startLoc) : base(new Stationary(), Assets.introChest, null) {
         Health.val = 27;
         weapon = new Nothing();
-        bounds.Centre = new Vector2(71, 65);
+        bounds.Centre = startLoc;
         bounds.width = 14;
         bounds.height = 20;
         grappleBounds.width = 14;
@@ -160,6 +160,7 @@ public class IntroChest : Enemy {
             intro = Assets.introTextKeyboard;
         }
         spriteBatch.Draw(intro, new Vector2(ArcadeGame.gameWidth / 2 - Assets.introText.Width / 2, 5), Color.White);
+        //spriteBatch.Draw(Assets.startText, new Vector2(ArcadeGame.gameWidth / 2 - Assets.introText.Width / 2, 100), Color.White);
 
     }
     protected override void doRipples(GameTime gameTime) {

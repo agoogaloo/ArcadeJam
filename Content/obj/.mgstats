@@ -84,3 +84,4 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/music.ogg","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/sounds/music.xnb","SongProcessor","SongContent",6733836,123,1.8011824
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/playerExplosion.wav","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/sounds/playerExplosion.xnb","SoundEffectProcessor","SoundEffectContent",27155,27216,0.0104998
 "/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/sounds/playerHit.wav","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/sounds/playerHit.xnb","SoundEffectProcessor","SoundEffectContent",17093,17154,0.00629
+"/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/startText.png","/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/startText.xnb","TextureProcessor","Texture2DContent",278,3737,0.1740748
