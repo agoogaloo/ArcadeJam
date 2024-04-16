@@ -70,7 +70,7 @@ public abstract class EnemyWeapon {
         NodeManager.AddNode(new EnemyBullet(new Vector2Data(x, y), loc));
 
     }
-    public void fire() {
+    public void fire() { 
         timeLeft = 0;
         volliesLeft = volleys;
     }
@@ -126,6 +126,17 @@ public class Straight : EnemyWeapon {
 
     protected override void Shoot() {
         FireAtAngle(angle, speed);
+    }
+}
+public class BigShots : EnemyWeapon {
+    
+	  public BigShots(FloatRect pos, float delay = 1, float speed = 60, int volleys = 0) :
+        base(pos, delay, speed, volleys) {
+        
+    }
+
+	protected override void Shoot() {
+         NodeManager.AddNode(new BigShot(new Vector2Data(0, speed), pos.Centre));
     }
 }
 public class WallAlternate : EnemyWeapon {
@@ -274,5 +285,7 @@ public class CirclePath : EnemyWeapon {
         NodeManager.AddNode(new EnemyCircleBullet(new Vector2Data(x, y), pos.Centre, size, loopSpeed, reversed: true));
     }
 }
+
+
 
 

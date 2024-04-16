@@ -58,7 +58,7 @@ public class InputMovement {
         Console.WriteLine("bouncing");
         bouncing = true;
 
-        vel.val.Y = 170 + 12*combo.val;
+        vel.val.Y = 130 + moveSpeed.val;
     }
 }
 

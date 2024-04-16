@@ -82,11 +82,15 @@ public class PlayerAbilities {
                     vel.val.Y = -10;
                 }
                 vel.val.Y -= (float)(yoinkAccel * gameTime.ElapsedGameTime.TotalSeconds);
-                if (invincibleTime.val <= 0.6f) {
-                    invincibleTime.val = 0.6f;
+                if (invincibleTime.val <= 0.55f) {
+                    invincibleTime.val = 0.55f;
                 }
                 break;
             case GrappleState.hit:
+                speed.val = baseSpeed + (speedMulti * (combo.val - 1));
+                if (focusing.val) {
+                    speed.val *= 0.6f;
+                }
                 movement.bounce();
                 break;
             case GrappleState.shooting:

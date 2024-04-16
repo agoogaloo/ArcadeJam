@@ -206,7 +206,8 @@ public class CrabBoss : Node, IGrappleable {
             leftClaw.end();
             phase.val++;
             patterns = new EnemyWeapon[] { new SpreadAlternating(bounds, rows: 50, angle: 360),
-            new SpreadAlternating(bounds, delay: -1, rows: 300, angle: 360, volleys: 2,speed:40) };
+            new SpreadAlternating(bounds, delay: -1, rows: 300, angle: 360, volleys: 2,speed:40),
+            new BigShots(bounds, delay:2.1f, speed:60, volleys:3), };
             
 
 

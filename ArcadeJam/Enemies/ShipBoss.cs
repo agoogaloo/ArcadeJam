@@ -124,12 +124,16 @@ public class ShipBoss : Enemy {
             phase++;
             movement = new ShipPhaseTransMovement();
             movement.Init(bounds, vel);
+            
             patterns = new EnemyWeapon[] { };
             score.addScore(phasePoints[0], bounds.Centre);
         }
 
     }
     private void phaseTrans(GameTime gameTime) {
+         patternBounds.Centre = bounds.Centre;
+        patternBounds.x = bounds.Right + 10;
+         
         if (Math.Abs(bounds.Centre.X - 75) < 15 && bounds.y == 15) {
             phase++;
             patterns = new EnemyWeapon[] { new Spread(patternBounds, shots: 7, delay: -1, angle: 65) };
@@ -160,7 +164,7 @@ public class ShipBoss : Enemy {
         patternBounds.Centre = bounds.Centre;
         if (Health.val <= 245) {
             phase++;
-            timer = 0;
+            timer = 1;
             Vector2 loc = bounds.Centre;
             loc.Y = bounds.Top;
             score.addScore(phasePoints[1], loc);
