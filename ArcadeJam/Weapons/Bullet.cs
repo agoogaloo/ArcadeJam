@@ -143,7 +143,12 @@ public class EnemyCircleBullet : Bullet {
         renderHeight = 4;
     }
     public override void Update(GameTime gameTime) {
-        base.Update(gameTime);
+        movement.Update(gameTime);
+
+        //removing itself if it goes offscreen
+        if (bounds.Top > ArcadeGame.gameHeight || bounds.Bottom < 0) {
+            Alive = false;
+        }
         time += (float)gameTime.ElapsedGameTime.TotalSeconds;
         vel.val = baseVel.val;
         if (reversed) {

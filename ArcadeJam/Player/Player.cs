@@ -47,7 +47,7 @@ public class Player : Node {
 		renderHeight = 1;
 		BoolData useInput = new(true);
 		movement = new(Vel, Bounds, moveSpeed, combo, useInput);
-		abilities = new(Bounds, Vel, moveSpeed, combo, invincibleTime, useInput, score, grappleDamage);
+		abilities = new(Bounds, Vel, moveSpeed, combo, invincibleTime, useInput, score, grappleDamage, movement);
 		render = new(Sprite, Bounds);
 		showBounds = new(Bounds);
 		collision = new(Bounds, this, "player", collisions);

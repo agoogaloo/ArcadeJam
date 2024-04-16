@@ -14,7 +14,7 @@ namespace ArcadeJam;
 
 
 public enum GrappleState {
-    loaded, shooting, yoink, reloading, hit
+    loaded, shooting, yoink, reloading, hit, 
 
 }
 
@@ -22,7 +22,7 @@ public class Grapple {
 
     public GrappleState grappleState = GrappleState.loaded;
 
-    private const float shootSpeed = 400, reloadAccel = 160;
+    private const float shootSpeed = 450, reloadAccel = 160;
     private const int BaseDamage = 20, damageMulti = 2, yoinkSpeed = 120;
     private float hookSpeed = 0;
     private int damage = BaseDamage;
@@ -133,13 +133,13 @@ public class Grapple {
         
         else if (collisions.Count > 0) {
             grappleState = GrappleState.reloading;
-            hookSpeed = 75;
+            hookSpeed = 90;
         }
         
         //stopping if it goes off screen
         else if (hookBounds.y < 0) {
             grappleState = GrappleState.reloading;
-            hookSpeed = 75;
+            hookSpeed = 90;
         }
     }
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {

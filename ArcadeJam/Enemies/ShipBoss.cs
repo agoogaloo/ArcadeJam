@@ -24,7 +24,7 @@ public class ShipBoss : Enemy {
 
 
     public ShipBoss(ScoreData score) : base(new ShipPhase1Movement(), Assets.shipBoss, score) {
-        Health.val = 530;
+        Health.val = 535;
         bounds.width = 34;
         bounds.height = 23;
         grappleBounds.width = 8;

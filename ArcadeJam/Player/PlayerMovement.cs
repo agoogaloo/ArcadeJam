@@ -23,7 +23,7 @@ public class PlayerMovement {
         this.combo = combo;
         this.useInput = useInput;
 
-        inputMove = new(vel, moveSpeed);
+        inputMove = new(vel, moveSpeed, combo);
         VelMove = new(vel, bounds);
         screenLock = new(bounds);
 
@@ -37,5 +37,8 @@ public class PlayerMovement {
         screenLock.Update(gameTime);
         //vel.val = Vector2.Zero;
 
+    }
+    public void bounce(){
+        inputMove.bounce();
     }
 }

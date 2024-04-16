@@ -19,6 +19,8 @@ public class PlayerAbilities {
     private FloatData speed, invincibleTime = new(1);
     private FloatData combo;
 
+    private PlayerMovement movement;
+
     private Button shootButton = InputHandler.getButton("A"), focusButton = InputHandler.getButton("B");
 
     public int weapon;
@@ -26,7 +28,7 @@ public class PlayerAbilities {
 
 
     public PlayerAbilities(FloatRect bounds, Vector2Data vel, FloatData speed, FloatData combo, FloatData invincibleTime, BoolData useInput,
-    ScoreData score, IntData grappleDamage) {
+    ScoreData score, IntData grappleDamage, PlayerMovement movement) {
         this.bounds = bounds;
         this.speed = speed;
         this.combo = combo;
@@ -35,6 +37,7 @@ public class PlayerAbilities {
         this.grappleDamage = grappleDamage;
         this.invincibleTime = invincibleTime;
         this.useInput = useInput;
+        this.movement = movement;
         upgrades = new PlayerWeapon[] { new Level1Gun(bounds, focusing), new Level2Gun(bounds, focusing), new Level3Gun(bounds, focusing) };
         weapon = 0;
         grapple = new(bounds, combo, grappleDamage);
@@ -79,11 +82,12 @@ public class PlayerAbilities {
                     vel.val.Y = -10;
                 }
                 vel.val.Y -= (float)(yoinkAccel * gameTime.ElapsedGameTime.TotalSeconds);
-                if (invincibleTime.val <= 0.5f) {
-                    invincibleTime.val = 0.5f;
+                if (invincibleTime.val <= 0.6f) {
+                    invincibleTime.val = 0.6f;
                 }
                 break;
             case GrappleState.hit:
+                movement.bounce();
                 break;
             case GrappleState.shooting:
             case GrappleState.reloading:

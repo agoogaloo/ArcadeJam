@@ -32,13 +32,14 @@ public class Claw : Node, IGrappleable {
     Collision grappleCollision;
     EnemyWeapon currentPattern;
 
+    private float time = 0;
 
 
     public Claw(bool left, BoolData jabbing, FloatRect bodyBounds, IntData phase, Vector2Data vel) {
         this.left = left;
         this.phase = phase;
         this.jabbing = jabbing;
-        currentPattern = new CirclePath(Bounds, speed: 20, size: 40, loopSpeed: 0.3f, delay: 3);
+        currentPattern = new CirclePath(Bounds, speed: 20, size: 45, loopSpeed: 0.3f, delay: 3.5f);
 
         this.bodyBounds = bodyBounds;
         if (left) {
@@ -69,6 +70,7 @@ public class Claw : Node, IGrappleable {
     public override void Update(GameTime gameTime) {
         switch (phase.val) {
             case 0:
+                ripple(gameTime);
                 break;
             case 1:
                 phase1(gameTime);
@@ -137,10 +139,13 @@ public class Claw : Node, IGrappleable {
     private void phase3(GameTime gameTime) {
 
         currentPattern.Update(gameTime);
-        if (jabbing.val && ((Bounds.Centre.X < 3 || Bounds.Centre.Y < 10 || Bounds.Centre.X > ArcadeGame.gameWidth - 3 ||
-            Bounds.Centre.Y > ArcadeGame.gameHeight - 20) || Bounds.Intersects(ArcadeGame.player.Bounds))) {
-            jabbing.val = false;
-            currentPattern.fire();
+        if (jabbing.val) {
+            ripple(gameTime);
+            if ((Bounds.Centre.X < 3 || Bounds.Centre.Y < 10 || Bounds.Centre.X > ArcadeGame.gameWidth - 3 ||
+            Bounds.Centre.Y > ArcadeGame.gameHeight - 20) || Bounds.Intersects(ArcadeGame.player.Bounds)) {
+                jabbing.val = false;
+                currentPattern.fire();
+            }
         }
     }
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
@@ -195,7 +200,7 @@ public class Claw : Node, IGrappleable {
     }
     public void startPhase3() {
         phase.val = 3;
-        currentPattern = new Explosion(Bounds,speed:100);
+        currentPattern = new Explosion(Bounds, speed: 100);
         currentPattern.sound = Assets.grappleHit;
 
     }
@@ -211,8 +216,19 @@ public class Claw : Node, IGrappleable {
         health.val -= damage;
         grappleCollision.Remove();
         NodeManager.AddNode(new ExplosionEffect(Bounds.Centre, true, false));
-            Assets.bigExplosion.CreateInstance();
-            Assets.bigExplosion.Play();
+        Assets.bigExplosion.CreateInstance();
+        Assets.bigExplosion.Play();
+    }
+
+    private void ripple(GameTime gameTime) {
+        time += (float)gameTime.ElapsedGameTime.TotalSeconds;
+        if (time > 0.1) {
+            NodeManager.AddNode(new Ripple(new Vector2(Bounds.Left + 3, Bounds.Top - 2), true));
+            NodeManager.AddNode(new Ripple(new Vector2(Bounds.Right - 3, Bounds.Top - 2), false));
+            time = 0;
+
+
+        }
     }
 
 }

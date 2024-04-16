@@ -135,6 +135,7 @@ public class CrabBoss : Node, IGrappleable {
     }
 
     private void Enter(GameTime gameTime) {
+        time += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
         if (bounds.y >= 1) {
             phase.val++;
@@ -144,11 +145,15 @@ public class CrabBoss : Node, IGrappleable {
             lClawPhase.val = 1;
             rClawPhase.val = 1;
             sprite.texture = Assets.crabBody;
+            time = 0;
 
         }
         crownBounds.Centre = bounds.Centre;
         leftClaw.Update(gameTime);
         rightClaw.Update(gameTime);
+
+        
+        
 
     }
     private void FullBodyPhase(GameTime gameTime) {
@@ -367,11 +372,11 @@ public class CrabMovement {
         this.lVel = lVel;
         this.rVel = rVel;
         this.bounds = bounds;
-        bounds.Centre = new Vector2(ArcadeGame.gameWidth / 2, -100);
+        bounds.Centre = new Vector2(ArcadeGame.gameWidth / 2, -150);
         lClaw.y = -30;
         rClaw.y = -30;
-        lClaw.x = 25 - lClaw.Centre.X / 2;
-        rClaw.x = ArcadeGame.gameWidth - 30 - rClaw.Centre.X / 2;
+        lClaw.x = 24 - lClaw.Centre.X / 2;
+        rClaw.x = ArcadeGame.gameWidth - 29 - rClaw.Centre.X / 2;
 
 
     }
