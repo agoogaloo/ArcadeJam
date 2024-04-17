@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Intrinsics;
+using ArcadeJam.Enemies;
 using ArcadeJam.Weapons;
 using Engine.Core;
 using Engine.Core.Components;
@@ -37,7 +38,7 @@ public class Player : Node {
 	private PlayerAbilities abilities;
 	private Collision collision;
 
-	string[] collisionGroups = new string[] { "enemy", "enemyBullet" };
+	string[] collisionGroups = new string[] { "enemy", "enemyBullet", "campCrab" };
 
 
 
@@ -80,7 +81,9 @@ public class Player : Node {
 				//Console.WriteLine("hit by a bullet");
 				b.OnHit();
 				bulletHit();
-
+			}else if(i is CampCrab c){
+				bulletHit();
+				c.onHit();
 			}
 		}
 	}

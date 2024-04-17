@@ -76,10 +76,13 @@ public class RectRender:IRenderer {
     private Sprite sprite;
     private FloatRect bounds;
 
+private bool vFlip;
 
-    public RectRender(Sprite sprite, FloatRect bounds) {
+    public RectRender(Sprite sprite, FloatRect bounds, bool vFlip = false) {
         this.sprite = sprite;
         this.bounds = bounds;
+        this.vFlip = vFlip;
+
     }
 
     public void Draw(SpriteBatch spriteBatch, GameTime gameTime = null) {
@@ -92,8 +95,14 @@ public class RectRender:IRenderer {
         // centre.X = (int)Math.Round(centre.X);
         // centre.Y = (int)Math.Round(centre.Y);
 
-
+        if(vFlip){
+            spriteBatch.Draw(sprite.texture, new Rectangle(x,y,sprite.texture.Width, sprite.texture.Height),
+            new Rectangle(0,0,sprite.texture.Width, sprite.texture.Height), Color.White, 0f, 
+            new Vector2(0,0), SpriteEffects.FlipVertically, 0f);
+        
+        }else{
         spriteBatch.Draw(sprite.texture, new Vector2(x, y), Color.White);
+        }
     }
 
 

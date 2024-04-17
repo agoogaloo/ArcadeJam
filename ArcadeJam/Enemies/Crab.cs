@@ -373,7 +373,7 @@ public class CrabMovement {
         this.lVel = lVel;
         this.rVel = rVel;
         this.bounds = bounds;
-        bounds.Centre = new Vector2(ArcadeGame.gameWidth / 2, -150);
+        bounds.Centre = new Vector2(ArcadeGame.gameWidth / 2, -130);
         lClaw.y = -30;
         rClaw.y = -30;
         lClaw.x = 24 - lClaw.Centre.X / 2;
