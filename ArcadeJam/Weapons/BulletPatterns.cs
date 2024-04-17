@@ -11,7 +11,7 @@ public abstract class EnemyWeapon {
     protected FloatData delay;
     protected FloatRect pos;
 
-    protected double timeLeft = 0, volleyDelay = 0.05;
+    public double timeLeft = 0, volleyDelay = 0.05;
     protected float speed;
     protected int volleys, volliesLeft;
     public SoundEffect sound = Assets.shootSounds[1];

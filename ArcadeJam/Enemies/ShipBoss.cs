@@ -24,7 +24,7 @@ public class ShipBoss : Enemy {
 
 
     public ShipBoss(ScoreData score) : base(new ShipPhase1Movement(), Assets.shipBoss, score) {
-        Health.val = 535;
+        Health.val = 520;
         bounds.width = 34;
         bounds.height = 23;
         grappleBounds.width = 8;
@@ -120,7 +120,7 @@ public class ShipBoss : Enemy {
             NodeManager.AddNode(new BigShot(new Vector2Data(new Vector2(0, 90)), patternBounds.Centre));
             NodeManager.AddNode(new BigShot(new Vector2Data(new Vector2(0, -90)), patternBounds.Centre));
         }
-        if (Health.val <= 500) {
+        if (Health.val <= 485) {
             phase++;
             movement = new ShipPhaseTransMovement();
             movement.Init(bounds, vel);
@@ -162,7 +162,7 @@ public class ShipBoss : Enemy {
         }
 
         patternBounds.Centre = bounds.Centre;
-        if (Health.val <= 245) {
+        if (Health.val <= 240) {
             phase++;
             timer = 13;
             Vector2 loc = bounds.Centre;

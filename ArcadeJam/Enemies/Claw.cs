@@ -39,7 +39,7 @@ public class Claw : Node, IGrappleable {
         this.left = left;
         this.phase = phase;
         this.jabbing = jabbing;
-        currentPattern = new CirclePath(Bounds, speed: 20, size: 45, loopSpeed: 0.3f, delay: 3.5f);
+        currentPattern = new CirclePath(Bounds, speed: 20, size: 45, loopSpeed: 0.3f, delay: 3.75f);
 
         this.bodyBounds = bodyBounds;
         if (left) {
@@ -126,8 +126,12 @@ public class Claw : Node, IGrappleable {
     private void phase1(GameTime gameTime) {
         currentPattern.Update(gameTime);
         if (health.val <= 200) {
+            float reloadTime = (float)Math.Min(currentPattern.timeLeft,1.5f);
             currentPattern = new SpreadAlternating(Bounds, delay: 1.5f);
+            currentPattern.timeLeft = reloadTime;
             phase.val = 2;
+            NodeManager.AddNode(new ExplosionEffect(Bounds.Centre, true));
+
         }
 
 

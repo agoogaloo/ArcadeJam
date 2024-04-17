@@ -77,7 +77,7 @@ public class LevelManager {
         }
         BossBar.val += 1f / (levels.Length - 1);
         campCrab.use = true;
-        campCrab.startScore = (loops-1)*300;
+        campCrab.startScore = (loops-1)*400;
         if(currentLevel==levels.Length-1) {
             campCrab.use = false;
             

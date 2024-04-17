@@ -19,7 +19,7 @@ public class CampCrab : Node {
     private IntData levelBonus;
     private FloatRect bounds = new(0, 0, 55, 29), crownBounds = new(0, 0, 55, 30),
     lClawBounds = new(15, 150, 15, 33), rClawBounds = new(115, 150, 15, 33);
-    private float speed = 3, returnSpeed = 100;
+    private float speed = 3.5f, returnSpeed = 100;
     public bool use = true, resetting = false, angry = false;
 
 	public int startScore = 0;
@@ -87,7 +87,7 @@ public class CampCrab : Node {
             if( bounds.y<=20){
                 resetting = true;
                 crownSprite.texture = Assets.gunCrown[0];
-                pattern = new SpreadAlternating(bounds, rows: 40, angle: 360);
+                pattern = new SpreadAlternating(crownBounds, rows: 40, angle: 360);
             }
              if(pattern!=null) {
                 pattern.Update(gameTime);
@@ -117,7 +117,7 @@ public class CampCrab : Node {
                 resetting = true;
             }
         }
-        crownBounds.y = bounds.y;
+        crownBounds.y = bounds.y-2;
 
 
     }

@@ -121,8 +121,8 @@ public class Level5 : Level {
         new AimedEnemy(new MoveToPoint(new Vector2(85,-10), new Vector2(85,25),speed:30,delay:5f), score),
         new BasicEnemy(new MoveToPoint(new Vector2(0,-10), new Vector2(45,35),speed:35,delay:3.25f), score),
         new BasicEnemy(new MoveToPoint(new Vector2(153,-10), new Vector2(105,35),speed:35,delay:5.5f), score),
-        new Mine(new MoveToPoint(new Vector2(10,-10),new Vector2(70,60),speed:30,delay:4f),score),
-        new Mine(new MoveToPoint(new Vector2(143,-10),new Vector2(80,60),speed:35,delay:4f),score),
+        new Mine(new MoveToPoint(new Vector2(10,-10),new Vector2(90,60),speed:30,delay:4f),score),
+        new Mine(new MoveToPoint(new Vector2(143,-10),new Vector2(60,60),speed:35,delay:4f),score),
 
         };
         addEnemies();
