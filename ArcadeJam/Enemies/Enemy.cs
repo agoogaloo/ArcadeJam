@@ -89,7 +89,7 @@ public class Enemy : Node, IGrappleable {
             NodeManager.AddNode(new Ripple(new Vector2(bounds.x - 3f, bounds.Centre.Y - 5), true));
             NodeManager.AddNode(new Ripple(new Vector2(bounds.Right + 2f, bounds.Centre.Y - 5), false));
             rippleTimer = rand.NextDouble() * 0.5f;
-          
+
         }
     }
     protected virtual void updateGrappleBounds() {
@@ -138,25 +138,48 @@ public class IntroChest : Enemy {
         bounds.height = 20;
         grappleBounds.width = 14;
         grappleBounds.height = 20;
+        killPoints = 0;
         grapplePoints = 0;
+        updateGrappleBounds();
 
     }
     public override void Update(GameTime gameTime) {
-        if (!grappleable) {
-            base.Update(gameTime);
+
+       
+
+        if (doGrapple && !grappleable && Health.val < ArcadeGame.player.grappleDamage.val) {
+            grappleCollision.Readd();
+            grappleable = true;
         }
+        else if (grappleable && Health.val > ArcadeGame.player.grappleDamage.val) {
+            grappleable = false;
+            grappleCollision.Remove();
+        }
+
+        sprite.texture = textures[0];
+         damager.Update();
+        if (doGrapple && grappleable) {
+            sprite.texture = textures[2];
+
+        }
+      
+
+            
+
+        doRipples(gameTime);
     }
     public override void GrappleHit(int damage) {
         Alive = false;
     }
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
         base.Draw(gameTime, spriteBatch);
-        
-        
-        if (GamePad.GetState(PlayerIndex.One)!=gPadState){
+
+
+        if (GamePad.GetState(PlayerIndex.One) != gPadState) {
             gPadState = GamePad.GetState(PlayerIndex.One);
             intro = Assets.introText;
-        }else if(Keyboard.GetState().GetPressedKeyCount()>=1){
+        }
+        else if (Keyboard.GetState().GetPressedKeyCount() >= 1) {
             intro = Assets.introTextKeyboard;
         }
         spriteBatch.Draw(intro, new Vector2(ArcadeGame.gameWidth / 2 - Assets.introText.Width / 2, 5), Color.White);
@@ -177,8 +200,8 @@ public class IntroChest : Enemy {
 public class BasicEnemy : Enemy {
 
     public BasicEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.enemy, score) {
-       
-       // doGrapple = false;
+
+        // doGrapple = false;
 
     }
 }
@@ -186,18 +209,18 @@ public class BasicEnemy : Enemy {
 public class AimedEnemy : Enemy {
 
     public AimedEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.enemy, score) {
-       
-        weapon = new AimedParallel(bounds, delay: 1.5f, rows: 1,seperation:0, volleys: 3);
-       // doGrapple = false;
+
+        weapon = new AimedParallel(bounds, delay: 1.5f, rows: 1, seperation: 0, volleys: 3);
+        // doGrapple = false;
 
     }
 }
 public class TrippleEnemy : Enemy {
 
     public TrippleEnemy(EnemyMovement movement, ScoreData score) : base(movement, Assets.enemy, score) {
-       
-        weapon = new Spread(bounds,delay:1.5f,shots:2);
-       // doGrapple = false;
+
+        weapon = new Spread(bounds, delay: 1.5f, shots: 2);
+        // doGrapple = false;
 
     }
 }

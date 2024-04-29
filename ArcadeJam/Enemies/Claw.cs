@@ -126,7 +126,7 @@ public class Claw : Node, IGrappleable {
     private void phase1(GameTime gameTime) {
         currentPattern.Update(gameTime);
         if (health.val <= 200) {
-            float reloadTime = (float)Math.Min(currentPattern.timeLeft,1.5f);
+            float reloadTime = (float)Math.Max(Math.Min(currentPattern.timeLeft,1.5f),0.5);
             currentPattern = new SpreadAlternating(Bounds, delay: 1.5f);
             currentPattern.timeLeft = reloadTime;
             phase.val = 2;
@@ -204,7 +204,7 @@ public class Claw : Node, IGrappleable {
     }
     public void startPhase3() {
         phase.val = 3;
-        currentPattern = new Explosion(Bounds, speed: 100);
+        currentPattern = new Explosion(Bounds,prongs:10, speed: 100);
         currentPattern.sound = Assets.grappleHit;
 
     }

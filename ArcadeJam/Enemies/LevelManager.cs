@@ -25,20 +25,25 @@ public class LevelManager {
 
 
     public static void Update(GameTime gameTime) {
-        if(!player.Alive){
+        if (!player.Alive) {
             campCrab.use = false;
         }
 
         bool cleared = true;
-        for (int i = 0; i < loops && currentLevel + i < levels.Length; i++) {
+        for (int i = 0; i < loops; i++) {
 
-            levels[currentLevel + i].Update(gameTime);
-            if (!levels[currentLevel + i].Cleared) {
+            int level = (currentLevel + i) % levels.Length;
+            if (level == 0 && i != 0) {
+                continue;
+            }
+
+            levels[level].Update(gameTime);
+            if (!levels[level].Cleared) {
                 cleared = false;
             }
         }
         bonusTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-        if (bonusTimer > 1.5 && !cleared) {
+        if (bonusTimer > 1.5/(1+0.2*(loops-1)) && !cleared) {
             bonusTimer = 0;
             speedBonus.val -= 100;
             speedBonus.val = Math.Max(0, speedBonus.val);
@@ -70,17 +75,22 @@ public class LevelManager {
             loops++;
         }
         speedBonus.val = 0;
-        for (int i = 0; i < loops && currentLevel + i < levels.Length; i++) {
-            levels[currentLevel + i].Cleared = false;
-            levels[currentLevel + i].Start(scoreData);
-            speedBonus.val += levels[currentLevel + i].SpeedBonus;
+        for (int i = 0; i < loops; i++) {
+            int level = (currentLevel + i) % levels.Length;
+            if (level == 0 && i != 0) {
+                continue;
+            }
+            Console.WriteLine("starting level" + level);
+            levels[level].Cleared = false;
+            levels[level].Start(scoreData);
+            speedBonus.val += levels[level].SpeedBonus;
         }
         BossBar.val += 1f / (levels.Length - 1);
         campCrab.use = true;
-        campCrab.startScore = (loops-1)*400;
-        if(currentLevel==levels.Length-1) {
+        campCrab.startScore = (loops - 1) * 200;
+        if (currentLevel == levels.Length - 1) {
             campCrab.use = false;
-            
+
         }
 
     }
@@ -89,12 +99,13 @@ public class LevelManager {
         //new CrabBossStage(BossBar)
         levels = new Level[] { new Intro(),new Level1(), new Level2 (), new Level3(),new Level4(),new Level5(),
         new ShipBossStage(),new Level6(),new Level7(),new Level8(),new Level9(),new CrabBossStage(BossBar)};
+        //levels = new Level[] { new Intro(),new Level1(), new Level2 (),new Level3(),new Level6(), new ShipBossStage()};
         currentLevel = 0;
         levels[currentLevel].Start(scoreData);
         started = true;
         loops = 1;
         BossBar.val = 0;
-        campCrab = new (speedBonus);
+        campCrab = new(speedBonus);
         campCrab.use = false;
         NodeManager.AddNode(campCrab);
 

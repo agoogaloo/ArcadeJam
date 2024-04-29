@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 using ArcadeJam.Weapons;
 using Engine.Core.Components;
@@ -19,10 +21,10 @@ public class CampCrab : Node {
     private IntData levelBonus;
     private FloatRect bounds = new(0, 0, 55, 29), crownBounds = new(0, 0, 55, 30),
     lClawBounds = new(15, 150, 15, 33), rClawBounds = new(115, 150, 15, 33);
-    private float speed = 3.5f, returnSpeed = 100;
+    private float speed = 3.5f, returnSpeed = 90;
     public bool use = true, resetting = false, angry = false;
 
-	public int startScore = 0;
+    public int startScore = 0;
 
     private RectVisualizer boundsVis, lCVis, rCVis;
 
@@ -32,6 +34,7 @@ public class CampCrab : Node {
     PointRender[] armSegs;
 
     private Collision collision, lCollision, rCollision;
+    private List<Node> collisions = new();
 
     private EnemyWeapon pattern = null;
 
@@ -43,9 +46,10 @@ public class CampCrab : Node {
         bounds.Centre = new Vector2(ArcadeGame.gameWidth / 2, 175 + bounds.height / 2);
         crownBounds.Centre = new Vector2(ArcadeGame.gameWidth / 2, 174.5f);
 
-        collision = new(bounds, this, "campCrab");
-        lCollision = new(lClawBounds, this, "campCrab");
-        rCollision = new(rClawBounds, this, "campCrab");
+
+        collision = new(bounds, this, "enemy", collisions);
+        lCollision = new(lClawBounds, this, "enemy", collisions);
+        rCollision = new(rClawBounds, this, "enemy", collisions);
 
 
 
@@ -70,10 +74,10 @@ public class CampCrab : Node {
     public override void Update(GameTime gameTime) {
 
 
-       
+
         if (use && levelBonus.val <= startScore && !resetting) {
 
-            Console.WriteLine("the crabs are coming!");
+            //Console.WriteLine("the crabs are coming!");
             bounds.y -= (float)(speed * gameTime.ElapsedGameTime.TotalSeconds);
 
             lClawBounds.y -= (float)(speed * gameTime.ElapsedGameTime.TotalSeconds);
@@ -84,16 +88,23 @@ public class CampCrab : Node {
             lClawBounds.x += (float)(Math.Cos(timer) * gameTime.ElapsedGameTime.TotalSeconds * 16);
             rClawBounds.x += (float)(Math.Sin(timer) * gameTime.ElapsedGameTime.TotalSeconds * 16);
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds * 2f;
-            if( bounds.y<=20){
-                resetting = true;
-                crownSprite.texture = Assets.gunCrown[0];
-                pattern = new SpreadAlternating(crownBounds, rows: 40, angle: 360);
+            if (bounds.y <= 90) {
+                if (bounds.y <= 50) {
+                    resetting = true;
+                    pattern.delay.val/=1.5f;
+                }
+                if (pattern == null) {
+
+                    crownSprite.texture = Assets.gunCrown[0];
+                    pattern = new SpreadAlternating(crownBounds, rows: 40, angle: 360, delay: 2.5f);
+                    pattern.timeLeft = 3;
+                }
             }
-             if(pattern!=null) {
+            if (pattern != null) {
                 pattern.Update(gameTime);
-             }
+            }
         }
-        
+
         else {
             resetting = false;
             if (bounds.y < 175) {
@@ -104,8 +115,8 @@ public class CampCrab : Node {
                 float lOffset = lClawBounds.y - bounds.y;
 
                 lClawBounds.y -= (float)(lOffset / 5 * gameTime.ElapsedGameTime.TotalSeconds *
-            gameTime.ElapsedGameTime.TotalSeconds * 350);
-            resetting = true;
+            gameTime.ElapsedGameTime.TotalSeconds * 300);
+                resetting = true;
 
             }
             if (rClawBounds.y < 150) {
@@ -113,11 +124,33 @@ public class CampCrab : Node {
                 float rOffset = lClawBounds.y - bounds.y;
 
                 rClawBounds.y -= (float)(rOffset / 5 * gameTime.ElapsedGameTime.TotalSeconds *
-                gameTime.ElapsedGameTime.TotalSeconds * 350);
+                gameTime.ElapsedGameTime.TotalSeconds * 300);
                 resetting = true;
             }
         }
-        crownBounds.y = bounds.y-2;
+        crownBounds.y = bounds.y - 2;
+
+        collision.Update(new string[] { "playerBullet" });
+        foreach (Node i in collisions) {
+            if (i is PlayerBullet b) {
+                b.OnHit();
+
+            }
+        }
+        lCollision.Update(new string[] { "playerBullet" });
+        foreach (Node i in collisions) {
+            if (i is PlayerBullet b) {
+                b.OnHit();
+
+            }
+        }
+        rCollision.Update(new string[] { "playerBullet" });
+        foreach (Node i in collisions) {
+            if (i is PlayerBullet b) {
+                b.OnHit();
+
+            }
+        }
 
 
     }

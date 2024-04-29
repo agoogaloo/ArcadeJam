@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Audio;
 namespace ArcadeJam.Weapons;
 
 public abstract class EnemyWeapon {
-    protected FloatData delay;
+    public FloatData delay;
     protected FloatRect pos;
 
     public double timeLeft = 0, volleyDelay = 0.05;

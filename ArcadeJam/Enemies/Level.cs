@@ -51,6 +51,7 @@ public class Intro : Level {
         addEnemies();
     }
     protected override void EnemiesDefeated() {
+        SpeedBonus = 300;
         base.EnemiesDefeated();
 
         if (!startedMusic && MediaPlayer.State == MediaState.Stopped) {
@@ -91,6 +92,7 @@ public class Level2 : Level {
 }
 public class Level3 : Level {
     public override void Start(ScoreData score, int loops = 1) {
+        SpeedBonus = 500;
         enemies = new Enemy[]{
         new SegmentEnemy(new MoveToPoint(new Vector2(-32,5),new Vector2(120,20),speed:15),score,2),
         };
@@ -111,6 +113,7 @@ public class Level4 : Level {
 }
 public class Level5 : Level {
     public override void Start(ScoreData score, int loops = 1) {
+        SpeedBonus = 800;
         enemies = new Enemy[]{
         new Mine(new MoveToPoint(new Vector2(90,-10),new Vector2(60,55),speed:50),score),
 
@@ -131,7 +134,7 @@ public class Level5 : Level {
 }
 public class Level6 : Level {
     public override void Start(ScoreData score, int loops = 1) {
-        SpeedBonus = 1000;
+        SpeedBonus = 800;
         enemies = new Enemy[]{
         new SegmentEnemy(new MoveToPoint(new Vector2(-35,10),new Vector2(100,15),speed:40),score,1),
         new SegmentEnemy(new MoveToPoint(new Vector2(153+35,30),new Vector2(50,25),speed:20),score,3),
@@ -145,7 +148,7 @@ public class Level6 : Level {
 }
 public class Level7 : Level {
     public override void Start(ScoreData score, int loops = 1) {
-        SpeedBonus = 1000;
+        SpeedBonus = 800;
         enemies = new Enemy[]{
         new SegmentEnemy(new MoveToPoint(new Vector2(-35,40),new Vector2(100,25),easing:2,speed:30),score,2),
         new BombEnemy(new MoveToPoint(new Vector2(160,10),new Vector2(10,55),speed:20,delay:1.5f),score),

@@ -31,7 +31,7 @@ public class InputMovement {
             direction.Normalize();
         }
         if (bouncing) {
-            Console.WriteLine("vel:" + vel.val);
+            //Console.WriteLine("vel:" + vel.val);
             vel.val.X = direction.X * moveSpeed.val;
             if (direction.Y > 0) {
                 vel.val.Y += direction.Y * moveSpeed.val / 25;
@@ -44,8 +44,6 @@ public class InputMovement {
             if (Math.Abs(vel.val.Y) <= moveSpeed.val) {
                 bouncing = false;
             }
-            Console.WriteLine("vel:" + vel.val + " moveSpeed:" + moveSpeed.val);
-
         }
         else {
             vel.val = direction * moveSpeed.val;

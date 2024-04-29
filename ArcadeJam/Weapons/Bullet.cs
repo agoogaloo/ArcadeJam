@@ -101,7 +101,6 @@ public class PlayerSmearBullet : PlayerBullet {
 
     public override void OnHit() {
         base.OnHit();
-        Console.WriteLine("smack" + Damage);
     }
 
 }

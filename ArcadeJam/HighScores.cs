@@ -44,7 +44,7 @@ public class HighScores {
                 scores[i * 2 + 1] = "0";
             }
             scores[0]= "AGOOG";
-            scores[1]= "100000";
+            scores[1]= "150000";
             scores[2]= "P.TDX";
             scores[3]= "68000";
             scores[4]= "CRABW";

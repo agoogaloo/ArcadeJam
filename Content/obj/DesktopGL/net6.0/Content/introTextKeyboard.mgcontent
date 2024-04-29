@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/introTextKeyboard.png</SourceFile>
-  <SourceTime>2024-03-24T16:39:42.1546571-06:00</SourceTime>
+  <SourceTime>2024-04-18T01:02:01.2746073-06:00</SourceTime>
   <DestFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/introTextKeyboard.xnb</DestFile>
-  <DestTime>2024-04-16T00:18:39.0197158-06:00</DestTime>
+  <DestTime>2024-04-18T01:06:03.2510364-06:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T05:44:56-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
