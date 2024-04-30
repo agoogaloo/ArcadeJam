@@ -92,8 +92,8 @@ public class ArcadeGame : Game {
 		InputHandler.addButtonBind("B", GPadInput.X);
 		InputHandler.addButtonBind("A", GPadInput.LTrigger);
 		InputHandler.addButtonBind("B", GPadInput.RTrigger);
-		InputHandler.addButtonBind("A", GPadInput.LShoulder);
-		InputHandler.addButtonBind("B", GPadInput.RShoulder);
+		InputHandler.addButtonBind("B", GPadInput.LShoulder);
+		InputHandler.addButtonBind("A", GPadInput.RShoulder);
 
 
 		InputHandler.addAnalogBind("L", Keys.Left);
