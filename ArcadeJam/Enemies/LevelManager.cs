@@ -53,7 +53,13 @@ public class LevelManager {
         if (started && cleared) {
             transitionTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             campCrab.use = false;
-            if (transitionTimer >= 1.5) {
+            if(transitionTimer>=0.8 && speedBonus.val>0){
+                scoreData.addScore(10);
+                speedBonus.val-=10;
+                
+            }
+
+            if ((speedBonus.val <= 0 && transitionTimer>=0.8) || transitionTimer>1.75) {
                 nextLevel();
                 transitionTimer = 0;
             }

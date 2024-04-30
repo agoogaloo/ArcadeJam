@@ -20,7 +20,7 @@ public class ScoreData {
         if(adjustedScore>0 && position!=Vector2.Zero){
             NodeManager.AddNode(new ScoreEffect(position,adjustedScore));
         }
-        //Console.WriteLine("score:"+amount+", adjusted amount:"+adjustedScore+", combo:"+combo.val);
+        Console.WriteLine("score:"+amount+", adjusted amount:"+adjustedScore+", combo:"+combo.val);
         val+=adjustedScore;
     }
 
