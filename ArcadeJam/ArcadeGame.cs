@@ -1,14 +1,7 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Net.NetworkInformation;
-using ArcadeJam.Enemies;
-using Engine.Core;
-using Engine.Core.Components;
 using Engine.Core.Data;
 using Engine.Core.Input;
 using Engine.Core.Nodes;
-using Engine.Core.Physics;
-using Engine.Core.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -28,6 +21,7 @@ public enum WindowMode {
 public class ArcadeGame : Game {
 
 
+	public static string machineType = "normal";//used to change keybinds and other stuff for different machines
 	private GraphicsDeviceManager graphics;
 	private SpriteBatch spriteBatch;
 	private RenderTarget2D windowTarget, gameTarget;
@@ -76,52 +70,73 @@ public class ArcadeGame : Game {
 		CycleWindowSettings();
 		CycleWindowSettings();*/
 
-		/*****REMEMBER TO UNCOMMENT THIS WHEN YOU RELEASE TO THE CABINET*****/
-		//graphics.IsFullScreen = true;
+		//setting fullscreen looks bad on most machines that arent the gdc cabinet
+		if (machineType == "gdc") {
+			graphics.IsFullScreen = true;
+		}
 		graphics.ApplyChanges();
 
+		//setting special controls for cgda machine
+		if (machineType == "cgda") {
+			//left side controls
+			InputHandler.addAnalogBind("U", Keys.W);
+			InputHandler.addAnalogBind("L", Keys.A);
+			InputHandler.addAnalogBind("D", Keys.S);
+			InputHandler.addAnalogBind("R", Keys.D);
 
+			InputHandler.addButtonBind("A", Keys.R);
+			InputHandler.addButtonBind("A", Keys.T);
+			InputHandler.addButtonBind("A", Keys.Y);
+			InputHandler.addButtonBind("A", Keys.C);
 
+			InputHandler.addButtonBind("B", Keys.F);
+			InputHandler.addButtonBind("B", Keys.G);
+			InputHandler.addButtonBind("B", Keys.H);
+			InputHandler.addButtonBind("B", Keys.V);
 
-		//adding all the input bindings
-		InputHandler.addButtonBind("A", Keys.X);
-		InputHandler.addButtonBind("B", Keys.Z);
-		InputHandler.addButtonBind("A", GPadInput.Y);
-		InputHandler.addButtonBind("B", GPadInput.B);
-		InputHandler.addButtonBind("A", GPadInput.A);
-		InputHandler.addButtonBind("B", GPadInput.X);
-		InputHandler.addButtonBind("A", GPadInput.LTrigger);
-		InputHandler.addButtonBind("B", GPadInput.RTrigger);
-		InputHandler.addButtonBind("B", GPadInput.LShoulder);
-		InputHandler.addButtonBind("A", GPadInput.RShoulder);
+			InputHandler.addAnalogBind("L", Keys.Left);
+			InputHandler.addAnalogBind("R", Keys.Right);
+			InputHandler.addAnalogBind("U", Keys.Up);
+			InputHandler.addAnalogBind("D", Keys.Down);
 
+			InputHandler.addButtonBind("A", Keys.U);
+			InputHandler.addButtonBind("A", Keys.I);
+			InputHandler.addButtonBind("A", Keys.O);
+			InputHandler.addButtonBind("A", Keys.N);
 
-		InputHandler.addAnalogBind("L", Keys.Left);
-		InputHandler.addAnalogBind("R", Keys.Right);
-		InputHandler.addAnalogBind("U", Keys.Up);
-		InputHandler.addAnalogBind("D", Keys.Down);
-		InputHandler.addAnalogBind("L", GPadInput.LStickLeft);
-		InputHandler.addAnalogBind("R", GPadInput.LStickRight);
-		InputHandler.addAnalogBind("U", GPadInput.LStickUp);
-		InputHandler.addAnalogBind("D", GPadInput.LStickDown);
+			InputHandler.addButtonBind("B", Keys.J);
+			InputHandler.addButtonBind("B", Keys.K);
+			InputHandler.addButtonBind("B", Keys.L);
+			InputHandler.addButtonBind("B", Keys.M);
+		}
+		else {
+			//adding all the input bindings
+			InputHandler.addButtonBind("A", Keys.X);
+			InputHandler.addButtonBind("B", Keys.Z);
+			InputHandler.addButtonBind("A", GPadInput.Y);
+			InputHandler.addButtonBind("B", GPadInput.B);
+			InputHandler.addButtonBind("A", GPadInput.A);
+			InputHandler.addButtonBind("B", GPadInput.X);
+			InputHandler.addButtonBind("A", GPadInput.LTrigger);
+			InputHandler.addButtonBind("B", GPadInput.RTrigger);
+			InputHandler.addButtonBind("B", GPadInput.LShoulder);
+			InputHandler.addButtonBind("A", GPadInput.RShoulder);
 
-		InputHandler.addAnalogBind("L", GPadInput.DLeft);
-		InputHandler.addAnalogBind("R", GPadInput.DRight);
-		InputHandler.addAnalogBind("U", GPadInput.DUp);
-		InputHandler.addAnalogBind("D", GPadInput.DDown);
+			InputHandler.addAnalogBind("L", Keys.Left);
+			InputHandler.addAnalogBind("R", Keys.Right);
+			InputHandler.addAnalogBind("U", Keys.Up);
+			InputHandler.addAnalogBind("D", Keys.Down);
+			InputHandler.addAnalogBind("L", GPadInput.LStickLeft);
+			InputHandler.addAnalogBind("R", GPadInput.LStickRight);
+			InputHandler.addAnalogBind("U", GPadInput.LStickUp);
+			InputHandler.addAnalogBind("D", GPadInput.LStickDown);
 
-		/*InputHandler.addButtonBind("key", Keys.X);
-		InputHandler.addButtonBind("key", Keys.Z);
-		InputHandler.addButtonBind("controller", Keys.Q);
-		InputHandler.addAnalogBind("key", Keys.Left);
-		InputHandler.addAnalogBind("key", Keys.Right);
-		InputHandler.addAnalogBind("key", Keys.Up);
-		InputHandler.addAnalogBind("key", Keys.Down);
+			InputHandler.addAnalogBind("L", GPadInput.DLeft);
+			InputHandler.addAnalogBind("R", GPadInput.DRight);
+			InputHandler.addAnalogBind("U", GPadInput.DUp);
+			InputHandler.addAnalogBind("D", GPadInput.DDown);
+		}
 
-		InputHandler.addButtonBind("controller", GPadInput.Y);
-		InputHandler.addButtonBind("controller", GPadInput.B);
-		InputHandler.addButtonBind("controller", GPadInput.A);
-		InputHandler.addButtonBind("controller", GPadInput.X);*/
 
 		score = new(combo);
 		player = new Player(score, combo);
@@ -163,6 +178,10 @@ public class ArcadeGame : Game {
 		}
 		else {
 			windowToggled = false;
+		}
+		if (machineType == "cgda" && Mouse.GetState().MiddleButton == ButtonState.Pressed) {
+			Console.WriteLine("sdkfjhkjfd");
+			Exit();
 		}
 
 

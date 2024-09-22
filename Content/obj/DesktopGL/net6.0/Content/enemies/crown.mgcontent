@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/enemies/crown.png</SourceFile>
-  <SourceTime>2024-01-08T17:25:33.6796192-07:00</SourceTime>
-  <DestFile>/home/agoogaloo/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemies/crown.xnb</DestFile>
-  <DestTime>2024-04-16T00:18:38.9837162-06:00</DestTime>
+  <SourceFile>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/enemies/crown.png</SourceFile>
+  <SourceTime>2024-01-09T13:48:48.309824-07:00</SourceTime>
+  <DestFile>C:/Users/aguy2/Documents/GitHub/ArcadeJam/Content/bin/DesktopGL/Content/enemies/crown.xnb</DestFile>
+  <DestTime>2024-05-23T10:56:06.9316094-06:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T05:44:56-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

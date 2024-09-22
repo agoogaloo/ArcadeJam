@@ -18,7 +18,9 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/MonoGameTest.csproj"
+                "${workspaceFolder}/ArcadeJam.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -28,9 +30,9 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/MonoGameTest.csproj",
+                "${workspaceFolder}/ArcadeJam.csproj",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -42,7 +44,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/MonoGameTest.csproj"
+                "${workspaceFolder}/ArcadeJam.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
