@@ -78,6 +78,9 @@ public class ArcadeGame : Game {
 
 		//setting special controls for cgda machine
 		if (machineType == "cgda") {
+			CycleWindowSettings();
+			CycleWindowSettings();
+			CycleWindowSettings();
 			//left side controls
 			InputHandler.addAnalogBind("U", Keys.W);
 			InputHandler.addAnalogBind("L", Keys.A);

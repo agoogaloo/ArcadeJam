@@ -171,14 +171,17 @@ public class IntroChest : Enemy {
 		base.Draw(gameTime, spriteBatch);
 
 
-		if (GamePad.GetState(PlayerIndex.One) != gPadState) {
+		if (ArcadeGame.machineType == "cgda") {
+			intro = Assets.introTextKeyboard;
+		}
+		else if (GamePad.GetState(PlayerIndex.One) != gPadState) {
 			gPadState = GamePad.GetState(PlayerIndex.One);
 			intro = Assets.introText;
 		}
 		else if (Keyboard.GetState().GetPressedKeyCount() >= 1) {
 			intro = Assets.introTextKeyboard;
 		}
-		spriteBatch.Draw(intro, new Vector2(ArcadeGame.gameWidth / 2 - Assets.introText.Width / 2, 5), Color.White);
+		spriteBatch.Draw(intro, new Vector2(ArcadeGame.gameWidth / 2 - intro.Width / 2, 5), Color.White);
 		//spriteBatch.Draw(Assets.startText, new Vector2(ArcadeGame.gameWidth / 2 - Assets.introText.Width / 2, 100), Color.White);
 
 	}

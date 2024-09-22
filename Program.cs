@@ -1,7 +1,7 @@
 ﻿
 using ArcadeJam;
 
-using var game = new ArcadeGame();
-// game.machineType = "gdc"; //for the gdc arcade machine
 ArcadeGame.machineType = "cgda"; // for the cgda arcade machines
+								 // ArcadeGame.machineType = "gdc"; //for the gdc arcade machine
+using var game = new ArcadeGame();
 game.Run();
