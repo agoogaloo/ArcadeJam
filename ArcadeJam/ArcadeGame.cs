@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Net.Mail;
 using Engine.Core.Data;
 using Engine.Core.Input;
 using Engine.Core.Nodes;
@@ -25,6 +27,7 @@ public class ArcadeGame : Game {
 	private GraphicsDeviceManager graphics;
 	private SpriteBatch spriteBatch;
 	private RenderTarget2D windowTarget, gameTarget;
+	private float closeTime = -1, closeTimer = 0;
 
 
 	public const int width = 200, height = 150, gameWidth = 153, gameHeight = 150;
@@ -76,6 +79,15 @@ public class ArcadeGame : Game {
 		}
 		graphics.ApplyChanges();
 
+		int volume = 100;
+		//load turnoff time 
+		if (File.Exists("settings.txt")) {
+			string[] lines = File.ReadAllText("settings.txt").Split("\n");
+			closeTime = int.Parse(lines[2]);
+			volume = int.Parse(lines[4]);
+		}
+		Console.WriteLine("closeTime:" + closeTime + " volume:" + volume);
+		//todo: volume things
 		//setting special controls for cgda machine
 		if (machineType == "cgda") {
 			CycleWindowSettings();
@@ -166,7 +178,6 @@ public class ArcadeGame : Game {
 	protected override void Update(GameTime gameTime) {
 		base.Update(gameTime);
 		InputHandler.Update(gameTime);
-
 		NodeManager.Update(gameTime);
 		if (!player.Alive) {
 			gameOver(gameTime);
@@ -182,12 +193,23 @@ public class ArcadeGame : Game {
 		else {
 			windowToggled = false;
 		}
+		//cgda clossing things
 		if (machineType == "cgda" && Mouse.GetState().MiddleButton == ButtonState.Pressed) {
-			Console.WriteLine("sdkfjhkjfd");
 			Exit();
+			Console.WriteLine("sdkfjhkjfd");
 		}
-
-
+		//closeTimer
+		if (closeTime != -1) {
+			if (InputHandler.getButton("A").Held || InputHandler.getButton("B").Held ||
+					InputHandler.getAnalog("U").Value != 0 || InputHandler.getAnalog("D").Value != 0 ||
+					InputHandler.getAnalog("L").Value != 0 || InputHandler.getAnalog("R").Value != 0) {
+				closeTimer = 0;
+			}
+			closeTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+			if (closeTimer >= closeTime) {
+				Exit();
+			}
+		}
 	}
 	private void CycleWindowSettings() {
 		windowMode += 1;
@@ -213,7 +235,6 @@ public class ArcadeGame : Game {
 
 			graphics.ApplyChanges();
 		}
-
 	}
 
 	protected override void Draw(GameTime gameTime) {
@@ -286,7 +307,7 @@ public class ArcadeGame : Game {
 		spriteBatch.DrawString(Assets.font, scoreString, new Vector2(1, 27), new Color(169, 104, 104));
 		if ((int)(LevelManager.transitionTimer * 8) % 2 == 0) {
 			spriteBatch.DrawString(Assets.font, bonusString, new Vector2(4, 54), new Color(169, 104, 104));
-			spriteBatch.DrawString(Assets.font, LevelManager.loops + "-" + LevelManager.currentLevel, new Vector2(9, 6), new Color(169, 104, 104));
+			spriteBatch.DrawString(Assets.font, LevelManager.loops + "-" + LevelManager.currentLevel, new Vector2(10, 6), new Color(169, 104, 104));
 
 		}
 
@@ -326,7 +347,5 @@ public class ArcadeGame : Game {
 		else {
 			gameOverScreen.Update(gameTime);
 		}
-
-
 	}
 }

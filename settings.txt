@@ -1,0 +1,5 @@
+// change game setting here (don't add/remove any lines or things will probably break)
+// autoclose timer
+-1
+//volume
+50
