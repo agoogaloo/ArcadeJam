@@ -41,7 +41,7 @@ public class Enemy : Node, IGrappleable {
 		grappleBounds = new(0, 0, 11, 13);
 		vel = new(0, 0);
 		movement.Init(bounds, vel);
-		weapon = new Straight(bounds);
+		weapon = new Straight(bounds, volleys: 2);
 		renderer = new(sprite, bounds);
 		damager = new(bounds, this, Health, sprite, textures[1]);
 		grappleCollision = new(grappleBounds, this, "grapple");

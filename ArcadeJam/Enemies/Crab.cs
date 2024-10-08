@@ -76,7 +76,7 @@ public class CrabBoss : Node, IGrappleable {
 		if (deathTimer <= 0) {
 			Alive = false;
 			if (loops != 0) {
-				score.addScore(500, bounds.Centre);
+				// score.addScore(500, bounds.Centre);
 				return;
 			}
 			if (ArcadeGame.player.lives.val < 5) {
@@ -252,7 +252,7 @@ public class CrabBoss : Node, IGrappleable {
 		if (crownBounds.Top <= 0 || crownBounds.Bottom >= ArcadeGame.gameHeight) {
 			crownVel.Y *= -1;
 			patterns[0].fire();
-			Assets.shootSounds[2].CreateInstance();
+			// Assets.shootSounds[2].CreateInstance();
 			Assets.shootSounds[2].Play();
 			crownBounds.y = Math.Max(crownBounds.y, 0);
 			crownBounds.y = Math.Min(crownBounds.y, ArcadeGame.gameHeight);
@@ -260,7 +260,7 @@ public class CrabBoss : Node, IGrappleable {
 		if (crownBounds.Left <= 0 || crownBounds.Right >= ArcadeGame.gameWidth) {
 			crownVel.X *= -1;
 			patterns[0].fire();
-			Assets.shootSounds[2].CreateInstance();
+			// Assets.shootSounds[2].CreateInstance();
 			Assets.shootSounds[2].Play();
 			crownBounds.x = Math.Max(crownBounds.x, 0);
 			crownBounds.x = Math.Min(crownBounds.x, ArcadeGame.gameWidth);
@@ -280,7 +280,7 @@ public class CrabBoss : Node, IGrappleable {
 			grappleCollision.Readd();
 			Console.WriteLine("peeeew");
 			time = 0;
-			Assets.bigExplosion.CreateInstance();
+			// Assets.bigExplosion.CreateInstance();
 			Assets.bigExplosion.Play();
 		}
 		Console.WriteLine(time);
@@ -334,7 +334,7 @@ public class CrabBoss : Node, IGrappleable {
 			health.val -= damage;
 			time = 0;
 			NodeManager.AddNode(new ExplosionEffect(grappleBounds.Centre, true, false));
-			Assets.bigExplosion.CreateInstance();
+			// Assets.bigExplosion.CreateInstance();
 			Assets.bigExplosion.Play();
 
 		}
@@ -444,7 +444,7 @@ public class CrabMovement {
 					jabAngle += (float)Math.PI;
 				}
 				jabAngle -= (float)Math.PI / 2;
-				Assets.grappleShoot.CreateInstance();
+				// Assets.grappleShoot.CreateInstance();
 				Assets.grappleShoot.Play();
 
 			}

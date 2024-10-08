@@ -203,6 +203,7 @@ public class ShipBoss : Enemy {
 		}
 		else {
 			NodeManager.AddNode(new BigShot(new Vector2Data(new Vector2(0, 80)), patternBounds.Centre));
+			Assets.smallExplosion1.Play();
 
 		}
 	}
@@ -246,7 +247,7 @@ public class ShipBoss : Enemy {
 	public override void End() {
 		base.End();
 		if (loops != 0) {
-			score.addScore(500, bounds.Centre);
+			// score.addScore(500, bounds.Centre);
 			return;
 		}
 		if (ArcadeGame.player.lives.val < 5) {

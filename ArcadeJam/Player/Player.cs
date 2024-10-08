@@ -81,7 +81,8 @@ public class Player : Node {
 				//Console.WriteLine("hit by a bullet");
 				b.OnHit();
 				bulletHit();
-			}else if(i is CampCrab c){
+			}
+			else if (i is CampCrab c) {
 				bulletHit();
 				c.onHit();
 			}
@@ -92,8 +93,8 @@ public class Player : Node {
 		if (invincibleTime.val >= 0f) {
 			return;
 		}
-		foreach(Node n in NodeManager.Nodes){
-			if(n is Bullet b){
+		foreach (Node n in NodeManager.Nodes) {
+			if (n is Bullet b) {
 				b.OnHit();
 			}
 		}
@@ -105,7 +106,7 @@ public class Player : Node {
 		}
 		if (lives.val < 0) {
 			Alive = false;
-			Assets.playerExplosion.CreateInstance();
+			// Assets.playerExplosion.CreateInstance();
 			Assets.playerExplosion.Play();
 			NodeManager.AddNode(new ExplosionEffect(Bounds.Centre, sound: false));
 			MediaPlayer.Stop();
@@ -124,7 +125,7 @@ public class Player : Node {
 			render.Draw(spriteBatch);
 		}
 		showBounds.Draw(spriteBatch);
-	
+
 
 		//spriteBatch.DrawString(spriteFont: Assets.smallNumFont, "COMBO:" + combo.val, new Vector2(1, 5), Color.Red);
 	}

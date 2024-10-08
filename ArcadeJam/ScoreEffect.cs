@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ArcadeJam;
 
 public class LifeEffect : ScoreEffect {
-	public LifeEffect(Vector2 loc) : base(loc, 4000) {
+	public LifeEffect(Vector2 loc) : base(loc, 40000) {
 		time = 2.5;
 	}
 	public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {

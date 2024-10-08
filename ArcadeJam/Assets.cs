@@ -19,10 +19,11 @@ public class Assets {
 		shipBoss, angryCrabBody, crabBodyDamage, crabBodyGrapple, clawL, clawLOpen, clawR, clawROpen, gunCrown;
 
 	public static Song music;
-	public static SoundEffect bigExplosion, smallExplosion1, smallExplosion2, playerExplosion, playerHit, grappleHit,
-	 grappleShoot, lifeGet;
+	public static SoundEffectInstance bigExplosion, smallExplosion1, smallExplosion2, playerExplosion, playerHit, grappleHit, grappleShoot, lifeGet;
 
-	public static SoundEffect[] shootSounds = { null, null, null };
+	public static SoundEffectInstance smallExplosion;
+
+	public static SoundEffectInstance[] shootSounds = { null, null, null };
 
 	public static SpriteFont font, smallNumFont;
 
@@ -90,17 +91,17 @@ public class Assets {
 
 		//sounds
 		music = manager.Load<Song>("sounds/music");
-		bigExplosion = manager.Load<SoundEffect>("sounds/explosionBig");
-		smallExplosion1 = manager.Load<SoundEffect>("sounds/explosionSmall");
-		smallExplosion2 = manager.Load<SoundEffect>("sounds/explosionSmall2");
-		playerExplosion = manager.Load<SoundEffect>("sounds/playerExplosion");
-		playerHit = manager.Load<SoundEffect>("sounds/playerHit");
-		grappleShoot = manager.Load<SoundEffect>("sounds/grappleShoot");
-		grappleHit = manager.Load<SoundEffect>("sounds/grappleHit");
-		lifeGet = manager.Load<SoundEffect>("sounds/lifeGet");
-		shootSounds[0] = manager.Load<SoundEffect>("sounds/lv1Shoot");
-		shootSounds[1] = manager.Load<SoundEffect>("sounds/lv2Shoot");
-		shootSounds[2] = manager.Load<SoundEffect>("sounds/lv3Shoot");
+		bigExplosion = manager.Load<SoundEffect>("sounds/explosionBig").CreateInstance();
+		smallExplosion1 = manager.Load<SoundEffect>("sounds/explosionSmall").CreateInstance();
+		smallExplosion2 = manager.Load<SoundEffect>("sounds/explosionSmall2").CreateInstance();
+		playerExplosion = manager.Load<SoundEffect>("sounds/playerExplosion").CreateInstance();
+		playerHit = manager.Load<SoundEffect>("sounds/playerHit").CreateInstance();
+		grappleShoot = manager.Load<SoundEffect>("sounds/grappleShoot").CreateInstance();
+		grappleHit = manager.Load<SoundEffect>("sounds/grappleHit").CreateInstance();
+		lifeGet = manager.Load<SoundEffect>("sounds/lifeGet").CreateInstance();
+		shootSounds[0] = manager.Load<SoundEffect>("sounds/lv1Shoot").CreateInstance();
+		shootSounds[1] = manager.Load<SoundEffect>("sounds/lv2Shoot").CreateInstance();
+		shootSounds[2] = manager.Load<SoundEffect>("sounds/lv3Shoot").CreateInstance();
 		//bigExplosion = manager.Load<SoundEffect>("sounds/explosionBig");
 
 
