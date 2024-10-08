@@ -1,16 +1,11 @@
 ﻿using System;
-using System.ComponentModel;
-using System.IO;
-using System.Net.NetworkInformation;
 using ArcadeJam.Enemies;
 using ArcadeJam.Weapons;
 using Engine.Core.Components;
 using Engine.Core.Data;
-using Engine.Core.Input;
 using Engine.Core.Nodes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Media;
 
 namespace ArcadeJam;
 
@@ -44,9 +39,11 @@ public class CrabBoss : Node, IGrappleable {
 
 	ScoreData score;
 	FloatData progress;
-	public CrabBoss(ScoreData score, FloatData progress) {
+	int loops;
+	public CrabBoss(ScoreData score, FloatData progress, int loops) {
 		this.score = score;
 		this.progress = progress;
+		this.loops = loops;
 		progress.val = 1;
 
 		BoolData lJabbing = new(false), rJabbing = new(false);
@@ -78,15 +75,18 @@ public class CrabBoss : Node, IGrappleable {
 		progress.val = (float)currentHealth / maxHealth;
 		if (deathTimer <= 0) {
 			Alive = false;
+			if (loops != 0) {
+				score.addScore(500, bounds.Centre);
+				return;
+			}
 			if (ArcadeGame.player.lives.val < 5) {
 				ArcadeGame.player.lives.val++;
+				NodeManager.AddNode(new LifeEffect(bounds.Centre));
 			}
 			else {
 				score.addScore(2500, bounds.Centre);
 			}
 			Assets.lifeGet.Play();
-
-
 		}
 		if (health.val <= 0) {
 			if (deathTimer == 4) {

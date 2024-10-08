@@ -11,7 +11,7 @@ public class Level {
 	public bool Cleared { get; set; } = false;
 	public int SpeedBonus { get; protected set; } = 700;
 
-	public virtual void Start(ScoreData score, int loops = 1) {
+	public virtual void Start(ScoreData score, int loops = 0) {
 		enemies = new Enemy[] {
 		new BasicEnemy(new MoveToPoint(new Vector2(75,0), new Vector2(75,50)), score) };
 		addEnemies();
@@ -191,8 +191,8 @@ public class Level9 : Level {
 
 public class ShipBossStage : Level {
 
-	public override void Start(ScoreData score, int loops = 1) {
-		enemies = new Enemy[] { new ShipBoss(score) };
+	public override void Start(ScoreData score, int loops = 0) {
+		enemies = new Enemy[] { new ShipBoss(score, loops) };
 		addEnemies();
 		SpeedBonus = 3000;
 	}
@@ -205,7 +205,7 @@ public class CrabBossStage : Level {
 		this.bossBar = bossBar;
 	}
 	public override void Start(ScoreData score, int loops = 1) {
-		enemies = new Node[] { new CrabBoss(score, bossBar) };
+		enemies = new Node[] { new CrabBoss(score, bossBar, loops) };
 		addEnemies();
 	}
 
