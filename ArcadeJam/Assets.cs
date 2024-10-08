@@ -21,8 +21,6 @@ public class Assets {
 	public static Song music;
 	public static SoundEffectInstance bigExplosion, smallExplosion1, smallExplosion2, playerExplosion, playerHit, grappleHit, grappleShoot, lifeGet;
 
-	public static SoundEffectInstance smallExplosion;
-
 	public static SoundEffectInstance[] shootSounds = { null, null, null };
 
 	public static SpriteFont font, smallNumFont;
@@ -109,6 +107,22 @@ public class Assets {
 		//fonts
 		font = manager.Load<SpriteFont>("monoFont");
 		smallNumFont = manager.Load<SpriteFont>("smallNumFont");
+
+	}
+	public static void EffectVolume(float volume) {
+
+		bigExplosion.Volume = volume;
+		smallExplosion1.Volume = volume;
+		smallExplosion2.Volume = volume;
+		playerExplosion.Volume = volume;
+		playerHit.Volume = volume;
+		lifeGet.Volume = volume;
+		grappleHit.Volume = volume;
+		grappleShoot.Volume = volume;
+		shootSounds[0].Volume = volume;
+		shootSounds[1].Volume = volume;
+		shootSounds[2].Volume = volume;
+
 
 	}
 	private static Texture2D[] loadEnemy(String name, ContentManager manager) {

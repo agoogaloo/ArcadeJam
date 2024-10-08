@@ -7,6 +7,7 @@ using Engine.Core.Nodes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 //using Player;
 
 
@@ -79,14 +80,17 @@ public class ArcadeGame : Game {
 		}
 		graphics.ApplyChanges();
 
-		int volume = 100;
 		//load turnoff time 
 		if (File.Exists("settings.txt")) {
 			string[] lines = File.ReadAllText("settings.txt").Split("\n");
 			closeTime = int.Parse(lines[2]);
-			volume = int.Parse(lines[4]);
+			float effectVol = float.Parse(lines[4]);
+			float musicVol = float.Parse(lines[6]);
+			Assets.EffectVolume(effectVol / 100f);
+			MediaPlayer.Volume = musicVol / 100f;
+
 		}
-		Console.WriteLine("closeTime:" + closeTime + " volume:" + volume);
+		Console.WriteLine("closeTime:" + closeTime);
 		//todo: volume things
 		//setting special controls for cgda machine
 		if (machineType == "cgda") {

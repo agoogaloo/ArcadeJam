@@ -1,5 +1,7 @@
-// change game setting here (don't add/remove any lines or things will probably break)
-// autoclose timer
--1
-//volume
-50
+// change game settings here (adding/removing extra lines might break things)
+// autoclose timer (in seconds)
+300
+//effect volume (float from 0-100)
+100
+//music volume (float from 0-100)
+100
