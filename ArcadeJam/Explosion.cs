@@ -17,11 +17,14 @@ public class ExplosionEffect : Node {
 		if (fast) {
 			render = new(sprite, new Vector2Data(loc), frame, Assets.explosionSize, 20);
 			// Assets.smallExplosion1.CreateInstance();
+			Assets.smallExplosion1.Stop();
 			Assets.smallExplosion1.Play();
 		}
 		else {
 			render = new(sprite, new Vector2Data(loc), frame, Assets.explosionSize, 10);
 			// Assets.bigExplosion.CreateInstance();
+
+			Assets.bigExplosion.Stop();
 			Assets.bigExplosion.Play();
 		}
 
