@@ -81,8 +81,10 @@ public class ArcadeGame : Game {
 		graphics.ApplyChanges();
 
 		//load turnoff time 
-		if (File.Exists("settings.txt")) {
-			string[] lines = File.ReadAllText("settings.txt").Split("\n");
+		string path = System.AppDomain.CurrentDomain.BaseDirectory + "..\\settings.txt";
+		Console.WriteLine("settings path: " + path);
+		if (File.Exists(path)) {
+			string[] lines = File.ReadAllText(path).Split("\n");
 			closeTime = int.Parse(lines[2]);
 			float effectVol = float.Parse(lines[4]);
 			float musicVol = float.Parse(lines[6]);

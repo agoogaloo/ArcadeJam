@@ -13,7 +13,7 @@ namespace ArcadeJam;
 public class HighScores {
 	private char[] letters = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
 	,'!','<','>',':','.',' ','_','-'};
-	private String defaultScore = "0,-----,", scoresPath = "highScores.txt", name = "-----";
+	private String defaultScore = "0,-----,", scoresPath = System.AppDomain.CurrentDomain.BaseDirectory + "..\\highScores.txt", name = "-----";
 	private String[] scores = new String[10];
 	private int score, cursor, currentLetter;
 
